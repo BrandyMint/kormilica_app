@@ -2,7 +2,7 @@ define [
   'underscore'
   'backbone'
 ], (_, Backbone) ->
-  'use strict';
+  'use strict'
 
   class TestModel extends Backbone.Model
     defaults:
