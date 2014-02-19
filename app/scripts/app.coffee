@@ -1,11 +1,13 @@
-define ['jquery', 'backbone', 'models/test', 'views/test'], ($, Backbone, TestModel, TestView) ->
-  class App
-    initialize: ->
-      console.log 'app starting...'
+define ['jquery', 'backbone', 'marionette', 'models/test', 'views/test'], ($, Backbone, Marionette, TestModel, TestView) ->
+  
+  app = new Marionette.Application
 
-      model = new TestModel()
-      view = new TestView(model: model)
+  app.addInitializer ->
+    console.log 'app starting...'
+    model = new TestModel()
+    view = new TestView(model: model)
 
-      $('.backbone-container').html view.render().el
+    $('.backbone-container').html view.render().el
 
-      Backbone.history.start()
+  app.on "initialize:after", ->
+    Backbone.history.start()
