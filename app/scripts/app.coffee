@@ -1,13 +1,18 @@
-define ['jquery', 'backbone', 'marionette', 'models/test', 'views/test'], ($, Backbone, Marionette, TestModel, TestView) ->
+define ['jquery', 'backbone', 'marionette', 'views/header/header'], ($, Backbone, Marionette, HeaderView) ->
   
-  app = new Marionette.Application
+  App = new Marionette.Application()
 
-  app.addInitializer ->
-    console.log 'app starting...'
-    model = new TestModel()
-    view = new TestView(model: model)
+  App.addRegions
+    headerRegion: "#header-region"
+    mainRegion:   "#main-region"
+    footerRegion: "#footer-region"
 
-    $('.backbone-container').html view.render().el
+  App.addInitializer ->
+    console.log 'App starting...'
+    header_view = new HeaderView()
+    App.headerRegion.show header_view
 
-  app.on "initialize:after", ->
+  App.on "initialize:after", ->
     Backbone.history.start()
+
+  App

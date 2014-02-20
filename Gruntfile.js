@@ -150,7 +150,7 @@ module.exports = function (grunt) {
                     // require them into your main .coffee file
                     expand: true,
                     cwd: '<%= yeoman.app %>/scripts',
-                    src: '{,*/}*.coffee',
+                    src: '{,*/,*/*/}*.coffee',
                     dest: '.tmp/scripts',
                     ext: '.js'
                 }]
@@ -322,7 +322,8 @@ module.exports = function (grunt) {
                         '<%= yeoman.dist %>/styles/{,*/}*.css',
                         '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
                         '/styles/fonts/{,*/}*.*',
-                        'bower_components/sass-bootstrap/fonts/*.*'
+                        'bower_components/sass-bootstrap/fonts/*.*',
+                        '!<%= yeoman.dist %>/images/_*.{png,jpg,jpeg,gif,webp}'
                     ]
                 }
             }
