@@ -1,0 +1,32 @@
+.container
+  margin: 0 auto
+  max-width: 960px
+
+.column
+  float: left
+  margin-left: 5%
+  &:first-child
+    margin-left: 0
+  &.full
+    width: 100%
+  &.two-thirds
+    width: 65%
+  &.half
+    width: 47.5%
+  &.one-third
+    width: 30%
+  &.one-fourth
+    width: 21.25%
+
+.clearfix
+  &:before
+    content: " "
+    display: table
+  &:after
+    content: " "
+    display: table
+    clear: both
+  *zoom: 1
+
+.row
+  overflow: hidden
