@@ -1,4 +1,4 @@
-define ['app', 'marionette', 'templates/header/header'], (App, Marionette, template) ->
+define ['app', 'templates/header/header'], (App, template) ->
 
   class Header extends Marionette.ItemView
     template: template

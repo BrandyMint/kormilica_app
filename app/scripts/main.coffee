@@ -12,7 +12,7 @@ require.config
       ]
       exports: 'Backbone'
     marionette:
-      deps: ['backbone', 'backbone.wreqr']
+      deps: ['backbone', 'backbone.wreqr', 'backbone.babysitter']
       exports: 'Marionette'
     bootstrap:
       deps: ['jquery'],
@@ -23,6 +23,7 @@ require.config
     backbone: '../bower_components/backbone/backbone'
     marionette: '../bower_components/backbone.marionette/lib/core/backbone.marionette'
     'backbone.wreqr': '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr'
+    'backbone.babysitter': '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter'
     underscore: '../bower_components/underscore/underscore'
     bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap'
 

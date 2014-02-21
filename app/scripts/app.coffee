@@ -1,6 +1,6 @@
-define ['jquery', 'backbone', 'marionette', 'views/header/header'], ($, Backbone, Marionette, HeaderView) ->
+define ['marionette', 'views/header/header', 'views/products/list'], (Marionette, HeaderView, View) ->
   
-  App = new Marionette.Application()
+  App = new Marionette.Application
 
   App.addRegions
     headerRegion: "#header-region"
@@ -9,10 +9,13 @@ define ['jquery', 'backbone', 'marionette', 'views/header/header'], ($, Backbone
 
   App.addInitializer ->
     console.log 'App starting...'
-    header_view = new HeaderView()
+    header_view = new HeaderView
     App.headerRegion.show header_view
 
-  App.on "initialize:after", ->
+  App.on 'initialize:after', ->
     Backbone.history.start()
+
+    require ['controllers/products'], ->
+      App.trigger 'products:list'
 
   App

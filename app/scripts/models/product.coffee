@@ -1,8 +1,8 @@
-define ['underscore', 'backbone'], (_, Backbone) ->
+define ['app'], ->
   'use strict'
 
   class Product extends Backbone.Model
     urlRoot: "products"
 
     defaults:
-      name:  'Пончик'
+      title:  'Пончик'
