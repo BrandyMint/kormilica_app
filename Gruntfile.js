@@ -205,7 +205,8 @@ module.exports = function (grunt) {
                     // http://requirejs.org/docs/errors.html#sourcemapcomments
                     preserveLicenseComments: false,
                     useStrict: true,
-                    wrap: true
+                    wrap: true,
+                    findNestedDependencies: true
                     //uglify2: {} // https://github.com/mishoo/UglifyJS2
                 }
             }
