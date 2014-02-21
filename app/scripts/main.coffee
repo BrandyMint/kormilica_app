@@ -27,5 +27,5 @@ require.config
     underscore: '../bower_components/underscore/underscore'
     bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap'
 
-require ['app'], (App) ->
+require ['app', 'controllers/products', 'controllers/header'], (App) ->
   App.start()

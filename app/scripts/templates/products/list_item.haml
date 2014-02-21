@@ -1,0 +1,11 @@
+.row.clearfix
+  .column.two-thirds
+    %img{:src => @image_url}
+    %p= @title
+    %p.price
+      %span.price-font= @price
+      р.
+  .column.one-thirds
+    %a.button{:href => "#777"}
+      %img{:src => "images/to-bucket.png"}
+        %span В ЗАКАЗ

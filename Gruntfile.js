@@ -35,7 +35,7 @@ module.exports = function (grunt) {
                 livereload: true
             },
             coffee: {
-                files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
+                files: ['<%= yeoman.app %>/scripts/{,*/,*/*/}*.coffee'],
                 tasks: ['coffee:dist']
             },
             coffeeTest: {
@@ -321,10 +321,8 @@ module.exports = function (grunt) {
                     src: [
                         '<%= yeoman.dist %>/scripts/{,*/}*.js',
                         '<%= yeoman.dist %>/styles/{,*/}*.css',
-                        '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}',
                         '/styles/fonts/{,*/}*.*',
-                        'bower_components/sass-bootstrap/fonts/*.*',
-                        '!<%= yeoman.dist %>/images/_*.{png,jpg,jpeg,gif,webp}'
+                        'bower_components/sass-bootstrap/fonts/*.*'
                     ]
                 }
             }

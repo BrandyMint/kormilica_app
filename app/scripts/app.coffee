@@ -1,4 +1,4 @@
-define ['marionette', 'views/header/header', 'views/products/list'], (Marionette, HeaderView, View) ->
+define ['marionette'], (Marionette) ->
   
   App = new Marionette.Application
 
@@ -7,15 +7,10 @@ define ['marionette', 'views/header/header', 'views/products/list'], (Marionette
     mainRegion:   "#main-region"
     footerRegion: "#footer-region"
 
-  App.addInitializer ->
+  App.on 'start', ->
     console.log 'App starting...'
-    header_view = new HeaderView
-    App.headerRegion.show header_view
 
   App.on 'initialize:after', ->
     Backbone.history.start()
-
-    require ['controllers/products'], ->
-      App.trigger 'products:list'
 
   App

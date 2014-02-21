@@ -4,14 +4,17 @@ define ['app', 'views/products/list'], (App, ProductsView) ->
     listProducts: ->
       require ['collections/products'], (Products) =>
         products_data = [
-          {id:1, price: '120', image_url: 'фывфю.jpg'}
-          {id:2, price: '40', image_url: 'фывфю2.jpg'}
-          {id:3, price: '90', image_url: 'фывфю3.jpg'}
+          {id:1, title: 'Оригинальная глазурь', price: '120', image_url: 'images/donut_3.png'}
+          {id:2, title: 'Классический пончик', price: '40', image_url: 'images/donut_1.png'}
+          {id:6, title: 'Шоколадная глазурь', price: '90', image_url: 'images/donut_2.png'}
+          {id:5, title: 'Классический пончик', price: '40', image_url: 'images/donut_1.png'}
+          {id:4, title: 'Оригинальная глазурь', price: '120', image_url: 'images/donut_3.png'}
+          {id:3, title: 'Шоколадная глазурь', price: '90', image_url: 'images/donut_2.png'}
         ]
 
         productsListCollection = new Products products_data
         productsListView = new ProductsView collection: productsListCollection
         App.mainRegion.show productsListView
 
-  App.on 'products:list', ->
+  App.on 'start', ->
     API.listProducts()
