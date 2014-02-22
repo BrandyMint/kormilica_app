@@ -19,13 +19,14 @@ require.config
       exports: 'jquery'
 
   paths:
-    jquery: '../bower_components/jquery/jquery'
-    backbone: '../bower_components/backbone/backbone'
-    marionette: '../bower_components/backbone.marionette/lib/core/backbone.marionette'
-    'backbone.wreqr': '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr'
-    'backbone.babysitter': '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter'
-    underscore: '../bower_components/underscore/underscore'
-    bootstrap: '../bower_components/sass-bootstrap/dist/js/bootstrap'
+    jquery:                  '../bower_components/jquery/jquery'
+    backbone:                '../bower_components/backbone/backbone'
+    marionette:              '../bower_components/backbone.marionette/lib/core/backbone.marionette'
+    'backbone.wreqr':        '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr'
+    'backbone.babysitter':   '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter'
+    'backbone.localStorage': '../bower_components/backbone.localStorage/backbone.localStorage'
+    underscore:              '../bower_components/underscore/underscore'
+    bootstrap:               '../bower_components/sass-bootstrap/dist/js/bootstrap'
 
-require ['app', 'controllers/products', 'controllers/header', 'controllers/footer'], (App) ->
+require ['app'], (App) ->
   App.start()

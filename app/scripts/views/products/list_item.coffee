@@ -3,3 +3,8 @@ define ['app', 'marionette', 'templates/products/list_item'], (App, Marionette, 
   class Product extends Marionette.ItemView
     template: template
     className: 'product-block'
+
+    triggers:
+      'click a.button': 
+        event: 'cart:add'
+        preventDefault: true

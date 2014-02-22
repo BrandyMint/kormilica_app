@@ -1,6 +1,10 @@
-define ['app', 'views/products/list'], (App, ProductsView) ->
+define ['app', 'marionette', 'views/products/list'], (App, Marionette, ProductsView) ->
 
-  API = 
+  class Controller extends Marionette.Controller
+
+    initialize: ->
+      @listProducts()
+
     listProducts: ->
       require ['collections/products'], (Products) =>
         products_data = [
@@ -14,7 +18,8 @@ define ['app', 'views/products/list'], (App, ProductsView) ->
 
         productsListCollection = new Products products_data
         productsListView = new ProductsView collection: productsListCollection
-        App.mainRegion.show productsListView
 
-  App.on 'start', ->
-    API.listProducts()
+        productsListView.on 'itemview:cart:add', (childView) ->
+          App.vent.trigger 'cart:add', childView.model
+
+        App.mainRegion.show productsListView

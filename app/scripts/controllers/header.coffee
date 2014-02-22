@@ -1,9 +1,10 @@
-define ['app', 'views/header/header'], (App, View) ->
+define ['app', 'marionette', 'views/header/header'], (App, Marionette, View) ->
 
-  API = 
-    showHeader: ->
+  class Controller extends Marionette.Controller
+
+    initialize: ->
+      @show()
+
+    show: ->
       view = new View
       App.headerRegion.show view
-
-  App.on 'start', ->
-    API.showHeader()
