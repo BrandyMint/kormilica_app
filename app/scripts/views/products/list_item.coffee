@@ -4,7 +4,9 @@ define ['app', 'marionette', 'templates/products/list_item'], (App, Marionette, 
     template: template
     className: 'product-block'
 
-    triggers:
-      'click a.button': 
-        event: 'cart:add'
-        preventDefault: true
+    events:
+      'click a.button': 'addToCart'
+
+    addToCart: (e) ->
+      e.preventDefault()
+      App.vent.trigger 'cart:add', @model, 1

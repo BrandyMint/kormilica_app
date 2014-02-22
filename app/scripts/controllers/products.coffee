@@ -19,7 +19,4 @@ define ['app', 'marionette', 'views/products/list'], (App, Marionette, ProductsV
         productsListCollection = new Products products_data
         productsListView = new ProductsView collection: productsListCollection
 
-        productsListView.on 'itemview:cart:add', (childView) ->
-          App.vent.trigger 'cart:add', childView.model
-
         App.mainRegion.show productsListView

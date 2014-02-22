@@ -7,7 +7,7 @@ define ['marionette'], (Marionette) ->
     mainRegion:   "#main-region"
     footerRegion: "#footer-region"
 
-  App.on 'start', ->
+  App.addInitializer ->
     require [
       'controllers/cart'
       'controllers/profile'

@@ -1,5 +1,8 @@
-define ['models/product'], (Model) ->
-  'use strict'
+define ['models/cart_item', 'backbone.localStorage'], (Model) ->
 
-  class Cart extends Backbone.Collection
+  class CartItems extends Backbone.Collection
+    url: 'cart'
     model: Model
+
+    initialize: ->
+      @localStorage = new Backbone.LocalStorage 'cart'

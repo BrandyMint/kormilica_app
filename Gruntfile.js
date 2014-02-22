@@ -196,7 +196,8 @@ module.exports = function (grunt) {
                         'backbone': '../../app/bower_components/backbone/backbone',
                         'marionette': '../../app/bower_components/backbone.marionette/lib/core/amd/backbone.marionette',
                         'backbone.wreqr': '../../app/bower_components/backbone.wreqr/lib/amd/backbone.wreqr',
-                        'backbone.babysitter': '../../app/bower_components/backbone.babysitter/lib/amd/backbone.babysitter'
+                        'backbone.babysitter': '../../app/bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
+                        'backbone.localStorage': '../../app/bower_components/backbone.localStorage/backbone.localStorage'
                     },
                     // TODO: Figure out how to make sourcemaps work with grunt-usemin
                     // https://github.com/yeoman/grunt-usemin/issues/30
