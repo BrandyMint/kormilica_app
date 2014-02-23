@@ -10,6 +10,9 @@ define ['app', 'marionette', 'collections/cart'], (App, Marionette, Collection) 
       App.vent.on 'cart:add', (product, quantity) =>
         @addToCart product, quantity
 
+      App.vent.on 'cart:clean', =>
+        @cleanCart()
+
     addToCart: (product, quantity) ->
       # Если товар есть в корзине, item будет содержать модельку cartItem
       item = @_isProductAlreadyInCart product
@@ -20,6 +23,9 @@ define ['app', 'marionette', 'collections/cart'], (App, Marionette, Collection) 
         @cart.create
           product: product
           quantity: quantity
+
+    cleanCart: ->
+      model.destroy() while model = @cart.first()
 
     _isProductAlreadyInCart: (product) ->
       @cart.find (item) -> item.get('product').id == product.get('id')

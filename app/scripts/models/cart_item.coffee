@@ -8,5 +8,4 @@ define ['app'], ->
       quantity: 0
 
     price: () ->
-      console.log @
-      # @get('product').get('price') * @get('quantity')
+      @get('product').price * @get 'quantity'

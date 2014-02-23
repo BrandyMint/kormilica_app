@@ -6,5 +6,5 @@ define ['app', 'marionette', 'views/header/header'], (App, Marionette, View) ->
       @show()
 
     show: ->
-      view = new View
+      view = new View collection: App.profile.get 'cart'
       App.headerRegion.show view
