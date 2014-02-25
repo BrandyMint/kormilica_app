@@ -9,7 +9,7 @@ define ['models/cart_item', 'backbone.localStorage'], (Model) ->
 
     getTotalCost: () ->
       addup = (memo, item) -> item.price() + memo
-      @reduce(addup, 0) + " руб."
+      @reduce(addup, 0)
 
     getTotalCount: () ->
       addup = (memo, item) -> item.get('quantity') + memo

@@ -10,4 +10,16 @@ define ['app', 'marionette', 'templates/header/header'], (App, Marionette, templ
       'all': 'updateTotalCost'
 
     updateTotalCost: () ->
-      @$('#amount').html @collection.getTotalCost()
+      if @collection.getTotalCost() > 0 then @showCheck() else @hideCheck()
+      @$('#amount').html @collection.getTotalCost() + " руб."
+
+    showCheck: ->
+      @$('#check').html @checkDOM
+
+    hideCheck: ->
+      @$('#check').children().remove()
+
+    onRender: ->
+      @checkDOM = @$('#check').children().clone()
+      unless @collection.getTotalCost() > 0
+        @hideCheck()

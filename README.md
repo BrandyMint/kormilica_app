@@ -8,3 +8,7 @@
     npm install
     bower install
     grunt server
+
+Для очистки корзины в консоли вводим
+
+    App.vent.trigger('cart:clean')
