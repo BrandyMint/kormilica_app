@@ -1,4 +1,5 @@
-define ['marionette'], (Marionette) ->
+define ['marionette', 'data/products', 'collections/products', 'views/products/list', 'models/profile', 'views/header/header'],
+(Marionette, products, ProductsCollection, ProductsView, ProfileModel, HeaderView) ->
   
   App = new Marionette.Application
 
@@ -8,21 +9,16 @@ define ['marionette'], (Marionette) ->
     footerRegion: "#footer-region"
 
   App.addInitializer ->
-    require ['collections/products', 'views/products/list', 'data/products'], (Collection, View, products) =>
-      productsListCollection = new Collection products
-      productsListView = new View collection: productsListCollection
-      App.mainRegion.show productsListView
+    productsCollection = new ProductsCollection products
+    productsListView = new ProductsView collection: productsCollection
+    @mainRegion.show productsListView
 
-    require [
-      'controllers/cart'
-      'controllers/profile'
-      'controllers/header'
-      'controllers/footer'
-      ], (CartController, ProfileController, HeaderController, FooterController) ->
-      new ProfileController
+    @profile = new ProfileModel
+
+    require ['controllers/cart'], (CartController) ->
       new CartController
-      new HeaderController
-      new FooterController
+    headerView = new HeaderView collection: App.profile.get 'cart'
+    App.headerRegion.show headerView
 
   App.on 'start', ->
     console.log 'App starting...'

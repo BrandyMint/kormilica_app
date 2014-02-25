@@ -1,4 +1,4 @@
-define ['app', 'controllers/cart'], (App) ->
+define ['backbone'], (Backbone) ->
   'use strict'
 
   class Profile extends Backbone.Model
