@@ -1,5 +1,5 @@
 #!/bin/sh
 
 npm install
-bower update
+bower install -f
 grunt build

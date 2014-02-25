@@ -1,4 +1,4 @@
-define ['marionette'], (Marionette) ->
+define ['marionette', 'data/products'], (Marionette, productsData) ->
   
   window.App = new Marionette.Application
 
@@ -16,9 +16,9 @@ define ['marionette'], (Marionette) ->
       cartCollection.fetch()
       new CartController collection: cartCollection
 
-    require ['collections/products', 'views/products/list', 'data/products'], (Collection, View, products) =>
-      productsListCollection = new Collection products
-      productsListView = new View collection: productsListCollection
+    require ['collections/products', 'views/products/list'], (ProductsCollection, ProductsView) =>
+      productsListCollection = new ProductsCollection productsData
+      productsListView = new ProductsView collection: productsListCollection
       App.mainRegion.show productsListView
 
     require ['views/header/header'], (HeaderView) ->
@@ -30,7 +30,7 @@ define ['marionette'], (Marionette) ->
       App.footerRegion.show footerView
 
   App.on 'start', ->
-    console.log 'App starting...'
+    console.log 'App starting....'
 
   App.on 'initialize:after', ->
     Backbone.history.start()
