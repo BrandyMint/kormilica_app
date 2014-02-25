@@ -1,10 +1,10 @@
-define ['app', 'marionette', 'collections/cart'], (App, Marionette, Collection) ->
+define ['app', 'marionette'], (App, Marionette) ->
 
   class Controller extends Marionette.Controller
 
-    initialize: ->
-      @cart = new Collection
-      @cart.fetch()
+    initialize: (options) ->
+      { collection } = options
+      @cart = collection
       App.profile.set 'cart', @cart
 
       App.vent.on 'cart:add', (product, quantity) =>
