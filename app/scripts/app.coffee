@@ -26,7 +26,7 @@ define ['marionette', 'data/products'], (Marionette, productsData) ->
       App.headerRegion.show headerView
 
     require ['views/footer/footer'], (FooterView) ->
-      footerView = new FooterView
+      footerView = new FooterView collection: App.profile.get 'cart'
       App.footerRegion.show footerView
 
   App.on 'start', ->
