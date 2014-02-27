@@ -5,7 +5,7 @@ define ['app', 'marionette', 'templates/products/list_item'], (App, Marionette, 
     className: 'product-block'
 
     events:
-      'click a.button': 'addToCart'
+      'click': 'addToCart'
 
     addToCart: (e) ->
       e.preventDefault()
