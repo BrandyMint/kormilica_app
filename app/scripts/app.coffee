@@ -31,7 +31,9 @@ define ['marionette', 'data/products'], (Marionette, productsData) ->
       App.footerRegion.show footerView
 
       footerView.on 'checkout:clicked', ->
-        checkTopView = new CheckTopView
+        checkTopView = new CheckTopView 
+          collection: App.profile.get 'cart'
+          lol: App.profile.get 'cart'
         App.checkRegion.show checkTopView
 
   App.on 'start', ->

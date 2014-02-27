@@ -1,20 +1,22 @@
 #check-top-external
-  #check-top-internal
+  #check-top-internal.center
     .check-top-battlement
       .check-top-battlement-center
-
-/ .row.clearfix.center#check-top
-/   %img{:src => "images/content-check-top.png"}
-/   .check-content
-/     %h2 Ваш чек
-/     %p 1. Классический пончик
-/     %p.product-amount 30x2 ....................................... 60 р.
-/     %p 2. Шоколадная глазурь
-/     %p.product-amount 35x7 ...................................... 245 р.
-/     %P 3. Оригинальная глазурь
-/     %p.product-amount 40x3 ...................................... 120 р.
-/     %p 4. Банановый пончик
-/     %p.product-amount 35x4 ...................................... 140 р.
+    
+    .check-content
+      %h2 Ваш чек
+      
+      - pos = 1
+      - for item in @items
+        %p= "#{pos++}. #{item.product.title}"
+        %table
+          %tbody
+            %tr
+              %td.product-amount= "#{item.product.price}x#{item.quantity}"
+              %td.separator
+                %div
+              %td.product-price= "#{item.product.price * item.quantity} руб."
+              
 /     .row.clearfix
 /       %p.all-product-sum Итог: 
 /         %span.all-sum-right 565 р.
