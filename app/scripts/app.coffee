@@ -26,9 +26,13 @@ define ['marionette', 'data/products'], (Marionette, productsData) ->
       headerView = new HeaderView collection: App.profile.get 'cart'
       App.headerRegion.show headerView
 
-    require ['views/footer/footer'], (FooterView) ->
+    require ['views/footer/footer', 'views/check/check'], (FooterView, CheckTopView) ->
       footerView = new FooterView collection: App.profile.get 'cart'
       App.footerRegion.show footerView
+
+      footerView.on 'checkout:clicked', ->
+        checkTopView = new CheckTopView
+        App.checkRegion.show checkTopView
 
   App.on 'start', ->
     console.log 'App starting....'

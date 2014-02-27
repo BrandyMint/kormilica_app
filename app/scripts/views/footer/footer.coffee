@@ -19,7 +19,7 @@ define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_check
 
     showCheck: (e) ->
       e.preventDefault()
-
+      @trigger 'checkout:clicked'
 
     onRender: ->
       @workspaceDOM = @$('#workspace').children().clone()

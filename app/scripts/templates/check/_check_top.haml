@@ -1,21 +1,26 @@
-.row.clearfix.center#check-top
-  %img{:src => "images/content-check-top.png"}
-  .check-content
-    %h2 Ваш чек
-    %p 1. Классический пончик
-    %p.product-amount 30x2 ....................................... 60 р.
-    %p 2. Шоколадная глазурь
-    %p.product-amount 35x7 ...................................... 245 р.
-    %P 3. Оригинальная глазурь
-    %p.product-amount 40x3 ...................................... 120 р.
-    %p 4. Банановый пончик
-    %p.product-amount 35x4 ...................................... 140 р.
-    .row.clearfix
-      %p.all-product-sum Итог: 
-        %span.all-sum-right 565 р.
-    %form{:name => "message", method=> "post"}
-      %section
-        %label{:for => "phone"} Телефон:
-        %input#phone{:type => "tel", value => "", name => "phone", placeholder => "+7"}
-        %label{:for => "name"} Ваше имя:
-        %input#name{:type => "text", value => "", name => "name"}
+#check-top-external
+  #check-top-internal
+    .check-top-battlement
+      .check-top-battlement-center
+
+/ .row.clearfix.center#check-top
+/   %img{:src => "images/content-check-top.png"}
+/   .check-content
+/     %h2 Ваш чек
+/     %p 1. Классический пончик
+/     %p.product-amount 30x2 ....................................... 60 р.
+/     %p 2. Шоколадная глазурь
+/     %p.product-amount 35x7 ...................................... 245 р.
+/     %P 3. Оригинальная глазурь
+/     %p.product-amount 40x3 ...................................... 120 р.
+/     %p 4. Банановый пончик
+/     %p.product-amount 35x4 ...................................... 140 р.
+/     .row.clearfix
+/       %p.all-product-sum Итог: 
+/         %span.all-sum-right 565 р.
+/     %form{:name => "message", method=> "post"}
+/       %section
+/         %label{:for => "phone"} Телефон:
+/         %input#phone{:type => "tel", value => "", name => "phone", placeholder => "+7"}
+/         %label{:for => "name"} Ваше имя:
+/         %input#name{:type => "text", value => "", name => "name"}
