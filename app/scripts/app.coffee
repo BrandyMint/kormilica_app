@@ -6,6 +6,7 @@ define ['marionette', 'data/products'], (Marionette, productsData) ->
     headerRegion: "#header-region"
     mainRegion:   "#main-region"
     footerRegion: "#footer-region"
+    checkRegion:  "#check-region"
 
   App.addInitializer ->
     require ['models/profile'], (ProfileModel) =>

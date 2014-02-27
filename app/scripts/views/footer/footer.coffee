@@ -1,5 +1,5 @@
-define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_checkout'], 
-(App, Marionette, template, checkoutTemplate) ->
+define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_checkout', 'templates/check/_check_bottom'], 
+(App, Marionette, template, checkoutTemplate, checkBottomTemplate) ->
 
   class Footer extends Marionette.ItemView
     template: template
@@ -19,6 +19,7 @@ define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_check
 
     showCheck: (e) ->
       e.preventDefault()
+
 
     onRender: ->
       @workspaceDOM = @$('#workspace').children().clone()
