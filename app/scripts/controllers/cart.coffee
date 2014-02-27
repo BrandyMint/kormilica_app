@@ -5,6 +5,7 @@ define ['app', 'marionette'], (App, Marionette) ->
     initialize: (options) ->
       { collection } = options
       @cart = collection
+      @cleanCart()
       App.profile.set 'cart', @cart
 
       App.vent.on 'cart:add', (product, quantity) =>
