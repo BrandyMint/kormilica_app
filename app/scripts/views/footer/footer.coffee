@@ -4,6 +4,9 @@ define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_check
   class Footer extends Marionette.ItemView
     template: template
 
+    events:
+      'click a.checkout': 'showCheck'
+
     collectionEvents:
       'add':    'showCheckoutButton'
       'remove': 'hideCheckoutButton'
@@ -13,6 +16,9 @@ define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_check
 
     hideCheckoutButton: ->
       @$('#workspace').html @workspaceDOM
+
+    showCheck: (e) ->
+      e.preventDefault()
 
     onRender: ->
       @workspaceDOM = @$('#workspace').children().clone()
