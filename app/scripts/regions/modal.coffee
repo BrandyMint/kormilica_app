@@ -4,5 +4,5 @@ define ["marionette"], (Marionette) ->
     open: (view) ->
       view.$el = view.$el.children()
       view.$el.unwrap()
-      wrappedView = $('<div class="dark-background"></div').html view.$el
+      wrappedView = $('<div class="modal-wrapper"></div').append('<div class="dark-background"></div>').append view.$el
       @$el.html wrappedView
