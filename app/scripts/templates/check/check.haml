@@ -24,9 +24,9 @@
       %form{:name => "message", method=> "post"}
         %section
           %label{:for => "phone"} Телефон:
-          %input#phone{:type => "tel", value => "", name => "phone", placeholder => "+7"}
+          %input#phone{:type => "tel", :value => "#{ if @profile.get('phoneNumber') then @profile.get('phoneNumber') }", :name => "phone", :placeholder => "+7"}
           %label{:for => "name"} Ваше имя:
-          %input#name{:type => "text", value => "", name => "name"}
+          %input#name{:type => "text", :value => "#{ if @profile.get('name') then @profile.get('name') }", :name => "name"}
 
       %p.form-comment
         обязательно введите свой телефон для связи

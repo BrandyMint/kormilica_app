@@ -4,7 +4,8 @@ define ['marionette', 'templates/check/check'], (Marionette, template) ->
     template: template
 
     serializeData: ->
-      items: @collection.toJSON()
+      items:   @collection.toJSON()
+      profile: @options.profile
 
     templateHelpers: ->
       totalCost: @collection.getTotalCost()

@@ -17,6 +17,7 @@ require.config
     bootstrap:
       deps: ['jquery'],
       exports: 'jquery'
+    'jquery.form-serialize': ['jquery']
 
   paths:
     jquery:                  '../bower_components/jquery/jquery'
@@ -27,6 +28,7 @@ require.config
     'backbone.localStorage': '../bower_components/backbone.localStorage/backbone.localStorage'
     underscore:              '../bower_components/underscore/underscore'
     bootstrap:               '../bower_components/sass-bootstrap/dist/js/bootstrap'
+    'jquery.form-serialize': 'lib/form-serialize'
 
 require ['app'], (App) ->
   App.start()

@@ -28,7 +28,9 @@ define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_check
 
     addOrder: (e) ->
       e.preventDefault()
-      console.log 'Обработка заказа'
+      alert 'Заказ создан!'
+      @trigger 'delivery:clicked'
+      @hideButton()
 
     onRender: ->
       @workspaceDOM = @$('#workspace').children().clone()

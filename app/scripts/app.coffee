@@ -11,11 +11,17 @@ define ['marionette', 'data/products'], (Marionette, productsData) ->
   App.addInitializer ->
     require ['models/profile'], (ProfileModel) =>
       App.profile = new ProfileModel
+      App.profile.fetch()
 
     require ['controllers/cart', 'collections/cart'], (CartController, CartCollection) ->
       cartCollection = new CartCollection
       cartCollection.fetch()
       new CartController collection: cartCollection
+
+    require ['controllers/check'], (CheckController) ->
+      new CheckController 
+        profile: App.profile
+        cart: App.cart
 
     require ['collections/products', 'views/products/list'], (ProductsCollection, ProductsView) =>
       productsListCollection = new ProductsCollection productsData
@@ -23,18 +29,18 @@ define ['marionette', 'data/products'], (Marionette, productsData) ->
       App.mainRegion.show productsListView
 
     require ['views/header/header'], (HeaderView) ->
-      headerView = new HeaderView collection: App.profile.get 'cart'
+      headerView = new HeaderView collection: App.cart
       App.headerRegion.show headerView
 
-    require ['views/footer/footer', 'views/check/check'], (FooterView, CheckTopView) ->
-      footerView = new FooterView collection: App.profile.get 'cart'
+    require ['views/footer/footer'], (FooterView) ->
+      footerView = new FooterView collection: App.cart
       App.footerRegion.show footerView
 
       footerView.on 'checkout:clicked', ->
-        checkTopView = new CheckTopView 
-          collection: App.profile.get 'cart'
-          lol: App.profile.get 'cart'
-        App.checkRegion.show checkTopView
+        App.vent.trigger 'checkout:show'
+
+      footerView.on 'delivery:clicked', ->
+        App.vent.trigger 'order:created'
 
   App.on 'start', ->
     console.log 'App starting....'
