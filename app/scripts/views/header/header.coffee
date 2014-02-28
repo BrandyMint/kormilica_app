@@ -4,7 +4,10 @@ define ['app', 'marionette', 'templates/header/header'], (App, Marionette, templ
     template: template
 
     serializeData: ->
-      collection: @collection
+      items: @collection.toJSON()
+
+    templateHelpers: ->
+      totalCost: @collection.getTotalCost()
 
     collectionEvents:
       'all': 'updateTotalCost'
