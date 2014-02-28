@@ -12,7 +12,7 @@
   position: fixed
   width: 100%
   height: 100%
-  padding: 86px 12px 70px
+  padding: 86px 12px 67px
   z-index: 100
   max-width: 480px
   bottom: 0
@@ -29,6 +29,7 @@
       background-color: $white-background-color
       font-family: $base-font-family
       color: $grey-font-color
+      overflow: scroll
 
       h2
         font-size: $base-heading-size
@@ -60,17 +61,35 @@
         .all-sum-right
           float: right
 
+      form
+        padding: 0 15px
+        text-align: left
+
+        input
+          margin: 5px 0
+          width: 100%
+          background-color: $input-background-color
+          border: none
+          font-family: $base-font-family
+          font-size: base-font-size
+          color: $grey-font-color
+          padding-left: 5px
+
+        input[type=tel]
+        margin-left: 5px
+
+      .form-comment
+        width: 294px
+        margin: 0 auto
+        padding: 10px 0 20px
+        background-color: $white-background-color
+        color: $orange-font-color
+        font-size: $footer-comment-font-size
 
     .check-top-battlement
       margin-top: -15px
       width: 100%
       position: absolute
-      // .check-short-battlement-left
-      //   height: 15px
-      //   width: 20px
-      //   float: left
-      //   background: url('../images/check-short-battlement-left.png') no-repeat
-      //   background-size: 45%
 
       .check-top-battlement-center
         height: 15px
@@ -103,13 +122,6 @@
     .check-short-battlement
       height: 15px
       margin: -15px 4px 0
-
-      // .check-short-battlement-left
-      //   height: 15px
-      //   width: 20px
-      //   float: left
-      //   background: url('../images/check-short-battlement-left.png') no-repeat
-      //   background-size: 45%
 
       .check-short-battlement-center
         height: 15px

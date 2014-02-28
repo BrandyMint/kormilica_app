@@ -1,3 +1,5 @@
+- console.log @
+
 #check-top-external
   #check-top-internal.center
     .check-top-battlement
@@ -16,13 +18,17 @@
               %td.separator
                 %div
               %td.product-price= "#{item.product.price * item.quantity} руб."
-              
-/     .row.clearfix
-/       %p.all-product-sum Итог: 
-/         %span.all-sum-right 565 р.
-/     %form{:name => "message", method=> "post"}
-/       %section
-/         %label{:for => "phone"} Телефон:
-/         %input#phone{:type => "tel", value => "", name => "phone", placeholder => "+7"}
-/         %label{:for => "name"} Ваше имя:
-/         %input#name{:type => "text", value => "", name => "name"}
+
+      .row.clearfix
+        %p.all-product-sum Итог: 
+          %span.all-sum-right= "#{@totalCost} р."
+
+      %form{:name => "message", method=> "post"}
+        %section
+          %label{:for => "phone"} Телефон:
+          %input#phone{:type => "tel", value => "", name => "phone", placeholder => "+7"}
+          %label{:for => "name"} Ваше имя:
+          %input#name{:type => "text", value => "", name => "name"}
+
+      %p.form-comment.center 
+        обязательно введите свой телефон для связи
