@@ -32,6 +32,9 @@ define ['marionette', 'data/products'], (Marionette, productsData) ->
       headerView = new HeaderView collection: App.cart
       App.headerRegion.show headerView
 
+      headerView.on 'check:clicked', ->
+        App.vent.trigger 'checkout:show'
+
     require ['views/footer/footer'], (FooterView) ->
       footerView = new FooterView collection: App.cart
       App.footerRegion.show footerView
