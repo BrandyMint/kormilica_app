@@ -4,6 +4,10 @@ define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_check
   class Footer extends Marionette.ItemView
     template: template
 
+    initialize: ->
+      App.vent.on 'checkout:show', =>
+        @showDeliveryButton()
+
     events:
       'click a.checkout': 'showCheck'
       'click a.delivery': 'addOrder'
