@@ -16,5 +16,8 @@ define ['app', 'marionette', 'views/modal_windows/quantity_selector'], (App, Mar
         App.vent.trigger 'quantity:change', item, quantity
         @hideQuantitySelector()
 
+      quantitySelectorView.on 'quantity:change:cancel', =>
+        @hideQuantitySelector()
+
     hideQuantitySelector: ->
       App.modalRegion.close()

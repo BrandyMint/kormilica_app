@@ -13,6 +13,10 @@ define ['app', 'marionette', 'templates/modal_windows/quantity_selector'], (App,
       confirmButton: '.button'
       quantity:      '.quantity'
       result:        '.result'
+      outside:       '.dark-background'
+
+    triggers:
+      'click @ui.outside': 'quantity:change:cancel'
 
     events:
       'click @ui.minusButton':   'decreaseQuantity'
