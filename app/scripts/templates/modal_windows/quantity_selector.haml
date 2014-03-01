@@ -1,24 +1,28 @@
-.modal-window
-  .column.full
-    .quantity-title Введите количество
-    %table.quantity-table
-      %tr
-        %td
-          %p.price
-            %span.price-font 30
-            р.
-        %td
-          %p.multiplier x
-            %span.multiplier-font 3 =
-        %td
-          %p.price
-            %span.price-font 30
-            р.
-    
-    .quantity-selector
-      %a.plus-sign{:href => '#'} +
-      3 шт
-      %a.minus-sign{:href => '#'} -
+.modal-wrapper
+  .dark-background
+  .modal-window
+    .column.full
+      .quantity-title Введите количество
+      %table.quantity-table
+        %tr
+          %td
+            %p.price
+              %span.price-font #{@product.price}
+              р.
+          %td
+            %p.multiplier x
+              %span.multiplier-font.quantity= @quantity
+              \=
+          %td
+            %p.price
+              %span.price-font.result #{@product.price * @quantity}
+              р.
+      
+      .quantity-selector
+        %a#plus-sign{:href => '#'} +
+        %span.quantity #{@quantity}
+        шт
+        %a#minus-sign{:href => '#'} -
 
-    %a.button{:href => '#'} 
-      %span ГОТОВО
+      %a.button{:href => '#'} 
+        %span ГОТОВО

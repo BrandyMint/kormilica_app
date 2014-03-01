@@ -1,4 +1,4 @@
-define ['marionette', 'regions/modal', 'data/products'], (Marionette, ModalRegion, productsData) ->
+define ['marionette', 'data/products'], (Marionette, productsData) ->
   
   window.App = new Marionette.Application
 
@@ -7,13 +7,9 @@ define ['marionette', 'regions/modal', 'data/products'], (Marionette, ModalRegio
     mainRegion:   "#main-region"
     footerRegion: "#footer-region"
     checkRegion:  "#check-region"
-    modalRegion:  ModalRegion.extend el: "#modal-region"
+    modalRegion:  "#modal-region"
 
   App.addInitializer ->
-    # require ['views/modal_windows/quantity_selector'], (QuantitySelectorView) =>
-    #   quantitySelectorView = new QuantitySelectorView
-    #   App.modalRegion.show quantitySelectorView
-
     require ['models/profile'], (ProfileModel) =>
       App.profile = new ProfileModel
       App.profile.fetch()
@@ -22,6 +18,9 @@ define ['marionette', 'regions/modal', 'data/products'], (Marionette, ModalRegio
       cartCollection = new CartCollection
       cartCollection.fetch()
       new CartController collection: cartCollection
+
+    require ['controllers/quantity_selector'], (QuantitySelectorController) ->
+      new QuantitySelectorController
 
     require ['controllers/check'], (CheckController) ->
       new CheckController 

@@ -23,7 +23,8 @@ define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_check
       @$('#workspace').html deliveryButtonTemplate
 
     hideButton: ->
-      @$('#workspace').html @workspaceDOM
+      if @collection.getTotalCost() == 0
+        @$('#workspace').html @workspaceDOM
 
     showCheck: (e) ->
       e.preventDefault()
