@@ -8,6 +8,9 @@ define ['app', 'marionette'], (App, Marionette) ->
       # @cleanCart()
       App.cart = @cart
 
+      App.reqres.setHandler 'cart:item', (product) =>
+        @_isProductAlreadyInCart product
+
       App.vent.on 'cart:add', (product, quantity) =>
         @addToCart product, quantity
 
@@ -27,15 +30,17 @@ define ['app', 'marionette'], (App, Marionette) ->
       # Если товар есть в корзине, item будет содержать модельку cartItem
       item = @_isProductAlreadyInCart product
       if !item
-        @cart.create
-          product: product
-          quantity: quantity
+        newItem = @cart.create
+                    product: product
+                    quantity: quantity
+        App.vent.trigger 'cartitem:added', newItem
       else
         App.vent.trigger 'cartitem:exists', item
     
     deleteItem: (item) ->
       # Удаление item из коллекции cart, с сохранением изменения в localStorage
       @cart.get(item.id).destroy()
+      App.vent.trigger 'cart:item:deleted'
 
     changeQuantity: (item, quantity) ->
       item.set 'quantity', quantity
