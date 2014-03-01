@@ -19,6 +19,9 @@ define ['app', 'marionette', 'templates/products/list_item', 'templates/products
         if item.get('product').id == @model.get('id')
           @displaySelectedQuantity quantity
 
+      App.vent.on 'order:created', =>
+        @displaySelectedQuantity 0
+
     events:
       'click': 'addToCart'
 
