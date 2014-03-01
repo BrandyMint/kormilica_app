@@ -5,6 +5,7 @@
   width: 100%
   z-index: 140
   max-width: $body-max-width
+  font-family: $base-font-family
 
   .dark-background
     width: 100%
@@ -21,4 +22,56 @@
     bottom: 0
     right: 12px
     background-color: #FFF
-    height: 100px
+    height: 160px
+    text-align: center
+
+    .quantity-title
+      padding: 15px 0 8px
+      color: #f2795a
+
+    .quantity-table
+      text-align: center
+      margin: 0 auto
+
+      .price
+        color: $orange-font-color
+        font-family: $base-font-family
+        font-size: $product-rouble-font-size
+
+        .price-font
+          font-size: $product-price-font-size
+
+      .multiplier
+        color: $blue-background-color
+        font-size: 28px
+        margin: 0 8px
+
+        .multiplier-font
+          font-size: $product-price-font-size
+
+    .quantity-selector
+      margin: 10px auto 10px
+      color: $blue-background-color
+
+      .plus-sign, .minus-sign
+        color: $blue-background-color
+        font-size: $modal-quantity-buttons-text-size
+        display: inline-block
+        width: 27px
+        height: 27px
+        border: 1px solid $blue-background-color
+        text-decoration: none
+
+    a.button
+      display: inline-block
+      text-decoration: none
+      font-family: $base-font-family
+      font-size: $button-font-size
+      padding: 5px
+      width: 110px
+      text-align: center
+      color: $white-font-color
+      background-color: $button-orange-color
+
+      span
+        line-height: 1.7
