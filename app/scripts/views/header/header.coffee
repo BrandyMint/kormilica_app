@@ -31,7 +31,7 @@ define ['app', 'marionette', 'templates/header/header', 'jquery.bounce'], (App, 
       @$('#check').children().remove()
 
     bounceCheck: (times, distance, speed) ->
-      @$('#check').bounce times, distance, speed
+      @$('#check img').bounce times, distance, speed
 
     onRender: ->
       @checkDOM = @$('#check').children().clone()
