@@ -29,7 +29,6 @@
       background-color: $white-background-color
       font-family: $base-font-family
       color: $grey-font-color
-      overflow: scroll
 
       h2
         font-size: $base-heading-size
@@ -38,6 +37,14 @@
       p
         text-align: left
         padding: 3px 10px
+
+      .unscrollable-check
+        position: absolute
+        bottom: 0
+        background-color: white
+
+      .scrollable-check
+        overflow: scroll
 
       .menu-divider
         width: 100%
@@ -56,7 +63,7 @@
       .all-product-sum
         font-size: $content-sum-font-size
         font-weight: bold
-        padding: 28px 12px
+        padding: 12px 12px 28px
 
         .all-sum-right
           float: right

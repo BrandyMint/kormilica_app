@@ -9,3 +9,14 @@ define ['marionette', 'templates/check/check'], (Marionette, template) ->
 
     templateHelpers: ->
       totalCost: @collection.getTotalCost()
+
+    _setScrollableAreaHeight: ->
+      container = $('.check-content')
+      bottomInfo = $('.unscrollable-check')
+      itemsList = $('.scrollable-check')
+
+      scrollableHeight = container.height() - bottomInfo.height()
+      itemsList.css 'height', scrollableHeight
+
+    onShow: ->
+      @_setScrollableAreaHeight()

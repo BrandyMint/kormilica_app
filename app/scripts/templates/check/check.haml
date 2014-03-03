@@ -4,29 +4,32 @@
       .check-top-battlement-center
     
     .check-content
-      %h2 Ваш чек
-      
-      - pos = 1
-      - for item in @items
-        %p= "#{pos++}. #{item.product.title}"
-        %table
-          %tbody
-            %tr
-              %td.product-amount= "#{item.product.price}x#{item.quantity}"
-              %td.separator
-                %div
-              %td.product-price= "#{item.product.price * item.quantity} р."
+      .scrollable-check
+        %h2 Ваш чек
+        
+        - pos = 1
+        - for item in @items
+          %p= "#{pos++}. #{item.product.title}"
+          %table
+            %tbody
+              %tr
+                %td.product-amount= "#{item.product.price}x#{item.quantity}"
+                %td.separator
+                  %div
+                %td.product-price= "#{item.product.price * item.quantity} р."
 
-      .row.clearfix
-        %p.all-product-sum Итог: 
-          %span.all-sum-right= "#{@totalCost} р."
+      .unscrollable-check
 
-      %form{:name => "message", method=> "post"}
-        %section
-          %label{:for => "phone"} Телефон:
-          %input#phone{:type => "tel", :value => "#{ if @profile.get('phoneNumber') then @profile.get('phoneNumber') }", :name => "phone", :placeholder => "+7"}
-          %label{:for => "name"} Ваше имя:
-          %input#name{:type => "text", :value => "#{ if @profile.get('name') then @profile.get('name') }", :name => "name"}
+        .row.clearfix
+          %p.all-product-sum Итог:
+            %span.all-sum-right= "#{@totalCost} р."
 
-      %p.form-comment
-        обязательно введите свой телефон для связи
+        %form{:name => "message", method=> "post"}
+          %section
+            %label{:for => "phone"} Телефон:
+            %input#phone{:type => "tel", :value => "#{ if @profile.get('phoneNumber') then @profile.get('phoneNumber') }", :name => "phone", :placeholder => "+7"}
+            %label{:for => "name"} Ваше имя:
+            %input#name{:type => "text", :value => "#{ if @profile.get('name') then @profile.get('name') }", :name => "name"}
+
+        %p.form-comment
+          обязательно введите свой телефон для связи
