@@ -26,6 +26,7 @@ define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_check
     hideButton: ->
       if @collection.getTotalCost() == 0
         @$('#workspace').html @workspaceDOM
+        @$('#check-bottom').children().remove()
 
     showCheckBottom: ->
       @$('#check-bottom').html checkBottomTemplate
