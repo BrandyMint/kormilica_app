@@ -1,5 +1,5 @@
-define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_checkout', 'templates/footer/_delivery'], 
-(App, Marionette, template, checkoutButtonTemplate, deliveryButtonTemplate) ->
+define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_checkout', 'templates/footer/_delivery', 'templates/footer/_check_bottom'], 
+(App, Marionette, template, checkoutButtonTemplate, deliveryButtonTemplate, checkBottomTemplate) ->
 
   class Footer extends Marionette.ItemView
     template: template
@@ -7,6 +7,7 @@ define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_check
     initialize: ->
       App.vent.on 'checkout:show', =>
         @showDeliveryButton()
+        @showCheckBottom()
 
     events:
       'click a.checkout': 'showCheck'
@@ -25,6 +26,9 @@ define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_check
     hideButton: ->
       if @collection.getTotalCost() == 0
         @$('#workspace').html @workspaceDOM
+
+    showCheckBottom: ->
+      @$('#check-bottom').html checkBottomTemplate
 
     showCheck: (e) ->
       e.preventDefault()
