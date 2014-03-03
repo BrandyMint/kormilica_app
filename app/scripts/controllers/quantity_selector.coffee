@@ -9,6 +9,7 @@ define ['app', 'marionette', 'views/modal_windows/quantity_selector'], (App, Mar
         @showQuantitySelector item
 
     showQuantitySelector: (item) ->
+      $('#app-container').addClass 'modal-state'
       quantitySelectorView = new QuantitySelectorView model: item
       App.modalRegion.show quantitySelectorView
 
@@ -20,4 +21,5 @@ define ['app', 'marionette', 'views/modal_windows/quantity_selector'], (App, Mar
         @hideQuantitySelector()
 
     hideQuantitySelector: ->
+      $('#app-container').removeClass 'modal-state'
       App.modalRegion.close()
