@@ -29,6 +29,7 @@ require.config
     underscore:              '../bower_components/underscore/underscore'
     bootstrap:               '../bower_components/sass-bootstrap/dist/js/bootstrap'
     'jquery.form-serialize': 'lib/form-serialize'
+    'jquery.bounce':         'lib/bounce'
 
 require ['app'], (App) ->
   App.start()

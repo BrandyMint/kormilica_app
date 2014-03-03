@@ -1,8 +1,12 @@
-define ['app', 'marionette', 'templates/header/header'], (App, Marionette, template) ->
+define ['app', 'marionette', 'templates/header/header', 'jquery.bounce'], (App, Marionette, template) ->
 
   class Header extends Marionette.ItemView
     template: template
     className: 'header'
+
+    initialize: ->
+      App.vent.on 'cartitem:added', =>
+        @bounceCheck 2, '5px', 100
 
     triggers:
       'click #check': 'check:clicked'
@@ -25,6 +29,9 @@ define ['app', 'marionette', 'templates/header/header'], (App, Marionette, templ
 
     hideCheck: ->
       @$('#check').children().remove()
+
+    bounceCheck: (times, distance, speed) ->
+      @$('#check').bounce times, distance, speed
 
     onRender: ->
       @checkDOM = @$('#check').children().clone()

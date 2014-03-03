@@ -198,7 +198,8 @@ module.exports = function (grunt) {
                         'backbone.wreqr': '../../app/bower_components/backbone.wreqr/lib/amd/backbone.wreqr',
                         'backbone.babysitter': '../../app/bower_components/backbone.babysitter/lib/amd/backbone.babysitter',
                         'backbone.localStorage': '../../app/bower_components/backbone.localStorage/backbone.localStorage',
-                        'jquery.form-serialize': '../../app/scripts/lib/form-serialize'
+                        'jquery.form-serialize': '../../app/scripts/lib/form-serialize',
+                        'jquery.bounce': '../../app/scripts/lib/bounce'
                     },
                     // TODO: Figure out how to make sourcemaps work with grunt-usemin
                     // https://github.com/yeoman/grunt-usemin/issues/30
