@@ -2,6 +2,7 @@ define ['app', 'marionette', 'templates/header/header'], (App, Marionette, templ
 
   class Header extends Marionette.ItemView
     template: template
+    className: 'header'
 
     triggers:
       'click #check': 'check:clicked'
