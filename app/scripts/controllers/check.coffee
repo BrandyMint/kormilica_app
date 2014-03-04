@@ -19,5 +19,11 @@ define ['app', 'marionette', 'views/check/check', 'jquery.form-serialize'], (App
         collection: @cart
       App.checkRegion.show @checkView
 
+      @checkView.on 'check:form:empty:field', ->
+        App.vent.trigger 'check:form:invalid'
+
+      @checkView.on 'check:form:filled', ->
+        App.vent.trigger 'check:form:valid'
+
     hideCheck: ->
       App.checkRegion.close()

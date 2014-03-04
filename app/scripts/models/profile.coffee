@@ -11,3 +11,6 @@ define ['app', 'controllers/cart', 'backbone.localStorage'], (App) ->
       id:          1
       name:        ''
       phoneNumber: ''
+
+    isAllFieldsFilled: ->
+      true if @get('name') and @get('phoneNumber')

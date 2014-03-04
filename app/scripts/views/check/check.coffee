@@ -1,7 +1,13 @@
-define ['marionette', 'templates/check/check'], (Marionette, template) ->
+define ['marionette', 'templates/check/check', 'jquery.form-serialize'], (Marionette, template) ->
   
   class CheckTop extends Marionette.ItemView
     template: template
+
+    ui:
+      form: 'form'
+
+    events:
+      'keyup form': 'checkForEmptyFields'
 
     serializeData: ->
       items:   @collection.toJSON()
@@ -9,6 +15,18 @@ define ['marionette', 'templates/check/check'], (Marionette, template) ->
 
     templateHelpers: ->
       totalCost: @collection.getTotalCost()
+
+    checkForEmptyFields: (e) =>
+      formData = @ui.form.serializeObject()
+      errors = []
+      for inputData of formData
+        unless formData[inputData]
+          errors.push inputData
+
+      if errors.length > 0
+        @trigger 'check:form:empty:field'
+      else
+        @trigger 'check:form:filled'
 
     _setScrollableAreaHeight: ->
       container = $('.check-content')
