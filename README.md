@@ -1,4 +1,4 @@
-webapp_template
+Кормилица App
 ===============
 
 Шаблон JS-приложения (Yeoman-CoffeeScript-Sass-Haml-Backbone-RequireJS)
