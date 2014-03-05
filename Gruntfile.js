@@ -24,7 +24,8 @@ module.exports = function (grunt) {
     // configurable paths
     var yeomanConfig = {
         app: 'app',
-        dist: 'dist'
+        dist: 'dist',
+        bower: '.'
     };
 
     grunt.initConfig({
@@ -283,6 +284,16 @@ module.exports = function (grunt) {
                         'bower_components/sass-bootstrap/fonts/*.*'
                     ]
                 }]
+            },
+            bower: {
+                files: [{
+                    '<%= yeoman.bower %>/kormilica_app.js': '<%= yeoman.dist %>/scripts/main.js'
+                }]
+            },
+            bower_min: {
+                files: [{
+                    '<%= yeoman.bower %>/kormilica_app.min.js': '<%= yeoman.dist %>/scripts/main.js'
+                }]
             }
         },
         bower: {
@@ -389,9 +400,11 @@ module.exports = function (grunt) {
         'imagemin',
         'htmlmin',
         'concat',
+        'copy:bower',
         'cssmin',
         'uglify',
-        'copy',
+        'copy:bower_min',
+        'copy:dist',
         'rev',
         'usemin'
     ]);
