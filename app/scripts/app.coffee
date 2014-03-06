@@ -1,4 +1,5 @@
-define ['marionette', 'data/products'], (Marionette, productsData) ->
+define ['marionette', 'data/products', 'models/profile', 'controllers/cart', 'collections/cart', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/list', 'controllers/header', 'views/footer/footer'], 
+(Marionette, productsData, ProfileModel, CartController, CartCollection, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView) ->
   
   window.App = new Marionette.Application
 
@@ -10,42 +11,42 @@ define ['marionette', 'data/products'], (Marionette, productsData) ->
     modalRegion:  "#modal-region"
 
   App.addInitializer ->
-    require ['models/profile'], (ProfileModel) =>
-      App.profile = new ProfileModel
-      App.profile.fetch()
+    App.profile = new ProfileModel
+    App.profile.fetch()
 
-    require ['controllers/cart', 'collections/cart'], (CartController, CartCollection) ->
-      cartCollection = new CartCollection
-      cartCollection.fetch()
-      new CartController collection: cartCollection
+    cartCollection = new CartCollection
+    cartCollection.fetch()
+    
+    new CartController
+      App: App
+      collection: cartCollection
 
-    require ['controllers/quantity_selector'], (QuantitySelectorController) ->
-      new QuantitySelectorController
+    new QuantitySelectorController App: App
 
-    require ['controllers/check'], (CheckController) ->
-      new CheckController 
-        profile: App.profile
-        cart: App.cart
+    new CheckController 
+      App: App
+      profile: App.profile
+      cart: App.cart
 
-    require ['collections/products', 'views/products/list'], (ProductsCollection, ProductsView) =>
-      productsListCollection = new ProductsCollection productsData
-      productsListView = new ProductsView collection: productsListCollection
-      App.mainRegion.show productsListView
+    productsListCollection = new ProductsCollection productsData
+    productsListView = new ProductsView collection: productsListCollection
+    App.mainRegion.show productsListView
 
-    require ['controllers/header'], (HeaderController) ->
-      new HeaderController collection: App.cart
+    new HeaderController 
+      App: App
+      collection: App.cart
 
-    require ['views/footer/footer'], (FooterView) ->
-      footerView = new FooterView
-        collection: App.cart
-        profile:    App.profile
-      App.footerRegion.show footerView
+    footerView = new FooterView
+      App: App
+      collection: App.cart
+      profile:    App.profile
+    App.footerRegion.show footerView
 
-      footerView.on 'checkout:clicked', ->
-        App.vent.trigger 'checkout:show'
+    footerView.on 'checkout:clicked', ->
+      App.vent.trigger 'checkout:show'
 
-      footerView.on 'delivery:clicked', ->
-        App.vent.trigger 'order:created'
+    footerView.on 'delivery:clicked', ->
+      App.vent.trigger 'order:created'
 
   App.on 'start', ->
     console.log 'App starting....'

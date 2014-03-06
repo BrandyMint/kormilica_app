@@ -1,11 +1,13 @@
-define ['app', 'marionette', 'templates/header/header', 'jquery.bounce'], (App, Marionette, template) ->
+define ['marionette', 'templates/header/header', 'jquery.bounce'], (Marionette, template) ->
 
   class Header extends Marionette.ItemView
     template: template
     className: 'header'
 
-    initialize: ->
-      App.vent.on 'cartitem:added', =>
+    initialize: (options) ->
+      { @App } = options
+
+      @App.vent.on 'cartitem:added', =>
         @bounceCheck 2, '5px', 100
 
     triggers:
