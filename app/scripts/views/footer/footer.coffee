@@ -1,20 +1,20 @@
-define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_checkout', 'templates/footer/_delivery', 'templates/footer/_check_bottom'], 
-(App, Marionette, template, checkoutButtonTemplate, deliveryButtonTemplate, checkBottomTemplate) ->
+define ['marionette', 'templates/footer/footer', 'templates/footer/_checkout', 'templates/footer/_delivery', 'templates/footer/_check_bottom'], 
+(Marionette, template, checkoutButtonTemplate, deliveryButtonTemplate, checkBottomTemplate) ->
 
   class Footer extends Marionette.ItemView
     template: template
 
     initialize: (options) ->
-      { @profile } = options
+      { @profile, @App } = options
 
-      App.vent.on 'checkout:show', =>
+      @App.vent.on 'checkout:show', =>
         @showDeliveryButton()
         @showCheckBottom()
 
-      App.vent.on 'check:form:invalid', =>
+      @App.vent.on 'check:form:invalid', =>
         @deactivateDeliveryButton()
 
-      App.vent.on 'check:form:valid', =>
+      @App.vent.on 'check:form:valid', =>
         @activateDeliveryButton()
 
     events:
