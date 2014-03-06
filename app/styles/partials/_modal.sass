@@ -15,52 +15,64 @@
     opacity: 0.6
 
   .modal-window
+    display: table
+    width: 100%
+    padding: 0 12px
     margin: auto
     position: absolute
     top: 0
-    left: 12px
     bottom: 0
-    right: 12px
-    background-color: #FFF
-    height: 160px
     text-align: center
 
-    .quantity-title
-      padding: 15px 0 8px
-      color: #f2795a
+    .modal-content
+      background-color: #FFF
+      padding: 0 12px
+      line-height: 19px
 
-    .quantity-table
-      text-align: center
-      margin: 0 auto
+      .quantity-title
+        padding: 15px 0 8px
+        color: #f2795a
 
-      .price
-        color: $orange-font-color
-        font-family: $base-font-family
-        font-size: $product-rouble-font-size
+      .quantity-table
+        text-align: center
+        margin: 0 auto
 
-        .price-font
-          font-size: $product-price-font-size
+        .price
+          color: $orange-font-color
+          font-family: $base-font-family
+          font-size: $product-rouble-font-size
 
-      .multiplier
+          .price-font
+            font-size: $product-price-font-size
+
+        .multiplier
+          color: $blue-background-color
+          font-size: 28px
+          margin: 0 8px
+
+          .multiplier-font
+            font-size: $product-price-font-size
+
+      .quantity-selector
+        margin: 10px auto 10px
         color: $blue-background-color
-        font-size: 28px
-        margin: 0 8px
 
-        .multiplier-font
-          font-size: $product-price-font-size
+        #plus-sign, #minus-sign
+          color: $blue-background-color
+          font-size: $modal-quantity-buttons-text-size
+          display: inline-block
+          width: 27px
+          height: 27px
+          border: 1px solid $blue-background-color
+          text-decoration: none
 
-    .quantity-selector
-      margin: 10px auto 10px
-      color: $blue-background-color
+      .order-info-title
+        padding: 20px 0 14px
+        color: #f2795a
 
-      #plus-sign, #minus-sign
-        color: $blue-background-color
-        font-size: $modal-quantity-buttons-text-size
-        display: inline-block
-        width: 27px
-        height: 27px
-        border: 1px solid $blue-background-color
-        text-decoration: none
+      .order-info-content
+        color: $darkgrey-font-color
+        margin-bottom: 10px
 
     a.button
       display: inline-block
@@ -68,6 +80,7 @@
       font-family: $base-font-family
       font-size: $button-font-size
       padding: 5px
+      margin: 5px 0 15px
       width: 110px
       text-align: center
       color: $white-font-color

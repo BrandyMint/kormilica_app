@@ -8,9 +8,12 @@ define ['app', 'marionette', 'views/check/check', 'jquery.form-serialize'], (App
       App.vent.on 'checkout:show', =>
         @showCheck()
 
-      App.vent.on 'order:created', =>
+      App.vent.on 'order:create:prepare', =>
         $form_data = @checkView.$el.find('form').serializeObject()
         @profile.save name: $form_data.name, phoneNumber: $form_data.phone
+        App.vent.trigger 'order:create'
+
+      App.vent.on 'order:created', =>
         @hideCheck()
 
     showCheck: ->

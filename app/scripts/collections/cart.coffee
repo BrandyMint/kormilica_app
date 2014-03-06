@@ -7,10 +7,18 @@ define ['models/cart_item', 'backbone.localStorage'], (Model) ->
     initialize: ->
       @localStorage = new Backbone.LocalStorage 'cart'
 
-    getTotalCost: () ->
+    getTotalCost: ->
       addup = (memo, item) -> item.price() + memo
       @reduce(addup, 0)
 
-    getTotalCount: () ->
+    getTotalCount: ->
       addup = (memo, item) -> item.get('quantity') + memo
       @reduce addup, 0
+
+    getFormattedCartItems: ->
+      (for item in @toJSON()
+        item =
+          product_id: item.product.id
+          count:      item.quantity
+          price:      item.product.price
+      )
