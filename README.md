@@ -1,5 +1,3 @@
-"Еды бы!"
-=======
 Кормилица App
 
 Мобильное приложение (Yeoman-CoffeeScript-Sass-Haml-Backbone-RequireJS)
