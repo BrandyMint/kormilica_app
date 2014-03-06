@@ -1,5 +1,5 @@
 define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collections/cart', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/list', 'controllers/header', 'views/footer/footer'], 
-(Marionette, Backbone, ProfileModel, CartController, CartCollection, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView) ->
+(Marionette, Backbone, ProfileModel, CartController, CartItems, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView) ->
   
   window.App = new Marionette.Application
 
@@ -14,7 +14,7 @@ define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collec
     App.profile = new ProfileModel
     App.profile.fetch()
 
-    App.cartItems = new CartCollection
+    App.cartItems = new CartItems
     App.cartItems.fetch()
 
     App.categories = new Backbone.Collection
