@@ -4,7 +4,7 @@ define ['app', 'marionette', 'views/products/list_item'], (App, Marionette, Item
     itemView: ItemView
 
     initialize: (options) ->
-      { @App } = options
+      { @app } = options
 
     itemViewOptions: =>
-      App: @App
+      app: @app
