@@ -29,7 +29,9 @@ define ['marionette', 'data/products', 'models/profile', 'controllers/cart', 'co
       cart: App.cart
 
     productsListCollection = new ProductsCollection productsData
-    productsListView = new ProductsView collection: productsListCollection
+    productsListView = new ProductsView 
+      App: App
+      collection: productsListCollection
     App.mainRegion.show productsListView
 
     new HeaderController 
