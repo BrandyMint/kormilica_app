@@ -55,7 +55,6 @@ define ['app', 'marionette', 'templates/footer/footer', 'templates/footer/_check
 
     addOrder: (e) ->
       e.preventDefault()
-      alert 'Заказ создан!'
       @trigger 'delivery:clicked'
       @hideButton()
 

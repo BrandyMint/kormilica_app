@@ -25,7 +25,7 @@ define ['marionette', 'data/products'], (Marionette, productsData) ->
     require ['controllers/check'], (CheckController) ->
       new CheckController 
         profile: App.profile
-        cart: App.cart
+        cart:    App.cart
 
     require ['collections/products', 'views/products/list'], (ProductsCollection, ProductsView) =>
       productsListCollection = new ProductsCollection productsData
@@ -45,7 +45,12 @@ define ['marionette', 'data/products'], (Marionette, productsData) ->
         App.vent.trigger 'checkout:show'
 
       footerView.on 'delivery:clicked', ->
-        App.vent.trigger 'order:created'
+        App.vent.trigger 'order:create:prepare'
+
+    require ['controllers/orders'], (OrderController) ->
+      new OrderController
+        profile: App.profile
+        cart:    App.cart
 
   App.on 'start', ->
     console.log 'App starting....'
