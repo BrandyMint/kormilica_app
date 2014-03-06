@@ -5,7 +5,10 @@
     
     .check-content
       .scrollable-check
-        %h2 Ваш чек
+        .check-header
+          %a{href: '#'}
+            %img{src: 'images/back-button.png'}
+          %h2 Ваш чек
         
         - pos = 1
         - for item in @items

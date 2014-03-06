@@ -14,7 +14,7 @@ define ['marionette', 'views/header/header'], (Marionette, HeaderView) ->
       @App.vent.on 'checkout:show', =>
         @hideHeader()
 
-      @App.vent.on 'order:created', =>
+      @App.vent.on 'check:disappeared', =>
         @showHeader()
 
     hideHeader: ->

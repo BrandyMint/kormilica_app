@@ -17,6 +17,9 @@ define ['marionette', 'templates/footer/footer', 'templates/footer/_checkout', '
       @App.vent.on 'check:form:valid', =>
         @activateDeliveryButton()
 
+      @App.vent.on 'check:disappeared', =>
+        @showCheckoutButton()
+
     events:
       'click a.checkout':           'showCheck'
       'click .delivery a':          'addOrder'

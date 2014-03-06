@@ -11,6 +11,7 @@ define ['marionette', 'views/check/check', 'jquery.form-serialize'], (Marionette
       @App.vent.on 'order:created', =>
         $form_data = @checkView.$el.find('form').serializeObject()
         @profile.save name: $form_data.name, phoneNumber: $form_data.phone
+        @App.vent.trigger 'check:disappeared'
         @hideCheck()
 
     showCheck: ->
@@ -24,6 +25,10 @@ define ['marionette', 'views/check/check', 'jquery.form-serialize'], (Marionette
 
       @checkView.on 'check:form:filled', ->
         @App.vent.trigger 'check:form:valid'
+
+      @checkView.on 'cancel:button:clicked', =>
+        @App.vent.trigger 'check:disappeared'
+        @hideCheck()
 
     hideCheck: ->
       @App.checkRegion.close()

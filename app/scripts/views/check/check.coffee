@@ -4,10 +4,16 @@ define ['marionette', 'templates/check/check', 'jquery.form-serialize'], (Marion
     template: template
 
     ui:
-      form: 'form'
+      form:       'form'
+      backButton: '.check-header a'
 
     events:
       'keyup form': 'checkForEmptyFields'
+
+    triggers:
+      'click @ui.backButton':
+        event:          'cancel:button:clicked'
+        preventDefault: true
 
     serializeData: ->
       items:   @collection.toJSON()
