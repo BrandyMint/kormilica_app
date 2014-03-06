@@ -15,4 +15,4 @@
 
 Скачать инициализационные данные
 
-   curl http://api.aydamarket.ru/v1/vendors.json?vendor_key=467abe2e7d33e6455fe905e879fd36be > ./app/scripts/data/vendor.json
+    curl http://api.aydamarket.ru/v1/vendors.json?vendor_key=467abe2e7d33e6455fe905e879fd36be > ./app/scripts/data/vendor.json
