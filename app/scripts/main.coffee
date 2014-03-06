@@ -32,4 +32,4 @@ require.config
     'jquery.bounce':         'lib/bounce'
 
 require ['app'], (App) ->
-  App.start()
+#  App.start()

@@ -206,6 +206,27 @@ module.exports = (grunt) ->
           wrap: true
           findNestedDependencies: true
 
+      core:
+        options:
+          baseUrl: '.tmp/scripts'
+          optimize: 'none'
+          paths:
+            templates: "../../.tmp/scripts/templates"
+            jquery: "empty:"
+            underscore: "empty:"
+            backbone: "empty:"
+            marionette: "empty:"
+            "backbone.wreqr": "empty:"
+            "backbone.babysitter": "empty:"
+            "backbone.localStorage": "empty:"
+            "jquery.form-serialize": "empty:"
+            "jquery.bounce": "empty:"
+          useStrict: true
+          wrap: true
+          findNestedDependencies: true
+          out: './kormilica_app_core.js'
+          name: 'app'
+          mainConfig: '.tmp/scripts/app.js'
     
     #uglify2: {} // https://github.com/mishoo/UglifyJS2
     useminPrepare:
