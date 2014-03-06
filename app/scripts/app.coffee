@@ -1,5 +1,5 @@
-define ['marionette', 'data/products', 'models/profile', 'controllers/cart', 'collections/cart', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/list', 'controllers/header', 'views/footer/footer'], 
-(Marionette, productsData, ProfileModel, CartController, CartCollection, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView) ->
+define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collections/cart', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/list', 'controllers/header', 'views/footer/footer'], 
+(Marionette, Backbone, ProfileModel, CartController, CartCollection, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView) ->
   
   window.App = new Marionette.Application
 
@@ -10,28 +10,37 @@ define ['marionette', 'data/products', 'models/profile', 'controllers/cart', 'co
     checkRegion:  "#check-region"
     modalRegion:  "#modal-region"
 
-  App.addInitializer ->
+  App.addInitializer (options) ->
     App.profile = new ProfileModel
     App.profile.fetch()
 
-    cartCollection = new CartCollection
-    cartCollection.fetch()
-    
+    App.cartItems = new CartCollection
+    App.cartItems.fetch()
+
+    App.categories = new Backbone.Collection
+
+    App.products = new ProductsCollection
+
+    $.get options.data_file, (data) ->
+      console.log 'Load', options.data_file
+      App.profile.set data
+      App.products.reset data.products
+      App.categories.reset data.categories
+
     new CartController
       App: App
-      collection: cartCollection
+      collection: App.cartItems
 
     new QuantitySelectorController App: App
 
-    new CheckController 
+    new CheckController
       App: App
       profile: App.profile
       cart: App.cart
 
-    productsListCollection = new ProductsCollection productsData
-    productsListView = new ProductsView 
+    productsListView = new ProductsView
       App: App
-      collection: productsListCollection
+      collection: App.products
     App.mainRegion.show productsListView
 
     new HeaderController 
