@@ -5,16 +5,16 @@ define ['marionette', 'templates/footer/footer', 'templates/footer/_checkout', '
     template: template
 
     initialize: (options) ->
-      { @profile, @App } = options
+      { @profile, @app } = options
 
-      @App.vent.on 'checkout:show', =>
+      @app.vent.on 'checkout:show', =>
         @showDeliveryButton()
         @showCheckBottom()
 
-      @App.vent.on 'check:form:invalid', =>
+      @app.vent.on 'check:form:invalid', =>
         @deactivateDeliveryButton()
 
-      @App.vent.on 'check:form:valid', =>
+      @app.vent.on 'check:form:valid', =>
         @activateDeliveryButton()
 
     events:

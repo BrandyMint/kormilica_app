@@ -18,28 +18,28 @@ define ['marionette', 'data/products', 'models/profile', 'controllers/cart', 'co
     cartItems.fetch()
     
     new CartController
-      App: App
+      app: App
       collection: cartItems
 
-    new QuantitySelectorController App: App
+    new QuantitySelectorController app: App
 
     new CheckController 
-      App: App
+      app: App
       profile: App.profile
       cart: App.cart
 
     productsListCollection = new ProductsCollection productsData
     productsListView = new ProductsView 
-      App: App
+      app: App
       collection: productsListCollection
     App.mainRegion.show productsListView
 
     new HeaderController 
-      App: App
+      app: App
       collection: App.cart
 
     footerView = new FooterView
-      App: App
+      app: App
       collection: App.cart
       profile:    App.profile
     App.footerRegion.show footerView
