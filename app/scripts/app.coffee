@@ -1,7 +1,7 @@
 define ['marionette', 'data/products', 'models/profile', 'controllers/cart', 'collections/cart', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/list', 'controllers/header', 'views/footer/footer'], 
-(Marionette, productsData, ProfileModel, CartController, CartCollection, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView) ->
+(Marionette, productsData, ProfileModel, CartController, CartItems, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView) ->
   
-  window.App = new Marionette.Application
+  App = new Marionette.Application
 
   App.addRegions
     headerRegion: "#header-region"
@@ -14,12 +14,12 @@ define ['marionette', 'data/products', 'models/profile', 'controllers/cart', 'co
     App.profile = new ProfileModel
     App.profile.fetch()
 
-    cartCollection = new CartCollection
-    cartCollection.fetch()
+    cartItems = new CartItems
+    cartItems.fetch()
     
     new CartController
       App: App
-      collection: cartCollection
+      collection: cartItems
 
     new QuantitySelectorController App: App
 
