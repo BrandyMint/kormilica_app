@@ -1,6 +1,6 @@
 define ['marionette', 'templates/check/check', 'jquery.form-serialize'], (Marionette, template) ->
   
-  class CheckTop extends Marionette.ItemView
+  class Check extends Marionette.ItemView
     template: template
     templateHelpers: -> Helpers
 

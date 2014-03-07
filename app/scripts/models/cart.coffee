@@ -1,4 +1,4 @@
-define ['collections/cart'], (CartItems)->
+define ['collections/cart_items'], (CartItems)->
   'use strict'
 
   class Cart extends Backbone.Model

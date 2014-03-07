@@ -1,28 +1,28 @@
-define ['marionette', 'templates/products/list_item', 'templates/products/list_item_quantity', 'helpers/application_helpers'], 
-(Marionette, listItemTemplate, listItemQuantityTemplate, Helpers) ->
+define ['marionette', 'templates/products/product', 'templates/products/product_quantity', 'helpers/application_helpers'], 
+(Marionette, productTemplate, productQuantityTemplate, Helpers) ->
 
   class ProductView extends Marionette.ItemView
     templateHelpers: -> Helpers
-    template: listItemTemplate
+    template: productTemplate
     className: 'product-block'
 
     initialize: (options) ->
-      { @App } = options
+      { @app } = options
 
       # Если на начало загрузки товар уже будет в корзине, то item будет содержать
       # этот элементы корзины
-      @item = @App.request 'cart:item', @model
+      @item = @app.request 'cart:item', @model
       @quantity = @item.get 'quantity' if @item
 
-      @App.vent.on 'cartitem:added', (item) =>
+      @app.vent.on 'cartitem:added', (item) =>
         if item.get('product').id == @model.get('id')
           @displaySelectedQuantity item.get 'quantity'
 
-      @App.vent.on 'quantity:change', (item, quantity) =>
+      @app.vent.on 'quantity:change', (item, quantity) =>
         if item.get('product').id == @model.get('id')
           @displaySelectedQuantity quantity
 
-      @App.vent.on 'order:created', =>
+      @app.vent.on 'order:created', =>
         @displaySelectedQuantity 0
 
     events:
@@ -30,11 +30,11 @@ define ['marionette', 'templates/products/list_item', 'templates/products/list_i
 
     addToCart: (e) ->
       e.preventDefault()
-      @App.vent.trigger 'cart:add', @model, 1
+      @app.vent.trigger 'cart:add', @model, 1
 
     displaySelectedQuantity: (quantity) =>
       if quantity > 0
-        @$('.product-quantity').html listItemQuantityTemplate quantity: quantity
+        @$('.product-quantity').html productQuantityTemplate quantity: quantity
       else
         @$('.product-quantity').html @productQuantityDOM
 
