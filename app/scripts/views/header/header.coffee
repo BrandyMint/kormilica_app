@@ -5,9 +5,9 @@ define ['marionette', 'templates/header/header', 'jquery.bounce'], (Marionette, 
     className: 'header'
 
     initialize: (options) ->
-      { @App } = options
-
-      @App.vent.on 'cartitem:added', =>
+      { @app } = options
+      
+      @app.vent.on 'cartitem:added', =>
         @bounceCheck 2, '5px', 100
 
     triggers:

@@ -3,18 +3,18 @@ define ['marionette', 'views/modal_windows/quantity_selector'], (Marionette, Qua
   class Controller extends Marionette.Controller
 
     initialize: (options) ->
-      { @cart, @App } = options
+      { @cart, @app } = options
 
-      @App.vent.on 'cartitem:exists', (item) =>
+      @app.vent.on 'cartitem:exists', (item) =>
         @showQuantitySelector item
 
     showQuantitySelector: (item) ->
       $('#app-container').addClass 'modal-state'
       quantitySelectorView = new QuantitySelectorView model: item
-      @App.modalRegion.show quantitySelectorView
+      @app.modalRegion.show quantitySelectorView
 
       quantitySelectorView.on 'quantity:change', (quantity) =>
-        @App.vent.trigger 'quantity:change', item, quantity
+        @app.vent.trigger 'quantity:change', item, quantity
         @hideQuantitySelector()
 
       quantitySelectorView.on 'quantity:change:cancel', =>
@@ -22,4 +22,4 @@ define ['marionette', 'views/modal_windows/quantity_selector'], (Marionette, Qua
 
     hideQuantitySelector: ->
       $('#app-container').removeClass 'modal-state'
-      @App.modalRegion.close()
+      @app.modalRegion.close()

@@ -28,27 +28,27 @@ define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collec
       App.categories.reset data.categories
 
     new CartController
-      App: App
+      app: App
       collection: App.cartItems
 
-    new QuantitySelectorController App: App
+    new QuantitySelectorController app: App
 
     new CheckController
-      App: App
+      app: App
       profile: App.profile
       cart: App.cart
 
     productsListView = new ProductsView
-      App: App
+      app: App
       collection: App.products
     App.mainRegion.show productsListView
 
     new HeaderController 
-      App: App
+      app: App
       collection: App.cart
 
     footerView = new FooterView
-      App: App
+      app: App
       collection: App.cart
       profile:    App.profile
     App.footerRegion.show footerView
