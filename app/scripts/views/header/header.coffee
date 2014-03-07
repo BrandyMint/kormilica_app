@@ -25,13 +25,12 @@ define ['marionette', 'templates/header/header', 'jquery.bounce', 'helpers/appli
             #console.log 'update', @model.get('total_cost')
             ## TODO Разобраться почему через onGet не работает правильноk
 
-
       initialize: (options) ->
         { @app, @cart } = options
         @model = @cart
 
         # TODO Следить за коллекцией
-        @app.cart.items.on 'add', =>
+        @cart.items.on 'add', =>
           @bounceCheck 2, '5px', 100
 
       update: ->

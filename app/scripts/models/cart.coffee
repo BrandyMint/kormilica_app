@@ -7,9 +7,7 @@ define ['collections/cart_items'], (CartItems)->
       #@localStorage = new Backbone.LocalStorage 'cart'
       @items = new CartItems()
 
-      @listenTo @items, 'change', @updateAggregators
-      @listenTo @items, 'add',    @updateAggregators
-      @listenTo @items, 'remove', @updateAggregators
+      @listenTo @items, 'add change remove', @updateAggregators
 
       @updateAggregators()
 
@@ -23,7 +21,6 @@ define ['collections/cart_items'], (CartItems)->
         total_count: @items.getTotalCount()
         # Чтобы можно было следить за изменением цены
         total_cost_cents:  total_cost.cents
-
 
     isEmpty: ->
       @get('total_count') == 0

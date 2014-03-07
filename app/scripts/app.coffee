@@ -19,13 +19,12 @@ FooterView, Cart) ->
   App.addInitializer (options) ->
     App.cart = new Cart()
 
-    App.products = new ProductsCollection
+    App.products = new ProductsCollection()
 
     App.profile = new Profile()
     App.profile.fetch()
 
-    App.categories = new Backbone.Collection
-
+    App.categories = new Backbone.Collection()
 
     $.get options.data_file, (data) ->
       console.log 'Load', options.data_file

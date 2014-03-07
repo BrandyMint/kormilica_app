@@ -1,12 +1,18 @@
-define ['marionette', 'templates/check/check', 'jquery.form-serialize'], (Marionette, template) ->
+define ['marionette', 'templates/check/check', 'helpers/application_helpers', 'views/check/check_cart_item', 'jquery.form-serialize'], (Marionette, template, Helpers, CheckCartItemView) ->
   
-  class Check extends Marionette.ItemView
+  class Check extends Marionette.CompositeView
     template: template
     templateHelpers: -> Helpers
+    itemView: CheckCartItemView
+    itemViewContainer: '.cart-items'
 
     ui:
       form:       'form'
       backButton: '.check-header a'
+
+    initialize: (options) ->
+      { @cart } = options
+      @collection = @cart.items
 
     events:
       'keyup form': 'checkForEmptyFields'
@@ -17,9 +23,9 @@ define ['marionette', 'templates/check/check', 'jquery.form-serialize'], (Marion
         preventDefault: true
 
     serializeData: ->
-      items:   @collection.toJSON()
-      profile: @options.profile
-      total_cost: @collection.getTotalCost()
+      cartItems:  @cart.items
+      profile:    @options.profile
+      total_cost: @cart.items.getTotalCost()
 
     checkForEmptyFields: (e) =>
       formData = @ui.form.serializeObject()
