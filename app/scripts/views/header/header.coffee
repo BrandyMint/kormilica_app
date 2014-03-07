@@ -4,26 +4,29 @@ define ['marionette', 'templates/header/header', 'jquery.bounce', 'helpers/appli
     template: template
     className: 'header'
     templateHelpers: -> Helpers
+    triggers:
+      'click #check': 'check:clicked'
+
+    modelEvents:
+      'change': 'updateTotalCost'
 
     initialize: (options) ->
-      { @app, @cartItems } = options
+      { @app, @cart } = options
+
+      @model = @cart
 
       # TODO Следить за коллекцией
       @app.vent.on 'cartitem:added', =>
         @bounceCheck 2, '5px', 100
 
-    triggers:
-      'click #check': 'check:clicked'
+    updateTotalCost: () ->
+      if @model.get('total_cost') > 0
+        @showCheck()
+      else
+        @hideCheck()
 
-    serializeData: ->
-      total_cost: @cartItems.getTotalCost()
-
-    #collectionEvents:
-      #'all': 'updateTotalCost'
-
-    #updateTotalCost: () ->
-      #if @collection.getTotalCost() > 0 then @showCheck() else @hideCheck()
-      #@$('#amount').html @collection.getTotalCost() + " руб."
+      # TODO Обновлять через backbone.stickit
+      @$('#amount').html @model.get('total_cost') + " руб."
 
     showCheck: ->
       @$('#check').html @checkDOM

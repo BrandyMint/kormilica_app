@@ -1,5 +1,5 @@
-define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collections/cart', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/list', 'controllers/header', 'views/footer/footer'], 
-(Marionette, Backbone, ProfileModel, CartController, CartItems, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView) ->
+define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collections/cart', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/list', 'controllers/header', 'views/footer/footer', 'models/cart'], 
+(Marionette, Backbone, ProfileModel, CartController, CartItems, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView, Cart) ->
   
   window.App = new Marionette.Application
 
@@ -18,7 +18,7 @@ define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collec
 
     App.categories = new Backbone.Collection
 
-    App.cartItems = new CartItems
+    App.cart      = new Cart
 
     $.get options.data_file, (data) ->
       console.log 'Load', options.data_file
@@ -27,19 +27,18 @@ define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collec
       App.categories.reset data.categories
 
       # ДО заполнения корзины продукты уже должны быть
-      App.cartItems.fetch()
-
+      App.cart.fetch()
 
     new CartController
       app: App
-      cartItems: App.cartItems
+      cartItems: App.cart.items
 
     new QuantitySelectorController App: App
 
     new CheckController
       App: App
       profile: App.profile
-      cartItems: App.cartItems
+      cartItems: App.cart.items
 
     productsListView = new ProductsView
       App: App
@@ -47,12 +46,12 @@ define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collec
     App.mainRegion.show productsListView
 
     new HeaderController 
-      app: App
-      cartItems: App.cartItems
+      app:  App
+      cart: App.cart
 
     footerView = new FooterView
       app: App
-      cartItems: App.cartItems
+      cartItems: App.cart.items
       profile:    App.profile
     App.footerRegion.show footerView
 

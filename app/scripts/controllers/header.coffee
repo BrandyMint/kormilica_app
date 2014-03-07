@@ -3,11 +3,11 @@ define ['marionette', 'views/header/header'], (Marionette, HeaderView) ->
   class HeaderController extends Marionette.Controller
 
     initialize: (options) ->
-      { @cartItems, @app } = options
+      { @cart, @app } = options
 
       @headerView = new HeaderView
         app: @app
-        cartItems: @cartItems
+        cart: @cart
 
       @showHeader()
 
