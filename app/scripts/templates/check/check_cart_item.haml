@@ -1,0 +1,12 @@
+%p= "Число. #{@productTitle}"
+%table
+  %tbody
+    %tr
+      %td.product-amount
+        != @moneyWithoutCurrency @price
+        x
+        = @quantity
+      %td.separator
+        %div
+      // TODO Мультивалютность
+      %td.product-price= "#{(@price.cents / 100) * @quantity} р."
