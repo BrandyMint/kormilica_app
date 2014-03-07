@@ -5,8 +5,9 @@ define ['marionette', 'views/modal_windows/quantity_selector'], (Marionette, Qua
     initialize: (options) ->
       { @cart, @App } = options
 
-      @App.vent.on 'cartitem:exists', (item) =>
-        @showQuantitySelector item
+      # TODO Отключил чтобы не мешался
+      #@App.vent.on 'cartitem:exists', (item) =>
+        #@showQuantitySelector item
 
     showQuantitySelector: (item) ->
       $('#app-container').addClass 'modal-state'

@@ -1,7 +1,8 @@
-define ['marionette', 'templates/products/list_item', 'templates/products/list_item_quantity'], 
-(Marionette, listItemTemplate, listItemQuantityTemplate) ->
+define ['marionette', 'templates/products/list_item', 'templates/products/list_item_quantity', 'helpers/application_helpers'], 
+(Marionette, listItemTemplate, listItemQuantityTemplate, Helpers) ->
 
-  class Product extends Marionette.ItemView
+  class ProductView extends Marionette.ItemView
+    templateHelpers: -> Helpers
     template: listItemTemplate
     className: 'product-block'
 

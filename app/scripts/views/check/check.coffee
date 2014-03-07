@@ -2,6 +2,7 @@ define ['marionette', 'templates/check/check', 'jquery.form-serialize'], (Marion
   
   class CheckTop extends Marionette.ItemView
     template: template
+    templateHelpers: -> Helpers
 
     ui:
       form:       'form'
@@ -18,9 +19,7 @@ define ['marionette', 'templates/check/check', 'jquery.form-serialize'], (Marion
     serializeData: ->
       items:   @collection.toJSON()
       profile: @options.profile
-
-    templateHelpers: ->
-      totalCost: @collection.getTotalCost()
+      total_cost: @collection.getTotalCost()
 
     checkForEmptyFields: (e) =>
       formData = @ui.form.serializeObject()

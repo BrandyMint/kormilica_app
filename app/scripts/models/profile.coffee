@@ -1,4 +1,4 @@
-define ['app', 'controllers/cart', 'backbone.localStorage'], (App) ->
+define ['backbone.localStorage'], ->
   'use strict'
 
   class Profile extends Backbone.Model
@@ -12,5 +12,6 @@ define ['app', 'controllers/cart', 'backbone.localStorage'], (App) ->
       name:        ''
       phoneNumber: ''
 
+    # TODO Валидация
     isAllFieldsFilled: ->
       true if @get('name') and @get('phoneNumber')

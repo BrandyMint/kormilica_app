@@ -1,11 +1,15 @@
-define ['app'], ->
+define ['backbone'], (Backbone)->
   'use strict'
 
   class CartItem extends Backbone.Model
 
     defaults:
-      product:  ''
       quantity: 0
 
-    price: () ->
-      @get('product').price * @get 'quantity'
+    initialize: ->
+      # Восстанавливаем модели при загрузке данных из localStorage
+      @set 'product', window.App.products.get @get('product').id
+
+    price: ->
+      cents:   @get('product').get('price').cents * @get('quantity')
+      curency: @get('product').get('price').currency

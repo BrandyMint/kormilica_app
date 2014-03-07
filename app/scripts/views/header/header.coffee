@@ -1,30 +1,32 @@
-define ['marionette', 'templates/header/header', 'jquery.bounce'], (Marionette, template) ->
+define ['marionette', 'templates/header/header', 'jquery.bounce', 'helpers/application_helpers'], (Marionette, template, jQueryBounce, Helpers) ->
 
-  class Header extends Marionette.ItemView
+  class HeaderView extends Marionette.ItemView
     template: template
     className: 'header'
-
-    initialize: (options) ->
-      { @App } = options
-
-      @App.vent.on 'cartitem:added', =>
-        @bounceCheck 2, '5px', 100
-
+    templateHelpers: -> Helpers
     triggers:
       'click #check': 'check:clicked'
 
-    serializeData: ->
-      items: @collection.toJSON()
+    modelEvents:
+      'change': 'updateTotalCost'
 
-    templateHelpers: ->
-      totalCost: @collection.getTotalCost()
+    initialize: (options) ->
+      { @app, @cart } = options
 
-    collectionEvents:
-      'all': 'updateTotalCost'
+      @model = @cart
+
+      # TODO Следить за коллекцией
+      @app.vent.on 'cartitem:added', =>
+        @bounceCheck 2, '5px', 100
 
     updateTotalCost: () ->
-      if @collection.getTotalCost() > 0 then @showCheck() else @hideCheck()
-      @$('#amount').html @collection.getTotalCost() + " руб."
+      if @model.get('total_cost') > 0
+        @showCheck()
+      else
+        @hideCheck()
+
+      # TODO Обновлять через backbone.stickit
+      @$('#amount').html @model.get('total_cost') + " руб."
 
     showCheck: ->
       @$('#check').html @checkDOM
@@ -37,5 +39,5 @@ define ['marionette', 'templates/header/header', 'jquery.bounce'], (Marionette, 
 
     onRender: ->
       @checkDOM = @$('#check').children().clone()
-      unless @collection.getTotalCost() > 0
-        @hideCheck()
+      #unless @collection.getTotalCost() > 0
+        #@hideCheck()

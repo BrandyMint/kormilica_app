@@ -1,5 +1,5 @@
-define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collections/cart_items', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/list', 'controllers/header', 'views/footer/footer'],
-(Marionette, Backbone, ProfileModel, CartController, CartItems, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView) ->
+define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collections/cart', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/list', 'controllers/header', 'views/footer/footer', 'models/cart'], 
+(Marionette, Backbone, ProfileModel, CartController, CartItems, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView, Cart) ->
   
   window.App = new Marionette.Application
 
@@ -11,15 +11,14 @@ define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collec
     modalRegion:  "#modal-region"
 
   App.addInitializer (options) ->
+    App.products = new ProductsCollection
+
     App.profile = new ProfileModel
     App.profile.fetch()
 
-    App.cartItems = new CartItems
-    App.cartItems.fetch()
-
     App.categories = new Backbone.Collection
 
-    App.products = new ProductsCollection
+    App.cart      = new Cart
 
     $.get options.data_file, (data) ->
       console.log 'Load', options.data_file
@@ -27,16 +26,19 @@ define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collec
       App.products.reset data.products
       App.categories.reset data.categories
 
+      # ДО заполнения корзины продукты уже должны быть
+      App.cart.fetch()
+
     new CartController
-      App: App
-      collection: App.cartItems
+      app: App
+      cartItems: App.cart.items
 
     new QuantitySelectorController App: App
 
     new CheckController
       App: App
       profile: App.profile
-      cart: App.cart
+      cartItems: App.cart.items
 
     productsListView = new ProductsView
       App: App
@@ -44,12 +46,12 @@ define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collec
     App.mainRegion.show productsListView
 
     new HeaderController 
-      App: App
-      collection: App.cart
+      app:  App
+      cart: App.cart
 
     footerView = new FooterView
-      App: App
-      collection: App.cart
+      app: App
+      cartItems: App.cart.items
       profile:    App.profile
     App.footerRegion.show footerView
 

@@ -1,33 +1,29 @@
 define ['marionette', 'views/header/header'], (Marionette, HeaderView) ->
 
-  class Controller extends Marionette.Controller
+  class HeaderController extends Marionette.Controller
 
     initialize: (options) ->
-      { @collection, @App } = options
-      
-      @headerView = @getHeaderView @collection
-      @App.headerRegion.show @headerView
+      { @cart, @app } = options
+
+      @headerView = new HeaderView
+        app: @app
+        cart: @cart
+
+      @showHeader()
 
       @headerView.on 'check:clicked', ->
-        @App.vent.trigger 'checkout:show'
+        @app.vent.trigger 'checkout:show'
 
-      @App.vent.on 'checkout:show', =>
+      @app.vent.on 'checkout:show', =>
         @hideHeader()
 
-      @App.vent.on 'check:disappeared', =>
+      @app.vent.on 'check:disappeared', =>
         @showHeader()
 
     hideHeader: ->
       $('#app-container').addClass 'checkout-state'
-      @App.headerRegion.close()
-      delete @headerView
+      @app.headerRegion.close()
 
     showHeader: ->
       $('#app-container').removeClass 'checkout-state'
-      @headerView = @getHeaderView @collection
-      @App.headerRegion.show @headerView
-
-    getHeaderView: (collection) ->
-      new HeaderView
-        App: @App
-        collection: collection
+      @app.headerRegion.show @headerView

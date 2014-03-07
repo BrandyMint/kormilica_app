@@ -2,9 +2,7 @@
   .column.two-thirds
     %img{:src => @image_url}
     %p= @title
-    %p.price
-      %span.price-font= @price
-      р.
+    %p.price!= @money @price
   .column.one-thirds.product-quantity
     %a.button{:href => "#777"}
       %img{:src => "images/to-bucket.png"}
