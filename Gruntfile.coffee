@@ -189,7 +189,8 @@ module.exports = (grunt) ->
             underscore: "../../app/bower_components/underscore/underscore"
             backbone: "../../app/bower_components/backbone/backbone"
             marionette: "../../app/bower_components/backbone.marionette/lib/core/amd/backbone.marionette"
-            "backbone.stickit": "../../bower_components/backbone.stickit/backbone.stickit"
+            "backbone.virtualcollection": '../../app/bower_components/backbone.virtualcollection/backbone.virtual-collection'
+            "backbone.stickit": "../../app/bower_components/backbone.stickit/backbone.stickit"
             "backbone.wreqr": "../../app/bower_components/backbone.wreqr/lib/amd/backbone.wreqr"
             "backbone.babysitter": "../../app/bower_components/backbone.babysitter/lib/amd/backbone.babysitter"
             "backbone.localStorage": "../../app/bower_components/backbone.localStorage/backbone.localStorage"
@@ -217,6 +218,7 @@ module.exports = (grunt) ->
             underscore: "empty:"
             backbone: "empty:"
             marionette: "empty:"
+            'backbone.virtualcollection':  "empty:"
             "backbone.stickit": "empty:"
             "backbone.wreqr": "empty:"
             "backbone.babysitter": "empty:"

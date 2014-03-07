@@ -17,7 +17,7 @@ define ['marionette', 'views/check/check', 'jquery.form-serialize'], (Marionette
     showCheck: ->
       @checkView = new CheckView 
         profile: @profile
-        collection: @cart
+        collection: @cart.items
       @app.checkRegion.show @checkView
 
       @checkView.on 'check:form:empty:field', ->

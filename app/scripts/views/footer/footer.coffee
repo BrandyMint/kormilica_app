@@ -5,9 +5,9 @@ define ['marionette', 'templates/footer/footer', 'templates/footer/_checkout', '
     template: template
 
     initialize: (options) ->
-      { @profile, @app, @cartItems } = options
+      { @profile, @app, @cart } = options
 
-      @collection = @cartItems
+      @collection = @cart.items
 
       @app.vent.on 'checkout:show', =>
         @showDeliveryButton()
@@ -46,7 +46,7 @@ define ['marionette', 'templates/footer/footer', 'templates/footer/_checkout', '
       button.removeClass('delivery-inactive').addClass('delivery')
 
     hideButton: ->
-      if @cartItems.getTotalCost() == 0
+      if @cart.isEmpty()
         @$('#workspace').html @workspaceDOM
         @$('#check-bottom').children().remove()
 
@@ -70,5 +70,5 @@ define ['marionette', 'templates/footer/footer', 'templates/footer/_checkout', '
 
     onRender: ->
       @workspaceDOM = @$('#workspace').children().clone()
-      if @cartItems.length > 0
+      unless @cart.isEmpty()
         @showCheckoutButton()

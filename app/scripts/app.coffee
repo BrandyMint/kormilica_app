@@ -17,6 +17,8 @@ FooterView, Cart) ->
     modalRegion:  "#modal-region"
 
   App.addInitializer (options) ->
+    App.cart = new Cart()
+
     App.products = new ProductsCollection
 
     App.profile = new Profile()
@@ -24,7 +26,6 @@ FooterView, Cart) ->
 
     App.categories = new Backbone.Collection
 
-    App.cart = new Cart()
 
     $.get options.data_file, (data) ->
       console.log 'Load', options.data_file
@@ -37,14 +38,14 @@ FooterView, Cart) ->
 
     new CartController
       app: App
-      cartItems: App.cart.items
+      cart: App.cart
 
     new QuantitySelectorController app: App
 
     new CheckController
       app: App
       profile: App.profile
-      cartItems: App.cart.items
+      cart: App.cart
 
     productsListView = new ProductsView
       app: App
@@ -56,9 +57,10 @@ FooterView, Cart) ->
       cart: App.cart
 
     footerView = new FooterView
-      app: App
-      cartItems: App.cart.items
-      profile:    App.profile
+      app:      App
+      cart:     App.cart
+      profile:  App.profile
+
     App.footerRegion.show footerView
 
     footerView.on 'checkout:clicked', ->

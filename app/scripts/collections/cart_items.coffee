@@ -5,7 +5,7 @@ define ['models/cart_item'], (CartItem) ->
     model: CartItem
 
     initialize: ->
-      @localStorage = new Backbone.LocalStorage 'cart'
+      @localStorage = new Backbone.LocalStorage 'cart_items'
 
     getTotalCost: () ->
       addup = (memo, item) -> item.price().cents + memo
@@ -20,4 +20,8 @@ define ['models/cart_item'], (CartItem) ->
       @reduce addup, 0
 
     isProductInCart: (product) ->
-      @find (item) -> item.get('product').id == product.get('id')
+      !!@cartItem product
+
+    itemOfProduct: (product) ->
+      @findWhere product_id: product.id
+

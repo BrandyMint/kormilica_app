@@ -4,12 +4,12 @@ define ['backbone'], (Backbone)->
   class CartItem extends Backbone.Model
 
     defaults:
-      quantity: 0
+      quantity: 1
 
     initialize: ->
       # Восстанавливаем модели при загрузке данных из localStorage
-      @set 'product', window.App.products.get @get('product').id
+      @product = window.App.products.get @get('product_id')
 
     price: ->
-      cents:   @get('product').get('price').cents * @get('quantity')
-      curency: @get('product').get('price').currency
+      cents:   @product.get('price').cents * @get('quantity')
+      curency: @product.get('price').currency

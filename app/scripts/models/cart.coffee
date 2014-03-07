@@ -3,12 +3,12 @@ define ['collections/cart_items'], (CartItems)->
 
   class Cart extends Backbone.Model
 
-    initialize: ->
+    initialize: (options) ->
       #@localStorage = new Backbone.LocalStorage 'cart'
       @items = new CartItems()
 
       @listenTo @items, 'change', @updateAggregators
-      @listenTo @items, 'add', @updateAggregators
+      @listenTo @items, 'add',    @updateAggregators
       @listenTo @items, 'remove', @updateAggregators
 
       @updateAggregators()
@@ -17,11 +17,25 @@ define ['collections/cart_items'], (CartItems)->
       @items.fetch()
 
     updateAggregators: =>
-      @set 'total_cost',  @items.getTotalCost()
-      @set 'total_count', @items.getTotalCount()
+      total_cost = @items.getTotalCost()
+      @set
+        total_cost:  total_cost
+        total_count: @items.getTotalCount()
+        # Чтобы можно было следить за изменением цены
+        total_cost_cents:  total_cost.cents
 
-      # Чтобы можно было следить за изменением цены
-      @set 'total_cost_cents',  @get('total_cost').cents
 
     isEmpty: ->
       @get('total_count') == 0
+
+    changeQuantity: (product, quantity) ->
+      item = @items.itemOfProduct product
+      item.set 'quantity', quantity
+      item.save()
+
+    addProduct: (product) ->
+      @items.create product_id: product.id
+
+    removeProduct: (product) ->
+     item = @items.itemOfProduct product
+     item.destroy() if item?

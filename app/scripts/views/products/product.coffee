@@ -1,5 +1,9 @@
-define ['marionette', 'templates/products/product', 'templates/products/product_quantity', 'helpers/application_helpers'], 
-(Marionette, productTemplate, productQuantityTemplate, Helpers) ->
+define ['marionette',
+  'templates/products/product', 'templates/products/button', 'templates/products/button_added',
+  'helpers/application_helpers'], 
+(Marionette,
+productTemplate, buttonTemplate, buttonAddedTemplate,
+Helpers) ->
 
   class ProductView extends Marionette.ItemView
     templateHelpers: -> Helpers
@@ -7,7 +11,7 @@ define ['marionette', 'templates/products/product', 'templates/products/product_
     className: 'product-block'
 
     events:
-      'click': 'addToCart'
+      'click': 'clicked'
 
     initialize: (options) ->
       { @app } = options
@@ -31,17 +35,24 @@ define ['marionette', 'templates/products/product', 'templates/products/product_
 
       #@app.vent.on 'order:created', =>
         #@displaySelectedQuantity 0
+        #
+        # @listenTo window.App.cart.items, 'change', @cartChanged
+      @listenTo window.App.cart.items, 'add',    @cartChanged
+      @listenTo window.App.cart.items, 'remove', @cartChanged
 
-    addToCart: (e) ->
+    clicked: (e) ->
       e.preventDefault()
-      @app.vent.trigger 'cart:add', @model
+      @app.vent.trigger 'product:click', @model
 
-    displaySelectedQuantity: (quantity) =>
-      if quantity > 0
-        @$('.product-quantity').html productQuantityTemplate quantity: quantity
+    cartChanged: (item) =>
+      @showButton() if item.get('product_id') == @model.id
+
+    showButton: =>
+      if item = window.App.cart.items.itemOfProduct @model
+        @button_el.html buttonAddedTemplate quantity: item.get('quantity')
       else
-        @$('.product-quantity').html @productQuantityDOM
+        @button_el.html buttonTemplate()
 
     onRender: ->
-      @productQuantityDOM = @$('.product-quantity').children().clone()
-      @displaySelectedQuantity @quantity if @item
+      @button_el = @$('.product-quantity')
+      @showButton()
