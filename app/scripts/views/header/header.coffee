@@ -1,43 +1,59 @@
-define ['marionette', 'templates/header/header', 'jquery.bounce', 'helpers/application_helpers'], (Marionette, template, jQueryBounce, Helpers) ->
+define ['marionette', 'templates/header/header', 'jquery.bounce', 'helpers/application_helpers'],
+  (Marionette, template, jQueryBounce, Helpers) ->
 
-  class HeaderView extends Marionette.ItemView
-    template: template
-    className: 'header'
-    templateHelpers: -> Helpers
-    triggers:
-      'click #check': 'check:clicked'
+    class HeaderView extends Marionette.ItemView
+      template: template
+      className: 'header'
+      templateHelpers: -> Helpers
+      triggers:
+        'click #check': 'check:clicked'
 
-    modelEvents:
-      'change': 'updateTotalCost'
+      modelEvents:
+        'change': 'update'
 
-    initialize: (options) ->
-      { @app, @cart } = options
+      bindings:
+        '#amount':
+          observe: 'total_cost'
+          updateMethod: 'html'
+          #onGet: (values) ->
+            #value =  "#{@model.get('total_cost').cents}"
+            #console.log value
+            #values[0]=123
+            #return value
 
-      @model = @cart
+          update: ->
+            # TODO Разобраться почему через onGet не работает правильноk
+            @$('#amount').html Helpers.money @model.get('total_cost')
 
-      # TODO Следить за коллекцией
-      @app.vent.on 'cartitem:added', =>
-        @bounceCheck 2, '5px', 100
 
-    updateTotalCost: () ->
-      if @model.get('total_cost') > 0
-        @showCheck()
-      else
-        @hideCheck()
+      initialize: (options) ->
+        { @app, @cart } = options
+        @model = @cart
 
-      # TODO Обновлять через backbone.stickit
-      @$('#amount').html @model.get('total_cost') + " руб."
+        # TODO Следить за коллекцией
+        @app.vent.on 'cartitem:added', =>
+          @bounceCheck 2, '5px', 100
 
-    showCheck: ->
-      @$('#check').html @checkDOM
+      update: ->
+        if @model.get('total_cost').cents > 0
+          @showCheck()
+        else
+          @hideCheck()
 
-    hideCheck: ->
-      @$('#check').children().remove()
+        # TODO Обновлять через backbone.stickit
+        # @$('#amount').html @model.get('total_cost') + " руб."
 
-    bounceCheck: (times, distance, speed) ->
-      @$('#check img').bounce times, distance, speed
+      showCheck: ->
+        @$('#check').html @checkDOM
 
-    onRender: ->
-      @checkDOM = @$('#check').children().clone()
-      #unless @collection.getTotalCost() > 0
-        #@hideCheck()
+      hideCheck: ->
+        @$('#check').children().remove()
+
+      bounceCheck: (times, distance, speed) ->
+        @$('#check img').bounce times, distance, speed
+
+      onRender: ->
+        @stickit()
+        @checkDOM = @$('#check').children().clone()
+        #unless @collection.getTotalCost() > 0
+          #@hideCheck()

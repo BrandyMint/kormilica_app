@@ -8,6 +8,8 @@ define ['collections/cart_items'], (CartItems)->
       @items = new CartItems()
 
       @listenTo @items, 'change', @updateAggregators
+      @listenTo @items, 'add', @updateAggregators
+      @listenTo @items, 'remove', @updateAggregators
 
       @updateAggregators()
 
@@ -17,6 +19,9 @@ define ['collections/cart_items'], (CartItems)->
     updateAggregators: =>
       @set 'total_cost',  @items.getTotalCost()
       @set 'total_count', @items.getTotalCount()
+
+      # Чтобы можно было следить за изменением цены
+      @set 'total_cost_cents',  @get('total_cost').cents
 
     isEmpty: ->
       @get('total_count') == 0

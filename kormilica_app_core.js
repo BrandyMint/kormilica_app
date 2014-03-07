@@ -1,134 +1,8 @@
 (function () {(function() {
-  define('data/products',[],function() {
-    return [
-      {
-        id: 1,
-        title: 'Оригинальная глазурь',
-        price: '140',
-        image_url: 'images/donut_3.png'
-      }, {
-        id: 2,
-        title: 'Классический пончик',
-        price: '60',
-        image_url: 'images/donut_1.png'
-      }, {
-        id: 6,
-        title: 'Шоколадная глазурь',
-        price: '90',
-        image_url: 'images/donut_2.png'
-      }, {
-        id: 5,
-        title: 'Классический пончик',
-        price: '30',
-        image_url: 'images/donut_1.png'
-      }, {
-        id: 4,
-        title: 'Оригинальная глазурь',
-        price: '160',
-        image_url: 'images/donut_3.png'
-      }, {
-        id: 3,
-        title: 'Шоколадная глазурь',
-        price: '10',
-        image_url: 'images/donut_2.png'
-      }
-    ];
-  });
-
-}).call(this);
-
-(function() {
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define('controllers/cart',['app', 'marionette'], function(App, Marionette) {
-    var Controller, _ref;
-    return Controller = (function(_super) {
-      __extends(Controller, _super);
-
-      function Controller() {
-        _ref = Controller.__super__.constructor.apply(this, arguments);
-        return _ref;
-      }
-
-      Controller.prototype.initialize = function(options) {
-        var collection,
-          _this = this;
-        collection = options.collection;
-        this.cart = collection;
-        App.cart = this.cart;
-        App.reqres.setHandler('cart:item', function(product) {
-          return _this._isProductAlreadyInCart(product);
-        });
-        App.vent.on('cart:add', function(product, quantity) {
-          return _this.addToCart(product, quantity);
-        });
-        App.vent.on('quantity:change', function(item, quantity) {
-          if (quantity > 0) {
-            return _this.changeQuantity(item, quantity);
-          } else {
-            return _this.deleteItem(item);
-          }
-        });
-        App.vent.on('cart:clean', function() {
-          return _this.cleanCart();
-        });
-        return App.vent.on('order:created', function() {
-          return _this.cleanCart();
-        });
-      };
-
-      Controller.prototype.addToCart = function(product, quantity) {
-        var item, newItem;
-        item = this._isProductAlreadyInCart(product);
-        if (!item) {
-          newItem = this.cart.create({
-            product: product,
-            quantity: quantity
-          });
-          return App.vent.trigger('cartitem:added', newItem);
-        } else {
-          return App.vent.trigger('cartitem:exists', item);
-        }
-      };
-
-      Controller.prototype.deleteItem = function(item) {
-        this.cart.get(item.id).destroy();
-        return App.vent.trigger('cart:item:deleted');
-      };
-
-      Controller.prototype.changeQuantity = function(item, quantity) {
-        item.set('quantity', quantity);
-        return item.save();
-      };
-
-      Controller.prototype.cleanCart = function() {
-        var model, _results;
-        _results = [];
-        while (model = this.cart.first()) {
-          _results.push(model.destroy());
-        }
-        return _results;
-      };
-
-      Controller.prototype._isProductAlreadyInCart = function(product) {
-        return this.cart.find(function(item) {
-          return item.get('product').id === product.get('id');
-        });
-      };
-
-      return Controller;
-
-    })(Marionette.Controller);
-  });
-
-}).call(this);
-
-(function() {
-  var __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
-
-  define('models/profile',['app', 'controllers/cart', 'backbone.localStorage'], function(App) {
+  define('models/profile',['backbone.localStorage'], function() {
     'use strict';
     var Profile, _ref;
     return Profile = (function(_super) {
@@ -166,7 +40,85 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define('models/cart_item',['app'], function() {
+  define('controllers/cart',['marionette'], function(Marionette) {
+    var CartController, _ref;
+    return CartController = (function(_super) {
+      __extends(CartController, _super);
+
+      function CartController() {
+        _ref = CartController.__super__.constructor.apply(this, arguments);
+        return _ref;
+      }
+
+      CartController.prototype.initialize = function(options) {
+        var _this = this;
+        this.app = options.app, this.cartItems = options.cartItems;
+        this.app.reqres.setHandler('cart:item', function(product) {
+          return _this.cartItems.isProductInCart(product);
+        });
+        this.app.vent.on('cart:add', function(product, quantity) {
+          return _this.addToCart(product, quantity);
+        });
+        this.app.vent.on('quantity:change', function(item, quantity) {
+          if (quantity > 0) {
+            return _this.changeQuantity(item, quantity);
+          } else {
+            return _this.deleteItem(item);
+          }
+        });
+        this.app.vent.on('cart:clean', function() {
+          return _this.cleanCart();
+        });
+        return this.app.vent.on('order:created', function() {
+          return _this.cleanCart();
+        });
+      };
+
+      CartController.prototype.addToCart = function(product, quantity) {
+        var item, newItem;
+        item = this.cartItems.isProductInCart(product);
+        if (!item) {
+          newItem = this.cartItems.create({
+            product: product,
+            quantity: quantity
+          });
+          return this.app.vent.trigger('cartitem:added', newItem);
+        } else {
+          return this.app.vent.trigger('cartitem:exists', item);
+        }
+      };
+
+      CartController.prototype.deleteItem = function(item) {
+        this.cartItem.get(item.id).destroy();
+        return this.app.vent.trigger('cart:item:deleted');
+      };
+
+      CartController.prototype.changeQuantity = function(item, quantity) {
+        item.set('quantity', quantity);
+        return item.save();
+      };
+
+      CartController.prototype.cleanCart = function() {
+        var model, _results;
+        _results = [];
+        while (model = this.cartItem.first()) {
+          _results.push(model.destroy());
+        }
+        return _results;
+      };
+
+      return CartController;
+
+    })(Marionette.Controller);
+  });
+
+}).call(this);
+
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  define('models/cart_item',['backbone'], function(Backbone) {
     'use strict';
     var CartItem, _ref;
     return CartItem = (function(_super) {
@@ -178,12 +130,18 @@
       }
 
       CartItem.prototype.defaults = {
-        product: '',
         quantity: 0
       };
 
+      CartItem.prototype.initialize = function() {
+        return this.set('product', window.App.products.get(this.get('product').id));
+      };
+
       CartItem.prototype.price = function() {
-        return this.get('product').price * this.get('quantity');
+        return {
+          cents: this.get('product').get('price').cents * this.get('quantity'),
+          curency: this.get('product').get('price').currency
+        };
       };
 
       return CartItem;
@@ -197,7 +155,7 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define('collections/cart',['models/cart_item', 'backbone.localStorage'], function(Model) {
+  define('collections/cart_items',['models/cart_item'], function(CartItem) {
     var CartItems, _ref;
     return CartItems = (function(_super) {
       __extends(CartItems, _super);
@@ -209,7 +167,7 @@
 
       CartItems.prototype.url = 'cart';
 
-      CartItems.prototype.model = Model;
+      CartItems.prototype.model = CartItem;
 
       CartItems.prototype.initialize = function() {
         return this.localStorage = new Backbone.LocalStorage('cart');
@@ -218,9 +176,12 @@
       CartItems.prototype.getTotalCost = function() {
         var addup;
         addup = function(memo, item) {
-          return item.price() + memo;
+          return item.price().cents + memo;
         };
-        return this.reduce(addup, 0);
+        return {
+          cents: this.reduce(addup, 0),
+          currency: 'RUB'
+        };
       };
 
       CartItems.prototype.getTotalCount = function() {
@@ -229,6 +190,12 @@
           return item.get('quantity') + memo;
         };
         return this.reduce(addup, 0);
+      };
+
+      CartItems.prototype.isProductInCart = function(product) {
+        return this.find(function(item) {
+          return item.get('product').id === product.get('id');
+        });
       };
 
       return CartItems;
@@ -260,7 +227,7 @@
           }
         };
         $o = [];
-        $o.push("<div class='modal-wrapper'>\n  <div class='dark-background'></div>\n  <div class='modal-window'>\n    <div class='column full'>\n      <div class='quantity-title'>Введите количество</div>\n      <table class='quantity-table'>\n        <tr>\n          <td>\n            <p class='price'>\n              <span class='price-font'>" + this.product.price + "</span>\n              р.\n            </p>\n          </td>\n          <td>\n            <p class='multiplier'>x\n              <span class='multiplier-font quantity'>" + ($e($c(this.quantity))) + "</span>\n              \=\n            </p>\n          </td>\n          <td>\n            <p class='price'>\n              <span class='price-font result'>" + (this.product.price * this.quantity) + "</span>\n              р.\n            </p>\n          </td>\n        </tr>\n      </table>\n      <div class='quantity-selector'>\n        <a id='plus-sign' href='#'>+</a>\n        <span class='quantity'>" + this.quantity + "</span>\n        шт\n        <a id='minus-sign' href='#'>-</a>\n      </div>\n      <a class='button' href='#'>\n        <span>ГОТОВО</span>\n      </a>\n    </div>\n  </div>\n</div>");
+        $o.push("<div class='modal-wrapper'>\n  <div class='dark-background'></div>\n  <div class='modal-window'>\n    <div class='column full'>\n      <div class='quantity-title'>Введите количество</div>\n      <table class='quantity-table'>\n        <tr>\n          <td>\n            <p class='price'>\n              <span class='price-font'>" + ($c(this.money(this.product.price))) + "</span>\n              р.\n            </p>\n          </td>\n          <td>\n            <p class='multiplier'>x\n              <span class='multiplier-font quantity'>" + ($e($c(this.quantity))) + "</span>\n              \=\n            </p>\n          </td>\n          <td>\n            <p class='price'>\n              <div class='result'>" + ($c(this.money(this.total_cost))) + "</div>\n            </p>\n          </td>\n        </tr>\n      </table>\n      <div class='quantity-selector'>\n        <a id='plus-sign' href='#'>+</a>\n        <span class='quantity'>" + this.quantity + "</span>\n        шт\n        <a id='minus-sign' href='#'>-</a>\n      </div>\n      <a class='button' href='#'>\n        <span>ГОТОВО</span>\n      </a>\n    </div>\n  </div>\n</div>");
         return $o.join("\n").replace(/\s([\w-]+)='true'/mg, ' $1').replace(/\s([\w-]+)='false'/mg, '').replace(/\s(?:id|class)=(['"])(\1)/mg, "");
       };
       return render.call(context);
@@ -270,10 +237,42 @@
 }).call(this);
 
 (function() {
+  define('helpers/application_helpers',[],function() {
+    return {
+      ficon: function(name, attrs) {
+        return "<i class='fontello-icon-" + name + "'></i>";
+      },
+      badge: function(text, type) {
+        return "<span class=\"badge badge-" + (type ? type : "default") + "\">" + text + "</span>";
+      },
+      truncate: function(string, size) {
+        var new_string, words_array;
+        if (size == null) {
+          size = 100;
+        }
+        if (string.length < size) {
+          return string;
+        }
+        words_array = $.trim(string).substring(0, size).split(' ');
+        new_string = words_array.join(" ") + "&hellip;";
+        return new_string;
+      },
+      url: function(url_name) {
+        return App.urls[url_name] || ("Неизвестный url_name " + url_name);
+      },
+      money: function(value) {
+        return "<span class='price-font'>" + (value.cents / 100) + "</span> р.";
+      }
+    };
+  });
+
+}).call(this);
+
+(function() {
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define('views/modal_windows/quantity_selector',['app', 'marionette', 'templates/modal_windows/quantity_selector'], function(App, Marionette, template) {
+  define('views/modal_windows/quantity_selector',['marionette', 'templates/modal_windows/quantity_selector', 'helpers/application_helpers'], function(Marionette, template, Helpers) {
     var QuantitySelector, _ref;
     return QuantitySelector = (function(_super) {
       __extends(QuantitySelector, _super);
@@ -285,9 +284,14 @@
 
       QuantitySelector.prototype.template = template;
 
+      QuantitySelector.prototype.templateHelpers = function() {
+        return Helpers;
+      };
+
       QuantitySelector.prototype.initialize = function() {
         this.quantity = this.model.get('quantity');
-        return this.price = this.model.get('product').price;
+        this.price = this.model.get('product').price;
+        return this.total_cost = this.price * this.quantity;
       };
 
       QuantitySelector.prototype.ui = {
@@ -344,34 +348,30 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define('controllers/quantity_selector',['app', 'marionette', 'views/modal_windows/quantity_selector'], function(App, Marionette, QuantitySelectorView) {
-    var Controller, _ref;
-    return Controller = (function(_super) {
-      __extends(Controller, _super);
+  define('controllers/quantity_selector',['marionette', 'views/modal_windows/quantity_selector'], function(Marionette, QuantitySelectorView) {
+    var QuantitySelectorController, _ref;
+    return QuantitySelectorController = (function(_super) {
+      __extends(QuantitySelectorController, _super);
 
-      function Controller() {
-        _ref = Controller.__super__.constructor.apply(this, arguments);
+      function QuantitySelectorController() {
+        _ref = QuantitySelectorController.__super__.constructor.apply(this, arguments);
         return _ref;
       }
 
-      Controller.prototype.initialize = function(options) {
-        var _this = this;
-        this.cart = options.cart;
-        return App.vent.on('cartitem:exists', function(item) {
-          return _this.showQuantitySelector(item);
-        });
+      QuantitySelectorController.prototype.initialize = function(options) {
+        return this.cart = options.cart, this.app = options.app, options;
       };
 
-      Controller.prototype.showQuantitySelector = function(item) {
+      QuantitySelectorController.prototype.showQuantitySelector = function(item) {
         var quantitySelectorView,
           _this = this;
         $('#app-container').addClass('modal-state');
         quantitySelectorView = new QuantitySelectorView({
           model: item
         });
-        App.modalRegion.show(quantitySelectorView);
+        this.app.modalRegion.show(quantitySelectorView);
         quantitySelectorView.on('quantity:change', function(quantity) {
-          App.vent.trigger('quantity:change', item, quantity);
+          _this.app.vent.trigger('quantity:change', item, quantity);
           return _this.hideQuantitySelector();
         });
         return quantitySelectorView.on('quantity:change:cancel', function() {
@@ -379,12 +379,12 @@
         });
       };
 
-      Controller.prototype.hideQuantitySelector = function() {
+      QuantitySelectorController.prototype.hideQuantitySelector = function() {
         $('#app-container').removeClass('modal-state');
-        return App.modalRegion.close();
+        return this.app.modalRegion.close();
       };
 
-      return Controller;
+      return QuantitySelectorController;
 
     })(Marionette.Controller);
   });
@@ -413,14 +413,18 @@
           }
         };
         $o = [];
-        $o.push("<div id='check-top-external'>\n  <div class='center' id='check-top-internal'>\n    <div class='check-top-battlement'>\n      <div class='check-top-battlement-center'></div>\n    </div>\n    <div class='check-content'>\n      <div class='scrollable-check'>\n        <h2>Ваш чек</h2>");
+        $o.push("<div id='check-top-external'>\n  <div class='center' id='check-top-internal'>\n    <div class='check-top-battlement'>\n      <div class='check-top-battlement-center'></div>\n    </div>\n    <div class='check-content'>\n      <div class='scrollable-check'>\n        <div class='check-header'>\n          <a href='#'>\n            <img src='images/back-button.png'>\n          </a>\n          <h2>Ваш чек</h2>\n        </div>");
         pos = 1;
         _ref = this.items;
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           item = _ref[_i];
-          $o.push("        <p>" + ($e($c("" + (pos++) + ". " + item.product.title))) + "</p>\n        <table>\n          <tbody>\n            <tr>\n              <td class='product-amount'>" + ($e($c("" + item.product.price + "x" + item.quantity))) + "</td>\n              <td class='separator'>\n                <div></div>\n              </td>\n              <td class='product-price'>" + ($e($c("" + (item.product.price * item.quantity) + " р."))) + "</td>\n            </tr>\n          </tbody>\n        </table>");
+          $o.push("        <p>" + ($e($c("" + (pos++) + ". " + item.product.title))) + "</p>\n        <table>\n          <tbody>\n            <tr>\n              <td class='product-amount'>");
+          $o.push("                " + $c(this.money(item.product.price)));
+          $o.push("                x");
+          $o.push("                " + $e($c(item.quantity)));
+          $o.push("              </td>\n              <td class='separator'>\n                <div></div>\n              </td>\n              <td class='product-price'>" + ($e($c("" + (item.product.price * item.quantity) + " р."))) + "</td>\n            </tr>\n          </tbody>\n        </table>");
         }
-        $o.push("      </div>\n      <div class='unscrollable-check'>\n        <div class='clearfix row'>\n          <p class='all-product-sum'>Итог:\n            <span class='all-sum-right'>" + ($e($c("" + this.totalCost + " р."))) + "</span>\n          </p>\n        </div>\n        <form name='message\", method=>\"post'>\n          <section>\n            <label for='phone'>Телефон:</label>\n            <input id='phone' type='tel' value='" + ($e($c(this.profile.get('phoneNumber') ? this.profile.get('phoneNumber') : void 0))) + "' name='phone' placeholder='+7'>\n            <label for='name'>Ваше имя:</label>\n            <input id='name' type='text' value='" + ($e($c(this.profile.get('name') ? this.profile.get('name') : void 0))) + "' name='name'>\n          </section>\n        </form>\n        <p class='form-comment'>\n          обязательно введите свой телефон для связи\n        </p>\n      </div>\n    </div>\n  </div>\n</div>");
+        $o.push("      </div>\n      <div class='unscrollable-check'>\n        <div class='clearfix row'>\n          <p class='all-product-sum'>Итог:\n            <span class='all-sum-right'>" + ($c(this.money(this.total_cost))) + "</span>\n          </p>\n        </div>\n        <form name='message\", method=>\"post'>\n          <section>\n            <label for='phone'>Телефон:</label>\n            <input id='phone' type='tel' value='" + ($e($c(this.profile.get('phoneNumber') ? this.profile.get('phoneNumber') : void 0))) + "' name='phone' placeholder='+7'>\n            <label for='name'>Ваше имя:</label>\n            <input id='name' type='text' value='" + ($e($c(this.profile.get('name') ? this.profile.get('name') : void 0))) + "' name='name'>\n          </section>\n        </form>\n        <p class='form-comment'>\n          обязательно введите свой телефон для связи\n        </p>\n      </div>\n    </div>\n  </div>\n</div>");
         return $o.join("\n").replace(/\s([\w-]+)='true'/mg, ' $1').replace(/\s([\w-]+)='false'/mg, '').replace(/\s(?:id|class)=(['"])(\1)/mg, "");
       };
       return render.call(context);
@@ -435,40 +439,47 @@
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
   define('views/check/check',['marionette', 'templates/check/check', 'jquery.form-serialize'], function(Marionette, template) {
-    var CheckTop, _ref;
-    return CheckTop = (function(_super) {
-      __extends(CheckTop, _super);
+    var Check, _ref;
+    return Check = (function(_super) {
+      __extends(Check, _super);
 
-      function CheckTop() {
+      function Check() {
         this.checkForEmptyFields = __bind(this.checkForEmptyFields, this);
-        _ref = CheckTop.__super__.constructor.apply(this, arguments);
+        _ref = Check.__super__.constructor.apply(this, arguments);
         return _ref;
       }
 
-      CheckTop.prototype.template = template;
+      Check.prototype.template = template;
 
-      CheckTop.prototype.ui = {
-        form: 'form'
+      Check.prototype.templateHelpers = function() {
+        return Helpers;
       };
 
-      CheckTop.prototype.events = {
+      Check.prototype.ui = {
+        form: 'form',
+        backButton: '.check-header a'
+      };
+
+      Check.prototype.events = {
         'keyup form': 'checkForEmptyFields'
       };
 
-      CheckTop.prototype.serializeData = function() {
+      Check.prototype.triggers = {
+        'click @ui.backButton': {
+          event: 'cancel:button:clicked',
+          preventDefault: true
+        }
+      };
+
+      Check.prototype.serializeData = function() {
         return {
           items: this.collection.toJSON(),
-          profile: this.options.profile
+          profile: this.options.profile,
+          total_cost: this.collection.getTotalCost()
         };
       };
 
-      CheckTop.prototype.templateHelpers = function() {
-        return {
-          totalCost: this.collection.getTotalCost()
-        };
-      };
-
-      CheckTop.prototype.checkForEmptyFields = function(e) {
+      Check.prototype.checkForEmptyFields = function(e) {
         var errors, formData, inputData;
         formData = this.ui.form.serializeObject();
         errors = [];
@@ -484,7 +495,7 @@
         }
       };
 
-      CheckTop.prototype._setScrollableAreaHeight = function() {
+      Check.prototype._setScrollableAreaHeight = function() {
         var bottomInfo, container, itemsList, scrollableHeight;
         container = $('.check-content');
         bottomInfo = $('.unscrollable-check');
@@ -493,11 +504,11 @@
         return itemsList.css('height', scrollableHeight);
       };
 
-      CheckTop.prototype.onShow = function() {
+      Check.prototype.onShow = function() {
         return this._setScrollableAreaHeight();
       };
 
-      return CheckTop;
+      return Check;
 
     })(Marionette.ItemView);
   });
@@ -508,52 +519,58 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define('controllers/check',['app', 'marionette', 'views/check/check', 'jquery.form-serialize'], function(App, Marionette, CheckView) {
-    var Controller, _ref;
-    return Controller = (function(_super) {
-      __extends(Controller, _super);
+  define('controllers/check',['marionette', 'views/check/check', 'jquery.form-serialize'], function(Marionette, CheckView) {
+    var CheckController, _ref;
+    return CheckController = (function(_super) {
+      __extends(CheckController, _super);
 
-      function Controller() {
-        _ref = Controller.__super__.constructor.apply(this, arguments);
+      function CheckController() {
+        _ref = CheckController.__super__.constructor.apply(this, arguments);
         return _ref;
       }
 
-      Controller.prototype.initialize = function(options) {
+      CheckController.prototype.initialize = function(options) {
         var _this = this;
-        this.profile = options.profile, this.cart = options.cart;
-        App.vent.on('checkout:show', function() {
+        this.profile = options.profile, this.cart = options.cart, this.app = options.app;
+        this.app.vent.on('checkout:show', function() {
           return _this.showCheck();
         });
-        return App.vent.on('order:created', function() {
+        return this.app.vent.on('order:created', function() {
           var $form_data;
           $form_data = _this.checkView.$el.find('form').serializeObject();
           _this.profile.save({
             name: $form_data.name,
             phoneNumber: $form_data.phone
           });
+          _this.app.vent.trigger('check:disappeared');
           return _this.hideCheck();
         });
       };
 
-      Controller.prototype.showCheck = function() {
+      CheckController.prototype.showCheck = function() {
+        var _this = this;
         this.checkView = new CheckView({
           profile: this.profile,
           collection: this.cart
         });
-        App.checkRegion.show(this.checkView);
+        this.app.checkRegion.show(this.checkView);
         this.checkView.on('check:form:empty:field', function() {
-          return App.vent.trigger('check:form:invalid');
+          return this.app.vent.trigger('check:form:invalid');
         });
-        return this.checkView.on('check:form:filled', function() {
-          return App.vent.trigger('check:form:valid');
+        this.checkView.on('check:form:filled', function() {
+          return this.app.vent.trigger('check:form:valid');
+        });
+        return this.checkView.on('cancel:button:clicked', function() {
+          _this.app.vent.trigger('check:disappeared');
+          return _this.hideCheck();
         });
       };
 
-      Controller.prototype.hideCheck = function() {
-        return App.checkRegion.close();
+      CheckController.prototype.hideCheck = function() {
+        return this.app.checkRegion.close();
       };
 
-      return Controller;
+      return CheckController;
 
     })(Marionette.Controller);
   });
@@ -614,7 +631,7 @@
 }).call(this);
 
 (function() {
-  define('templates/products/list_item',['jquery', 'underscore'], function($, _) {
+  define('templates/products/product',['jquery', 'underscore'], function($, _) {
     return function(context) {
       var render;
       render = function() {
@@ -635,7 +652,7 @@
           }
         };
         $o = [];
-        $o.push("<div class='clearfix row'>\n  <div class='column two-thirds'>\n    <img src='" + ($e($c(this.image_url))) + "'>\n    <p>" + ($e($c(this.title))) + "</p>\n    <p class='price'>\n      <span class='price-font'>" + ($e($c(this.price))) + "</span>\n      р.\n    </p>\n  </div>\n  <div class='column one-thirds product-quantity'>\n    <a class='button' href='#777'>\n      <img src='images/to-bucket.png'>\n        <span>В ЗАКАЗ</span>\n    </a>\n  </div>\n</div>");
+        $o.push("<div class='clearfix row'>\n  <div class='column two-thirds'>\n    <img src='" + ($e($c(this.image_url))) + "'>\n    <p>" + ($e($c(this.title))) + "</p>\n    <p class='price'>" + ($c(this.money(this.price))) + "</p>\n  </div>\n  <div class='column one-thirds product-quantity'>\n    <a class='button' href='#777'>\n      <img src='images/to-bucket.png'>\n        <span>В ЗАКАЗ</span>\n    </a>\n  </div>\n</div>");
         return $o.join("\n").replace(/\s([\w-]+)='true'/mg, ' $1').replace(/\s([\w-]+)='false'/mg, '').replace(/\s(?:id|class)=(['"])(\1)/mg, "");
       };
       return render.call(context);
@@ -645,7 +662,7 @@
 }).call(this);
 
 (function() {
-  define('templates/products/list_item_quantity',['jquery', 'underscore'], function($, _) {
+  define('templates/products/product_quantity',['jquery', 'underscore'], function($, _) {
     return function(context) {
       var render;
       render = function() {
@@ -665,54 +682,59 @@
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define('views/products/list_item',['app', 'marionette', 'templates/products/list_item', 'templates/products/list_item_quantity'], function(App, Marionette, listItemTemplate, listItemQuantityTemplate) {
-    var Product, _ref;
-    return Product = (function(_super) {
-      __extends(Product, _super);
+  define('views/products/product',['marionette', 'templates/products/product', 'templates/products/product_quantity', 'helpers/application_helpers'], function(Marionette, productTemplate, productQuantityTemplate, Helpers) {
+    var ProductView, _ref;
+    return ProductView = (function(_super) {
+      __extends(ProductView, _super);
 
-      function Product() {
+      function ProductView() {
         this.displaySelectedQuantity = __bind(this.displaySelectedQuantity, this);
-        _ref = Product.__super__.constructor.apply(this, arguments);
+        _ref = ProductView.__super__.constructor.apply(this, arguments);
         return _ref;
       }
 
-      Product.prototype.template = listItemTemplate;
+      ProductView.prototype.templateHelpers = function() {
+        return Helpers;
+      };
 
-      Product.prototype.className = 'product-block';
+      ProductView.prototype.template = productTemplate;
 
-      Product.prototype.initialize = function() {
+      ProductView.prototype.className = 'product-block';
+
+      ProductView.prototype.initialize = function(options) {
         var _this = this;
-        this.item = App.request('cart:item', this.model);
+        this.app = options.app;
+        this.item = this.app.request('cart:item', this.model);
         if (this.item) {
           this.quantity = this.item.get('quantity');
         }
-        App.vent.on('cartitem:added', function(item) {
+        this.app.vent.on('cartitem:added', function(item) {
           if (item.get('product').id === _this.model.get('id')) {
             return _this.displaySelectedQuantity(item.get('quantity'));
           }
         });
-        App.vent.on('quantity:change', function(item, quantity) {
+        this.app.vent.on('quantity:change', function(item, quantity) {
           if (item.get('product').id === _this.model.get('id')) {
             return _this.displaySelectedQuantity(quantity);
           }
         });
-        return App.vent.on('order:created', function() {
+        return this.app.vent.on('order:created', function() {
           return _this.displaySelectedQuantity(0);
         });
       };
 
-      Product.prototype.events = {
+      ProductView.prototype.events = {
         'click': 'addToCart'
       };
 
-      Product.prototype.addToCart = function(e) {
+      ProductView.prototype.addToCart = function(e) {
         e.preventDefault();
-        return App.vent.trigger('cart:add', this.model, 1);
+        return this.app.vent.trigger('cart:add', this.model, 1);
       };
 
-      Product.prototype.displaySelectedQuantity = function(quantity) {
+      ProductView.prototype.displaySelectedQuantity = function(quantity) {
         if (quantity > 0) {
-          return this.$('.product-quantity').html(listItemQuantityTemplate({
+          return this.$('.product-quantity').html(productQuantityTemplate({
             quantity: quantity
           }));
         } else {
@@ -720,14 +742,14 @@
         }
       };
 
-      Product.prototype.onRender = function() {
+      ProductView.prototype.onRender = function() {
         this.productQuantityDOM = this.$('.product-quantity').children().clone();
         if (this.item) {
           return this.displaySelectedQuantity(this.quantity);
         }
       };
 
-      return Product;
+      return ProductView;
 
     })(Marionette.ItemView);
   });
@@ -735,22 +757,34 @@
 }).call(this);
 
 (function() {
-  var __hasProp = {}.hasOwnProperty,
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define('views/products/list',['app', 'marionette', 'views/products/list_item'], function(App, Marionette, ItemView) {
-    var Products, _ref;
-    return Products = (function(_super) {
-      __extends(Products, _super);
+  define('views/products/products',['app', 'marionette', 'views/products/product'], function(App, Marionette, ProductView) {
+    var ProductsView, _ref;
+    return ProductsView = (function(_super) {
+      __extends(ProductsView, _super);
 
-      function Products() {
-        _ref = Products.__super__.constructor.apply(this, arguments);
+      function ProductsView() {
+        this.itemViewOptions = __bind(this.itemViewOptions, this);
+        _ref = ProductsView.__super__.constructor.apply(this, arguments);
         return _ref;
       }
 
-      Products.prototype.itemView = ItemView;
+      ProductsView.prototype.itemView = ProductView;
 
-      return Products;
+      ProductsView.prototype.initialize = function(options) {
+        return this.app = options.app, options;
+      };
+
+      ProductsView.prototype.itemViewOptions = function() {
+        return {
+          app: this.app
+        };
+      };
+
+      return ProductsView;
 
     })(Marionette.CollectionView);
   });
@@ -762,25 +796,10 @@
     return function(context) {
       var render;
       render = function() {
-        var $c, $e, $o;
-        $e = function(text, escape) {
-          return ("" + text).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/'/g, '&#39;').replace(/\//g, '&#47;').replace(/"/g, '&quot;');
-        };
-        $c = function(text) {
-          switch (text) {
-            case null:
-            case void 0:
-              return '';
-            case true:
-            case false:
-              return '' + text;
-            default:
-              return text;
-          }
-        };
+        var $o;
         $o = [];
-        $o.push("<div class='clearfix row'>\n  <div class='column half' id='logo'>\n    <img src='images/logo.png'>\n    <p>Доставка <br> пончиков</p>\n  </div>\n  <div class='column half' id='check'>\n    <img src='images/header-check.png'>\n    <p>ваш заказ на \n      <br>\n      <span id='amount'>" + ($e($c(this.totalCost + " руб."))) + "</span>\n    </p>\n  </div>\n</div>");
-        return $o.join("\n").replace(/\s([\w-]+)='true'/mg, ' $1').replace(/\s([\w-]+)='false'/mg, '').replace(/\s(?:id|class)=(['"])(\1)/mg, "");
+        $o.push("<div class='clearfix row'>\n  <div class='column half' id='logo'>\n    <img src='images/logo.png'>\n    <p>Доставка <br> пончиков</p>\n  </div>\n  <div class='column half' id='check'>\n    <img src='images/header-check.png'>\n    <p>ваш заказ на \n      <br>\n      <span id='header_amount'></span>\n    </p>\n  </div>\n</div>");
+        return $o.join("\n").replace(/\s(?:id|class)=(['"])(\1)/mg, "");
       };
       return render.call(context);
     };
@@ -792,76 +811,76 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define('views/header/header',['app', 'marionette', 'templates/header/header', 'jquery.bounce'], function(App, Marionette, template) {
-    var Header, _ref;
-    return Header = (function(_super) {
-      __extends(Header, _super);
+  define('views/header/header',['marionette', 'templates/header/header', 'jquery.bounce', 'helpers/application_helpers'], function(Marionette, template, jQueryBounce, Helpers) {
+    var HeaderView, _ref;
+    return HeaderView = (function(_super) {
+      __extends(HeaderView, _super);
 
-      function Header() {
-        _ref = Header.__super__.constructor.apply(this, arguments);
+      function HeaderView() {
+        _ref = HeaderView.__super__.constructor.apply(this, arguments);
         return _ref;
       }
 
-      Header.prototype.template = template;
+      HeaderView.prototype.template = template;
 
-      Header.prototype.className = 'header';
+      HeaderView.prototype.className = 'header';
 
-      Header.prototype.initialize = function() {
+      HeaderView.prototype.templateHelpers = function() {
+        return Helpers;
+      };
+
+      HeaderView.prototype.triggers = {
+        'click #check': 'check:clicked'
+      };
+
+      HeaderView.prototype.modelEvents = {
+        'change': 'update'
+      };
+
+      HeaderView.prototype.binding = {
+        '#header_amount': {
+          observe: ['total_cost_cents', 'total_cost'],
+          onGet: function(cents, cost) {
+            return Helpers.money(cost);
+          }
+        }
+      };
+
+      HeaderView.prototype.initialize = function(options) {
         var _this = this;
-        return App.vent.on('cartitem:added', function() {
+        this.app = options.app, this.cart = options.cart;
+        this.model = this.cart;
+        return this.app.vent.on('cartitem:added', function() {
           return _this.bounceCheck(2, '5px', 100);
         });
       };
 
-      Header.prototype.triggers = {
-        'click #check': 'check:clicked'
-      };
-
-      Header.prototype.serializeData = function() {
-        return {
-          items: this.collection.toJSON()
-        };
-      };
-
-      Header.prototype.templateHelpers = function() {
-        return {
-          totalCost: this.collection.getTotalCost()
-        };
-      };
-
-      Header.prototype.collectionEvents = {
-        'all': 'updateTotalCost'
-      };
-
-      Header.prototype.updateTotalCost = function() {
-        if (this.collection.getTotalCost() > 0) {
-          this.showCheck();
+      HeaderView.prototype.update = function() {
+        if (this.model.get('total_cost').cents > 0) {
+          return this.showCheck();
         } else {
-          this.hideCheck();
-        }
-        return this.$('#amount').html(this.collection.getTotalCost() + " руб.");
-      };
-
-      Header.prototype.showCheck = function() {
-        return this.$('#check').html(this.checkDOM);
-      };
-
-      Header.prototype.hideCheck = function() {
-        return this.$('#check').children().remove();
-      };
-
-      Header.prototype.bounceCheck = function(times, distance, speed) {
-        return this.$('#check img').bounce(times, distance, speed);
-      };
-
-      Header.prototype.onRender = function() {
-        this.checkDOM = this.$('#check').children().clone();
-        if (!(this.collection.getTotalCost() > 0)) {
           return this.hideCheck();
         }
       };
 
-      return Header;
+      HeaderView.prototype.showCheck = function() {
+        return this.$('#check').html(this.checkDOM);
+      };
+
+      HeaderView.prototype.hideCheck = function() {
+        return this.$('#check').children().remove();
+      };
+
+      HeaderView.prototype.bounceCheck = function(times, distance, speed) {
+        return this.$('#check img').bounce(times, distance, speed);
+      };
+
+      HeaderView.prototype.onRender = function() {
+        this.stickit();
+        return this.checkDOM = this.$('#check').children().clone();
+      };
+
+      return HeaderView;
 
     })(Marionette.ItemView);
   });
@@ -872,51 +891,46 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define('controllers/header',['app', 'marionette', 'views/header/header'], function(App, Marionette, HeaderView) {
-    var Controller, _ref;
-    return Controller = (function(_super) {
-      __extends(Controller, _super);
+  define('controllers/header',['marionette', 'views/header/header'], function(Marionette, HeaderView) {
+    var HeaderController, _ref;
+    return HeaderController = (function(_super) {
+      __extends(HeaderController, _super);
 
-      function Controller() {
-        _ref = Controller.__super__.constructor.apply(this, arguments);
+      function HeaderController() {
+        _ref = HeaderController.__super__.constructor.apply(this, arguments);
         return _ref;
       }
 
-      Controller.prototype.initialize = function(options) {
+      HeaderController.prototype.initialize = function(options) {
         var _this = this;
-        this.collection = options.collection;
-        this.headerView = this.getHeaderView(this.collection);
-        App.headerRegion.show(this.headerView);
-        this.headerView.on('check:clicked', function() {
-          return App.vent.trigger('checkout:show');
+        this.cart = options.cart, this.app = options.app;
+        this.headerView = new HeaderView({
+          app: this.app,
+          cart: this.cart
         });
-        App.vent.on('checkout:show', function() {
+        this.showHeader();
+        this.headerView.on('check:clicked', function() {
+          return this.app.vent.trigger('checkout:show');
+        });
+        this.app.vent.on('checkout:show', function() {
           return _this.hideHeader();
         });
-        return App.vent.on('order:created', function() {
+        return this.app.vent.on('check:disappeared', function() {
           return _this.showHeader();
         });
       };
 
-      Controller.prototype.hideHeader = function() {
+      HeaderController.prototype.hideHeader = function() {
         $('#app-container').addClass('checkout-state');
-        App.headerRegion.close();
-        return delete this.headerView;
+        return this.app.headerRegion.close();
       };
 
-      Controller.prototype.showHeader = function() {
+      HeaderController.prototype.showHeader = function() {
         $('#app-container').removeClass('checkout-state');
-        this.headerView = this.getHeaderView(this.collection);
-        return App.headerRegion.show(this.headerView);
+        return this.app.headerRegion.show(this.headerView);
       };
 
-      Controller.prototype.getHeaderView = function(collection) {
-        return new HeaderView({
-          collection: collection
-        });
-      };
-
-      return Controller;
+      return HeaderController;
 
     })(Marionette.Controller);
   });
@@ -1006,7 +1020,7 @@
   var __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define('views/footer/footer',['app', 'marionette', 'templates/footer/footer', 'templates/footer/_checkout', 'templates/footer/_delivery', 'templates/footer/_check_bottom'], function(App, Marionette, template, checkoutButtonTemplate, deliveryButtonTemplate, checkBottomTemplate) {
+  define('views/footer/footer',['marionette', 'templates/footer/footer', 'templates/footer/_checkout', 'templates/footer/_delivery', 'templates/footer/_check_bottom'], function(Marionette, template, checkoutButtonTemplate, deliveryButtonTemplate, checkBottomTemplate) {
     var Footer, _ref;
     return Footer = (function(_super) {
       __extends(Footer, _super);
@@ -1020,16 +1034,20 @@
 
       Footer.prototype.initialize = function(options) {
         var _this = this;
-        this.profile = options.profile;
-        App.vent.on('checkout:show', function() {
+        this.profile = options.profile, this.app = options.app, this.cartItems = options.cartItems;
+        this.collection = this.cartItems;
+        this.app.vent.on('checkout:show', function() {
           _this.showDeliveryButton();
           return _this.showCheckBottom();
         });
-        App.vent.on('check:form:invalid', function() {
+        this.app.vent.on('check:form:invalid', function() {
           return _this.deactivateDeliveryButton();
         });
-        return App.vent.on('check:form:valid', function() {
+        this.app.vent.on('check:form:valid', function() {
           return _this.activateDeliveryButton();
+        });
+        return this.app.vent.on('check:disappeared', function() {
+          return _this.showCheckoutButton();
         });
       };
 
@@ -1065,7 +1083,7 @@
       };
 
       Footer.prototype.hideButton = function() {
-        if (this.collection.getTotalCost() === 0) {
+        if (this.cartItems.getTotalCost() === 0) {
           this.$('#workspace').html(this.workspaceDOM);
           return this.$('#check-bottom').children().remove();
         }
@@ -1095,7 +1113,7 @@
 
       Footer.prototype.onRender = function() {
         this.workspaceDOM = this.$('#workspace').children().clone();
-        if (this.collection.length > 0) {
+        if (this.cartItems.length > 0) {
           return this.showCheckoutButton();
         }
       };
@@ -1108,7 +1126,54 @@
 }).call(this);
 
 (function() {
-  define('app',['marionette', 'data/products'], function(Marionette, productsData) {
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  define('models/cart',['collections/cart_items'], function(CartItems) {
+    'use strict';
+    var Cart, _ref;
+    return Cart = (function(_super) {
+      __extends(Cart, _super);
+
+      function Cart() {
+        this.updateAggregators = __bind(this.updateAggregators, this);
+        _ref = Cart.__super__.constructor.apply(this, arguments);
+        return _ref;
+      }
+
+      Cart.prototype.initialize = function() {
+        this.items = new CartItems();
+        this.listenTo(this.items, 'change', this.updateAggregators);
+        this.listenTo(this.items, 'add', this.updateAggregators);
+        this.listenTo(this.items, 'remove', this.updateAggregators);
+        return this.updateAggregators();
+      };
+
+      Cart.prototype.fetch = function() {
+        return this.items.fetch();
+      };
+
+      Cart.prototype.updateAggregators = function() {
+        this.set('total_cost', this.items.getTotalCost());
+        this.set('total_count', this.items.getTotalCount());
+        return this.set('total_cost_cents', this.get('total_cost').cents);
+      };
+
+      Cart.prototype.isEmpty = function() {
+        return this.get('total_count') === 0;
+      };
+
+      return Cart;
+
+    })(Backbone.Model);
+  });
+
+}).call(this);
+
+(function() {
+  define('app',['marionette', 'backbone', 'backbone.stickit', 'models/profile', 'controllers/cart', 'collections/cart_items', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/products', 'controllers/header', 'views/footer/footer', 'models/cart'], function(Marionette, Backbone, Stickit, Profile, CartController, CartItems, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView, Cart) {
+    debugger;
     window.App = new Marionette.Application;
     App.addRegions({
       headerRegion: "#header-region",
@@ -1117,55 +1182,52 @@
       checkRegion: "#check-region",
       modalRegion: "#modal-region"
     });
-    App.addInitializer(function() {
-      var _this = this;
-      require(['models/profile'], function(ProfileModel) {
-        App.profile = new ProfileModel;
-        return App.profile.fetch();
+    App.addInitializer(function(options) {
+      var footerView, productsListView;
+      App.products = new ProductsCollection;
+      App.profile = new Profile();
+      App.profile.fetch();
+      App.categories = new Backbone.Collection;
+      App.cart = new Cart();
+      $.get(options.data_file, function(data) {
+        console.log('Load', options.data_file);
+        App.profile.set(data);
+        App.products.reset(data.products);
+        App.categories.reset(data.categories);
+        return App.cart.fetch();
       });
-      require(['controllers/cart', 'collections/cart'], function(CartController, CartCollection) {
-        var cartCollection;
-        cartCollection = new CartCollection;
-        cartCollection.fetch();
-        return new CartController({
-          collection: cartCollection
-        });
+      new CartController({
+        app: App,
+        cartItems: App.cart.items
       });
-      require(['controllers/quantity_selector'], function(QuantitySelectorController) {
-        return new QuantitySelectorController;
+      new QuantitySelectorController({
+        app: App
       });
-      require(['controllers/check'], function(CheckController) {
-        return new CheckController({
-          profile: App.profile,
-          cart: App.cart
-        });
+      new CheckController({
+        app: App,
+        profile: App.profile,
+        cartItems: App.cart.items
       });
-      require(['collections/products', 'views/products/list'], function(ProductsCollection, ProductsView) {
-        var productsListCollection, productsListView;
-        productsListCollection = new ProductsCollection(productsData);
-        productsListView = new ProductsView({
-          collection: productsListCollection
-        });
-        return App.mainRegion.show(productsListView);
+      productsListView = new ProductsView({
+        app: App,
+        collection: App.products
       });
-      require(['controllers/header'], function(HeaderController) {
-        return new HeaderController({
-          collection: App.cart
-        });
+      App.mainRegion.show(productsListView);
+      new HeaderController({
+        app: App,
+        cart: App.cart
       });
-      return require(['views/footer/footer'], function(FooterView) {
-        var footerView;
-        footerView = new FooterView({
-          collection: App.cart,
-          profile: App.profile
-        });
-        App.footerRegion.show(footerView);
-        footerView.on('checkout:clicked', function() {
-          return App.vent.trigger('checkout:show');
-        });
-        return footerView.on('delivery:clicked', function() {
-          return App.vent.trigger('order:created');
-        });
+      footerView = new FooterView({
+        app: App,
+        cartItems: App.cart.items,
+        profile: App.profile
+      });
+      App.footerRegion.show(footerView);
+      footerView.on('checkout:clicked', function() {
+        return App.vent.trigger('checkout:show');
+      });
+      return footerView.on('delivery:clicked', function() {
+        return App.vent.trigger('order:created');
       });
     });
     App.on('start', function() {

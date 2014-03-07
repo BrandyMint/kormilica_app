@@ -1,6 +1,12 @@
-define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collections/cart_items', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/products', 'controllers/header', 'views/footer/footer', 'models/cart'], 
-(Marionette, Backbone, Profile, CartController, CartItems, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView, Cart) ->
-  
+define ['marionette',  'backbone', 'backbone.stickit'
+  'models/profile', 'controllers/cart', 'collections/cart_items', 'controllers/quantity_selector',
+  'controllers/check', 'collections/products', 'views/products/products', 'controllers/header',
+  'views/footer/footer', 'models/cart'], 
+(Marionette, Backbone, Stickit,
+Profile, CartController, CartItems, QuantitySelectorController,
+CheckController, ProductsCollection, ProductsView, HeaderController,
+FooterView, Cart) ->
+
   window.App = new Marionette.Application
 
   App.addRegions
