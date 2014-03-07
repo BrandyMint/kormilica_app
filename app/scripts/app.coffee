@@ -1,4 +1,4 @@
-define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collections/cart', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/list', 'controllers/header', 'views/footer/footer'], 
+define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collections/cart_items', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/list', 'controllers/header', 'views/footer/footer'],
 (Marionette, Backbone, ProfileModel, CartController, CartItems, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView) ->
   
   window.App = new Marionette.Application
