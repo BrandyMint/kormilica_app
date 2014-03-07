@@ -7,7 +7,7 @@
         %tr
           %td
             %p.price
-              %span.price-font #{@product.price}
+              %span.price-font!= @money @product.price
               р.
           %td
             %p.multiplier x
@@ -15,9 +15,8 @@
               \=
           %td
             %p.price
-              %span.price-font.result #{@product.price * @quantity}
-              р.
-      
+              .result!= @money @total_cost
+
       .quantity-selector
         %a#plus-sign{:href => '#'} +
         %span.quantity #{@quantity}

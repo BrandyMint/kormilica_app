@@ -11,15 +11,14 @@ define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collec
     modalRegion:  "#modal-region"
 
   App.addInitializer (options) ->
+    App.products = new ProductsCollection
+
     App.profile = new ProfileModel
     App.profile.fetch()
 
-    App.cartItems = new CartItems
-    App.cartItems.fetch()
-
     App.categories = new Backbone.Collection
 
-    App.products = new ProductsCollection
+    App.cartItems = new CartItems
 
     $.get options.data_file, (data) ->
       console.log 'Load', options.data_file
@@ -27,16 +26,20 @@ define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collec
       App.products.reset data.products
       App.categories.reset data.categories
 
+      # ДО заполнения корзины продукты уже должны быть
+      App.cartItems.fetch()
+
+
     new CartController
-      App: App
-      collection: App.cartItems
+      app: App
+      cartItems: App.cartItems
 
     new QuantitySelectorController App: App
 
     new CheckController
       App: App
       profile: App.profile
-      cart: App.cart
+      cartItems: App.cartItems
 
     productsListView = new ProductsView
       App: App
@@ -44,12 +47,12 @@ define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collec
     App.mainRegion.show productsListView
 
     new HeaderController 
-      App: App
-      collection: App.cart
+      app: App
+      cartItems: App.cartItems
 
     footerView = new FooterView
-      App: App
-      collection: App.cart
+      app: App
+      cartItems: App.cartItems
       profile:    App.profile
     App.footerRegion.show footerView
 

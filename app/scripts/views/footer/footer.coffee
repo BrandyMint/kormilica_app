@@ -5,19 +5,21 @@ define ['marionette', 'templates/footer/footer', 'templates/footer/_checkout', '
     template: template
 
     initialize: (options) ->
-      { @profile, @App } = options
+      { @profile, @app, @cartItems } = options
 
-      @App.vent.on 'checkout:show', =>
+      @collection = @cartItems
+
+      @app.vent.on 'checkout:show', =>
         @showDeliveryButton()
         @showCheckBottom()
 
-      @App.vent.on 'check:form:invalid', =>
+      @app.vent.on 'check:form:invalid', =>
         @deactivateDeliveryButton()
 
-      @App.vent.on 'check:form:valid', =>
+      @app.vent.on 'check:form:valid', =>
         @activateDeliveryButton()
 
-      @App.vent.on 'check:disappeared', =>
+      @app.vent.on 'check:disappeared', =>
         @showCheckoutButton()
 
     events:
@@ -44,7 +46,7 @@ define ['marionette', 'templates/footer/footer', 'templates/footer/_checkout', '
       button.removeClass('delivery-inactive').addClass('delivery')
 
     hideButton: ->
-      if @collection.getTotalCost() == 0
+      if @cartItems.getTotalCost() == 0
         @$('#workspace').html @workspaceDOM
         @$('#check-bottom').children().remove()
 
@@ -68,5 +70,5 @@ define ['marionette', 'templates/footer/footer', 'templates/footer/_checkout', '
 
     onRender: ->
       @workspaceDOM = @$('#workspace').children().clone()
-      if @collection.length > 0
+      if @cartItems.length > 0
         @showCheckoutButton()
