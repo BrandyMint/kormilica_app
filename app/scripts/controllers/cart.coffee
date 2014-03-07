@@ -5,10 +5,8 @@ define ['marionette'], (Marionette) ->
     initialize: (options) ->
       { @app, @cartItems } = options
 
-      @app.reqres.setHandler 'cart:item', (product) =>
-        @cartItems.isProductInCart product
-
-      @app.vent.on 'cart:add', (product, quantity) =>
+      @app.vent.on 'cart:add', (product, quantity=1) =>
+        debugger
         @addToCart product, quantity
 
       @app.vent.on 'quantity:change', (item, quantity) =>

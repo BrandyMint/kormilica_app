@@ -3,6 +3,3 @@ define ['app'], ->
 
   class Product extends Backbone.Model
     urlRoot: 'products'
-
-    defaults:
-      title: 'Пончик'
