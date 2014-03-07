@@ -1,6 +1,6 @@
 define ['marionette', 'views/check/check', 'jquery.form-serialize'], (Marionette, CheckView) ->
 
-  class Controller extends Marionette.Controller
+  class CheckController extends Marionette.Controller
 
     initialize: (options) ->
       { @profile, @cart, @app } = options

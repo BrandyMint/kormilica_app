@@ -1,6 +1,6 @@
 define ['marionette', 'views/modal_windows/quantity_selector'], (Marionette, QuantitySelectorView) ->
 
-  class Controller extends Marionette.Controller
+  class QuantitySelectorController extends Marionette.Controller
 
     initialize: (options) ->
       { @cart, @app } = options

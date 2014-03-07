@@ -1,6 +1,6 @@
 define ['marionette'], (Marionette) ->
 
-  class Controller extends Marionette.Controller
+  class CartController extends Marionette.Controller
 
     initialize: (options) ->
       { collection, @app } = options

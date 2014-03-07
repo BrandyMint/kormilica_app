@@ -1,5 +1,5 @@
-define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collections/cart_items', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/list', 'controllers/header', 'views/footer/footer'],
-(Marionette, Backbone, ProfileModel, CartController, CartItems, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView) ->
+define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collections/cart_items', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/products_list', 'controllers/header', 'views/footer/footer'],
+(Marionette, Backbone, Profile, CartController, CartItems, QuantitySelectorController, CheckController, Products, ProductsListView, HeaderController, FooterView) ->
   
   window.App = new Marionette.Application
 
@@ -11,15 +11,15 @@ define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collec
     modalRegion:  "#modal-region"
 
   App.addInitializer (options) ->
-    App.profile = new ProfileModel
+    App.profile = new Profile()
     App.profile.fetch()
 
     App.cartItems = new CartItems
     App.cartItems.fetch()
 
-    App.categories = new Backbone.Collection
+    App.categories = new Backbone.Collection()
 
-    App.products = new ProductsCollection
+    App.products = new Products()
 
     $.get options.data_file, (data) ->
       console.log 'Load', options.data_file
@@ -38,7 +38,7 @@ define ['marionette',  'backbone', 'models/profile', 'controllers/cart', 'collec
       profile: App.profile
       cart: App.cart
 
-    productsListView = new ProductsView
+    productsListView = new ProductsListView
       app: App
       collection: App.products
     App.mainRegion.show productsListView

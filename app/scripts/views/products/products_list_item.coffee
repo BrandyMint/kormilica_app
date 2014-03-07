@@ -1,8 +1,8 @@
-define ['marionette', 'templates/products/list_item', 'templates/products/list_item_quantity'], 
-(Marionette, listItemTemplate, listItemQuantityTemplate) ->
+define ['marionette', 'templates/products/products_list_item', 'templates/products/products_list_item_quantity'], 
+(Marionette, productsListItemTemplate, productsListItemQuantityTemplate) ->
 
   class Product extends Marionette.ItemView
-    template: listItemTemplate
+    template: productsListItemTemplate
     className: 'product-block'
 
     initialize: (options) ->
@@ -33,7 +33,7 @@ define ['marionette', 'templates/products/list_item', 'templates/products/list_i
 
     displaySelectedQuantity: (quantity) =>
       if quantity > 0
-        @$('.product-quantity').html listItemQuantityTemplate quantity: quantity
+        @$('.product-quantity').html productsListItemQuantityTemplate quantity: quantity
       else
         @$('.product-quantity').html @productQuantityDOM
 

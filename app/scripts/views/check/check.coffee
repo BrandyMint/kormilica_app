@@ -1,7 +1,7 @@
-define ['marionette', 'templates/check/check', 'jquery.form-serialize'], (Marionette, template) ->
+define ['marionette', 'templates/check/check', 'jquery.form-serialize'], (Marionette, checkTemplate) ->
   
-  class CheckTop extends Marionette.ItemView
-    template: template
+  class Check extends Marionette.ItemView
+    template: checkTemplate
 
     ui:
       form:       'form'

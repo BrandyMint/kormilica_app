@@ -1,7 +1,7 @@
-define ['app', 'marionette', 'templates/modal_windows/quantity_selector'], (App, Marionette, template) ->
+define ['app', 'marionette', 'templates/modal_windows/quantity_selector'], (App, Marionette, quantitySelectorTemplate) ->
 
   class QuantitySelector extends Marionette.ItemView
-    template: template
+    template: quantitySelectorTemplate
 
     initialize: ->
       @quantity = @model.get 'quantity'

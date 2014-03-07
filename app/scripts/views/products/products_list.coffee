@@ -1,7 +1,7 @@
-define ['app', 'marionette', 'views/products/list_item'], (App, Marionette, ItemView) ->
+define ['app', 'marionette', 'views/products/products_list_item'], (App, Marionette, ProductsListItemView) ->
 
   class Products extends Marionette.CollectionView
-    itemView: ItemView
+    itemView: ProductsListItemView
 
     initialize: (options) ->
       { @app } = options

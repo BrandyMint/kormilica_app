@@ -1,6 +1,6 @@
 define ['marionette', 'views/header/header'], (Marionette, HeaderView) ->
 
-  class Controller extends Marionette.Controller
+  class HeaderController extends Marionette.Controller
 
     initialize: (options) ->
       { @collection, @app } = options
