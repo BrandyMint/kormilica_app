@@ -1,10 +1,14 @@
-define ['templates/check/check', 'helpers/application_helpers'], (template, Helpers) ->
-  class Check extends Marionette.ItemView
+define ['templates/check/check', 'views/check/check_cart_item', 'helpers/application_helpers'], (template, CheckCartItemView, Helpers) ->
+
+  class Check extends Marionette.CompositeView
     template: template
     templateHelpers: -> Helpers
+    itemView: CheckCartItemView
+    itemViewContainer: '.cart-items'
 
     initialize: (options) ->
       { @cart, @profile } = options
+      @collection = @cart.items
 
     ui:
       form:       'form'
@@ -22,6 +26,7 @@ define ['templates/check/check', 'helpers/application_helpers'], (template, Help
       _.extend @cart.toJSON(),
         items:   @cart.items.toJSON()
         profile: @profile
+        total_cost: @cart.items.getTotalCost()
 
     checkForEmptyFields: (e) =>
       formData = @ui.form.serializeObject()
