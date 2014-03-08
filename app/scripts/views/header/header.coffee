@@ -1,6 +1,5 @@
 define ['templates/header/header', 'helpers/application_helpers'],
   (template, Helpers) ->
-    debugger
 
     class HeaderView extends Marionette.ItemView
       template: template
