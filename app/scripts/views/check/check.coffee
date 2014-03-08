@@ -1,4 +1,4 @@
-define ['templates/check/check', 'views/check/check_cart_item', 'helpers/application_helpers'], (template, CheckCartItemView, Helpers) ->
+define ['templates/check/check', 'views/check/check_cart_item', 'helpers/application_helpers', 'lib/form-serialize'], (template, CheckCartItemView, Helpers) ->
 
   class Check extends Marionette.CompositeView
     template: template
