@@ -1,11 +1,13 @@
 define ['models/profile', 'controllers/cart', 'collections/cart_items',
   'controllers/check', 'collections/products', 'views/products/products', 'controllers/header',
-  'views/footer/footer', 'models/cart'], 
+  'views/footer/footer', 'models/cart',
+  'controllers/modal'], 
 ( Profile, CartController, CartItems,
 CheckController, ProductsCollection, ProductsView, HeaderController,
-FooterView, Cart) ->
+FooterView, Cart,
+ModalController ) ->
 
-  window.App = new Marionette.Application
+  App = new Marionette.Application
 
   App.addRegions
     headerRegion: "#header-region"
@@ -14,43 +16,25 @@ FooterView, Cart) ->
     checkRegion:  "#check-region"
     modalRegion:  "#modal-region"
 
-  App.addInitializer (options) ->
-    App.vendor = new Backbone.Model
-    App.cart = new Cart
+  App.modal = new ModalController modalRegion: App.modalRegion
 
-    App.products = new ProductsCollection
+  App.addInitializer (options) ->
+    App.vendor = new Backbone.Model options.vendor
+
+    App.categories = new Backbone.Collection options.vendor.categories
+    App.products = new ProductsCollection options.vendor.products
 
     App.profile = new Profile
     App.profile.fetch()
 
-    App.categories = new Backbone.Collection
-
-    modal_controller = 
-      show: (view) ->
-        # А где он удаляется?
-        # TODO Найти этой установке класса более подходящее место, регион?
-        view.on 'onClose', @hide
-
-        $('#app-container').addClass 'modal-state'
-        App.modalRegion.show view
-
-      hide: ->
-        $('#app-container').removeClass 'modal-state'
-        App.modalRegion.close()
-
-    $.get options.data_file, (data) ->
-      console.log 'Load', options.data_file
-      App.vendor.set data
-      App.products.reset data.products
-      App.categories.reset data.categories
-
-      # ДО заполнения корзины продукты уже должны быть
-      App.cart.fetch()
+    App.cart = new Cart
+    # ДО заполнения корзины продукты уже должны быть
+    App.cart.fetch()
 
     new CartController
-      app:  App
+      vent: App.vent
       cart: App.cart
-      modal_controller: modal_controller
+      modal: App.modal
 
     new CheckController
       app:     App
@@ -83,7 +67,7 @@ FooterView, Cart) ->
   App.on 'start', ->
     console.log 'App starting....'
 
-  App.on 'initialize:after', ->
-    Backbone.history.start()
+  #App.on 'initialize:after', ->
+    #Backbone.history.start()
 
   App

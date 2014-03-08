@@ -231,7 +231,7 @@ module.exports = (grunt) ->
           out: './kormilica_app_core.js'
           name: 'app'
           mainConfig: '.tmp/scripts/app.js'
-    
+
     #uglify2: {} // https://github.com/mishoo/UglifyJS2
     useminPrepare:
       html: "<%= yeoman.app %>/index.html"
