@@ -14,5 +14,3 @@ define ->
     hide: ->
       $('#app-container').removeClass 'modal-state'
       @modalRegion.close()
-
-

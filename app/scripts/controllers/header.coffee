@@ -14,7 +14,7 @@ define ['views/header/header'], (HeaderView) ->
       @headerView.on 'check:clicked', ->
         @app.vent.trigger 'checkout:show'
 
-      @app.vent.on 'checkout:show', =>
+      @app.vent.on 'check:appeared', =>
         @hideHeader()
 
       @app.vent.on 'check:disappeared', =>
