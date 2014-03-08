@@ -194,9 +194,7 @@ module.exports = (grunt) ->
             "backbone.wreqr": "../../app/bower_components/backbone.wreqr/lib/amd/backbone.wreqr"
             "backbone.babysitter": "../../app/bower_components/backbone.babysitter/lib/amd/backbone.babysitter"
             "backbone.localStorage": "../../app/bower_components/backbone.localStorage/backbone.localStorage"
-            "jquery.form-serialize": "../../app/scripts/lib/form-serialize"
-            "jquery.bounce": "../../app/scripts/lib/bounce"
-
+            "form-serialize": "../../app/scripts/lib/form-serialize"
           
           # TODO: Figure out how to make sourcemaps work with grunt-usemin
           # https://github.com/yeoman/grunt-usemin/issues/30
@@ -223,12 +221,11 @@ module.exports = (grunt) ->
             "backbone.wreqr": "empty:"
             "backbone.babysitter": "empty:"
             "backbone.localStorage": "empty:"
-            "jquery.form-serialize": "empty:"
-            "jquery.bounce": "empty:"
+            "form-serialize": "empty:"
           useStrict: true
           wrap: true
           findNestedDependencies: true
-          out: './kormilica_app_core.js'
+          out: './lib/kormilica_app_core.js'
           name: 'app'
           mainConfig: '.tmp/scripts/app.js'
 
@@ -293,15 +290,16 @@ module.exports = (grunt) ->
             ".htaccess"
             "images/{,*/}*.{webp,gif}"
             "styles/fonts/{,*/}*.*"
+            "{,*/}*.js"
             "bower_components/sass-bootstrap/fonts/*.*"
           ]
         ]
 
       bower:
-        files: ["<%= yeoman.bower %>/kormilica_app.js": "<%= yeoman.dist %>/scripts/main.js"]
+        files: ["<%= yeoman.bower %>/lib/kormilica_app.js": "<%= yeoman.dist %>/scripts/main.js"]
 
       bower_min:
-        files: ["<%= yeoman.bower %>/kormilica_app.min.js": "<%= yeoman.dist %>/scripts/main.js"]
+        files: ["<%= yeoman.bower %>/lib/kormilica_app.min.js": "<%= yeoman.dist %>/scripts/main.js"]
 
     bower:
       all:

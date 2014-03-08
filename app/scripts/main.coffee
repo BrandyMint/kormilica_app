@@ -30,5 +30,5 @@ require.config
     #'backbone.babysitter':   '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter'
     #'backbone.localStorage': '../bower_components/backbone.localStorage/backbone.localStorage'
     #bootstrap:               '../bower_components/sass-bootstrap/dist/js/bootstrap'
-    #'jquery.form-serialize': 'lib/form-serialize'
+    'form-serialize': 'lib/form-serialize'
     #'jquery.bounce':         'lib/bounce'

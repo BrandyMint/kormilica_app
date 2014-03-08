@@ -1,4 +1,5 @@
-define ['models/profile', 'controllers/cart', 'collections/cart_items',
+define ['form-serialize',
+  'models/profile', 'controllers/cart', 'collections/cart_items',
   'controllers/check', 'collections/products', 'views/products/products', 'controllers/header',
   'controllers/footer', 'controllers/orders', 'models/cart',
   'controllers/modal'], 
