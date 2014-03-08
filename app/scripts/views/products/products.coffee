@@ -8,3 +8,4 @@ define ['views/products/product'], (ProductView) ->
 
     itemViewOptions: =>
       app: @app
+      cartItems: @app.cart.items

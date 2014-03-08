@@ -20,10 +20,10 @@ define ['views/check/check'], (CheckView) ->
         cart:    @cart
       @app.checkRegion.show @checkView
 
-      @checkView.on 'check:form:empty:field', ->
+      @checkView.on 'check:form:empty:field', =>
         @app.vent.trigger 'check:form:invalid'
 
-      @checkView.on 'check:form:filled', ->
+      @checkView.on 'check:form:filled', =>
         @app.vent.trigger 'check:form:valid'
 
       @checkView.on 'cancel:button:clicked', =>

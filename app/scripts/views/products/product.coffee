@@ -7,11 +7,14 @@ define [ 'templates/products/product', 'templates/products/button', 'templates/p
     template: productTemplate
     className: 'product-block'
 
+    ui:
+      'button': '.product-quantity'
+
     events:
       'click': 'clicked'
 
     initialize: (options) ->
-      { @app } = options
+      { @app, @cartItems } = options
 
       #@app.reqres.setHandler 'cart:item', (product) =>
         #@cartItems.isProductInCart product
@@ -34,8 +37,8 @@ define [ 'templates/products/product', 'templates/products/button', 'templates/p
         #@displaySelectedQuantity 0
         #
         # @listenTo window.App.cart.items, 'change', @cartChanged
-      @listenTo window.App.cart.items, 'add',    @cartChanged
-      @listenTo window.App.cart.items, 'remove', @cartChanged
+      @listenTo @cartItems, 'add',    @cartChanged
+      @listenTo @cartItems, 'remove', @cartChanged
 
     clicked: (e) ->
       e.preventDefault()
@@ -46,10 +49,9 @@ define [ 'templates/products/product', 'templates/products/button', 'templates/p
 
     showButton: =>
       if item = window.App.cart.items.itemOfProduct @model
-        @button_el.html buttonAddedTemplate quantity: item.get('quantity')
+        @ui.button.html buttonAddedTemplate quantity: item.get('quantity')
       else
-        @button_el.html buttonTemplate()
+        @ui.button.html buttonTemplate()
 
     onRender: ->
-      @button_el = @$('.product-quantity')
       @showButton()

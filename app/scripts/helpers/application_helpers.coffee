@@ -21,3 +21,6 @@ define ->
   money: (value) ->
     # TODO Мультивалютность
     "<span class='price-font'>#{value.cents/100}</span> р."
+
+  moneyWithoutCurrency: (value) ->
+    "#{value.cents / 100}"

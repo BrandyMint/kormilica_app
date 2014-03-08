@@ -48,17 +48,17 @@ FooterView, Cart) ->
       App.cart.fetch()
 
     new CartController
-      app: App
+      app:  App
       cart: App.cart
       modal_controller: modal_controller
 
     new CheckController
-      app: App
+      app:     App
       profile: App.profile
-      cart: App.cart
+      cart:    App.cart
 
     productsListView = new ProductsView
-      app: App
+      app:        App
       collection: App.products
 
     App.mainRegion.show productsListView
@@ -68,9 +68,9 @@ FooterView, Cart) ->
       cart: App.cart
 
     footerView = new FooterView
-      app:      App
-      cart:     App.cart
-      profile:  App.profile
+      app:     App
+      cart:    App.cart
+      profile: App.profile
 
     App.footerRegion.show footerView
 

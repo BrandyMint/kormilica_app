@@ -32,7 +32,7 @@ define ['templates/header/header', 'helpers/application_helpers'],
         @model = @cart
 
         # TODO Следить за коллекцией
-        @app.cart.items.on 'add', @bounce
+        @cart.on 'add', @bounce
 
       update: ->
         if @model.isEmpty()
