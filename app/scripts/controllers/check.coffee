@@ -1,4 +1,5 @@
-define ['marionette', 'views/check/check', 'jquery.form-serialize'], (Marionette, CheckView) ->
+define ['marionette', 'views/check/check', 'jquery.form-serialize'],
+(Marionette, CheckView) ->
 
   class CheckController extends Marionette.Controller
 
@@ -15,9 +16,9 @@ define ['marionette', 'views/check/check', 'jquery.form-serialize'], (Marionette
         @hideCheck()
 
     showCheck: ->
-      @checkView = new CheckView 
+      @checkView = new CheckView
         profile: @profile
-        collection: @cart.items
+        cart:    @cart
       @app.checkRegion.show @checkView
 
       @checkView.on 'check:form:empty:field', ->

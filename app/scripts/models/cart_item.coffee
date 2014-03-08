@@ -10,6 +10,10 @@ define ['backbone'], (Backbone)->
       # Восстанавливаем модели при загрузке данных из localStorage
       @product = window.App.products.get @get('product_id')
 
+      @set 
+        product_title: @product.get('title')
+        product_price: @product.get('price')
+
       @on 'change:quantity', @updateTotalCost
 
       @updateTotalCost()

@@ -1,8 +1,13 @@
-define ['marionette', 'templates/check/check', 'jquery.form-serialize'], (Marionette, template) ->
-  
+define ['marionette', 'templates/check/check', 'jquery.form-serialize', 'backbone.stickit'
+'helpers/application_helpers'],
+(Marionette, template, formserialize, backbonestickit, Helpers) ->
+
   class Check extends Marionette.ItemView
     template: template
     templateHelpers: -> Helpers
+
+    initialize: (options) ->
+      { @cart, @profile } = options
 
     ui:
       form:       'form'
@@ -17,9 +22,10 @@ define ['marionette', 'templates/check/check', 'jquery.form-serialize'], (Marion
         preventDefault: true
 
     serializeData: ->
-      items:   @collection.toJSON()
-      profile: @options.profile
-      total_cost: @collection.getTotalCost()
+      debugger
+      _.extend @cart.toJSON(),
+        items:   @cart.items.toJSON()
+        profile: @profile
 
     checkForEmptyFields: (e) =>
       formData = @ui.form.serializeObject()

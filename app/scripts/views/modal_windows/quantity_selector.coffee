@@ -40,6 +40,9 @@ define ['marionette', 'templates/modal_windows/quantity_selector', 'helpers/appl
         e.preventDefault()
         @close()
 
+      onClose: ->
+        @model.destroy() if @model.get('quantity')==0
+
       _updateView: ->
         $(@ui.quantity).html @model.get('quantity')
         $(@ui.result).html Helpers.money @model.get('total_cost')

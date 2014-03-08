@@ -12,17 +12,17 @@
 
         - pos = 1
         - for item in @items
-          %p= "#{pos++}. #{item.product.title}"
+          %p= "#{pos++}. #{item.product_title}"
           %table
             %tbody
               %tr
                 %td.product-amount
-                  != @money item.product.price
+                  != @money item.product_price
                   x
                   = item.quantity
                 %td.separator
                   %div
-                %td.product-price= "#{item.product.price * item.quantity} р."
+                %td.product-price!= @money item.total_cost
 
       .unscrollable-check
 
@@ -33,7 +33,7 @@
         %form{:name => "message", method=> "post"}
           %section
             %label{:for => "phone"} Телефон:
-            %input#phone{:type => "tel", :value => "#{ if @profile.get('phoneNumber') then @profile.get('phoneNumber') }", :name => "phone", :placeholder => "+7"}
+            %input#phone{:type => "tel", :value => "#{ if @profile.get('phoneNumber') then @profile.get('phoneNumber') }", :name => "phone", :placeholder => "+7(999)999-99-99"}
             %label{:for => "name"} Ваше имя:
             %input#name{:type => "text", :value => "#{ if @profile.get('name') then @profile.get('name') }", :name => "name"}
 

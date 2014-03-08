@@ -26,7 +26,8 @@ define ['collections/cart_items'], (CartItems)->
 
 
     isEmpty: ->
-      @get('total_count') == 0
+      #@get('total_count') == 0
+      @items.length == 0
 
     changeQuantity: (product, quantity) ->
       item = @items.itemOfProduct product

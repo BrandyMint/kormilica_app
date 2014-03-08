@@ -19,15 +19,15 @@ FooterView, Cart) ->
     modalRegion:  "#modal-region"
 
   App.addInitializer (options) ->
-    App.cart = new Cart()
+    App.vendor = new Backbone.Model
+    App.cart = new Cart
 
     App.products = new ProductsCollection
 
-    App.profile = new Profile()
+    App.profile = new Profile
     App.profile.fetch()
 
     App.categories = new Backbone.Collection
-
 
     modal_controller = 
       show: (view) ->
@@ -44,7 +44,7 @@ FooterView, Cart) ->
 
     $.get options.data_file, (data) ->
       console.log 'Load', options.data_file
-      App.profile.set data
+      App.vendor.set data
       App.products.reset data.products
       App.categories.reset data.categories
 
