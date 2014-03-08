@@ -58,5 +58,7 @@ define ['marionette', 'templates/header/header', 'jquery.bounce', 'helpers/appli
       onRender: ->
         @checkDOM  = @$('#check').children().clone()
 
+        @update()
+
         #unless @collection.getTotalCost() > 0
           #@hideCheck()
