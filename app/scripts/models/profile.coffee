@@ -5,6 +5,8 @@ define ->
 
     initialize: ->
       @localStorage = new Backbone.LocalStorage 'profiles'
+      @.on 'change:name change:phone', ->
+        @save()
 
     # id нужен, чтобы можно было найти модель из localStorage
     defaults:

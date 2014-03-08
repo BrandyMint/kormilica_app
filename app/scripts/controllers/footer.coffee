@@ -16,7 +16,7 @@ define ['views/footer/footer'], (FooterView) ->
         @vent.trigger 'checkout:clicked'
 
       @footerView.on 'delivery:clicked', =>
-        @vent.trigger 'delivery:clicked'
+        @app.execute 'order:create'
 
     showFooter: ->
       @app.footerRegion.show @footerView
