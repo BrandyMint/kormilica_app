@@ -1,5 +1,5 @@
-define ['marionette', 'templates/modal_windows/quantity_selector', 'helpers/application_helpers'],
-  (Marionette, template, Helpers) ->
+define ['templates/modal_windows/quantity_selector', 'helpers/application_helpers'],
+  (template, Helpers) ->
 
     class QuantitySelector extends Marionette.ItemView
       template: template

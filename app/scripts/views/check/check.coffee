@@ -1,7 +1,4 @@
-define ['marionette', 'templates/check/check', 'jquery.form-serialize', 'backbone.stickit'
-'helpers/application_helpers'],
-(Marionette, template, formserialize, backbonestickit, Helpers) ->
-
+define ['templates/check/check', 'helpers/application_helpers'], (template, Helpers) ->
   class Check extends Marionette.ItemView
     template: template
     templateHelpers: -> Helpers

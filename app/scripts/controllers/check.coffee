@@ -1,5 +1,4 @@
-define ['marionette', 'views/check/check', 'jquery.form-serialize'],
-(Marionette, CheckView) ->
+define ['views/check/check'], (CheckView) ->
 
   class CheckController extends Marionette.Controller
 

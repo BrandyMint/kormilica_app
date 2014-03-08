@@ -1,4 +1,4 @@
-define ['marionette', 'views/header/header'], (Marionette, HeaderView) ->
+define ['views/header/header'], (HeaderView) ->
 
   class HeaderController extends Marionette.Controller
 

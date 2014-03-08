@@ -1,6 +1,6 @@
 {
-  "name": "webapp-template",
-  "version": "0.0.0",
+  "name": "kormilica",
+  "version": "0.1.0",
   "dependencies": {
   },
   "devDependencies": {

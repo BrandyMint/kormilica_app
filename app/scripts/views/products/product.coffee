@@ -1,9 +1,6 @@
-define ['marionette',
-  'templates/products/product', 'templates/products/button', 'templates/products/button_added',
+define [ 'templates/products/product', 'templates/products/button', 'templates/products/button_added',
   'helpers/application_helpers'], 
-(Marionette,
-productTemplate, buttonTemplate, buttonAddedTemplate,
-Helpers) ->
+( productTemplate, buttonTemplate, buttonAddedTemplate, Helpers) ->
 
   class ProductView extends Marionette.ItemView
     templateHelpers: -> Helpers

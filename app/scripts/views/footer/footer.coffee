@@ -1,5 +1,5 @@
-define ['marionette', 'templates/footer/footer', 'templates/footer/_checkout', 'templates/footer/_delivery', 'templates/footer/_check_bottom'], 
-(Marionette, template, checkoutButtonTemplate, deliveryButtonTemplate, checkBottomTemplate) ->
+define ['templates/footer/footer', 'templates/footer/_checkout', 'templates/footer/_delivery', 'templates/footer/_check_bottom'], 
+(template, checkoutButtonTemplate, deliveryButtonTemplate, checkBottomTemplate) ->
 
   class Footer extends Marionette.ItemView
     template: template

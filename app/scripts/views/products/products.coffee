@@ -1,4 +1,4 @@
-define ['app', 'marionette', 'views/products/product'], (App, Marionette, ProductView) ->
+define ['views/products/product'], (ProductView) ->
 
   class ProductsView extends Marionette.CollectionView
     itemView: ProductView

@@ -1,5 +1,6 @@
-define ['marionette', 'templates/header/header', 'jquery.bounce', 'helpers/application_helpers'],
-  (Marionette, template, jQueryBounce, Helpers) ->
+define ['templates/header/header', 'helpers/application_helpers'],
+  (template, Helpers) ->
+    debugger
 
     class HeaderView extends Marionette.ItemView
       template: template
@@ -31,8 +32,7 @@ define ['marionette', 'templates/header/header', 'jquery.bounce', 'helpers/appli
         @model = @cart
 
         # TODO Следить за коллекцией
-        @app.cart.items.on 'add', =>
-          @bounceCheck 2, '5px', 100
+        @app.cart.items.on 'add', @bounce
 
       update: ->
         if @model.isEmpty()
@@ -48,9 +48,8 @@ define ['marionette', 'templates/header/header', 'jquery.bounce', 'helpers/appli
       hideCheck: ->
         @$('#check').children().remove()
 
-      bounceCheck: (times, distance, speed) ->
-        console.log 'bounce'
-        @$('#check img').bounce times, distance, speed
+      bounce: =>
+        @$('#check img').effect 'bounce', {times:2}, 150
 
       changeCost: ->
         @$('#amount').html Helpers.money @model.get('total_cost')

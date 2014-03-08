@@ -1,4 +1,4 @@
-define ['marionette', 'views/modal_windows/quantity_selector'], (Marionette, QuantitySelectorView) ->
+define ['views/modal_windows/quantity_selector'], (QuantitySelectorView) ->
 
   class CartController extends Marionette.Controller
 

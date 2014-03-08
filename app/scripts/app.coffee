@@ -1,11 +1,7 @@
-define ['marionette',  'jquery',
-  'backbone', 'backbone.stickit'
-  'models/profile', 'controllers/cart', 'collections/cart_items',
+define ['models/profile', 'controllers/cart', 'collections/cart_items',
   'controllers/check', 'collections/products', 'views/products/products', 'controllers/header',
   'views/footer/footer', 'models/cart'], 
-(Marionette, JQuery,
-Backbone, Stickit,
-Profile, CartController, CartItems,
+( Profile, CartController, CartItems,
 CheckController, ProductsCollection, ProductsView, HeaderController,
 FooterView, Cart) ->
 

@@ -1,4 +1,4 @@
-define ['backbone.localStorage'], ->
+define ->
   'use strict'
 
   class Profile extends Backbone.Model

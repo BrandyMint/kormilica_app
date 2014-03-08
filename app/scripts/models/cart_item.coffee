@@ -1,4 +1,4 @@
-define ['backbone'], (Backbone)->
+define ->
   'use strict'
 
   class CartItem extends Backbone.Model
