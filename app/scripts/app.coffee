@@ -1,9 +1,11 @@
-define ['marionette',  'backbone', 'backbone.stickit'
-  'models/profile', 'controllers/cart', 'collections/cart_items', 'controllers/quantity_selector',
+define ['marionette',  'jquery',
+  'backbone', 'backbone.stickit'
+  'models/profile', 'controllers/cart', 'collections/cart_items',
   'controllers/check', 'collections/products', 'views/products/products', 'controllers/header',
   'views/footer/footer', 'models/cart'], 
-(Marionette, Backbone, Stickit,
-Profile, CartController, CartItems, QuantitySelectorController,
+(Marionette, JQuery,
+Backbone, Stickit,
+Profile, CartController, CartItems,
 CheckController, ProductsCollection, ProductsView, HeaderController,
 FooterView, Cart) ->
 
@@ -27,6 +29,19 @@ FooterView, Cart) ->
     App.categories = new Backbone.Collection
 
 
+    modal_controller = 
+      show: (view) ->
+        # А где он удаляется?
+        # TODO Найти этой установке класса более подходящее место, регион?
+        view.on 'onClose', @hide
+
+        $('#app-container').addClass 'modal-state'
+        App.modalRegion.show view
+
+      hide: ->
+        $('#app-container').removeClass 'modal-state'
+        App.modalRegion.close()
+
     $.get options.data_file, (data) ->
       console.log 'Load', options.data_file
       App.profile.set data
@@ -39,8 +54,7 @@ FooterView, Cart) ->
     new CartController
       app: App
       cart: App.cart
-
-    new QuantitySelectorController app: App
+      modal_controller: modal_controller
 
     new CheckController
       app: App
@@ -50,6 +64,7 @@ FooterView, Cart) ->
     productsListView = new ProductsView
       app: App
       collection: App.products
+
     App.mainRegion.show productsListView
 
     new HeaderController 

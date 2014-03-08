@@ -5,11 +5,6 @@ define ['marionette', 'templates/modal_windows/quantity_selector', 'helpers/appl
       template: template
       templateHelpers: -> Helpers
 
-      initialize: ->
-        @quantity = @model.get 'quantity'
-        @price    = @model.get('product').price
-        @total_cost =  @price * @quantity
-
       ui:
         plusButton:    '#plus-sign'
         minusButton:   '#minus-sign'
@@ -19,28 +14,32 @@ define ['marionette', 'templates/modal_windows/quantity_selector', 'helpers/appl
         outside:       '.dark-background'
 
       triggers:
-        'click @ui.outside': 'quantity:change:cancel'
+        'click @ui.outside': 'close'
 
       events:
         'click @ui.minusButton':   'decreaseQuantity'
         'click @ui.plusButton':    'increaseQuantity'
         'click @ui.confirmButton': 'confirmChanges'
 
+      serializeData: ->
+        _.extend @model.toJSON(),
+          product: @model.product
+
       decreaseQuantity: (e) ->
         e.preventDefault()
-        unless @quantity < 1
-          @quantity--
+        unless @model.get('quantity') < 1
+          @model.set 'quantity', @model.get('quantity')-1
           @_updateView()
 
       increaseQuantity: (e) ->
         e.preventDefault()
-        @quantity++
+        @model.set 'quantity', @model.get('quantity')+1
         @_updateView()
 
       confirmChanges: (e) ->
         e.preventDefault()
-        @trigger 'quantity:change', @quantity
+        @close()
 
       _updateView: ->
-        $(@ui.quantity).html @quantity
-        $(@ui.result).html @quantity * @price
+        $(@ui.quantity).html @model.get('quantity')
+        $(@ui.result).html Helpers.money @model.get('total_cost')
