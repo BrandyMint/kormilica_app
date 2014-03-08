@@ -1,10 +1,10 @@
 define ['models/profile', 'controllers/cart', 'collections/cart_items',
   'controllers/check', 'collections/products', 'views/products/products', 'controllers/header',
-  'views/footer/footer', 'models/cart',
+  'controllers/footer', 'controllers/orders', 'models/cart',
   'controllers/modal'], 
 ( Profile, CartController, CartItems,
 CheckController, ProductsCollection, ProductsView, HeaderController,
-FooterView, Cart,
+FooterController, OrdersController, Cart,
 ModalController ) ->
 
   App = new Marionette.Application
@@ -32,14 +32,20 @@ ModalController ) ->
     App.cart.fetch()
 
     new CartController
-      vent: App.vent
-      cart: App.cart
+      vent:  App.vent
+      cart:  App.cart
       modal: App.modal
 
     new CheckController
       app:     App
       profile: App.profile
       cart:    App.cart
+
+    new OrdersController
+      cart:    App.cart
+      profile: App.profile
+      vent:    App.vent
+      app:     App
 
     productsListView = new ProductsView
       app:        App
@@ -51,18 +57,11 @@ ModalController ) ->
       app:  App
       cart: App.cart
 
-    footerView = new FooterView
+    new FooterController
       app:     App
       cart:    App.cart
       profile: App.profile
-
-    App.footerRegion.show footerView
-
-    footerView.on 'checkout:clicked', ->
-      App.vent.trigger 'checkout:show'
-
-    footerView.on 'delivery:clicked', ->
-      App.vent.trigger 'order:created'
+      vent:    App.vent
 
   App.on 'start', ->
     console.log 'App starting....'

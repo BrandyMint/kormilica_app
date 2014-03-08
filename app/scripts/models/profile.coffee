@@ -10,8 +10,8 @@ define ->
     defaults:
       id:          1
       name:        ''
-      phoneNumber: ''
+      phone:       ''
 
     # TODO Валидация
     isAllFieldsFilled: ->
-      true if @get('name') and @get('phoneNumber')
+      true if @get('name') and @get('phone')

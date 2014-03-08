@@ -4,21 +4,21 @@ define ['views/check/check'], (CheckView) ->
 
     initialize: (options) ->
       { @profile, @cart, @app } = options
-
-      @app.vent.on 'checkout:show', =>
-        @showCheck()
-
-      @app.vent.on 'order:created', =>
-        $form_data = @checkView.$el.find('form').serializeObject()
-        @profile.save name: $form_data.name, phoneNumber: $form_data.phone
-        @app.vent.trigger 'check:disappeared'
-        @hideCheck()
-
-    showCheck: ->
+      
       @checkView = new CheckView
         profile: @profile
         cart:    @cart
-      @app.checkRegion.show @checkView
+
+      @app.reqres.setHandler "form:data", =>
+        @checkView.$el.find('form').serializeObject()
+
+      @app.vent.on 'checkout:clicked', =>
+        @showCheck()
+        @app.vent.trigger 'check:appeared'
+
+      @app.vent.on 'order:created', =>
+        @hideCheck()
+        @app.vent.trigger 'check:disappeared'
 
       @checkView.on 'check:form:empty:field', =>
         @app.vent.trigger 'check:form:invalid'
@@ -29,6 +29,9 @@ define ['views/check/check'], (CheckView) ->
       @checkView.on 'cancel:button:clicked', =>
         @app.vent.trigger 'check:disappeared'
         @hideCheck()
+
+    showCheck: ->
+      @app.checkRegion.show @checkView
 
     hideCheck: ->
       @app.checkRegion.close()

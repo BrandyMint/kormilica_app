@@ -9,7 +9,7 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'templates/foot
 
       @collection = @cart.items
 
-      @app.vent.on 'checkout:show', =>
+      @app.vent.on 'check:appeared', =>
         @showDeliveryButton()
         @showCheckBottom()
 
@@ -21,6 +21,9 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'templates/foot
 
       @app.vent.on 'check:disappeared', =>
         @showCheckoutButton()
+
+      @app.vent.on 'order:created', =>
+        @hideButton()
 
     events:
       'click a.checkout':           'showCheck'
@@ -60,7 +63,6 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'templates/foot
 
     addOrder: (e) ->
       e.preventDefault()
-      alert 'Заказ создан!'
       @trigger 'delivery:clicked'
       @hideButton()
 
