@@ -37,175 +37,6 @@
 }).call(this);
 
 (function() {
-  var __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
-
-  define('controllers/cart',['marionette'], function(Marionette) {
-    var CartController, _ref;
-    return CartController = (function(_super) {
-      __extends(CartController, _super);
-
-      function CartController() {
-        _ref = CartController.__super__.constructor.apply(this, arguments);
-        return _ref;
-      }
-
-      CartController.prototype.initialize = function(options) {
-        var _this = this;
-        this.app = options.app, this.cartItems = options.cartItems;
-        this.app.reqres.setHandler('cart:item', function(product) {
-          return _this.cartItems.isProductInCart(product);
-        });
-        this.app.vent.on('cart:add', function(product, quantity) {
-          return _this.addToCart(product, quantity);
-        });
-        this.app.vent.on('quantity:change', function(item, quantity) {
-          if (quantity > 0) {
-            return _this.changeQuantity(item, quantity);
-          } else {
-            return _this.deleteItem(item);
-          }
-        });
-        this.app.vent.on('cart:clean', function() {
-          return _this.cleanCart();
-        });
-        return this.app.vent.on('order:created', function() {
-          return _this.cleanCart();
-        });
-      };
-
-      CartController.prototype.addToCart = function(product, quantity) {
-        var item, newItem;
-        item = this.cartItems.isProductInCart(product);
-        if (!item) {
-          newItem = this.cartItems.create({
-            product: product,
-            quantity: quantity
-          });
-          return this.app.vent.trigger('cartitem:added', newItem);
-        } else {
-          return this.app.vent.trigger('cartitem:exists', item);
-        }
-      };
-
-      CartController.prototype.deleteItem = function(item) {
-        this.cartItem.get(item.id).destroy();
-        return this.app.vent.trigger('cart:item:deleted');
-      };
-
-      CartController.prototype.changeQuantity = function(item, quantity) {
-        item.set('quantity', quantity);
-        return item.save();
-      };
-
-      CartController.prototype.cleanCart = function() {
-        var model, _results;
-        _results = [];
-        while (model = this.cartItem.first()) {
-          _results.push(model.destroy());
-        }
-        return _results;
-      };
-
-      return CartController;
-
-    })(Marionette.Controller);
-  });
-
-}).call(this);
-
-(function() {
-  var __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
-
-  define('models/cart_item',['backbone'], function(Backbone) {
-    'use strict';
-    var CartItem, _ref;
-    return CartItem = (function(_super) {
-      __extends(CartItem, _super);
-
-      function CartItem() {
-        _ref = CartItem.__super__.constructor.apply(this, arguments);
-        return _ref;
-      }
-
-      CartItem.prototype.defaults = {
-        quantity: 0
-      };
-
-      CartItem.prototype.initialize = function() {
-        return this.set('product', window.App.products.get(this.get('product').id));
-      };
-
-      CartItem.prototype.price = function() {
-        return {
-          cents: this.get('product').get('price').cents * this.get('quantity'),
-          curency: this.get('product').get('price').currency
-        };
-      };
-
-      return CartItem;
-
-    })(Backbone.Model);
-  });
-
-}).call(this);
-
-(function() {
-  var __hasProp = {}.hasOwnProperty,
-    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
-
-  define('collections/cart_items',['models/cart_item'], function(CartItem) {
-    var CartItems, _ref;
-    return CartItems = (function(_super) {
-      __extends(CartItems, _super);
-
-      function CartItems() {
-        _ref = CartItems.__super__.constructor.apply(this, arguments);
-        return _ref;
-      }
-
-      CartItems.prototype.url = 'cart';
-
-      CartItems.prototype.model = CartItem;
-
-      CartItems.prototype.initialize = function() {
-        return this.localStorage = new Backbone.LocalStorage('cart');
-      };
-
-      CartItems.prototype.getTotalCost = function() {
-        var addup;
-        addup = function(memo, item) {
-          return item.price().cents + memo;
-        };
-        return {
-          cents: this.reduce(addup, 0),
-          currency: 'RUB'
-        };
-      };
-
-      CartItems.prototype.getTotalCount = function() {
-        var addup;
-        addup = function(memo, item) {
-          return item.get('quantity') + memo;
-        };
-        return this.reduce(addup, 0);
-      };
-
-      CartItems.prototype.isProductInCart = function(product) {
-        return this.find(function(item) {
-          return item.get('product').id === product.get('id');
-        });
-      };
-
-      return CartItems;
-
-    })(Backbone.Collection);
-  });
-
-}).call(this);
-
-(function() {
   define('templates/modal_windows/quantity_selector',['jquery', 'underscore'], function($, _) {
     return function(context) {
       var render;
@@ -227,7 +58,7 @@
           }
         };
         $o = [];
-        $o.push("<div class='modal-wrapper'>\n  <div class='dark-background'></div>\n  <div class='modal-window'>\n    <div class='column full'>\n      <div class='quantity-title'>Введите количество</div>\n      <table class='quantity-table'>\n        <tr>\n          <td>\n            <p class='price'>\n              <span class='price-font'>" + ($c(this.money(this.product.price))) + "</span>\n              р.\n            </p>\n          </td>\n          <td>\n            <p class='multiplier'>x\n              <span class='multiplier-font quantity'>" + ($e($c(this.quantity))) + "</span>\n              \=\n            </p>\n          </td>\n          <td>\n            <p class='price'>\n              <div class='result'>" + ($c(this.money(this.total_cost))) + "</div>\n            </p>\n          </td>\n        </tr>\n      </table>\n      <div class='quantity-selector'>\n        <a id='plus-sign' href='#'>+</a>\n        <span class='quantity'>" + this.quantity + "</span>\n        шт\n        <a id='minus-sign' href='#'>-</a>\n      </div>\n      <a class='button' href='#'>\n        <span>ГОТОВО</span>\n      </a>\n    </div>\n  </div>\n</div>");
+        $o.push("<div class='modal-wrapper'>\n  <div class='dark-background'></div>\n  <div class='modal-window'>\n    <div class='column full'>\n      <div class='quantity-title'>Введите количество</div>\n      <table class='quantity-table'>\n        <tr>\n          <td>\n            <p class='price'>\n              <span class='price-font'>" + ($c(this.money(this.product.get('price')))) + "</span>\n              р.\n            </p>\n          </td>\n          <td>\n            <p class='multiplier'>x\n              <span class='multiplier-font quantity'>" + ($e($c(this.quantity))) + "</span>\n              \=\n            </p>\n          </td>\n          <td>\n            <p class='price result'>" + ($c(this.money(this.total_cost))) + "</p>\n          </td>\n        </tr>\n      </table>\n      <div class='quantity-selector'>\n        <a id='plus-sign' href='#'>+</a>\n        <span class='quantity'>" + this.quantity + "</span>\n        шт\n        <a id='minus-sign' href='#'>-</a>\n      </div>\n      <a class='button' href='#'>\n        <span>ГОТОВО</span>\n      </a>\n    </div>\n  </div>\n</div>");
         return $o.join("\n").replace(/\s([\w-]+)='true'/mg, ' $1').replace(/\s([\w-]+)='false'/mg, '').replace(/\s(?:id|class)=(['"])(\1)/mg, "");
       };
       return render.call(context);
@@ -288,12 +119,6 @@
         return Helpers;
       };
 
-      QuantitySelector.prototype.initialize = function() {
-        this.quantity = this.model.get('quantity');
-        this.price = this.model.get('product').price;
-        return this.total_cost = this.price * this.quantity;
-      };
-
       QuantitySelector.prototype.ui = {
         plusButton: '#plus-sign',
         minusButton: '#minus-sign',
@@ -304,7 +129,7 @@
       };
 
       QuantitySelector.prototype.triggers = {
-        'click @ui.outside': 'quantity:change:cancel'
+        'click @ui.outside': 'close'
       };
 
       QuantitySelector.prototype.events = {
@@ -313,28 +138,40 @@
         'click @ui.confirmButton': 'confirmChanges'
       };
 
+      QuantitySelector.prototype.serializeData = function() {
+        return _.extend(this.model.toJSON(), {
+          product: this.model.product
+        });
+      };
+
       QuantitySelector.prototype.decreaseQuantity = function(e) {
         e.preventDefault();
-        if (!(this.quantity < 1)) {
-          this.quantity--;
+        if (!(this.model.get('quantity') < 1)) {
+          this.model.set('quantity', this.model.get('quantity') - 1);
           return this._updateView();
         }
       };
 
       QuantitySelector.prototype.increaseQuantity = function(e) {
         e.preventDefault();
-        this.quantity++;
+        this.model.set('quantity', this.model.get('quantity') + 1);
         return this._updateView();
       };
 
       QuantitySelector.prototype.confirmChanges = function(e) {
         e.preventDefault();
-        return this.trigger('quantity:change', this.quantity);
+        return this.close();
+      };
+
+      QuantitySelector.prototype.onClose = function() {
+        if (this.model.get('quantity') === 0) {
+          return this.model.destroy();
+        }
       };
 
       QuantitySelector.prototype._updateView = function() {
-        $(this.ui.quantity).html(this.quantity);
-        return $(this.ui.result).html(this.quantity * this.price);
+        $(this.ui.quantity).html(this.model.get('quantity'));
+        return $(this.ui.result).html(Helpers.money(this.model.get('total_cost')));
       };
 
       return QuantitySelector;
@@ -345,48 +182,167 @@
 }).call(this);
 
 (function() {
-  var __hasProp = {}.hasOwnProperty,
+  var __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+    __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define('controllers/quantity_selector',['marionette', 'views/modal_windows/quantity_selector'], function(Marionette, QuantitySelectorView) {
-    var QuantitySelectorController, _ref;
-    return QuantitySelectorController = (function(_super) {
-      __extends(QuantitySelectorController, _super);
+  define('controllers/cart',['marionette', 'views/modal_windows/quantity_selector'], function(Marionette, QuantitySelectorView) {
+    var CartController, _ref;
+    return CartController = (function(_super) {
+      __extends(CartController, _super);
 
-      function QuantitySelectorController() {
-        _ref = QuantitySelectorController.__super__.constructor.apply(this, arguments);
+      function CartController() {
+        this.productClick = __bind(this.productClick, this);
+        _ref = CartController.__super__.constructor.apply(this, arguments);
         return _ref;
       }
 
-      QuantitySelectorController.prototype.initialize = function(options) {
-        return this.cart = options.cart, this.app = options.app, options;
-      };
-
-      QuantitySelectorController.prototype.showQuantitySelector = function(item) {
-        var quantitySelectorView,
-          _this = this;
-        $('#app-container').addClass('modal-state');
-        quantitySelectorView = new QuantitySelectorView({
-          model: item
+      CartController.prototype.initialize = function(options) {
+        var _this = this;
+        this.app = options.app, this.modal_controller = options.modal_controller, this.cart = options.cart;
+        this.app.vent.on('product:click', this.productClick);
+        this.app.vent.on('cart:clean', function() {
+          return _this.cleanCart();
         });
-        this.app.modalRegion.show(quantitySelectorView);
-        quantitySelectorView.on('quantity:change', function(quantity) {
-          _this.app.vent.trigger('quantity:change', item, quantity);
-          return _this.hideQuantitySelector();
-        });
-        return quantitySelectorView.on('quantity:change:cancel', function() {
-          return _this.hideQuantitySelector();
+        return this.app.vent.on('order:created', function() {
+          return _this.cleanCart();
         });
       };
 
-      QuantitySelectorController.prototype.hideQuantitySelector = function() {
-        $('#app-container').removeClass('modal-state');
-        return this.app.modalRegion.close();
+      CartController.prototype.productClick = function(product) {
+        var item;
+        item = this.cart.items.itemOfProduct(product);
+        if (item) {
+          return this.modal_controller.show(new QuantitySelectorView({
+            model: item
+          }));
+        } else {
+          return this.cart.addProduct(product);
+        }
       };
 
-      return QuantitySelectorController;
+      CartController.prototype.deleteItem = function(item) {
+        return this.app.vent.trigger('cart:item:deleted');
+      };
+
+      CartController.prototype.cleanCart = function() {
+        var model, _results;
+        _results = [];
+        while (model = this.cart.items.first()) {
+          _results.push(model.destroy());
+        }
+        return _results;
+      };
+
+      return CartController;
 
     })(Marionette.Controller);
+  });
+
+}).call(this);
+
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  define('models/cart_item',['backbone'], function(Backbone) {
+    'use strict';
+    var CartItem, _ref;
+    return CartItem = (function(_super) {
+      __extends(CartItem, _super);
+
+      function CartItem() {
+        _ref = CartItem.__super__.constructor.apply(this, arguments);
+        return _ref;
+      }
+
+      CartItem.prototype.defaults = {
+        quantity: 1
+      };
+
+      CartItem.prototype.initialize = function() {
+        this.product = window.App.products.get(this.get('product_id'));
+        this.set({
+          product_title: this.product.get('title'),
+          product_price: this.product.get('price')
+        });
+        this.on('change:quantity', this.updateTotalCost);
+        return this.updateTotalCost();
+      };
+
+      CartItem.prototype.updateTotalCost = function() {
+        var cents;
+        cents = this.product.get('price').cents * this.get('quantity');
+        return this.set({
+          total_cost: {
+            cents: cents,
+            currency: this.product.get('price').currency
+          },
+          total_cost_cents: cents
+        });
+      };
+
+      return CartItem;
+
+    })(Backbone.Model);
+  });
+
+}).call(this);
+
+(function() {
+  var __hasProp = {}.hasOwnProperty,
+    __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+
+  define('collections/cart_items',['models/cart_item'], function(CartItem) {
+    var CartItems, _ref;
+    return CartItems = (function(_super) {
+      __extends(CartItems, _super);
+
+      function CartItems() {
+        _ref = CartItems.__super__.constructor.apply(this, arguments);
+        return _ref;
+      }
+
+      CartItems.prototype.url = 'cart';
+
+      CartItems.prototype.model = CartItem;
+
+      CartItems.prototype.initialize = function() {
+        return this.localStorage = new Backbone.LocalStorage('cart_items');
+      };
+
+      CartItems.prototype.getTotalCost = function() {
+        var addup;
+        addup = function(memo, item) {
+          return item.get('total_cost').cents + memo;
+        };
+        return {
+          cents: this.reduce(addup, 0),
+          currency: 'RUB'
+        };
+      };
+
+      CartItems.prototype.getTotalCount = function() {
+        var addup;
+        addup = function(memo, item) {
+          return item.get('quantity') + memo;
+        };
+        return this.reduce(addup, 0);
+      };
+
+      CartItems.prototype.isProductInCart = function(product) {
+        return !!this.cartItem(product);
+      };
+
+      CartItems.prototype.itemOfProduct = function(product) {
+        return this.findWhere({
+          product_id: product.id
+        });
+      };
+
+      return CartItems;
+
+    })(Backbone.Collection);
   });
 
 }).call(this);
@@ -418,13 +374,13 @@
         _ref = this.items;
         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
           item = _ref[_i];
-          $o.push("        <p>" + ($e($c("" + (pos++) + ". " + item.product.title))) + "</p>\n        <table>\n          <tbody>\n            <tr>\n              <td class='product-amount'>");
-          $o.push("                " + $c(this.money(item.product.price)));
+          $o.push("        <p>" + ($e($c("" + (pos++) + ". " + item.product_title))) + "</p>\n        <table>\n          <tbody>\n            <tr>\n              <td class='product-amount'>");
+          $o.push("                " + $c(this.money(item.product_price)));
           $o.push("                x");
           $o.push("                " + $e($c(item.quantity)));
-          $o.push("              </td>\n              <td class='separator'>\n                <div></div>\n              </td>\n              <td class='product-price'>" + ($e($c("" + (item.product.price * item.quantity) + " р."))) + "</td>\n            </tr>\n          </tbody>\n        </table>");
+          $o.push("              </td>\n              <td class='separator'>\n                <div></div>\n              </td>\n              <td class='product-price'>" + ($c(this.money(item.total_cost))) + "</td>\n            </tr>\n          </tbody>\n        </table>");
         }
-        $o.push("      </div>\n      <div class='unscrollable-check'>\n        <div class='clearfix row'>\n          <p class='all-product-sum'>Итог:\n            <span class='all-sum-right'>" + ($c(this.money(this.total_cost))) + "</span>\n          </p>\n        </div>\n        <form name='message\", method=>\"post'>\n          <section>\n            <label for='phone'>Телефон:</label>\n            <input id='phone' type='tel' value='" + ($e($c(this.profile.get('phoneNumber') ? this.profile.get('phoneNumber') : void 0))) + "' name='phone' placeholder='+7'>\n            <label for='name'>Ваше имя:</label>\n            <input id='name' type='text' value='" + ($e($c(this.profile.get('name') ? this.profile.get('name') : void 0))) + "' name='name'>\n          </section>\n        </form>\n        <p class='form-comment'>\n          обязательно введите свой телефон для связи\n        </p>\n      </div>\n    </div>\n  </div>\n</div>");
+        $o.push("      </div>\n      <div class='unscrollable-check'>\n        <div class='clearfix row'>\n          <p class='all-product-sum'>Итог:\n            <span class='all-sum-right'>" + ($c(this.money(this.total_cost))) + "</span>\n          </p>\n        </div>\n        <form name='message\", method=>\"post'>\n          <section>\n            <label for='phone'>Телефон:</label>\n            <input id='phone' type='tel' value='" + ($e($c(this.profile.get('phoneNumber') ? this.profile.get('phoneNumber') : void 0))) + "' name='phone' placeholder='+7(999)999-99-99'>\n            <label for='name'>Ваше имя:</label>\n            <input id='name' type='text' value='" + ($e($c(this.profile.get('name') ? this.profile.get('name') : void 0))) + "' name='name'>\n          </section>\n        </form>\n        <p class='form-comment'>\n          обязательно введите свой телефон для связи\n        </p>\n      </div>\n    </div>\n  </div>\n</div>");
         return $o.join("\n").replace(/\s([\w-]+)='true'/mg, ' $1').replace(/\s([\w-]+)='false'/mg, '').replace(/\s(?:id|class)=(['"])(\1)/mg, "");
       };
       return render.call(context);
@@ -438,7 +394,7 @@
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define('views/check/check',['marionette', 'templates/check/check', 'jquery.form-serialize'], function(Marionette, template) {
+  define('views/check/check',['marionette', 'templates/check/check', 'jquery.form-serialize', 'backbone.stickit', 'helpers/application_helpers'], function(Marionette, template, formserialize, backbonestickit, Helpers) {
     var Check, _ref;
     return Check = (function(_super) {
       __extends(Check, _super);
@@ -453,6 +409,10 @@
 
       Check.prototype.templateHelpers = function() {
         return Helpers;
+      };
+
+      Check.prototype.initialize = function(options) {
+        return this.cart = options.cart, this.profile = options.profile, options;
       };
 
       Check.prototype.ui = {
@@ -472,11 +432,11 @@
       };
 
       Check.prototype.serializeData = function() {
-        return {
-          items: this.collection.toJSON(),
-          profile: this.options.profile,
-          total_cost: this.collection.getTotalCost()
-        };
+        debugger;
+        return _.extend(this.cart.toJSON(), {
+          items: this.cart.items.toJSON(),
+          profile: this.profile
+        });
       };
 
       Check.prototype.checkForEmptyFields = function(e) {
@@ -551,7 +511,7 @@
         var _this = this;
         this.checkView = new CheckView({
           profile: this.profile,
-          collection: this.cart
+          cart: this.cart
         });
         this.app.checkRegion.show(this.checkView);
         this.checkView.on('check:form:empty:field', function() {
@@ -593,10 +553,6 @@
       }
 
       Product.prototype.urlRoot = 'products';
-
-      Product.prototype.defaults = {
-        title: 'Пончик'
-      };
 
       return Product;
 
@@ -652,7 +608,7 @@
           }
         };
         $o = [];
-        $o.push("<div class='clearfix row'>\n  <div class='column two-thirds'>\n    <img src='" + ($e($c(this.image_url))) + "'>\n    <p>" + ($e($c(this.title))) + "</p>\n    <p class='price'>" + ($c(this.money(this.price))) + "</p>\n  </div>\n  <div class='column one-thirds product-quantity'>\n    <a class='button' href='#777'>\n      <img src='images/to-bucket.png'>\n        <span>В ЗАКАЗ</span>\n    </a>\n  </div>\n</div>");
+        $o.push("<div class='clearfix row'>\n  <div class='column two-thirds'>\n    <img src='" + ($e($c(this.image_url))) + "'>\n    <p>" + ($e($c(this.title))) + "</p>\n    <p class='price'>" + ($c(this.money(this.price))) + "</p>\n  </div>\n  <div class='column one-thirds product-quantity'></div>\n</div>");
         return $o.join("\n").replace(/\s([\w-]+)='true'/mg, ' $1').replace(/\s([\w-]+)='false'/mg, '').replace(/\s(?:id|class)=(['"])(\1)/mg, "");
       };
       return render.call(context);
@@ -662,7 +618,23 @@
 }).call(this);
 
 (function() {
-  define('templates/products/product_quantity',['jquery', 'underscore'], function($, _) {
+  define('templates/products/button',['jquery', 'underscore'], function($, _) {
+    return function(context) {
+      var render;
+      render = function() {
+        var $o;
+        $o = [];
+        $o.push("<a class='button' href='#777'>\n  <img src='images/to-bucket.png'>\n    <span>В ЗАКАЗ</span>\n</a>");
+        return $o.join("\n").replace(/\s(?:id|class)=(['"])(\1)/mg, "");
+      };
+      return render.call(context);
+    };
+  });
+
+}).call(this);
+
+(function() {
+  define('templates/products/button_added',['jquery', 'underscore'], function($, _) {
     return function(context) {
       var render;
       render = function() {
@@ -682,13 +654,14 @@
     __hasProp = {}.hasOwnProperty,
     __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
 
-  define('views/products/product',['marionette', 'templates/products/product', 'templates/products/product_quantity', 'helpers/application_helpers'], function(Marionette, productTemplate, productQuantityTemplate, Helpers) {
+  define('views/products/product',['marionette', 'templates/products/product', 'templates/products/button', 'templates/products/button_added', 'helpers/application_helpers'], function(Marionette, productTemplate, buttonTemplate, buttonAddedTemplate, Helpers) {
     var ProductView, _ref;
     return ProductView = (function(_super) {
       __extends(ProductView, _super);
 
       function ProductView() {
-        this.displaySelectedQuantity = __bind(this.displaySelectedQuantity, this);
+        this.showButton = __bind(this.showButton, this);
+        this.cartChanged = __bind(this.cartChanged, this);
         _ref = ProductView.__super__.constructor.apply(this, arguments);
         return _ref;
       }
@@ -701,52 +674,41 @@
 
       ProductView.prototype.className = 'product-block';
 
-      ProductView.prototype.initialize = function(options) {
-        var _this = this;
-        this.app = options.app;
-        this.item = this.app.request('cart:item', this.model);
-        if (this.item) {
-          this.quantity = this.item.get('quantity');
-        }
-        this.app.vent.on('cartitem:added', function(item) {
-          if (item.get('product').id === _this.model.get('id')) {
-            return _this.displaySelectedQuantity(item.get('quantity'));
-          }
-        });
-        this.app.vent.on('quantity:change', function(item, quantity) {
-          if (item.get('product').id === _this.model.get('id')) {
-            return _this.displaySelectedQuantity(quantity);
-          }
-        });
-        return this.app.vent.on('order:created', function() {
-          return _this.displaySelectedQuantity(0);
-        });
-      };
-
       ProductView.prototype.events = {
-        'click': 'addToCart'
+        'click': 'clicked'
       };
 
-      ProductView.prototype.addToCart = function(e) {
+      ProductView.prototype.initialize = function(options) {
+        this.app = options.app;
+        this.listenTo(window.App.cart.items, 'add', this.cartChanged);
+        return this.listenTo(window.App.cart.items, 'remove', this.cartChanged);
+      };
+
+      ProductView.prototype.clicked = function(e) {
         e.preventDefault();
-        return this.app.vent.trigger('cart:add', this.model, 1);
+        return this.app.vent.trigger('product:click', this.model);
       };
 
-      ProductView.prototype.displaySelectedQuantity = function(quantity) {
-        if (quantity > 0) {
-          return this.$('.product-quantity').html(productQuantityTemplate({
-            quantity: quantity
+      ProductView.prototype.cartChanged = function(item) {
+        if (item.get('product_id') === this.model.id) {
+          return this.showButton();
+        }
+      };
+
+      ProductView.prototype.showButton = function() {
+        var item;
+        if (item = window.App.cart.items.itemOfProduct(this.model)) {
+          return this.button_el.html(buttonAddedTemplate({
+            quantity: item.get('quantity')
           }));
         } else {
-          return this.$('.product-quantity').html(this.productQuantityDOM);
+          return this.button_el.html(buttonTemplate());
         }
       };
 
       ProductView.prototype.onRender = function() {
-        this.productQuantityDOM = this.$('.product-quantity').children().clone();
-        if (this.item) {
-          return this.displaySelectedQuantity(this.quantity);
-        }
+        this.button_el = this.$('.product-quantity');
+        return this.showButton();
       };
 
       return ProductView;
@@ -798,7 +760,7 @@
       render = function() {
         var $o;
         $o = [];
-        $o.push("<div class='clearfix row'>\n  <div class='column half' id='logo'>\n    <img src='images/logo.png'>\n    <p>Доставка <br> пончиков</p>\n  </div>\n  <div class='column half' id='check'>\n    <img src='images/header-check.png'>\n    <p>ваш заказ на \n      <br>\n      <span id='header_amount'></span>\n    </p>\n  </div>\n</div>");
+        $o.push("<div class='clearfix row'>\n  <div class='column half' id='logo'>\n    <img src='images/logo.png'>\n    <p>Доставка <br> пончиков</p>\n  </div>\n  <div class='column half' id='check'>\n    <img src='images/header-check.png'>\n    <p>ваш заказ на \n      <br>\n      <span id='amount'></span>\n    </p>\n  </div>\n</div>");
         return $o.join("\n").replace(/\s(?:id|class)=(['"])(\1)/mg, "");
       };
       return render.call(context);
@@ -837,30 +799,22 @@
         'change': 'update'
       };
 
-      HeaderView.prototype.binding = {
-        '#header_amount': {
-          observe: ['total_cost_cents', 'total_cost'],
-          onGet: function(cents, cost) {
-            return Helpers.money(cost);
-          }
-        }
-      };
-
       HeaderView.prototype.initialize = function(options) {
         var _this = this;
         this.app = options.app, this.cart = options.cart;
         this.model = this.cart;
-        return this.app.vent.on('cartitem:added', function() {
+        return this.app.cart.items.on('add', function() {
           return _this.bounceCheck(2, '5px', 100);
         });
       };
 
       HeaderView.prototype.update = function() {
-        if (this.model.get('total_cost').cents > 0) {
-          return this.showCheck();
+        if (this.model.isEmpty()) {
+          this.hideCheck();
         } else {
-          return this.hideCheck();
+          this.showCheck();
         }
+        return this.changeCost();
       };
 
       HeaderView.prototype.showCheck = function() {
@@ -872,11 +826,15 @@
       };
 
       HeaderView.prototype.bounceCheck = function(times, distance, speed) {
+        console.log('bounce');
         return this.$('#check img').bounce(times, distance, speed);
       };
 
+      HeaderView.prototype.changeCost = function() {
+        return this.$('#amount').html(Helpers.money(this.model.get('total_cost')));
+      };
+
       HeaderView.prototype.onRender = function() {
-        this.stickit();
         return this.checkDOM = this.$('#check').children().clone();
       };
 
@@ -1034,8 +992,8 @@
 
       Footer.prototype.initialize = function(options) {
         var _this = this;
-        this.profile = options.profile, this.app = options.app, this.cartItems = options.cartItems;
-        this.collection = this.cartItems;
+        this.profile = options.profile, this.app = options.app, this.cart = options.cart;
+        this.collection = this.cart.items;
         this.app.vent.on('checkout:show', function() {
           _this.showDeliveryButton();
           return _this.showCheckBottom();
@@ -1083,7 +1041,7 @@
       };
 
       Footer.prototype.hideButton = function() {
-        if (this.cartItems.getTotalCost() === 0) {
+        if (this.cart.isEmpty()) {
           this.$('#workspace').html(this.workspaceDOM);
           return this.$('#check-bottom').children().remove();
         }
@@ -1113,7 +1071,7 @@
 
       Footer.prototype.onRender = function() {
         this.workspaceDOM = this.$('#workspace').children().clone();
-        if (this.cartItems.length > 0) {
+        if (!this.cart.isEmpty()) {
           return this.showCheckoutButton();
         }
       };
@@ -1142,7 +1100,7 @@
         return _ref;
       }
 
-      Cart.prototype.initialize = function() {
+      Cart.prototype.initialize = function(options) {
         this.items = new CartItems();
         this.listenTo(this.items, 'change', this.updateAggregators);
         this.listenTo(this.items, 'add', this.updateAggregators);
@@ -1155,13 +1113,38 @@
       };
 
       Cart.prototype.updateAggregators = function() {
-        this.set('total_cost', this.items.getTotalCost());
-        this.set('total_count', this.items.getTotalCount());
-        return this.set('total_cost_cents', this.get('total_cost').cents);
+        var total_cost;
+        total_cost = this.items.getTotalCost();
+        return this.set({
+          total_cost: total_cost,
+          total_count: this.items.getTotalCount(),
+          total_cost_cents: total_cost.cents
+        });
       };
 
       Cart.prototype.isEmpty = function() {
-        return this.get('total_count') === 0;
+        return this.items.length === 0;
+      };
+
+      Cart.prototype.changeQuantity = function(product, quantity) {
+        var item;
+        item = this.items.itemOfProduct(product);
+        item.set('quantity', quantity);
+        return item.save();
+      };
+
+      Cart.prototype.addProduct = function(product) {
+        return this.items.create({
+          product_id: product.id
+        });
+      };
+
+      Cart.prototype.removeProduct = function(product) {
+        var item;
+        item = this.items.itemOfProduct(product);
+        if (item != null) {
+          return item.destroy();
+        }
       };
 
       return Cart;
@@ -1172,8 +1155,7 @@
 }).call(this);
 
 (function() {
-  define('app',['marionette', 'backbone', 'backbone.stickit', 'models/profile', 'controllers/cart', 'collections/cart_items', 'controllers/quantity_selector', 'controllers/check', 'collections/products', 'views/products/products', 'controllers/header', 'views/footer/footer', 'models/cart'], function(Marionette, Backbone, Stickit, Profile, CartController, CartItems, QuantitySelectorController, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView, Cart) {
-    debugger;
+  define('app',['marionette', 'jquery', 'backbone', 'backbone.stickit', 'models/profile', 'controllers/cart', 'collections/cart_items', 'controllers/check', 'collections/products', 'views/products/products', 'controllers/header', 'views/footer/footer', 'models/cart'], function(Marionette, JQuery, Backbone, Stickit, Profile, CartController, CartItems, CheckController, ProductsCollection, ProductsView, HeaderController, FooterView, Cart) {
     window.App = new Marionette.Application;
     App.addRegions({
       headerRegion: "#header-region",
@@ -1183,30 +1165,40 @@
       modalRegion: "#modal-region"
     });
     App.addInitializer(function(options) {
-      var footerView, productsListView;
+      var footerView, modal_controller, productsListView;
+      App.vendor = new Backbone.Model;
+      App.cart = new Cart;
       App.products = new ProductsCollection;
-      App.profile = new Profile();
+      App.profile = new Profile;
       App.profile.fetch();
       App.categories = new Backbone.Collection;
-      App.cart = new Cart();
+      modal_controller = {
+        show: function(view) {
+          view.on('onClose', this.hide);
+          $('#app-container').addClass('modal-state');
+          return App.modalRegion.show(view);
+        },
+        hide: function() {
+          $('#app-container').removeClass('modal-state');
+          return App.modalRegion.close();
+        }
+      };
       $.get(options.data_file, function(data) {
         console.log('Load', options.data_file);
-        App.profile.set(data);
+        App.vendor.set(data);
         App.products.reset(data.products);
         App.categories.reset(data.categories);
         return App.cart.fetch();
       });
       new CartController({
         app: App,
-        cartItems: App.cart.items
-      });
-      new QuantitySelectorController({
-        app: App
+        cart: App.cart,
+        modal_controller: modal_controller
       });
       new CheckController({
         app: App,
         profile: App.profile,
-        cartItems: App.cart.items
+        cart: App.cart
       });
       productsListView = new ProductsView({
         app: App,
@@ -1219,7 +1211,7 @@
       });
       footerView = new FooterView({
         app: App,
-        cartItems: App.cart.items,
+        cart: App.cart,
         profile: App.profile
       });
       App.footerRegion.show(footerView);

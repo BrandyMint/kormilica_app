@@ -22,7 +22,6 @@ define ['marionette', 'templates/check/check', 'jquery.form-serialize', 'backbon
         preventDefault: true
 
     serializeData: ->
-      debugger
       _.extend @cart.toJSON(),
         items:   @cart.items.toJSON()
         profile: @profile
