@@ -34,6 +34,7 @@
     <script data-main="scripts/main" src="bower_components/requirejs/require.js"></script>
     <!-- endbuild -->
     <script type="text/javascript">
+      window.kormilica_version = '0.1.0'; // TODO Брать из package
       require(['app', 'data/vendor_predefined'], function(KormApp, vendor) {
         window.App = KormApp;
         KormApp.start({vendor: vendor});
