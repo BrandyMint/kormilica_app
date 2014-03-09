@@ -1,11 +1,11 @@
 define ['form-serialize',
   'models/profile', 'controllers/cart', 'collections/cart_items',
   'controllers/check', 'collections/products', 'views/products/products', 'controllers/header',
-  'controllers/footer', 'controllers/orders', 'models/cart',
+  'controllers/footer', 'controllers/order', 'models/cart',
   'controllers/modal'], 
 ( Profile, CartController, CartItems,
 CheckController, ProductsCollection, ProductsView, HeaderController,
-FooterController, OrdersController, Cart,
+FooterController, OrderController, Cart,
 ModalController ) ->
 
   App = new Marionette.Application
@@ -42,11 +42,10 @@ ModalController ) ->
       profile: App.profile
       cart:    App.cart
 
-    new OrdersController
+    new OrderController
+      app:     App
       cart:    App.cart
       profile: App.profile
-      vent:    App.vent
-      app:     App
 
     productsListView = new ProductsView
       app:        App

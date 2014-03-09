@@ -9,6 +9,13 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
     initialize: (options) ->
       { @cart, @profile } = options
       @collection = @cart.items
+      @model = @profile
+
+    bindings:
+      '#name':
+        observe: 'name'
+      '#phone':
+        observe: 'phone'
 
     ui:
       form:       'form'
@@ -49,3 +56,6 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
 
     onShow: ->
       @_setScrollableAreaHeight()
+
+    onRender: ->
+      @stickit()
