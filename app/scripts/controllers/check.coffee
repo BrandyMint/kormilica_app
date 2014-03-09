@@ -4,7 +4,7 @@ define ['views/check/check'], (CheckView) ->
 
     initialize: (options) ->
       { @profile, @cart, @app } = options
-      
+
       @checkView = new CheckView
         profile: @profile
         cart:    @cart
