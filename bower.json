@@ -6,9 +6,9 @@
   ],
   "ignore": [
     "*",
-    "!/kormilica_app.js",
-    "!/kormilica_app.min.js",
-    "!/kormilica_app_core.js"
+    "!/lib/kormilica_app.js",
+    "!/lib/kormilica_app.min.js",
+    "!/lib/kormilica_app_core.js"
   ],
   "dependencies": {
     "requirejs": "~2.x",
