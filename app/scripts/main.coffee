@@ -20,7 +20,6 @@ require.config
     #'jquery.form-serialize': ['jquery']
 
   paths:
-    app:                     'app'
     jquery:                  '../bower_components/jquery/jquery'
     underscore:              '../bower_components/underscore/underscore'
     #backbone:                '../bower_components/backbone/backbone'
@@ -33,3 +32,6 @@ require.config
     #bootstrap:               '../bower_components/sass-bootstrap/dist/js/bootstrap'
     'form-serialize': 'lib/form-serialize'
     #'jquery.bounce':         'lib/bounce'
+    #
+
+require ['app']

@@ -194,7 +194,8 @@ module.exports = (grunt) ->
             "backbone.wreqr": "../../app/bower_components/backbone.wreqr/lib/amd/backbone.wreqr"
             "backbone.babysitter": "../../app/bower_components/backbone.babysitter/lib/amd/backbone.babysitter"
             "backbone.localStorage": "../../app/bower_components/backbone.localStorage/backbone.localStorage"
-            "form-serialize": "../../app/scripts/lib/form-serialize"
+            "form-serialize": "../../.tmp/scripts/lib/form-serialize"
+            "app":            '../../.tmp/scripts/app'
           
           # TODO: Figure out how to make sourcemaps work with grunt-usemin
           # https://github.com/yeoman/grunt-usemin/issues/30
@@ -222,6 +223,7 @@ module.exports = (grunt) ->
             "backbone.babysitter": "empty:"
             "backbone.localStorage": "empty:"
             "form-serialize": "empty:"
+            "app":            '../../.tmp/scripts/app'
           useStrict: true
           wrap: true
           findNestedDependencies: true
