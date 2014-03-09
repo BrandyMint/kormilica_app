@@ -7,17 +7,13 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'templates/foot
     initialize: (options) ->
       { @profile, @app, @cart } = options
 
+      @listenTo @profile, 'change:name change:phone', @manageButtons
+
       @collection = @cart.items
 
       @app.vent.on 'check:appeared', =>
         @showDeliveryButton()
         @showCheckBottom()
-
-      @app.vent.on 'check:form:invalid', =>
-        @deactivateDeliveryButton()
-
-      @app.vent.on 'check:form:valid', =>
-        @activateDeliveryButton()
 
       @app.vent.on 'check:disappeared', =>
         @showCheckoutButton()
@@ -33,6 +29,12 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'templates/foot
     collectionEvents:
       'add':    'showCheckoutButton'
       'remove': 'hideButton'
+
+    manageButtons: (model, value) ->
+      if !!value
+        @showDeliveryButton()
+      else
+        @deactivateDeliveryButton()
 
     showCheckoutButton: ->
       @$('#workspace').html checkoutButtonTemplate
@@ -63,7 +65,7 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'templates/foot
 
     addOrder: (e) ->
       e.preventDefault()
-      @trigger 'delivery:clicked'
+      @app.execute 'order:create'
       @hideButton()
 
     showErrors: (e) ->
@@ -74,3 +76,6 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'templates/foot
       @workspaceDOM = @$('#workspace').children().clone()
       unless @cart.isEmpty()
         @showCheckoutButton()
+
+    onClose: ->
+      @.stopListening()

@@ -21,9 +21,6 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
       form:       'form'
       backButton: '.check-header a'
 
-    events:
-      'keyup form': 'checkForEmptyFields'
-
     triggers:
       'click @ui.backButton':
         event:          'cancel:button:clicked'
@@ -34,22 +31,10 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
         items:   @cart.items.toJSON()
         profile: @profile
 
-    checkForEmptyFields: (e) =>
-      formData = @ui.form.serializeObject()
-      errors = []
-      for inputData of formData
-        unless formData[inputData]
-          errors.push inputData
-
-      if errors.length > 0
-        @trigger 'check:form:empty:field'
-      else
-        @trigger 'check:form:filled'
-
     _setScrollableAreaHeight: ->
-      container = $('.check-content')
+      container =  $('.check-content')
       bottomInfo = $('.unscrollable-check')
-      itemsList = $('.scrollable-check')
+      itemsList =  $('.scrollable-check')
 
       scrollableHeight = container.height() - bottomInfo.height()
       itemsList.css 'height', scrollableHeight
