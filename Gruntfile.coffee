@@ -13,14 +13,15 @@ mountFolder = (connect, dir) ->
 # 'test/spec/**/*.js'
 # templateFramework: 'lodash'
 module.exports = (grunt) ->
-  
+
   # show elapsed time at the end
   require("time-grunt") grunt
-  
+
   # load all grunt tasks
   require("load-grunt-tasks") grunt
   grunt.loadNpmTasks "grunt-haml"
-  
+  grunt.loadTasks('./tasks/')
+
   # configurable paths
   yeomanConfig =
     app: "app"
@@ -77,7 +78,7 @@ module.exports = (grunt) ->
     connect:
       options:
         port: SERVER_PORT
-        
+
         # change this to '0.0.0.0' to access the server from outside
         hostname: "localhost"
 
@@ -107,7 +108,7 @@ module.exports = (grunt) ->
           middleware: (connect) ->
             [mountFolder(connect, yeomanConfig.dist)]
 
-    
+
     #open: {
     #server: {
     #path: 'http://localhost:<%= connect.options.port %>'
@@ -141,7 +142,7 @@ module.exports = (grunt) ->
     coffee:
       dist:
         files: [
-          
+
           # rather than compiling multiple files here you should
           # require them into your main .coffee file
           expand: true
@@ -177,10 +178,10 @@ module.exports = (grunt) ->
 
     requirejs:
       dist:
-        
+
         # Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
         options:
-          
+
           # `name` and `out` is set by grunt-usemin
           baseUrl: ".tmp/scripts"
           optimize: "none"
@@ -197,7 +198,7 @@ module.exports = (grunt) ->
             "backbone.localStorage": "../../app/bower_components/backbone.localStorage/backbone.localStorage"
             "form-serialize": "../../.tmp/scripts/lib/form-serialize"
             "app":            '../../.tmp/scripts/app'
-          
+
           # TODO: Figure out how to make sourcemaps work with grunt-usemin
           # https://github.com/yeoman/grunt-usemin/issues/30
           #generateSourceMaps: true,
@@ -253,7 +254,7 @@ module.exports = (grunt) ->
     htmlmin:
       dist:
         options: {}
-        
+
         #removeCommentsFromCDATA: true,
         #                    // https://github.com/yeoman/grunt-usemin/issues/44
         #                    //collapseWhitespace: true,
@@ -398,4 +399,5 @@ module.exports = (grunt) ->
     "test"
     "build"
   ]
+
   return
