@@ -87,6 +87,7 @@ module.exports = (grunt) ->
             [
               lrSnippet
               mountFolder(connect, ".tmp")
+              mountFolder(connect, "lib")
               mountFolder(connect, yeomanConfig.app)
             ]
 
@@ -213,19 +214,8 @@ module.exports = (grunt) ->
           optimize: 'none'
           paths:
             templates: "../../.tmp/scripts/templates"
-            jquery: "empty:"
-            underscore: "empty:"
-            backbone: "empty:"
-            marionette: "empty:"
-            'backbone.virtualcollection':  "empty:"
-            "backbone.stickit": "empty:"
-            "backbone.wreqr": "empty:"
-            "backbone.babysitter": "empty:"
-            "backbone.localStorage": "empty:"
-            "form-serialize": "empty:"
-            "app":            '../../.tmp/scripts/app'
           useStrict: true
-          wrap: true
+          almond: true
           findNestedDependencies: true
           out: './lib/kormilica_app_core.js'
           name: 'app'
@@ -318,10 +308,7 @@ module.exports = (grunt) ->
     haml:
       options:
         placement: "amd"
-        dependencies:
-          $: "jquery"
-          _: "underscore"
-
+        dependencies: {}
         target: "js"
         language: "coffee"
 

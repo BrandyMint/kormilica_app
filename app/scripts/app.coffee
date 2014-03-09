@@ -1,11 +1,11 @@
 define [ 'models/profile', 'controllers/cart', 'collections/cart_items',
   'controllers/check', 'collections/products', 'views/products/products', 'controllers/header',
   'controllers/footer', 'controllers/order', 'models/cart',
-  'controllers/modal'], 
+  'controllers/modal', 'data/vendor_predefined'], 
 ( Profile, CartController, CartItems,
 CheckController, ProductsCollection, ProductsView, HeaderController,
 FooterController, OrderController, Cart,
-ModalController ) ->
+ModalController, VendorPredefined) ->
 
   App = new Marionette.Application
 
