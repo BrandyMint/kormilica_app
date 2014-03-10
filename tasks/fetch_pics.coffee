@@ -2,7 +2,7 @@ module.exports = (grunt) ->
   baseUrl = 'http://api.aydamarket.ru/v1/vendors.json'
   imageFsDir = './app/data/images'
   imageWebDir = 'data/images'
-  target = './app/scripts/data/vendor_predefined1.coffee'
+  target = './app/scripts/data/vendor_predefined.coffee'
 
   grunt.registerTask "fetchPics", "Fetch vendor pics", ->
     vendorKey = grunt.option('vendor-key')
