@@ -13,4 +13,4 @@ define ->
 
       # Отражается в templates/footer/footer
       mobile_footer:             'Выберите блюдо на заказ.'
-      mobile_empty_order_button: 'Доставка бесплатно от 500 руб.'
+      mobile_delivery:           'Доставка бесплатно от 500 руб.'
