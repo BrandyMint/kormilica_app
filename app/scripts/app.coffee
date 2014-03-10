@@ -14,7 +14,7 @@ FooterController, OrderController, Cart,
 ModalController, VendorPredefined) ->
 
   App = new Marionette.Application
-  App.version= '0.1.0' # Переустанавливается через grunt version
+  App.version= '0.1.1' # Переустанавливается через grunt version
 
   App.addRegions
     headerRegion: "#header-region"
