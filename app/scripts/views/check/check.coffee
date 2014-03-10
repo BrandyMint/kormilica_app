@@ -13,8 +13,8 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
       @model = @profile
 
     bindings:
-      '#name':
-        observe: 'name'
+      '#address':
+        observe: 'address'
       '#phone':
         observe: 'phone'
 

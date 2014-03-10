@@ -5,7 +5,7 @@ define ['views/header/header_check', 'templates/header/header', 'helpers/applica
 
       className: 'header'
       template: template
-      
+
       regions:
         checkRegion: '#check'
 

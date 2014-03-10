@@ -11,8 +11,9 @@ define ->
     # id нужен, чтобы можно было найти модель из localStorage
     defaults:
       id:          1
-      name:        ''
+      address:     ''
       phone:       ''
+      name:        ''
 
     # TODO Валидация
     isAllFieldsFilled: ->

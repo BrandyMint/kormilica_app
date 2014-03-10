@@ -9,17 +9,24 @@ define ['models/order'], (Order) ->
         @createOrder()
 
     createOrder: =>
-      orderOptions = 
-        "user":
-          "phone": @profile.get 'phone'
-          "name":  @profile.get 'name'
-        "items": @_getFormattedCartItems()
-        "total_price": @cart.get 'total_cost'
+      # total_price, comment, etc
+      orderOptions =  @cart.toJSON()
+
+      # phone, name, address
+      orderOptions.user  = @profile.toJSON()
+      orderOptions.items =  @_getFormattedCartItems()
 
       order = new Order orderOptions
       order.save null, {
         success: (model, response) =>
-          alert "Ваш заказ №#{response.id}"
+
+          # TODO show cordova alert with subject
+          if response.message?.text?
+            text = response.message.text
+          else
+            text = "Ваш заказ №#{response.id}",
+
+          alert text
           @app.vent.trigger 'order:created', response
       }
 

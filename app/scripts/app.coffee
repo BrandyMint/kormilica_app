@@ -1,9 +1,15 @@
-define [ 'models/profile', 'controllers/cart', 'collections/cart_items',
-  'controllers/check', 'collections/products', 'views/products/products', 'views/header/header',
+define [ 'models/profile', 'models/vendor',
+  'controllers/cart', 'collections/cart_items',
+  'controllers/check', 'collections/products',
+  'views/header/header',
+  'views/products/products', 'controllers/header',
   'controllers/footer', 'controllers/order', 'models/cart',
   'controllers/modal', 'data/vendor_predefined'], 
-( Profile, CartController, CartItems,
-CheckController, ProductsCollection, ProductsView, HeaderView,
+( Profile, Vendor,
+CartController, CartItems,
+CheckController, ProductsCollection,
+HeaderView, 
+ProductsView, HeaderController,
 FooterController, OrderController, Cart,
 ModalController, VendorPredefined) ->
 
@@ -19,7 +25,7 @@ ModalController, VendorPredefined) ->
   App.modal = new ModalController modalRegion: App.modalRegion
 
   App.addInitializer (options) ->
-    App.vendor = new Backbone.Model options.vendor
+    App.vendor = new Vendor options.vendor
 
     App.categories = new Backbone.Collection options.vendor.categories
     App.products = new ProductsCollection options.vendor.products
