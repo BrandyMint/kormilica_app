@@ -34,4 +34,6 @@ require.config
     #'jquery.bounce':         'lib/bounce'
     #
 
-require ['app', 'data/vendor_predefined']
+require ['app', 'data/vendor_predefined'], (KormApp, vendor) ->
+  window.App = KormApp
+  KormApp.start vendor: vendor
