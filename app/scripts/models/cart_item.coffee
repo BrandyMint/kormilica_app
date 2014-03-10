@@ -10,13 +10,18 @@ define ->
       # Восстанавливаем модели при загрузке данных из localStorage
       @product = window.App.products.get @get('product_id')
 
-      @set 
-        product_title: @product.get('title')
-        product_price: @product.get('price')
+      if @product?
 
-      @on 'change:quantity', @updateTotalCost
+        @set 
+          product_title: @product.get('title')
+          product_price: @product.get('price')
 
-      @updateTotalCost()
+        @on 'change:quantity', @updateTotalCost
+
+        @updateTotalCost()
+
+      else
+        @destroy()
 
     updateTotalCost: ->
       cents = @product.get('price').cents * @get('quantity')

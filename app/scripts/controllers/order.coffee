@@ -24,7 +24,7 @@ define ['models/order'], (Order) ->
           if response.message?.text?
             text = response.message.text
           else
-            text = "Ваш заказ №#{response.id}",
+            text = "Ваш заказ №#{response.id}"
 
           alert text
           @app.vent.trigger 'order:created', response

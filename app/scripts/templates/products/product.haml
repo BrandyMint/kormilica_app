@@ -1,6 +1,6 @@
 .row.clearfix
   .column.two-thirds
-    %img{:src => @image_url}
+    %img{:src => @image.mobile_url}
     %p= @title
     %p.price!= @money @price
   .column.one-thirds.product-quantity

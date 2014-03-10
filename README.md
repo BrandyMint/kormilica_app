@@ -20,6 +20,10 @@
 Сохранить локально все картинки вендора и создать модуль с новыми путями
 
     grunt fetchPics --vendor-key VENDOR_KEY
+
+Загрузка данных вендора в девелоперском режиме:
+
+    grunt fetchPics --vendor-key 98b118b9fa89e7aa8c18b0b43f7c178e --base-url http://api.3001.vkontraste.ru/v1/vendors.json
     
     
 Репозитории:
