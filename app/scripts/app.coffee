@@ -1,9 +1,9 @@
 define [ 'models/profile', 'controllers/cart', 'collections/cart_items',
-  'controllers/check', 'collections/products', 'views/products/products', 'controllers/header',
+  'controllers/check', 'collections/products', 'views/products/products', 'views/header/header',
   'controllers/footer', 'controllers/order', 'models/cart',
   'controllers/modal', 'data/vendor_predefined'], 
 ( Profile, CartController, CartItems,
-CheckController, ProductsCollection, ProductsView, HeaderController,
+CheckController, ProductsCollection, ProductsView, HeaderView,
 FooterController, OrderController, Cart,
 ModalController, VendorPredefined) ->
 
@@ -52,9 +52,11 @@ ModalController, VendorPredefined) ->
 
     App.mainRegion.show productsListView
 
-    new HeaderController 
-      app:  App
+    headerView = new HeaderView
+      app: App
       cart: App.cart
+    
+    App.headerRegion.show headerView
 
     new FooterController
       app:     App

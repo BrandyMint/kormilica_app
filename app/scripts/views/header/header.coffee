@@ -1,5 +1,5 @@
-define ['templates/header/header', 'helpers/application_helpers'],
-(template, Helpers) ->
+define ['views/header/header_check', 'templates/header/header', 'helpers/application_helpers'],
+(HeaderCheckView, template, Helpers) ->
 
     class HeaderView extends Marionette.Layout
 
@@ -8,3 +8,13 @@ define ['templates/header/header', 'helpers/application_helpers'],
       
       regions:
         checkRegion: '#check'
+
+      initialize: (options) ->
+        { @app, @cart } = options
+
+        @checkView = new HeaderCheckView
+          app: @app
+          cart: @cart
+
+      onShow: ->
+        @checkRegion.show @checkView
