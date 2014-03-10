@@ -12,7 +12,7 @@ define ['views/check/check'], (CheckView) ->
       @app.reqres.setHandler "form:data", =>
         @checkView.$el.find('form').serializeObject()
 
-      @app.vent.on 'checkout:clicked', =>
+      @app.vent.on 'checkout:clicked check:clicked', =>
         @showCheck()
         @app.vent.trigger 'check:appeared'
 

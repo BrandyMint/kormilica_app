@@ -26,6 +26,9 @@ define ['collections/cart_items'], (CartItems)->
       #@get('total_count') == 0
       @items.length == 0
 
+    getNumberOfItems: ->
+      @items.length
+
     changeQuantity: (product, quantity) ->
       item = @items.itemOfProduct product
       item.set 'quantity', quantity

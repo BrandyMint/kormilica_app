@@ -1,18 +1,19 @@
-define ['views/header/header'], (HeaderView) ->
+define ['views/header/header', 'views/header/header_check'], 
+(HeaderView, HeaderCheckView) ->
 
   class HeaderController extends Marionette.Controller
 
     initialize: (options) ->
       { @cart, @app } = options
 
-      @headerView = new HeaderView
+      @layout = new HeaderView
         app: @app
         cart: @cart
 
-      @showHeader()
+      @layout.on 'show', =>
+        @checkRegion()
 
-      @headerView.on 'check:clicked', ->
-        @app.vent.trigger 'checkout:show'
+      @showHeader()
 
       @app.vent.on 'check:appeared', =>
         @hideHeader()
@@ -26,4 +27,11 @@ define ['views/header/header'], (HeaderView) ->
 
     showHeader: ->
       $('#app-container').removeClass 'checkout-state'
-      @app.headerRegion.show @headerView
+      @app.headerRegion.show @layout
+
+    checkRegion: =>
+      checkView = new HeaderCheckView
+        app: @app
+        cart: @cart
+
+      @layout.checkRegion.show checkView
