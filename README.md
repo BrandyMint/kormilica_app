@@ -30,8 +30,13 @@
 
 * cordova-мобильное приложение: https://github.com/BrandyMint/kormilica_cordova
 * rails web: https://github.com/BrandyMint/kormilica
-    
-    
+
+Версионирование:
+-----------
+
+    npm version patch  # Инкремент номера версии при релизе
+    grunt version      # Обновление версии приложения из package и номера билда
+
 Документация
 -----
 

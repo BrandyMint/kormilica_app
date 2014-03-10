@@ -20,6 +20,7 @@ module.exports = (grunt) ->
   # load all grunt tasks
   require("load-grunt-tasks") grunt
   grunt.loadNpmTasks "grunt-haml"
+  grunt.loadNpmTasks 'grunt-version'
   grunt.loadTasks('./tasks/')
 
   # configurable paths
@@ -30,6 +31,11 @@ module.exports = (grunt) ->
 
   grunt.initConfig
     yeoman: yeomanConfig
+    version:
+      options:
+        build_number: process.env.BUILD_NUMBER
+      defaults:
+        src: ['app/scripts/app.coffee']
     watch:
       options:
         nospawn: true
@@ -376,6 +382,7 @@ module.exports = (grunt) ->
   ]
   grunt.registerTask "build", [
     "clean:dist"
+    'version',
     "coffee"
     "createDefaultTemplate"
     "jst"

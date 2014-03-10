@@ -2,4 +2,5 @@
 
 npm install
 bower install --force
+grunt version
 grunt build

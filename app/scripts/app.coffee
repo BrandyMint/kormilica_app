@@ -14,6 +14,7 @@ FooterController, OrderController, Cart,
 ModalController, VendorPredefined) ->
 
   App = new Marionette.Application
+  App.version= '0.1.0'
 
   App.addRegions
     headerRegion: "#header-region"
