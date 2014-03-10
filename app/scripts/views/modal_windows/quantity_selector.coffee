@@ -1,5 +1,5 @@
 define ['templates/modal_windows/quantity_selector', 'helpers/application_helpers'],
-  (template, Helpers) ->
+(template, Helpers) ->
 
     class QuantitySelector extends Marionette.ItemView
       template: template
