@@ -22,6 +22,12 @@
     grunt fetchPics --vendor-key VENDOR_KEY
     
     
+Репозитории:
+
+* cordova-мобильное приложение: https://github.com/BrandyMint/kormilica_cordova
+* rails web: https://github.com/BrandyMint/kormilica
+    
+    
 Документация
 -----
 
