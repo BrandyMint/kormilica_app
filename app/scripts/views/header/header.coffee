@@ -5,6 +5,3 @@ define ['templates/header/header', 'helpers/application_helpers'],
 
       className: 'header'
       template: template
-      
-      regions:
-        checkRegion: '#check'

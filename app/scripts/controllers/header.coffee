@@ -11,8 +11,12 @@ define ['views/header/header', 'views/header/header_check'],
         cart: @cart
 
       @layout.on 'show', =>
-        @checkRegion()
+        checkView = new HeaderCheckView
+          app: @app
+          cart: @cart
 
+        @layout.$el.find('#check').html checkView.render().el
+      
       @showHeader()
 
       @app.vent.on 'check:appeared', =>
@@ -28,10 +32,3 @@ define ['views/header/header', 'views/header/header_check'],
     showHeader: ->
       $('#app-container').removeClass 'checkout-state'
       @app.headerRegion.show @layout
-
-    checkRegion: =>
-      checkView = new HeaderCheckView
-        app: @app
-        cart: @cart
-
-      @layout.checkRegion.show checkView
