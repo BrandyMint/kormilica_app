@@ -34,4 +34,4 @@ require.config
     #'jquery.bounce':         'lib/bounce'
     #
 
-require ['app']
+require ['app', 'data/vendor_predefined']

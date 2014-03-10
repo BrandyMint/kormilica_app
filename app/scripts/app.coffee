@@ -4,14 +4,14 @@ define [ 'models/profile', 'models/vendor',
   'views/header/header',
   'views/products/products',
   'controllers/footer', 'controllers/order', 'models/cart',
-  'controllers/modal', 'data/vendor_predefined'], 
+  'controllers/modal'],
 ( Profile, Vendor,
 CartController, CartItems,
 CheckController, ProductsCollection,
 HeaderView, 
 ProductsView,
 FooterController, OrderController, Cart,
-ModalController, VendorPredefined) ->
+ModalController) ->
 
   App = new Marionette.Application
   App.version= '0.1.1' # Переустанавливается через grunt version
