@@ -71,7 +71,7 @@ ModalController) ->
       vent:    App.vent
 
   App.on 'start', ->
-    console.log 'App starting....'
+    console.log "Start KormApp #{App.version}"
 
   #App.on 'initialize:after', ->
     #Backbone.history.start()
