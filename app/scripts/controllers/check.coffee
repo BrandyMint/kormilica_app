@@ -5,30 +5,21 @@ define ['views/check/check'], (CheckView) ->
     initialize: (options) ->
       { @profile, @cart, @app } = options
 
+      @app.vent.on 'checkout:clicked check:clicked', =>
+        @showCheck()
+
+      @app.vent.on 'order:created', =>
+        @hideCheck()
+
+    showCheck: ->
       @checkView = new CheckView
         app:     @app
         profile: @profile
         cart:    @cart
 
-      @app.vent.on 'checkout:clicked check:clicked', =>
-        @showCheck()
-        @app.vent.trigger 'check:appeared'
-
-      @app.vent.on 'order:created', =>
-        @hideCheck()
-        @app.vent.trigger 'check:disappeared'
-
-      @checkView.on 'check:form:empty:field', =>
-        @app.vent.trigger 'check:form:invalid'
-
-      @checkView.on 'check:form:filled', =>
-        @app.vent.trigger 'check:form:valid'
-
       @checkView.on 'cancel:button:clicked', =>
-        @app.vent.trigger 'check:disappeared'
         @hideCheck()
 
-    showCheck: ->
       @app.mainLayout.checkRegion.show @checkView
 
     hideCheck: ->

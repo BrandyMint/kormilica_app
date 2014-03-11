@@ -9,16 +9,11 @@ define ['templates/footer/footer', 'templates/footer/_checkout'],
 
       @collection = @cart.items
 
-      @app.vent.on 'check:disappeared', =>
-        @showCheckoutButton()
-
       @app.vent.on 'order:created', =>
         @hideButton()
 
     events:
       'click a.checkout':           'showCheck'
-      'click .delivery a':          'addOrder'
-      'click .delivery-inactive a': 'showErrors'
 
     collectionEvents:
       'add':    'showCheckoutButton'
@@ -36,19 +31,7 @@ define ['templates/footer/footer', 'templates/footer/_checkout'],
       e.preventDefault()
       @trigger 'checkout:clicked'
 
-    addOrder: (e) ->
-      e.preventDefault()
-      @app.execute 'order:create'
-      @hideButton()
-
-    showErrors: (e) ->
-      e.preventDefault()
-      alert 'Заполните все поля'
-
     onRender: ->
       @workspaceDOM = @$('#workspace').children().clone()
       unless @cart.isEmpty()
         @showCheckoutButton()
-
-    onClose: ->
-      @.stopListening()
