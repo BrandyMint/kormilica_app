@@ -8,10 +8,10 @@ define [ 'templates/products/product', 'templates/products/button', 'templates/p
     className: 'product-block'
 
     ui:
-      'button': '.product-quantity'
+      button: '.product-quantity'
 
     events:
-      'click': 'clicked'
+      click: 'clicked'
 
     initialize: (options) ->
       { @app, @cartItems } = options
