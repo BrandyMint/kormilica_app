@@ -66,10 +66,11 @@ MainLayout
     App.mainLayout.headerRegion.show headerView
 
     new FooterController
-      app:  App
-      cart: App.cart
-      user: App.user
-      vent: App.vent
+      app:     App
+      cart:    App.cart
+      user:    App.user
+      vent:    App.vent
+      vendor:  App.vendor
 
   App.on 'start', ->
     console.log "Start KormApp #{App.version}"
