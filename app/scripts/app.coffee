@@ -33,7 +33,7 @@ ModalController) ->
     App.profile = new Profile
     App.profile.fetch()
 
-    App.cart = new Cart
+    App.cart = new Cart({}, app: @)
     # ДО заполнения корзины продукты уже должны быть
     App.cart.fetch()
 

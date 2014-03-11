@@ -4,11 +4,12 @@ define ['models/cart_item'], (CartItem) ->
     url: 'cart' # TODO в настройки
     model: CartItem
 
-    initialize: ->
+    initialize: (models, options) ->
       @localStorage = new Backbone.LocalStorage 'cart_items'
+      @app = options.app
 
     getTotalCost: () ->
-      addup = (memo, item) -> item.get('total_cost').cents + memo
+      addup = (memo, item) -> (item.get('total_cost')?.cents || 0) + memo
       return {
         cents: @reduce addup, 0
         # TODO Брать из профиля

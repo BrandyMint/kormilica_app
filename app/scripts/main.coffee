@@ -17,12 +17,15 @@ require.config
     bootstrap:
       deps: ['jquery'],
       exports: 'jquery'
-    'jquery.form-serialize': 
+    'jquery.form-serialize':
       deps: ['jquery']
     'jquery.ui.effect':
       deps: ['jquery']
     'jquery.ui.effect-bounce':
       deps: ['jquery.ui.effect']
+    app:
+      deps: ['marionette', 'backbone.stickit', 'backbone.localStorage', 'jquery.ui.effect', 'jquery.ui.effect-bounce']
+      exports: 'KormApp'
 
   paths:
     jquery:                  '../bower_components/jquery/jquery'
@@ -39,13 +42,5 @@ require.config
     'jquery.ui.effect':        "../bower_components/jquery.ui/ui/jquery.ui.effect"
     'jquery.ui.effect-bounce': "../bower_components/jquery.ui/ui/jquery.ui.effect-bounce"
 
-require [
-  'marionette'
-  'backbone.stickit'
-  'backbone.localStorage'
-  'jquery.ui.effect'
-  'jquery.ui.effect-bounce'
-], ->
-  require ['app', 'data/bundle'], (KormApp, bundle) ->
-    window.App = KormApp
-    KormApp.start bundle
+require ['app', 'data/bundle'], (KormApp, bundle) ->
+  KormApp.start bundle
