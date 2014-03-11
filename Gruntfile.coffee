@@ -202,6 +202,8 @@ module.exports = (grunt) ->
             "backbone.wreqr": "../../app/bower_components/backbone.wreqr/lib/amd/backbone.wreqr"
             "backbone.babysitter": "../../app/bower_components/backbone.babysitter/lib/amd/backbone.babysitter"
             "backbone.localStorage": "../../app/bower_components/backbone.localStorage/backbone.localStorage"
+            'jquery.ui.effect':        "../../app/bower_components/jquery.ui/ui/jquery.ui.effect"
+            'jquery.ui.effect-bounce': "../../app/bower_components/jquery.ui/ui/jquery.ui.effect-bounce"
             "form-serialize": "../../.tmp/scripts/lib/form-serialize"
             "app":            '../../.tmp/scripts/app'
 
