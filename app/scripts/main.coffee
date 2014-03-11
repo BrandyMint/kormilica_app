@@ -5,6 +5,8 @@ require.config
   shim:
     underscore:
       exports: '_'
+    jquery:
+      exports: 'jQuery'
     backbone:
       deps: [
         'underscore'
@@ -25,7 +27,6 @@ require.config
       deps: ['jquery.ui.effect']
     app:
       deps: ['marionette', 'backbone.stickit', 'backbone.localStorage', 'jquery.ui.effect', 'jquery.ui.effect-bounce']
-      exports: 'KormApp'
 
   paths:
     jquery:                  '../bower_components/jquery/jquery'
@@ -42,5 +43,16 @@ require.config
     'jquery.ui.effect':        "../bower_components/jquery.ui/ui/jquery.ui.effect"
     'jquery.ui.effect-bounce': "../bower_components/jquery.ui/ui/jquery.ui.effect-bounce"
 
-require ['app', 'data/bundle'], (KormApp, bundle) ->
+unless @Marionette
+  require [
+    'backbone',
+    'backbone.stickit',
+    'backbone.localStorage',
+    'marionette'
+    'jquery.ui.effect',
+    'jquery.ui.effect-bounce'
+    ], (Backbone, Stickit, LocalStorage, Marionette)  =>
+    @Marionette = Marionette
+
+require ['app', 'data/bundle'], (KormApp, bundle) =>
   KormApp.start bundle

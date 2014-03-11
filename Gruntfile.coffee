@@ -115,11 +115,11 @@ module.exports = (grunt) ->
             [mountFolder(connect, yeomanConfig.dist)]
 
 
-    #open: {
-    #server: {
-    #path: 'http://localhost:<%= connect.options.port %>'
-    #}
-    #},
+    open: {
+        server: {
+            path: 'http://localhost:<%= connect.options.port %>'
+        }
+    },
     clean:
       dist: [
         ".tmp"
@@ -230,7 +230,12 @@ module.exports = (grunt) ->
           name: 'app'
           mainConfig: '.tmp/scripts/app.js'
 
-    #uglify2: {} // https://github.com/mishoo/UglifyJS2
+    #uglify:
+    #  options:
+    #    mangle: false
+    #    compress: false
+    #    beautify: true
+    #    sourceMap: true  # // https://github.com/mishoo/UglifyJS2
     useminPrepare:
       html: "<%= yeoman.app %>/index.html"
       options:
