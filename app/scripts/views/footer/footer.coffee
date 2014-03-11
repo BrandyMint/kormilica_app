@@ -5,15 +5,16 @@ define ['templates/footer/footer', 'templates/footer/_checkout'],
     template: template
 
     initialize: (options) ->
-      { @profile, @app, @cart } = options
+      { @profile, @vent, @cart, @vendor } = options
 
       @collection = @cart.items
 
-      @app.vent.on 'order:created', =>
+      @vent.on 'order:created', =>
         @hideButton()
 
     events:
-      'click a.checkout':           'showCheck'
+      'click a.checkout':         'showCheck'
+      'click .delivery-discount': 'emptyButtonClicked'
 
     collectionEvents:
       'add':    'showCheckoutButton'
@@ -30,6 +31,9 @@ define ['templates/footer/footer', 'templates/footer/_checkout'],
     showCheck: (e) ->
       e.preventDefault()
       @trigger 'checkout:clicked'
+
+    emptyButtonClicked: ->
+      alert @vendor.get 'mobile_footer'
 
     onRender: ->
       @workspaceDOM = @$('#workspace').children().clone()

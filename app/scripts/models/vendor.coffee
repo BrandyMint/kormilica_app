@@ -12,5 +12,5 @@ define ->
       mobile_description: 'Мы доставляем быстро, минимальная стоимость заказа от 500 руб.'
 
       # Отражается в templates/footer/footer
-      mobile_footer:             'Выберите блюдо на заказ.'
+      mobile_footer:             'Выберите из списка блюдо на заказ.'
       mobile_delivery:           'Доставка бесплатно от 500 руб.'
