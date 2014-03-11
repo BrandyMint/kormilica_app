@@ -12,7 +12,3 @@ define ['templates/main_layout', 'helpers/application_helpers'],
         footerRegion: "#kormapp-footer-region"
         checkRegion:  "#kormapp-check-region"
         modalRegion:  "#kormapp-modal-region"
-        checkRegion: '#check'
-
-      initialize: (options) ->
-        { @app, @cart } = options
