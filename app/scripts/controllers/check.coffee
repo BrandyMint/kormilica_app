@@ -31,7 +31,7 @@ define ['views/check/check'], (CheckView) ->
         @hideCheck()
 
     showCheck: ->
-      @app.checkRegion.show @checkView
+      @app.mainLayout.checkRegion.show @checkView
 
     hideCheck: ->
-      @app.checkRegion.close()
+      @app.mainLayout.checkRegion.close()

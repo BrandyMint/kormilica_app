@@ -16,4 +16,4 @@ define ['views/footer/footer'], (FooterView) ->
         @vent.trigger 'checkout:clicked'
 
     showFooter: ->
-      @app.footerRegion.show @footerView
+      @app.mainLayout.footerRegion.show @footerView
