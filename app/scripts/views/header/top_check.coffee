@@ -45,15 +45,15 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
     itemRemoved: =>
       @_hideIfEmpty()
 
-    bounce: (speed = @BOUNCE_SPEED) =>
-      @ui.checkImage.effect 'bounce', {times:2}, speed
+    bounce: =>
+      @ui.checkImage.effect 'bounce', {times:2}, @BOUNCE_SPEED
 
-    slideUp: (speed = @SLIDE_SPEED) =>
+    slideUp: =>
       checkHeight = @ui.checkImage.height()
       checkMarginTop = parseInt @ui.checkImage.css('margin-top')
 
       @ui.checkImage.css 'margin-top', checkHeight + checkMarginTop
-      @ui.checkImage.animate marginTop: checkMarginTop, speed
+      @ui.checkImage.animate marginTop: checkMarginTop, @SLIDE_SPEED
 
     _hideIfEmpty: ->
       @$el.hide() if @model.isEmpty()
