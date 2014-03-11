@@ -4,26 +4,21 @@ define [ 'models/profile', 'models/vendor',
   'views/header/header',
   'views/products/products',
   'controllers/footer', 'controllers/order', 'models/cart',
-  'controllers/modal'],
+  'controllers/modal',
+  'views/main_layout'
+],
 ( Profile, Vendor,
 CartController, CartItems,
 CheckController, ProductsCollection,
 HeaderView, 
 ProductsView,
 FooterController, OrderController, Cart,
-ModalController) ->
+ModalController,
+MainLayout
+) ->
 
   App = new Marionette.Application
   App.version= '0.1.1' # Переустанавливается через grunt version
-
-  App.addRegions
-    headerRegion: "#header-region"
-    mainRegion:   "#main-region"
-    footerRegion: "#footer-region"
-    checkRegion:  "#check-region"
-    modalRegion:  "#modal-region"
-
-  App.modal = new ModalController modalRegion: App.modalRegion
 
   App.addInitializer (options) ->
     App.vendor     = new Vendor              options.vendor
@@ -36,6 +31,12 @@ ModalController) ->
     App.cart = new Cart({}, app: @)
     # ДО заполнения корзины продукты уже должны быть
     App.cart.fetch()
+
+    # Сюда можно передавать el основого контейнера
+    App.mainLayout = new MainLayout()
+    App.mainLayout.render()
+
+    App.modal = new ModalController modalRegion: App.mainLayout.modalRegion
 
     new CartController
       vent:  App.vent
@@ -56,13 +57,13 @@ ModalController) ->
       app:        App
       collection: App.products
 
-    App.mainRegion.show productsListView
+    App.mainLayout.mainRegion.show productsListView
 
     headerView = new HeaderView
       app: App
       cart: App.cart
-    
-    App.headerRegion.show headerView
+
+    App.mainLayout.headerRegion.show headerView
 
     new FooterController
       app:     App

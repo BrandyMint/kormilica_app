@@ -8,9 +8,9 @@ define ->
       # TODO Найти этой установке класса более подходящее место, регион?
       view.on 'onClose', @hide
 
-      $('#app-container').addClass 'modal-state'
+      $('#kormapp-container').addClass 'modal-state'
       @modalRegion.show view
 
     hide: ->
-      $('#app-container').removeClass 'modal-state'
+      $('#kormapp-container').removeClass 'modal-state'
       @modalRegion.close()
