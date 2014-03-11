@@ -19,7 +19,6 @@ define [ 'templates/products/product', 'templates/products/button', 'templates/p
       #@app.reqres.setHandler 'cart:item', (product) =>
         #@cartItems.isProductInCart product
 
-
       # Если на начало загрузки товар уже будет в корзине, то item будет содержать
       # этот элементы корзины
       #@item = @app.request 'cart:item', @model
