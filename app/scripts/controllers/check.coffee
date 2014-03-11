@@ -6,11 +6,9 @@ define ['views/check/check'], (CheckView) ->
       { @profile, @cart, @app } = options
 
       @checkView = new CheckView
+        app:     @app
         profile: @profile
         cart:    @cart
-
-      @app.reqres.setHandler "form:data", =>
-        @checkView.$el.find('form').serializeObject()
 
       @app.vent.on 'checkout:clicked check:clicked', =>
         @showCheck()

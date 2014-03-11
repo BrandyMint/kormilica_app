@@ -1,7 +1,5 @@
-#check-top-external
-  #check-top-internal.center
-    .check-top-battlement
-      .check-top-battlement-center
+#check-external.center
+  #check-internal
 
     .check-content
       .scrollable-check
@@ -22,8 +20,17 @@
           %section
             %label{:for => "phone"} Телефон:
             %input#phone{:type => "tel", :name => "phone", :placeholder => "+7(999)999-99-99"}
-            %label{:for => "addrss"} Ваш адрес:
-            %input#name{:type => "text", :name => "address"}
+            %label{:for => "address"} Ваш адрес:
+            %input#address{:type => "text", :name => "address"}
 
         %p.form-comment
           обязательно введите свой телефон для связи
+  
+  #check-bottom-container
+    #check-bottom
+      .check-short-left
+      .check-short-right
+      .check-short-center
+
+    .full.check-button{class: 'delivery'}
+      %a.button{:href => "#777"} ДОСТАВИТЬ ЗАКАЗ

@@ -8,7 +8,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
     itemViewContainer: '.cart-items'
 
     initialize: (options) ->
-      { @cart, @profile } = options
+      { @app, @cart, @profile } = options
       @collection = @cart.items
       @model = @profile
 
@@ -19,18 +19,52 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
         observe: 'phone'
 
     ui:
-      form:       'form'
-      backButton: '.check-header a'
+      form:                   'form'
+      backButton:             '.check-header a'
+      deliveryButton:         '.delivery a'
+      inactiveDeliveryButton: '.delivery-inactive a'
+
+    events:
+      'click @ui.deliveryButton': 'addOrder'
+      'click @ui.inactiveDeliveryButton': 'showErrors'
+      'keyup @ui.form': 'manageButtons'
 
     triggers:
       'click @ui.backButton':
-        event:          'cancel:button:clicked'
+        event: 'cancel:button:clicked'
         preventDefault: true
 
     serializeData: ->
       _.extend @cart.toJSON(),
         items:   @cart.items.toJSON()
         profile: @profile
+
+    addOrder: (e) ->
+      @profile.save()
+      @app.execute 'order:create'
+
+    showErrors: (e) ->
+      e.preventDefault()
+      alert 'Заполните все поля'
+
+    checkForEmptyFields: (e) ->
+      $(@ui.form).find("input").filter( ->
+        return $.trim( $(@).val().length ) < 1
+      ).length == 0
+
+    manageButtons: (model) ->
+      if @checkForEmptyFields()
+        @activateDeliveryButton()
+      else
+        @deactivateDeliveryButton()
+
+    deactivateDeliveryButton: ->
+      button = @$('#check-bottom-container').find('.delivery')
+      button.removeClass('delivery').addClass('delivery-inactive')
+
+    activateDeliveryButton: ->
+      button = @$('#check-bottom-container').find('.delivery-inactive')
+      button.removeClass('delivery-inactive').addClass('delivery')
 
     _setScrollableAreaHeight: ->
       container =  $('.check-content')
@@ -42,6 +76,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
 
     onShow: ->
       @_setScrollableAreaHeight()
+      @manageButtons()
 
     onRender: ->
       @stickit()
