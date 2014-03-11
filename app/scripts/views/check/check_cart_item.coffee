@@ -5,3 +5,4 @@ define ['templates/check/check_cart_item', 'helpers/application_helpers'],
 
     template: checkCartItemViewTemplate
     templateHelpers: -> Helpers
+    tagName: 'li'
