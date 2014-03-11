@@ -25,13 +25,25 @@
       line-height: 0.95
       letter-spacing: -1px
 
-  #check 
-    img
-      height: 50px
+  #check
+
+    .top-check
+      position: relative
       margin-top: 9px
       margin-left: 22px
-      display: inline-block
       float: left
+      width: 43px
+      height: 50px
+
+      .check-background-image
+        position: absolute
+        width: 100%
+        bottom: 0
+
+      .check-image
+        position: absolute
+        z-index: 5
+        height: 100%
 
     p
       padding-top: 16px
