@@ -21,10 +21,11 @@
 
     grunt fetchBundle --vendor-key 467abe2e7d33e6455fe905e879fd36be # Ключ тестового вендора на продакшене
 
-Загрузка данных вендора в девелоперском режиме:
+Загрузка данных вендора с кастомного api:
 
     grunt fetchBundle --vendor-key 98b118b9fa89e7aa8c18b0b43f7c178e --base-url http://api.3001.vkontraste.ru/v1/vendors.json
-    
+
+Добавляем ключ `-v` для более полной информации
     
 Репозитории:
 
