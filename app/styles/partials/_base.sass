@@ -1,59 +1,12 @@
-// Font weights
-$light: 100
-$regular: 400
-$bold: 600
+.clearfix
+  &:before
+    content: " "
+    display: table
+  &:after
+    content: " "
+    display: table
+    clear: both
+  *zoom: 1
 
-// Measurements
-$body-max-width: 480px
-
-// Base Font
-$base-font-family: "Open Sans", sans-serif
-$base-font-weight: $regular
-$base-font-size: 18px
-$base-line-height: 1.4
-$base-heading-size: 22px
-$modal-quantity-buttons-text-size: 22px
-$content-sum-font-size: 20px
-
-$orange-background-color: #f2795a
-$grey-background-color: #eee
-$darkgrey-background-color: #999
-$blue-background-color: #72bab6
-$white-background-color: #fff
-$orange-border-color: #d06b52
-$grey-border-color: #c5c5c5
-$darkgrey-border-color: #7f7f7f
-$grey-blue-border-color: #68a9a5
-$white-font-color: #fff
-$grey-font-color: #666
-$orange-font-color: #f2795a
-$button-blue-color: #72bab6
-$button-orange-color: #f2795a
-$footer-background-color: #d8d8d8
-$check-bottom-background-color: #d8d8d8
-$input-background-color: #e5e5e5
-$product-item-shadow-color: #dfdfdf
-
-$header-check-size: 12px
-$footer-comment-font-size: 12px
-$product-name-font-size: 17px
-$product-price-font-size: 32px
-$product-rouble-font-size: 22px
-$button-font-size: 10px
-$footer-confirm-font-size: 19px
-
-// Headings
-$header-font-weight: $bold
-
-*
-  -moz-box-sizing: border-box
-  -webkit-box-sizing: border-box
-  box-sizing: border-box
-  &:before, &:after
-    -moz-box-sizing: border-box
-    -webkit-box-sizing: border-box
-    box-sizing: border-box
-
-html
-  -webkit-font-smoothing: antialiased
->>>>>>> Объединение вьюх чека
+.center
+  text-align: center
