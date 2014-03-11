@@ -70,6 +70,7 @@ MainLayout
       cart:    App.cart
       profile: App.profile
       vent:    App.vent
+      vendor:  App.vendor
 
   App.on 'start', ->
     console.log "Start KormApp #{App.version}"
