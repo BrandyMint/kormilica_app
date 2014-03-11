@@ -26,10 +26,9 @@ ModalController) ->
   App.modal = new ModalController modalRegion: App.modalRegion
 
   App.addInitializer (options) ->
-    App.vendor = new Vendor options.vendor
-
-    App.categories = new Backbone.Collection options.vendor.categories
-    App.products = new ProductsCollection options.vendor.products
+    App.vendor     = new Vendor              options.vendor
+    App.categories = new Backbone.Collection options.categories
+    App.products   = new ProductsCollection  options.products
 
     App.profile = new Profile
     App.profile.fetch()

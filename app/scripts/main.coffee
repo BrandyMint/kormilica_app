@@ -46,6 +46,6 @@ require [
   'jquery.ui.effect'
   'jquery.ui.effect-bounce'
 ], ->
-  require ['app', 'data/vendor_predefined'], (KormApp, vendor) ->
+  require ['app', 'data/bundle'], (KormApp, bundle) ->
     window.App = KormApp
-    KormApp.start vendor: vendor
+    KormApp.start bundle

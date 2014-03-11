@@ -1,10 +1,10 @@
 module.exports = (grunt) ->
-  defaultBaseUrl = 'http://api.aydamarket.ru/v1/vendors.json'
+  defaultBaseUrl = 'http://api.aydamarket.ru/v1/bundles.json'
   imageFsDir = './app/data/images'
   imageWebDir = 'data/images'
-  target = './app/scripts/data/vendor_predefined.coffee'
+  target = './app/scripts/data/bundle.coffee'
 
-  grunt.registerTask "fetchPics", "Fetch vendor pics", ->
+  grunt.registerTask "fetchBundle", "Fetch vendor bundle", ->
     vendorKey = grunt.option('vendor-key')
     # http://api.3001.vkontraste.ru/v1/vendors.json
     baseUrl  = grunt.option('base-url') || defaultBaseUrl
