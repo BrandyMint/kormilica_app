@@ -8,9 +8,9 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
     itemViewContainer: '.cart-items'
 
     initialize: (options) ->
-      { @app, @cart, @profile } = options
+      { @app, @cart, @user } = options
       @collection = @cart.items
-      @model = @profile
+      @model = @user
 
     bindings:
       '#address':
@@ -36,11 +36,11 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
 
     serializeData: ->
       _.extend @cart.toJSON(),
-        items:   @cart.items.toJSON()
-        profile: @profile
+        items: @cart.items.toJSON()
+        user:  @user
 
     addOrder: (e) ->
-      @profile.save()
+      @user.save()
       @app.execute 'order:create'
 
     showErrors: (e) ->

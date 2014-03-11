@@ -3,7 +3,7 @@ define ['views/check/check'], (CheckView) ->
   class CheckController extends Marionette.Controller
 
     initialize: (options) ->
-      { @profile, @cart, @app } = options
+      { @app, @user, @cart } = options
 
       @app.vent.on 'checkout:clicked check:clicked', =>
         @showCheck()
@@ -14,7 +14,7 @@ define ['views/check/check'], (CheckView) ->
     showCheck: ->
       @checkView = new CheckView
         app:     @app
-        profile: @profile
+        user:    @user
         cart:    @cart
 
       @checkView.on 'cancel:button:clicked', =>

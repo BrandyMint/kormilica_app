@@ -1,10 +1,10 @@
 define ->
   'use strict'
 
-  class Profile extends Backbone.Model
+  class User extends Backbone.Model
 
     initialize: ->
-      @localStorage = new Backbone.LocalStorage 'profiles'
+      @localStorage = new Backbone.LocalStorage 'users'
 
     # id нужен, чтобы можно было найти модель из localStorage
     defaults:

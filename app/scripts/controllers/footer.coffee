@@ -3,12 +3,12 @@ define ['views/footer/footer'], (FooterView) ->
   class FooterController extends Marionette.Controller
 
     initialize: (options) ->
-      { @cart, @app, @profile, @vent } = options
+      { @cart, @app, @user, @vent } = options
 
       @footerView = new FooterView
         app:     @app
         cart:    @cart
-        profile: @profile
+        user:    @user
 
       @showFooter()
 

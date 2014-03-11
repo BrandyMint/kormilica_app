@@ -5,7 +5,7 @@ define ['templates/footer/footer', 'templates/footer/_checkout'],
     template: template
 
     initialize: (options) ->
-      { @profile, @app, @cart } = options
+      { @app, @cart } = options
 
       @collection = @cart.items
 
@@ -13,7 +13,7 @@ define ['templates/footer/footer', 'templates/footer/_checkout'],
         @hideButton()
 
     events:
-      'click a.checkout':           'showCheck'
+      'click a.checkout': 'showCheck'
 
     collectionEvents:
       'add':    'showCheckoutButton'
