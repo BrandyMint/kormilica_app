@@ -3,9 +3,9 @@ define ['collections/cart_items'], (CartItems)->
 
   class Cart extends Backbone.Model
 
-    initialize: (options) ->
+    initialize: (attrs, options) ->
       #@localStorage = new Backbone.LocalStorage 'cart'
-      @items = new CartItems()
+      @items = new CartItems({}, options)
 
       @listenTo @items, 'add change remove', @updateAggregators
 

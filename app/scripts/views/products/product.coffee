@@ -48,7 +48,7 @@ define [ 'templates/products/product', 'templates/products/button', 'templates/p
       @showButton() if item.get('product_id') == @model.id
 
     showButton: =>
-      if item = window.App.cart.items.itemOfProduct @model
+      if item = @app.cart.items.itemOfProduct @model
         @ui.button.html buttonAddedTemplate quantity: item.get('quantity')
       else
         @ui.button.html buttonTemplate()
