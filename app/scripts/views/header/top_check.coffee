@@ -3,7 +3,7 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
 
   class TopCheckView extends Marionette.ItemView
 
-    SLIDE_SPEED:  500
+    SLIDE_SPEED:  100
     BOUNCE_SPEED: 150
 
     template: template
@@ -52,8 +52,10 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
       checkHeight = @ui.checkImage.height()
       checkMarginTop = parseInt @ui.checkImage.css('margin-top')
 
-      @ui.checkImage.css 'margin-top', checkHeight + checkMarginTop
-      @ui.checkImage.animate marginTop: checkMarginTop, @SLIDE_SPEED
+      @ui.checkImage.
+        css(     'margin-top', checkHeight + checkMarginTop).
+        animate( marginTop: checkMarginTop, @SLIDE_SPEED ).
+        effect( 'bounce', {times:2}, @BOUNCE_SPEED )
 
     _hideIfEmpty: ->
       @$el.hide() if @model.isEmpty()
