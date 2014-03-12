@@ -5,7 +5,7 @@ define ->
 
       # Отражается в teamplates/header/header
       mobile_title:        'Доставка<br>пончиков'
-      mobile_logo_url:     'images/logo.png'      
+      mobile_logo_url:     '/kormapp/images/logo.png'
 
       # Отражается на странице О проекте
       mobile_subject:      'Доставка пончиков "От Геннадия"'
