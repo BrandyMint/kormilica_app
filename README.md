@@ -17,21 +17,18 @@
 Обновление данных вендора
 --------------------------
 
-Скачать инициализационные данные в (`./app/scripts/data/bundle.coffee`)
-
-    curl http://api.aydamarket.ru/v1/vendors.json?vendor_key=467abe2e7d33e6455fe905e879fd36be > ./app/data/vendor.json
-
-Сохранить локально все картинки вендора и создать модуль с новыми путями
+Скачать инициализационные данные в (`./app/scripts/data/bundle.coffee`). Сохраняются локально все картинки вендора и создать модуль с новыми путями
 
     grunt fetchBundle --vendor-key 467abe2e7d33e6455fe905e879fd36be # Ключ тестового вендора на продакшене
 
-Загрузка данных вендора с кастомного api:
+Загрузка данных вендора с кастомного api (полезно в develoment-е):
 
     grunt fetchBundle --vendor-key 98b118b9fa89e7aa8c18b0b43f7c178e --base-url http://api.3001.vkontraste.ru/v1/vendors.json
 
 Добавляем ключ `-v` для более полной информации
     
-Репозитории:
+Репозитории
+------------
 
 * cordova-мобильное приложение: https://github.com/BrandyMint/kormilica_cordova
 * rails web: https://github.com/BrandyMint/kormilica
