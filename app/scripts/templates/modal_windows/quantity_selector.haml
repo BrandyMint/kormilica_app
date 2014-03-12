@@ -1,26 +1,26 @@
-.modal-wrapper
-  .dark-background
-  .modal-window
+.kormapp-modal-wrapper
+  .kormapp-dark-background
+  .kormapp-modal-window
     .column.full
-      .quantity-title Введите количество
-      %table.quantity-table
+      .kormapp-quantity-title Введите количество
+      %table.kormapp-quantity-table
         %tr
           %td
-            %p.price
-              %span.price-font!= @money @product.get 'price'
+            %p.kormapp-price
+              %span.kormapp-price-font!= @moneyWithoutCurrency @product.get 'price'
               р.
           %td
-            %p.multiplier x
-              %span.multiplier-font.quantity= @quantity
+            %p.kormapp-multiplier x
+              %span.kormapp-multiplier-font.kormapp-quantity= @quantity
               \=
           %td
-            %p.price.result!= @money @total_cost
+            %p.kormapp-price.kormapp-result!= @money @total_cost
 
-      .quantity-selector
+      .kormapp-quantity-selector
         %a#kormapp-plus-sign{:href => '#'} +
-        %span.quantity #{@quantity}
+        %span.kormapp-quantity #{@quantity}
         шт
         %a#kormapp-minus-sign{:href => '#'} -
 
-      %a.button{:href => '#'} 
+      %a.kormapp-button{:href => '#'} 
         %span ГОТОВО
