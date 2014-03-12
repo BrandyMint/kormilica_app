@@ -19,7 +19,7 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
       @_hideIfEmpty()
 
     bindings:
-      '#amount':
+      '#kormapp-amount':
         observe: 'total_cost'
         updateMethod: 'html'
         onGet: (value) ->

@@ -7,7 +7,7 @@ define ['views/header/top_check', 'templates/header/header', 'helpers/applicatio
       template: template
 
       regions:
-        checkRegion: '#check'
+        checkRegion: '#kormapp-top-check'
 
       initialize: (options) ->
         { @app, @cart } = options
