@@ -13,9 +13,9 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
       @model = @user
 
     bindings:
-      '#address':
+      '#kormapp-address':
         observe: 'address'
-      '#phone':
+      '#kormapp-phone':
         observe: 'phone'
 
     ui:
@@ -59,11 +59,11 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
         @deactivateDeliveryButton()
 
     deactivateDeliveryButton: ->
-      button = @$('#check-bottom-container').find('.delivery')
+      button = @$('#kormapp-check-bottom-container').find('.delivery')
       button.removeClass('delivery').addClass('delivery-inactive')
 
     activateDeliveryButton: ->
-      button = @$('#check-bottom-container').find('.delivery-inactive')
+      button = @$('#kormapp-check-bottom-container').find('.delivery-inactive')
       button.removeClass('delivery-inactive').addClass('delivery')
 
     _setScrollableAreaHeight: ->

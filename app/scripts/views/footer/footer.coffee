@@ -21,12 +21,11 @@ define ['templates/footer/footer', 'templates/footer/_checkout'],
       'remove': 'hideButton'
 
     showCheckoutButton: ->
-      @$('#workspace').html checkoutButtonTemplate
+      @$('#kormapp-workspace').html checkoutButtonTemplate
 
     hideButton: ->
       if @cart.isEmpty()
-        @$('#workspace').html @workspaceDOM
-        @$('#check-bottom').children().remove()
+        @$('#kormapp-workspace').html @workspaceDOM
 
     showCheck: (e) ->
       e.preventDefault()
@@ -36,6 +35,6 @@ define ['templates/footer/footer', 'templates/footer/_checkout'],
       alert @vendor.get 'footer_empty_button'
 
     onRender: ->
-      @workspaceDOM = @$('#workspace').children().clone()
+      @workspaceDOM = @$('#kormapp-workspace').children().clone()
       unless @cart.isEmpty()
         @showCheckoutButton()

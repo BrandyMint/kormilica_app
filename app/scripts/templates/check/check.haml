@@ -1,5 +1,5 @@
-#check-external.center
-  #check-internal
+#kormapp-check-external.center
+  #kormapp-check-internal
 
     .check-content
       .scrollable-check
@@ -19,15 +19,15 @@
         %form{:name => "message", method=> "post"}
           %section
             %label{:for => "phone"} Телефон:
-            %input#phone{:type => "tel", :name => "phone", :placeholder => "+7(999)999-99-99"}
+            %input#kormapp-phone{:type => "tel", :name => "phone", :placeholder => "+7(999)999-99-99"}
             %label{:for => "address"} Ваш адрес:
-            %input#address{:type => "text", :name => "address"}
+            %input#kormapp-address{:type => "text", :name => "address"}
 
         %p.form-comment
           обязательно введите свой телефон для связи
   
-  #check-bottom-container
-    #check-bottom
+  #kormapp-check-bottom-container
+    #kormapp-check-bottom
       .check-short-left
       .check-short-right
       .check-short-center
