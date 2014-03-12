@@ -9,53 +9,51 @@
   color: #fff
   border-bottom: 3px solid $orange-border-color
 
-  #kormapp-logo 
-    img.kormapp-logo-image
-      height: 30px
-      margin-top: 18px
-      margin-left: 10px
-      display: inline-block
-      float: left
+#kormapp-logo 
+  img.kormapp-logo-image
+    height: 30px
+    margin-top: 18px
+    margin-left: 10px
+    display: inline-block
+    float: left
 
-    p.kormapp-logo-text
-      padding-top: 16px
-      margin-left: 60px
-      font-family: $base-font-family
-      font-size: $base-font-size
-      line-height: 0.95
-      letter-spacing: -1px
+p.kormapp-logo-text
+  padding-top: 16px
+  margin-left: 60px
+  font-family: $base-font-family
+  font-size: $base-font-size
+  line-height: 0.95
+  letter-spacing: -1px
 
-  #kormapp-top-check
+.kormapp-top-check
+  position: relative
+  margin-top: 9px
+  margin-left: 22px
+  float: left
+  width: 43px
+  height: 50px
 
-    .kormapp-top-check
-      position: relative
-      margin-top: 9px
-      margin-left: 22px
-      float: left
-      width: 43px
-      height: 50px
+.kormapp-check-background-image
+  position: absolute
+  background: url("../images/top-check-background.png") no-repeat bottom
+  background-size: contain
+  width: 100%
+  bottom: 0
+  height: 5px
 
-      .kormapp-check-background-image
-        position: absolute
-        background: url("../images/top-check-background.png") no-repeat bottom
-        background-size: contain
-        width: 100%
-        bottom: 0
-        height: 5px
+.kormapp-check-image
+  position: absolute
+  z-index: 5
+  height: 100%
 
-      .kormapp-check-image
-        position: absolute
-        z-index: 5
-        height: 100%
+p.kormapp-top-check-text
+  padding-top: 16px
+  margin-left: 5px
+  font-family: $base-font-family
+  font-size: $header-check-size
+  line-height: 1.2
 
-    p.kormapp-top-check-text
-      padding-top: 16px
-      margin-left: 5px
-      font-family: $base-font-family
-      font-size: $header-check-size
-      line-height: 1.2
-
-  #kormapp-amount
-    font-family: $base-font-family
-    font-weight: bold
-    font-size: $base-font-size
+#kormapp-amount
+  font-family: $base-font-family
+  font-weight: bold
+  font-size: $base-font-size
