@@ -1,11 +1,11 @@
 {
   "name": "kormilica_app",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": [
     "/kormilica_app.js"
   ],
   "ignore": [
-    "*",
+    "!/kormapp",
     "!/lib/kormilica_app.js",
     "!/lib/kormilica_app.min.js",
     "!/lib/kormilica_app_core.js"
