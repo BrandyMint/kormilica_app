@@ -298,7 +298,6 @@ module.exports = (grunt) ->
             "images/{,*/}*.{webp,gif}"
             "styles/fonts/{,*/}*.*"
             "{,*/}*.js"
-            "bower_components/sass-bootstrap/fonts/*.*"
           ]
         ]
 
@@ -341,7 +340,6 @@ module.exports = (grunt) ->
             "<%= yeoman.dist %>/scripts/{,*/}*.js"
             "<%= yeoman.dist %>/styles/{,*/}*.css"
             "/styles/fonts/{,*/}*.*"
-            "bower_components/sass-bootstrap/fonts/*.*"
           ]
 
   grunt.registerTask "createDefaultTemplate", ->

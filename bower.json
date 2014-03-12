@@ -19,7 +19,6 @@
   "devDependencies": {
     "jquery": "~1.9.0",
     "underscore": "~1.6",
-    "sass-bootstrap": "~3.0.0",
     "backbone": "latest",
     "backbone.stickit": "latest",
     "backbone.marionette": "latest",

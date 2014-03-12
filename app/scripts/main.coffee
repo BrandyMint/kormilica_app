@@ -16,9 +16,6 @@ require.config
     marionette:
       deps: ['backbone', 'backbone.wreqr', 'backbone.babysitter']
       exports: 'Marionette'
-    bootstrap:
-      deps: ['jquery'],
-      exports: 'jquery'
     'jquery.ui.effect':
       deps: ['jquery']
     'jquery.ui.effect-bounce':
@@ -36,7 +33,6 @@ require.config
     'backbone.babysitter':   '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter'
     'backbone.localStorage': '../bower_components/backbone.localStorage/backbone.localStorage'
     # 'backbone.virtualcollection':  '../bower_components/backbone.virtualcollection/backbone.virtual-collection'
-    #bootstrap:               '../bower_components/sass-bootstrap/dist/js/bootstrap'
     'jquery.ui.effect':        "../bower_components/jquery.ui/ui/jquery.ui.effect"
     'jquery.ui.effect-bounce': "../bower_components/jquery.ui/ui/jquery.ui.effect-bounce"
 
