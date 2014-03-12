@@ -65,7 +65,7 @@ module.exports = (grunt) ->
           "<%= yeoman.app %>/*.html"
           "{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css"
           "{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js"
-          "<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp}"
+          "<%= yeoman.app %>/kormapp/images/{,*/}*.{png,jpg,jpeg,gif,webp}"
           "<%= yeoman.app %>/scripts/templates/{,*/}*.{ejs,mustache,hbs,haml}"
           "test/spec/**/*.js"
         ]
@@ -171,7 +171,7 @@ module.exports = (grunt) ->
       options:
         sassDir: "<%= yeoman.app %>/styles"
         cssDir: ".tmp/styles"
-        imagesDir: "<%= yeoman.app %>/images"
+        imagesDir: "<%= yeoman.app %>/kormapp/images"
         javascriptsDir: "<%= yeoman.app %>/scripts"
         fontsDir: "<%= yeoman.app %>/styles/fonts"
         importPath: "<%= yeoman.app %>/bower_components"
@@ -251,9 +251,9 @@ module.exports = (grunt) ->
       dist:
         files: [
           expand: true
-          cwd: "<%= yeoman.app %>/images"
+          cwd: "<%= yeoman.app %>/kormapp/images"
           src: "{,*/}*.{png,jpg,jpeg}"
-          dest: "<%= yeoman.dist %>/images"
+          dest: "<%= yeoman.dist %>/kormapp/images"
         ]
 
     cssmin:
@@ -295,7 +295,7 @@ module.exports = (grunt) ->
             "*.{ico,txt}"
             ".htaccess"
             "data/images/*.*"
-            "images/{,*/}*.{webp,gif}"
+            "kormapp/images/{,*/}*.{webp,gif,png,jpg}"
             "styles/fonts/{,*/}*.*"
             "{,*/}*.js"
           ]
