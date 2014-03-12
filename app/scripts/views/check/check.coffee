@@ -5,7 +5,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
     template: template
     templateHelpers: -> Helpers
     itemView: CheckCartItemView
-    itemViewContainer: '.cart-items'
+    itemViewContainer: '.kormapp-cart-items'
 
     initialize: (options) ->
       { @app, @cart, @user } = options
@@ -20,9 +20,9 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
 
     ui:
       form:                   'form'
-      backButton:             '.check-header a'
-      deliveryButton:         '.delivery a'
-      inactiveDeliveryButton: '.delivery-inactive a'
+      backButton:             '.kormapp-check-header a'
+      deliveryButton:         '.kormapp-delivery a'
+      inactiveDeliveryButton: '.kormapp-delivery-inactive a'
 
     events:
       'click @ui.deliveryButton': 'addOrder'
@@ -59,17 +59,17 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
         @deactivateDeliveryButton()
 
     deactivateDeliveryButton: ->
-      button = @$('#kormapp-check-bottom-container').find('.delivery')
-      button.removeClass('delivery').addClass('delivery-inactive')
+      button = @$('#kormapp-check-bottom-container').find('.kormapp-delivery')
+      button.removeClass('kormapp-delivery').addClass('kormapp-delivery-inactive')
 
     activateDeliveryButton: ->
-      button = @$('#kormapp-check-bottom-container').find('.delivery-inactive')
-      button.removeClass('delivery-inactive').addClass('delivery')
+      button = @$('#kormapp-check-bottom-container').find('.kormapp-delivery-inactive')
+      button.removeClass('kormapp-delivery-inactive').addClass('kormapp-delivery')
 
     _setScrollableAreaHeight: ->
-      container =  $('.check-content')
-      bottomInfo = $('.unscrollable-check')
-      itemsList =  $('.scrollable-check')
+      container =  $('.kormapp-check-content')
+      bottomInfo = $('.kormapp-unscrollable-check')
+      itemsList =  $('.kormapp-scrollable-check')
 
       scrollableHeight = container.height() - bottomInfo.height()
       itemsList.css 'height', scrollableHeight
