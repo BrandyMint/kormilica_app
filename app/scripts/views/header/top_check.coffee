@@ -16,7 +16,6 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
       { @app, @cart } = options
       @model = @cart
       @collection = @cart.items
-      @_hideIfEmpty()
 
     bindings:
       '#kormapp-amount':
@@ -38,7 +37,8 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
     itemAdded: (val) ->
       if @model.getNumberOfItems() == 1
         @$el.show()
-        @slideUp()
+        @showUp()
+        @listenTo @model, 'change', @bounce
       else
         @bounce()
 
@@ -48,17 +48,20 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
     bounce: =>
       @ui.checkImage.effect 'bounce', {times:2}, @BOUNCE_SPEED
 
-    slideUp: =>
-      checkHeight = @ui.checkImage.height()
-      checkMarginTop = parseInt @ui.checkImage.css('margin-top')
-
-      @ui.checkImage.
-        css( 'margin-top', checkHeight + checkMarginTop ).
-        animate( marginTop: checkMarginTop, @SLIDE_SPEED ).
+    showUp: =>
+      @ui.checkImage.stop().
+        css( 'margin-top', @checkHeight + @checkMarginTop ).
+        animate( marginTop: @checkMarginTop, @SLIDE_SPEED ).
         effect( 'bounce', {times:2}, @BOUNCE_SPEED )
 
     _hideIfEmpty: ->
-      @$el.hide() if @model.isEmpty()
+      if @model.isEmpty()
+        @ui.checkImage.stop().
+          animate marginTop: @checkHeight + @checkMarginTop, @SLIDE_SPEED, 'swing', =>
+            @$el.fadeOut @SLIDE_SPEED
 
     onRender: ->
+      @checkHeight    = 50 #@ui.checkImage.height()
+      @checkMarginTop = 0 #$parseInt @ui.checkImage.css('margin-top')
+      @$el.hide() if @model.isEmpty()
       @stickit()
