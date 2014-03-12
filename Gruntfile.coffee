@@ -226,7 +226,7 @@ module.exports = (grunt) ->
           useStrict: true
           almond: true
           findNestedDependencies: true
-          out: './lib/kormilica_app_core.js'
+          out: './lib/kormilica_app.core.js'
           name: 'app'
           mainConfig: '.tmp/scripts/app.js'
 
@@ -260,8 +260,11 @@ module.exports = (grunt) ->
       dist:
         files:
           "<%= yeoman.dist %>/styles/main.css": [
-            ".tmp/styles/{,*/}*.css"
-            "<%= yeoman.app %>/styles/{,*/}*.css"
+            ".tmp/styles/main.css"
+            #"<%= yeoman.app %>/styles/{,*/}*.css"
+          ]
+          "<%= yeoman.dist %>/styles/core.css": [
+            ".tmp/styles/core.css"
           ]
 
     htmlmin:
@@ -284,6 +287,10 @@ module.exports = (grunt) ->
           dest: "<%= yeoman.dist %>"
         ]
 
+    concat:
+      dist:
+        src:  '.tmp/styles/core.css'
+        dest: 'dist/styles/core.css'
     copy:
       dist:
         files: [
@@ -302,7 +309,12 @@ module.exports = (grunt) ->
         ]
 
       bower:
-        files: ["<%= yeoman.bower %>/lib/kormilica_app.js": "<%= yeoman.dist %>/scripts/main.js"]
+        files: [
+           { "<%= yeoman.bower %>/lib/kormilica_app.js": "<%= yeoman.dist %>/scripts/main.js" },
+           { expand: true, cwd: "<%= yeoman.dist %>", src: 'kormapp/*', dest: "<%= yeoman.bower %>/lib/"},
+           { "<%= yeoman.bower %>/lib/styles/kormilica_app.css": "<%= yeoman.dist %>/styles/main.css" },
+           { "<%= yeoman.bower %>/lib/styles/kormilica_app.core.css": "<%= yeoman.dist %>/styles/core.css" }
+        ]
 
       bower_min:
         files: ["<%= yeoman.bower %>/lib/kormilica_app.min.js": "<%= yeoman.dist %>/scripts/main.js"]
