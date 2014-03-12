@@ -19,8 +19,6 @@ require.config
     bootstrap:
       deps: ['jquery'],
       exports: 'jquery'
-    'jquery.form-serialize':
-      deps: ['jquery']
     'jquery.ui.effect':
       deps: ['jquery']
     'jquery.ui.effect-bounce':
@@ -39,7 +37,6 @@ require.config
     'backbone.localStorage': '../bower_components/backbone.localStorage/backbone.localStorage'
     # 'backbone.virtualcollection':  '../bower_components/backbone.virtualcollection/backbone.virtual-collection'
     #bootstrap:               '../bower_components/sass-bootstrap/dist/js/bootstrap'
-    'form-serialize':        'lib/form-serialize'
     'jquery.ui.effect':        "../bower_components/jquery.ui/ui/jquery.ui.effect"
     'jquery.ui.effect-bounce': "../bower_components/jquery.ui/ui/jquery.ui.effect-bounce"
 
