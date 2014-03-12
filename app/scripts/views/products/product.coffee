@@ -7,7 +7,7 @@ define [ 'templates/products/product',
   class ProductView extends Marionette.ItemView
     templateHelpers: -> Helpers
     template: productTemplate
-    className: 'product-block'
+    className: 'kormapp-product-block'
 
     events:
       click: 'clicked'
@@ -15,8 +15,7 @@ define [ 'templates/products/product',
     initialize: (options) ->
       { @app, @cartItems } = options
 
-      @listenTo @cartItems, 'add',    @cartChanged
-      @listenTo @cartItems, 'remove', @cartChanged
+      @listenTo @cartItems, 'add remove', @cartChanged
 
 
     clicked: (e) ->
@@ -35,5 +34,5 @@ define [ 'templates/products/product',
       @buttonRegion.show view
 
     onRender: ->
-      @buttonRegion = new Marionette.Region el: @$el.find('.product-quantity')
+      @buttonRegion = new Marionette.Region el: @$el.find('.kormapp-product-quantity')
       @showButton()

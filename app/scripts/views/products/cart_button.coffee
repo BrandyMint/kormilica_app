@@ -5,7 +5,7 @@ define [ 'templates/products/button_added', 'helpers/application_helpers'],
     template: template
 
     bindings:
-      '.karmapp-cart_item-quantity': 'quantity'
+      '.kormapp-cart-item-quantity': 'quantity'
 
     onRender: ->
       @stickit()
