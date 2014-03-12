@@ -38,8 +38,6 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
       if @model.getNumberOfItems() == 1
         @$el.show()
         @showUp()
-      else
-        @bounce()
 
     itemRemoved: =>
       @_hideIfEmpty()
@@ -47,19 +45,16 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
     bounce: =>
       return if @model.isEmpty()
       return unless @ui.checkImage.is(':visible')
-      console.log 'top_check bounce'
-      @ui.checkImage.effect 'bounce', {times:2}, @BOUNCE_SPEED
+      @ui.checkImage.effect 'bounce', {times:1}, @BOUNCE_SPEED
 
     showUp: =>
-      console.log 'top_check show up', @ui.checkImage
       @ui.checkImage.finish().
         css( 'margin-top', @checkHeight + @checkMarginTop ).
         animate( marginTop: @checkMarginTop, @SLIDE_SPEED ).
-        effect( 'bounce', {times:2}, @BOUNCE_SPEED )
+        effect( 'bounce', {times:1}, @BOUNCE_SPEED )
 
     _hideIfEmpty: ->
       if @model.isEmpty()
-        console.log 'top_check hide'
         @ui.checkImage.finish().
           animate marginTop: @checkHeight + @checkMarginTop, @SLIDE_SPEED, 'swing', =>
             @$el.fadeOut @SLIDE_SPEED
