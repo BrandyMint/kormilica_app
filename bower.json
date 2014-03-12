@@ -5,7 +5,7 @@
     "/kormilica_app.js"
   ],
   "ignore": [
-    "!/kormapp",
+    "!/lib/kormapp",
     "!/lib/kormilica_app.js",
     "!/lib/kormilica_app.min.js",
     "!/lib/kormilica_app_core.js"
