@@ -1,4 +1,4 @@
-define [ 'models/profile', 'models/vendor',
+define [ 'models/user', 'models/vendor',
   'controllers/cart', 'collections/cart_items',
   'controllers/check', 'collections/products',
   'views/header/header',
@@ -7,7 +7,7 @@ define [ 'models/profile', 'models/vendor',
   'controllers/modal',
   'views/main_layout'
 ],
-( Profile, Vendor,
+( User, Vendor,
 CartController, CartItems,
 CheckController, ProductsCollection,
 HeaderView, 
@@ -25,8 +25,8 @@ MainLayout
     App.categories = new Backbone.Collection options.categories
     App.products   = new ProductsCollection  options.products
 
-    App.profile = new Profile
-    App.profile.fetch()
+    App.user = new User
+    App.user.fetch()
 
     App.cart = new Cart({}, app: @)
     # ДО заполнения корзины продукты уже должны быть
@@ -44,14 +44,14 @@ MainLayout
       modal: App.modal
 
     new CheckController
-      app:     App
-      profile: App.profile
-      cart:    App.cart
+      app:  App
+      user: App.user
+      cart: App.cart
 
     new OrderController
       app:     App
       cart:    App.cart
-      profile: App.profile
+      user: App.user
 
     productsListView = new ProductsView
       app:        App
@@ -60,16 +60,16 @@ MainLayout
     App.mainLayout.mainRegion.show productsListView
 
     headerView = new HeaderView
-      app: App
+      app:  App
       cart: App.cart
 
     App.mainLayout.headerRegion.show headerView
 
     new FooterController
-      app:     App
-      cart:    App.cart
-      profile: App.profile
-      vent:    App.vent
+      app:  App
+      cart: App.cart
+      user: App.user
+      vent: App.vent
 
   App.on 'start', ->
     console.log "Start KormApp #{App.version}"
