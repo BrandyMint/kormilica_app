@@ -1,6 +1,6 @@
 .row.clearfix
   %div
-    %img{:src => @image.mobile_url}
-    %p= @title
+    %img.kormapp-product-image{:src => @image.mobile_url}
+    %p.kormapp-product-title= @title
     %p.kormapp-price!= @money @price
   .kormapp-product-quantity

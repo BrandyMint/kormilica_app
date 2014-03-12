@@ -4,9 +4,9 @@
     .kormapp-check-content
       .kormapp-scrollable-check
         .kormapp-check-header
-          %a{href: '#'}
+          %a.kormapp-back-button-link{href: '#'}
             %span.kormapp-back-button
-          %h2 Ваш чек
+          %h2.kormapp-check-heading Ваш чек
 
         %ol.kormapp-cart-items
 
@@ -16,7 +16,7 @@
           %p.kormapp-all-product-sum Итог:
             %span.kormapp-all-sum-right!= @money @total_cost
 
-        %form{:name => "message", method=> "post"}
+        %form.order-data{:name => "message", method=> "post"}
           %section
             %label{:for => "phone"} Телефон:
             %input#kormapp-phone{:type => "tel", :name => "phone", :placeholder => "+7(999)999-99-99"}
