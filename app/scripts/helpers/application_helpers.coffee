@@ -20,7 +20,7 @@ define ->
 
   money: (value) ->
     # TODO Мультивалютность
-    "<span class='price-font'>#{value.cents/100}</span> р."
+    "<span class='kormapp-price-font'>#{value.cents/100}</span> р."
 
   moneyWithoutCurrency: (value) ->
     "#{value.cents / 100}"

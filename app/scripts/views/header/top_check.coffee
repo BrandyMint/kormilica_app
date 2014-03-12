@@ -10,7 +10,7 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
     templateHelpers: -> Helpers
 
     ui:
-      checkImage: '.check-image'
+      checkImage: '.kormapp-check-image'
 
     initialize: (options) ->
       { @app, @cart } = options
@@ -53,9 +53,9 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
       checkMarginTop = parseInt @ui.checkImage.css('margin-top')
 
       @ui.checkImage.
-        css(     'margin-top', checkHeight + checkMarginTop).
+        css    ( 'margin-top', checkHeight + checkMarginTop ).
         animate( marginTop: checkMarginTop, @SLIDE_SPEED ).
-        effect( 'bounce', {times:2}, @BOUNCE_SPEED )
+        effect ( 'bounce', {times:2}, @BOUNCE_SPEED )
 
     _hideIfEmpty: ->
       @$el.hide() if @model.isEmpty()
