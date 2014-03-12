@@ -8,7 +8,7 @@ define ['templates/modal_windows/quantity_selector', 'helpers/application_helper
       ui:
         plusButton:    '#kormapp-plus-sign'
         minusButton:   '#kormapp-minus-sign'
-        confirmButton: '.kormapp-button'
+        confirmButton: '.kormapp-modal-button'
         quantity:      '.kormapp-quantity'
         result:        '.kormapp-result'
         outside:       '.kormapp-dark-background'
