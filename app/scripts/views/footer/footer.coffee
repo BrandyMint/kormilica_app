@@ -13,8 +13,8 @@ define ['templates/footer/footer', 'templates/footer/_checkout'],
         @hideButton()
 
     events:
-      'click a.checkout':         'showCheck'
-      'click .delivery-discount': 'emptyButtonClicked'
+      'click a.kormapp-checkout':         'showCheck'
+      'click .kormapp-delivery-discount': 'emptyButtonClicked'
 
     collectionEvents:
       'add':    'showCheckoutButton'

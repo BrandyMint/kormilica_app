@@ -1,20 +1,20 @@
 #kormapp-check-external.center
   #kormapp-check-internal
 
-    .check-content
-      .scrollable-check
-        .check-header
+    .kormapp-check-content
+      .kormapp-scrollable-check
+        .kormapp-check-header
           %a{href: '#'}
-            %span.back-button
+            %span.kormapp-back-button
           %h2 Ваш чек
 
-        %ol.cart-items
+        %ol.kormapp-cart-items
 
-      .unscrollable-check
+      .kormapp-unscrollable-check
 
         .row.clearfix
-          %p.all-product-sum Итог:
-            %span.all-sum-right!= @money @total_cost
+          %p.kormapp-all-product-sum Итог:
+            %span.kormapp-all-sum-right!= @money @total_cost
 
         %form{:name => "message", method=> "post"}
           %section
@@ -23,14 +23,14 @@
             %label{:for => "address"} Ваш адрес:
             %input#kormapp-address{:type => "text", :name => "address"}
 
-        %p.form-comment
+        %p.kormapp-form-comment
           обязательно введите свой телефон для связи
   
   #kormapp-check-bottom-container
     #kormapp-check-bottom
-      .check-short-left
-      .check-short-right
-      .check-short-center
+      .kormapp-check-short-left
+      .kormapp-check-short-right
+      .kormapp-check-short-center
 
-    .full.check-button{class: 'delivery'}
+    .full.kormapp-check-button.kormapp-delivery
       %a.button{:href => "#777"} ДОСТАВИТЬ ЗАКАЗ
