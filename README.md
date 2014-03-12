@@ -12,8 +12,12 @@
 Для очистки корзины в консоли вводим
 
     App.vent.trigger('cart:clean')
+    
+    
+Обновление данных вендора
+--------------------------
 
-Скачать инициализационные данные
+Скачать инициализационные данные в (`./app/scripts/data/bundle.coffee`)
 
     curl http://api.aydamarket.ru/v1/vendors.json?vendor_key=467abe2e7d33e6455fe905e879fd36be > ./app/data/vendor.json
 
