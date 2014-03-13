@@ -3,6 +3,7 @@ define [ 'models/user', 'models/vendor',
   'controllers/check', 'collections/products',
   'views/header/header',
   'views/products/products',
+  'views/modal_windows/vendor_page',
   'controllers/footer', 'controllers/order', 'models/cart',
   'controllers/modal',
   'views/main_layout'
@@ -12,6 +13,7 @@ CartController, CartItems,
 CheckController, ProductsCollection,
 HeaderView, 
 ProductsView,
+VendorPageView,
 FooterController, OrderController, Cart,
 ModalController,
 MainLayout
@@ -62,6 +64,9 @@ MainLayout
     headerView = new HeaderView
       app:  App
       cart: App.cart
+
+    headerView.on 'logo:clicked', ->
+      App.modal.show new VendorPageView model: App.vendor
 
     App.mainLayout.headerRegion.show headerView
 
