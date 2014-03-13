@@ -13,13 +13,11 @@ define ['templates/modal_windows/quantity_selector', 'helpers/application_helper
         result:        '.kormapp-result'
         outside:       '.kormapp-dark-background'
 
-      triggers:
-        'click @ui.outside': 'close'
-
       events:
         'click @ui.minusButton':   'decreaseQuantity'
         'click @ui.plusButton':    'increaseQuantity'
         'click @ui.confirmButton': 'confirmChanges'
+        'click @ui.outside': 'close'
 
       serializeData: ->
         _.extend @model.toJSON(),
