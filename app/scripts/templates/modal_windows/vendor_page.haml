@@ -1,9 +1,9 @@
 .kormapp-modal-wrapper
   .kormapp-dark-background
-  .kormapp-modal-window
+  .kormapp-modal-window.kormapp-modal-without-alignment
     .kormapp-column.full
-      %h2.kormapp-vendor-title!= @mobile_subject
-      .kormapp-vendor-description!=  @mobile_description
+      %h2.kormapp-vendor-title
+      .kormapp-vendor-description
 
       %a.kormapp-modal-button{:href => '#'} 
         %span.kormapp-modal-button-text ЗАКРЫТЬ

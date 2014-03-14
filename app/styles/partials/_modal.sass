@@ -10,7 +10,7 @@
 .kormapp-dark-background
   width: 100%
   height: 100%
-  background-color: #000
+  background-color: $black-background-color
   z-index: 140
   opacity: 0.8
 
@@ -24,8 +24,22 @@
   bottom: 0
   text-align: center
 
+.kormapp-modal-without-alignment
+  display: block
+  top: 70px
+  bottom: 70px
+
+  a.kormapp-modal-button
+    left: 0
+    right: 0
+    bottom: 0
+    position: absolute
+    display: block
+    margin: auto
+    text-align: center
+
 .kormapp-modal-window-white
-  background-color: #FFF
+  background-color: $white-background-color
 
 .kormapp-quantity-title
   padding: 15px 0 8px
