@@ -19,8 +19,8 @@ ModalController,
 MainLayout
 ) ->
 
-  window.App = new Marionette.Application
-  App.version= '0.1.5' # Переустанавливается через grunt version
+  App = new Marionette.Application
+  App.version= '0.1.6' # Переустанавливается через grunt version
 
   App.addInitializer (options) ->
     App.vendor     = new Vendor              options.vendor
