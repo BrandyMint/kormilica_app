@@ -23,11 +23,20 @@ module.exports = (grunt) ->
       grunt.fail.fatal(error) if error = (err or body.error)
 
       grunt.verbose.writeln JSON.stringify(body)
-      tot = body.products.length
+
+      logoFileName = "mobile_logo#{path.extname(body.vendor.mobile_logo_url)}"
+      http.get(body.vendor.mobile_logo_url, "#{imageFsDir}/#{logoFileName}", (err, result) ->
+        grunt.log.writeln " | ...logo written to: #{result.file}"
+        body.vendor.mobile_logo_url = "#{imageWebDir}/#{logoFileName}"
+        grunt.log.writeln "coffee module written to: #{target}"
+        fs.writeFileSync(target, "define -> #{JSON.stringify(body)}")
+        done()
+      )
+
+
       n = 0
       _(body.products).each((product, ind) ->
         grunt.verbose.writeln "product: #{product.title}"
-        logoFileName = "mobile_logo#{path.extname(body.vendor.mobile_logo.mobile_url)}"
         filename = "#{ind}#{path.extname(product.image.mobile_url)}"
         grunt.verbose.writeln "path: #{product.image.mobile_url}"
         grunt.verbose.writeln "img: #{filename}"
@@ -38,14 +47,6 @@ module.exports = (grunt) ->
           else
             grunt.log.writeln " | ...image written to: #{result.file}"
             product.image.mobile_url = "#{imageWebDir}/#{filename}"
-          if n == tot
-            http.get(body.vendor.mobile_logo.mobile_url, "#{imageFsDir}/#{logoFileName}", (err, result) ->
-              grunt.log.writeln " | ...logo written to: #{result.file}"
-              body.vendor.mobile_logo.mobile_url = "#{imageWebDir}/#{logoFileName}"
-              grunt.log.writeln "coffee module written to: #{target}"
-              fs.writeFileSync(target, "define -> #{JSON.stringify(body)}")
-              done()
-            )
         )
       )
     )
