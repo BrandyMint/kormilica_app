@@ -11,6 +11,7 @@ define ->
       # @listenTo @categories, 'reset', ->
       #   console.log 'Коллекция категорий обновлена', @categories
 
+    perform: ->
       $.ajax
         url: @url
         headers:

@@ -40,7 +40,7 @@ MainLayout
     # ДО заполнения корзины продукты уже должны быть
     App.cart.fetch()
 
-    new UpdateManager
+    App.updateManager = new UpdateManager
       url:        App.api_urls.bundles
       cart:       App.cart
       vendor:     App.vendor
@@ -95,7 +95,7 @@ MainLayout
   App.on 'start', ->
     console.log "Start KormApp #{App.version}"
 
-  #App.on 'initialize:after', ->
-    #Backbone.history.start()
+  App.on 'initialize:after', ->
+    App.updateManager.perform()
 
   App
