@@ -5,6 +5,7 @@ define [ 'models/user', 'models/vendor',
   'views/products/products',
   'views/modal_windows/vendor_page',
   'controllers/footer', 'controllers/order', 'models/cart',
+  'controllers/update_manager',
   'controllers/modal',
   'views/main_layout'
 ],
@@ -15,12 +16,13 @@ HeaderView,
 ProductsView,
 VendorPageView,
 FooterController, OrderController, Cart,
+UpdateManager,
 ModalController,
 MainLayout
 ) ->
 
   App = new Marionette.Application
-  App.version= '0.1.6' # Переустанавливается через grunt version
+  App.version = '0.1.7' # Переустанавливается через grunt version
 
   App.addInitializer (options) ->
     App.vendor     = new Vendor              options.vendor
@@ -33,6 +35,12 @@ MainLayout
     App.cart = new Cart({}, app: @)
     # ДО заполнения корзины продукты уже должны быть
     App.cart.fetch()
+
+    App.updateManager = new UpdateManager
+      cart:       App.cart
+      vendor:     App.vendor
+      categories: App.categories
+      products:   App.products
 
     # Сюда можно передавать el основого контейнера
     App.mainLayout = new MainLayout()
@@ -51,8 +59,8 @@ MainLayout
       cart: App.cart
 
     new OrderController
-      app:     App
-      cart:    App.cart
+      app:  App
+      cart: App.cart
       user: App.user
 
     productsListView = new ProductsView
@@ -72,16 +80,16 @@ MainLayout
     App.mainLayout.headerRegion.show headerView
 
     new FooterController
-      app:     App
-      cart:    App.cart
-      user:    App.user
-      vent:    App.vent
-      vendor:  App.vendor
+      app:    App
+      cart:   App.cart
+      user:   App.user
+      vent:   App.vent
+      vendor: App.vendor
 
   App.on 'start', ->
     console.log "Start KormApp #{App.version}"
 
-  #App.on 'initialize:after', ->
-    #Backbone.history.start()
+  App.on 'initialize:after', ->
+    App.updateManager.perform()
 
   App
