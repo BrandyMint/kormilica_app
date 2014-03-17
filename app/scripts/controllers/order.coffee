@@ -3,7 +3,7 @@ define ['models/order'], (Order) ->
   class OrderController extends Marionette.Controller
 
     initialize: (options) ->
-      { @app, @cart, @user, @url } = options
+      { @app, @cart, @user } = options
 
       @app.commands.setHandler 'order:create', =>
         @createOrder()
@@ -17,7 +17,6 @@ define ['models/order'], (Order) ->
       orderOptions.items = @_getFormattedCartItems()
 
       order = new Order orderOptions
-      order.url = @url
       order.save null, {
         success: (model, response) =>
 

@@ -29,10 +29,6 @@ MainLayout
     App.categories = new Backbone.Collection options.categories
     App.products   = new ProductsCollection  options.products
 
-    App.api_urls =
-      'bundles': 'http://api.aydamarket.ru/v1/bundles.json'
-      'orders':  'http://api.aydamarket.ru/v1/orders.json'
-
     App.user = new User
     App.user.fetch()
 
@@ -41,7 +37,6 @@ MainLayout
     App.cart.fetch()
 
     App.updateManager = new UpdateManager
-      url:        App.api_urls.bundles
       cart:       App.cart
       vendor:     App.vendor
       categories: App.categories
@@ -64,7 +59,6 @@ MainLayout
       cart: App.cart
 
     new OrderController
-      url:  App.api_urls.orders
       app:  App
       cart: App.cart
       user: App.user

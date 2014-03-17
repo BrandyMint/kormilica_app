@@ -1,8 +1,8 @@
-define ->
+define ['settings'], (Settings) ->
 
   class ProductsUpdaterController extends Marionette.Controller
 
-    initialize: ({ @url, @cart, @vendor, @categories, @products }) ->
+    initialize: ({ @cart, @vendor, @categories, @products }) ->
       @VENDOR_KEY = @vendor.get 'key'
 
       # @listenTo @products, 'reset', ->
@@ -13,7 +13,7 @@ define ->
 
     perform: ->
       $.ajax
-        url: @url
+        url: Settings.api_urls.bundles
         headers:
           'X-Vendor-Key': @VENDOR_KEY
         success: (data) =>
