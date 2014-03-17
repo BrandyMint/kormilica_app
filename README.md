@@ -23,7 +23,7 @@
 
 Загрузка данных вендора с кастомного api (полезно в develoment-е):
 
-    grunt fetchBundle --vendor-key 98b118b9fa89e7aa8c18b0b43f7c178e --base-url http://api.3001.vkontraste.ru/v1/vendors.json
+    grunt fetchBundle --vendor-key 98b118b9fa89e7aa8c18b0b43f7c178e --base-url http://api.3001.vkontraste.ru/v1/bundles.json
 
 Добавляем ключ `-v` для более полной информации
     
