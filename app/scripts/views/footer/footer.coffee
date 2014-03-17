@@ -4,13 +4,20 @@ define ['templates/footer/footer', 'templates/footer/_checkout'],
   class Footer extends Marionette.ItemView
     template: template
 
-    initialize: (options) ->
-      { @vent, @cart, @vendor } = options
-
+    initialize: ({ @vent, @cart, @vendor }) ->
+      @model = @vendor
       @collection = @cart.items
 
       @vent.on 'order:created', =>
         @hideButton()
+
+    bindings:
+      '.kormapp-footer-offer':
+        observe:      'mobile_footer'
+        updateMethod: 'html'
+      '.kormapp-free-delivery':
+        observe:      'mobile_delivery'
+        updateMethod: 'html'
 
     events:
       'click a.kormapp-checkout':         'showCheck'
@@ -35,6 +42,7 @@ define ['templates/footer/footer', 'templates/footer/_checkout'],
       alert @vendor.get 'footer_empty_button'
 
     onRender: ->
+      @stickit()
       @workspaceDOM = @$('#kormapp-workspace').children().clone()
       unless @cart.isEmpty()
         @showCheckoutButton()

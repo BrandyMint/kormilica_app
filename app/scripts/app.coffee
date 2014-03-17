@@ -62,8 +62,9 @@ MainLayout
     App.mainLayout.mainRegion.show productsListView
 
     headerView = new HeaderView
-      app:  App
-      cart: App.cart
+      app:    App
+      cart:   App.cart
+      vendor: App.vendor
 
     headerView.on 'logo:clicked', ->
       App.modal.show new VendorPageView model: App.vendor
