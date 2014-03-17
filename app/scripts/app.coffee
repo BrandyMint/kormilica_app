@@ -5,7 +5,7 @@ define [ 'models/user', 'models/vendor',
   'views/products/products',
   'views/modal_windows/vendor_page',
   'controllers/footer', 'controllers/order', 'models/cart',
-  'controllers/products_updater',
+  'controllers/update_manager',
   'controllers/modal',
   'views/main_layout'
 ],
@@ -16,7 +16,7 @@ HeaderView,
 ProductsView,
 VendorPageView,
 FooterController, OrderController, Cart,
-ProductsUpdaterController,
+UpdateManager,
 ModalController,
 MainLayout
 ) ->
@@ -39,11 +39,12 @@ MainLayout
     # ДО заполнения корзины продукты уже должны быть
     App.cart.fetch()
 
-    new ProductsUpdaterController
-      url:      App.urls.bundles
-      cart:     App.cart
-      products: App.products
-      vendor:   App.vendor
+    new UpdateManager
+      url:        App.urls.bundles
+      cart:       App.cart
+      vendor:     App.vendor
+      categories: App.categories
+      products:   App.products
 
     # Сюда можно передавать el основого контейнера
     App.mainLayout = new MainLayout()
