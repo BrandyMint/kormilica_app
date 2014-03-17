@@ -5,6 +5,7 @@ define [ 'models/user', 'models/vendor',
   'views/products/products',
   'views/modal_windows/vendor_page',
   'controllers/footer', 'controllers/order', 'models/cart',
+  'controllers/products_updater',
   'controllers/modal',
   'views/main_layout'
 ],
@@ -15,17 +16,21 @@ HeaderView,
 ProductsView,
 VendorPageView,
 FooterController, OrderController, Cart,
+ProductsUpdaterController,
 ModalController,
 MainLayout
 ) ->
 
   App = new Marionette.Application
-  App.version= '0.1.6' # Переустанавливается через grunt version
+  App.version = '0.1.6' # Переустанавливается через grunt version
 
   App.addInitializer (options) ->
     App.vendor     = new Vendor              options.vendor
     App.categories = new Backbone.Collection options.categories
     App.products   = new ProductsCollection  options.products
+
+    App.urls =
+      'bundles': 'http://api.aydamarket.ru/v1/bundles.json'
 
     App.user = new User
     App.user.fetch()
@@ -33,6 +38,12 @@ MainLayout
     App.cart = new Cart({}, app: @)
     # ДО заполнения корзины продукты уже должны быть
     App.cart.fetch()
+
+    new ProductsUpdaterController
+      url:      App.urls.bundles
+      cart:     App.cart
+      products: App.products
+      vendor:   App.vendor
 
     # Сюда можно передавать el основого контейнера
     App.mainLayout = new MainLayout()
@@ -51,8 +62,8 @@ MainLayout
       cart: App.cart
 
     new OrderController
-      app:     App
-      cart:    App.cart
+      app:  App
+      cart: App.cart
       user: App.user
 
     productsListView = new ProductsView
@@ -72,11 +83,11 @@ MainLayout
     App.mainLayout.headerRegion.show headerView
 
     new FooterController
-      app:     App
-      cart:    App.cart
-      user:    App.user
-      vent:    App.vent
-      vendor:  App.vendor
+      app:    App
+      cart:   App.cart
+      user:   App.user
+      vent:   App.vent
+      vendor: App.vendor
 
   App.on 'start', ->
     console.log "Start KormApp #{App.version}"
