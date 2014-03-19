@@ -1,29 +1,20 @@
 define ['settings'], (Settings) ->
-
   class ProductsUpdaterController extends Marionette.Controller
 
     initialize: ({ @vent, @cart, @vendor, @categories, @products }) ->
-      @VENDOR_KEY = @vendor.get 'key'
-
-      # @listenTo @products, 'reset', ->
-      #   console.log 'Коллекция продуктов обновлена', @products
-
-      # @listenTo @categories, 'reset', ->
-      #   console.log 'Коллекция категорий обновлена', @categories
 
     perform: ->
       $.ajax
         url: Settings.api_urls.bundles
-        headers:
-          'X-Vendor-Key': @VENDOR_KEY
-        success: (data) =>
-          console.log 'От сервера получены данные для обновления', data
-          @_updateEntities data
-          @vent.trigger 'cart:clean'
-        error: ->
-          console.log 'Ошибка получения списка продуктов с сервера'
+        headers: @_headers()
+        success: @_update
+        error: (e) -> console.log 'Ошибка получения списка продуктов с сервера', e
 
-    _updateEntities: (data) ->
+    _update: (data) =>
+      console.log 'От сервера получены данные для обновления', data
       @products.reset   data.products
       @categories.reset data.categories
       @vendor.set       data.vendor
+
+    _headers: ->
+      'X-Vendor-Key': @vendor.get('key') 

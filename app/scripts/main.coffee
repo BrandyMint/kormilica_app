@@ -48,4 +48,5 @@ unless @Marionette
     @Marionette = Marionette
 
 require ['app', 'data/bundle'], (KormApp, bundle) =>
+  window.KormApp = KormApp
   KormApp.start bundle

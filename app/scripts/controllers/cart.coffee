@@ -13,7 +13,7 @@ define ['views/modal_windows/quantity_selector'], (QuantitySelectorView) ->
         #else
           #@deleteItem item
 
-      @vent.on 'cart:clean order:created', => @cleanCart()
+      @vent.on 'order:created', => @cleanCart()
 
     productClick: (product) =>
       # Если товар есть в корзине, item будет содержать модельку cartItem

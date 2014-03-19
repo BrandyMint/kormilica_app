@@ -13,15 +13,18 @@ define ['templates/modal_windows/quantity_selector', 'helpers/application_helper
         result:        '.kormapp-result'
         outside:       '.kormapp-dark-background'
 
+      bindings:
+        '.kormapp-quantity': 'quantity'
+        '.kormapp-result': 
+          observe: 'total_cost'
+          updateMethod: 'html'
+          onGet: -> Helpers.money @model.get 'total_cost'
+
       events:
         'click @ui.minusButton':   'decreaseQuantity'
         'click @ui.plusButton':    'increaseQuantity'
         'click @ui.confirmButton': 'confirmChanges'
         'click @ui.outside': 'close'
-
-      serializeData: ->
-        _.extend @model.toJSON(),
-          product: @model.product
 
       decreaseQuantity: (e) ->
         e.preventDefault()
@@ -41,6 +44,15 @@ define ['templates/modal_windows/quantity_selector', 'helpers/application_helper
       onClose: ->
         @model.destroy() if @model.get('quantity')==0
 
+      onRender: ->
+        @stickit()
+        @stickit @model.product,
+          '.kormapp-quantity-price':
+            observe: 'price'
+            updateMethod: 'html'
+            onGet: -> Helpers.money @model.product.get 'price'
+
       _updateView: ->
-        $(@ui.quantity).html @model.get('quantity')
-        $(@ui.result).html Helpers.money @model.get('total_cost')
+        @render()
+        #$(@ui.quantity).html @model.get('quantity')
+        #$(@ui.result).html Helpers.money @model.get('total_cost')

@@ -23,4 +23,4 @@ define ->
     "<span class='kormapp-price-font'>#{value.cents/100}</span> р."
 
   moneyWithoutCurrency: (value) ->
-    value.cents / 100
+    "#{value.cents / 100}"

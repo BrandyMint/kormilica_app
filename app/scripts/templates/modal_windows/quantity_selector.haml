@@ -7,14 +7,13 @@
         %tr
           %td
             %p.kormapp-price
-              %span.kormapp-price-font!= @moneyWithoutCurrency @product.get 'price'
-              р.
+              %span.kormapp-quantity-price
           %td
             %p.kormapp-multiplier x
-              %span.kormapp-multiplier-font.kormapp-quantity= @quantity
+              %span.kormapp-multiplier-font.kormapp-quantity
               \=
           %td
-            %p.kormapp-price.kormapp-result!= @money @total_cost
+            %p.kormapp-price.kormapp-result
 
       .kormapp-quantity-selector
         %a#kormapp-minus-sign{:href => '#'} -
