@@ -25,5 +25,6 @@ define ->
   money_txt: (value) ->
     # TODO Мультивалютность
     "#{value.cents/100} руб."
+
   moneyWithoutCurrency: (value) ->
     "#{value.cents / 100}"

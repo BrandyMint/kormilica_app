@@ -5,7 +5,7 @@ define ['views/check/check'], (CheckView) ->
     initialize: (options) ->
       { @app, @user, @cart } = options
 
-      @app.vent.on 'checkout:clicked check:clicked', =>
+      @app.commands.setHandler 'check:show', =>
         @showCheck()
 
       @app.vent.on 'order:created', =>
