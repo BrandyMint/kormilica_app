@@ -2,7 +2,7 @@ define ['settings'], (Settings) ->
 
   class ProductsUpdaterController extends Marionette.Controller
 
-    initialize: ({ @cart, @vendor, @categories, @products }) ->
+    initialize: ({ @vent, @cart, @vendor, @categories, @products }) ->
       @VENDOR_KEY = @vendor.get 'key'
 
       # @listenTo @products, 'reset', ->
@@ -19,6 +19,7 @@ define ['settings'], (Settings) ->
         success: (data) =>
           console.log 'От сервера получены данные для обновления', data
           @_updateEntities data
+          @vent.trigger 'cart:clean'
         error: ->
           console.log 'Ошибка получения списка продуктов с сервера'
 
