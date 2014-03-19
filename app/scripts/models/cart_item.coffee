@@ -6,7 +6,7 @@ define ->
     defaults:
       quantity: 1
 
-    initialize: (attrs, options) ->
+    initialize: ->
       # Восстанавливаем модели при загрузке данных из localStorage
       @product = @collection?.app.products.get @get('product_id')
 
