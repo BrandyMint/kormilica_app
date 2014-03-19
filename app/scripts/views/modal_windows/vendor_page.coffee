@@ -5,6 +5,8 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
     template: template
     templateHelpers: -> Helpers
 
+    initialize: ({ @app }) ->
+
     bindings:
       '.kormapp-vendor-title': 
         observe: 'mobile_subject'
@@ -12,6 +14,9 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
       '.kormapp-vendor-description': 
         observe: 'mobile_description'
         updateMethod: 'html'
+
+    serializeData: ->
+      app: @app
 
     ui:
       closeButton: '.kormapp-modal-button'
