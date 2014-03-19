@@ -6,6 +6,8 @@
       .kormapp-vendor-description
 
       %a.kormapp-modal-button{:href => '#'} 
-        %span.kormapp-modal-button-text ЗАКРЫТЬ
+        %span.kormapp-modal-button-text OK
 
-    .kormapp-app-version!= @app.version
+    .kormapp-app-version
+      Версия
+      != @app.version
