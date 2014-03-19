@@ -12,7 +12,6 @@
   ],
   "dependencies": {
     "requirejs": "~2.x",
-    "backbone.virtualcollection": "~0.4.10",
     "jquery.ui": "~1.10.4",
     "underscore": "~1.6"
   },
@@ -20,6 +19,7 @@
     "jquery": "~1.9.0",
     "underscore": "~1.6",
     "backbone": "latest",
+    "backbone.virtualcollection": "~0.4.10",
     "backbone.stickit": "latest",
     "backbone.marionette": "latest",
     "backbone.localStorage": "latest",
