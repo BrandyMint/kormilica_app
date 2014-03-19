@@ -30,12 +30,10 @@ define ['templates/modal_windows/quantity_selector', 'helpers/application_helper
         e.preventDefault()
         unless @model.get('quantity') < 1
           @model.set 'quantity', @model.get('quantity')-1
-          @_updateView()
 
       increaseQuantity: (e) ->
         e.preventDefault()
         @model.set 'quantity', @model.get('quantity')+1
-        @_updateView()
 
       confirmChanges: (e) ->
         e.preventDefault()
@@ -51,8 +49,3 @@ define ['templates/modal_windows/quantity_selector', 'helpers/application_helper
             observe: 'price'
             updateMethod: 'html'
             onGet: -> Helpers.money @model.product.get 'price'
-
-      _updateView: ->
-        @render()
-        #$(@ui.quantity).html @model.get('quantity')
-        #$(@ui.result).html Helpers.money @model.get('total_cost')
