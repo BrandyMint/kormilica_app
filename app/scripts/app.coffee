@@ -22,7 +22,7 @@ MainLayout
 ) ->
 
   App = new Marionette.Application
-  App.version = '0.1.8' # Переустанавливается через grunt version
+  App.version = '0.1.9' # Переустанавливается через grunt version
 
   App.addInitializer (options) ->
     App.vendor     = new Vendor              options.vendor
