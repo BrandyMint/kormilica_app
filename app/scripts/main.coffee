@@ -46,11 +46,12 @@ unless @Marionette
   require [
     'backbone',
     'backbone.stickit',
+    'backbone.virtualcollection',
     'backbone.localStorage',
     'marionette'
     'jquery.ui.effect',
     'jquery.ui.effect-bounce'
-    ], (Backbone, Stickit, LocalStorage, Marionette)  =>
+    ], (Backbone, Stickit, VirtualCollection, LocalStorage, Marionette)  =>
     @Marionette = Marionette
 
 require ['app', 'data/bundle'], (KormApp, bundle) =>
