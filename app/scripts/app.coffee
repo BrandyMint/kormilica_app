@@ -76,7 +76,9 @@ MainLayout
       vendor: App.vendor
 
     headerView.on 'logo:clicked', ->
-      App.modal.show new VendorPageView model: App.vendor
+      App.modal.show new VendorPageView 
+        appVersion: App.version
+        model:      App.vendor
 
     App.mainLayout.headerRegion.show headerView
 
