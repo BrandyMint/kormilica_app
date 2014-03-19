@@ -64,9 +64,11 @@ MainLayout
       cart: App.cart
       user: App.user
 
+    sorted_products = new Backbone.VirtualCollection App.products, comparator: 'position'
+
     productsListView = new ProductsView
       app:        App
-      collection: App.products
+      collection: sorted_products
 
     App.mainLayout.mainRegion.show productsListView
 

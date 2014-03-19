@@ -20,8 +20,14 @@ require.config
       deps: ['jquery']
     'jquery.ui.effect-bounce':
       deps: ['jquery.ui.effect']
+    'backbone.virtualcollection':
+      deps: ['underscore', 'backbone']
     app:
-      deps: ['marionette', 'backbone.stickit', 'backbone.localStorage', 'jquery.ui.effect', 'jquery.ui.effect-bounce']
+      deps: [
+        'marionette',
+      'backbone.stickit', 'backbone.localStorage', 'backbone.virtualcollection',
+      'jquery.ui.effect', 'jquery.ui.effect-bounce'
+      ]
 
   paths:
     jquery:                  '../bower_components/jquery/jquery'
@@ -32,7 +38,7 @@ require.config
     'backbone.wreqr':        '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr'
     'backbone.babysitter':   '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter'
     'backbone.localStorage': '../bower_components/backbone.localStorage/backbone.localStorage'
-    # 'backbone.virtualcollection':  '../bower_components/backbone.virtualcollection/backbone.virtual-collection'
+    'backbone.virtualcollection':  '../bower_components/backbone.virtualcollection/backbone.virtual-collection'
     'jquery.ui.effect':        "../bower_components/jquery.ui/ui/jquery.ui.effect"
     'jquery.ui.effect-bounce': "../bower_components/jquery.ui/ui/jquery.ui.effect-bounce"
 
