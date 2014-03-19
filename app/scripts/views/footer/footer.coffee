@@ -18,9 +18,15 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'helpers/applic
       '.kormapp-free-delivery':
         observe:      'mobile_delivery'
         updateMethod: 'html'
+        onGet:        (val) ->
+          deliveryPrice = Helpers.moneyWithoutCurrency @vendor.get 'delivery_price'
+          if deliveryPrice == 0
+            return val
+          else
+            return "Стоимость доставки #{deliveryPrice} руб."
 
     events:
-      'click a.kormapp-checkout':         'showCheck'
+      'click a.kormapp-checkout':         'checkoutButtonClicked'
       'click .kormapp-delivery-discount': 'emptyButtonClicked'
 
     collectionEvents:
@@ -34,7 +40,7 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'helpers/applic
       if @cart.isEmpty()
         @$('#kormapp-workspace').html @workspaceDOM
 
-    showCheck: (e) ->
+    checkoutButtonClicked: (e) ->
       e.preventDefault()
 
       if @_isGreaterThanMinimalPrice()
