@@ -1,5 +1,5 @@
-define ['templates/footer/footer', 'templates/footer/_checkout'], 
-(template, checkoutButtonTemplate) ->
+define ['templates/footer/footer', 'templates/footer/_checkout', 'helpers/application_helpers'], 
+(template, checkoutButtonTemplate, Helpers) ->
 
   class Footer extends Marionette.ItemView
     template: template
@@ -36,7 +36,16 @@ define ['templates/footer/footer', 'templates/footer/_checkout'],
 
     showCheck: (e) ->
       e.preventDefault()
-      @trigger 'checkout:clicked'
+
+      if @_isGreaterThanMinimalPrice()
+        @trigger 'checkout:clicked'
+      else
+        alert "Минимальный заказ от #{@minimalPrice} рублей"
+
+    _isGreaterThanMinimalPrice: ->
+      @minimalPrice = Helpers.moneyWithoutCurrency @vendor.get 'minimal_price'
+      currentTotalCost = Helpers.moneyWithoutCurrency @cart.get 'total_cost'
+      currentTotalCost > @minimalPrice
 
     emptyButtonClicked: ->
       alert @vendor.get 'footer_empty_button'

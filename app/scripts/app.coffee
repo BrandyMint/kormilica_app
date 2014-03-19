@@ -37,6 +37,7 @@ MainLayout
     App.cart.fetch()
 
     App.updateManager = new UpdateManager
+      vent:       App.vent
       cart:       App.cart
       vendor:     App.vendor
       categories: App.categories
