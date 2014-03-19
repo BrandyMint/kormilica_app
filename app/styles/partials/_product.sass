@@ -1,0 +1,47 @@
+.kormapp-product-block
+  overflow: hidden
+  padding: 8px
+  margin: -6px 12px 12px 12px
+  background: $product-block-bg-color
+  position: relative
+  border-bottom: 3px solid $product-item-shadow-color
+  @media screen and (max-width: 360px)
+    float: none
+  @media screen and (min-width: 640px)
+    width: 46%
+    float: left
+  @media screen and (min-width: 960px)
+    width: 30%
+    float: left
+
+img.kormapp-product-image
+  height: 92px
+  width: 83px
+  display: inline-block
+  float: left
+
+p.kormapp-product-title
+  margin-left: 90px
+  font-family: $base-font-family
+  font-size: $product-name-font-size
+  color: $grey-font-color
+  line-height: 1.1
+
+.kormapp-product-in-list-price
+  position: absolute
+  margin-left: 90px
+  bottom: 7px
+  color: $orange-font-color
+  font-family: $base-font-family
+  font-size: $product-rouble-font-size
+
+  .kormapp-price-font
+    // Too bold for android
+    // font-weight: bold
+    font-size: $product-price-font-size
+    @media screen and (max-width: $mobile-max-width)
+      font-size: $product-price-font-small-size
+    @media screen and (min-width: 640px) and (max-width: 720px)
+      font-size: $product-price-font-small-size
+    @media screen and (min-width: 960px) and (max-width: 1040px)
+      font-size: $product-price-font-small-size

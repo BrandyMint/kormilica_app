@@ -1,7 +1,7 @@
 "use strict"
 LIVERELOAD_PORT = 35729
 SERVER_PORT = 3006
-lrSnippet = require("connect-livereload")(port: LIVERELOAD_PORT)
+#lrSnippet = require("connect-livereload")(port: LIVERELOAD_PORT)
 mountFolder = (connect, dir) ->
   connect.static require("path").resolve(dir)
 
@@ -39,7 +39,7 @@ module.exports = (grunt) ->
     watch:
       options:
         nospawn: true
-        livereload: true
+        livereload: false
 
       coffee:
         files: ["<%= yeoman.app %>/scripts/{,*/,*/*/}*.coffee"]
@@ -92,7 +92,7 @@ module.exports = (grunt) ->
         options:
           middleware: (connect) ->
             [
-              lrSnippet
+              #lrSnippet
               mountFolder(connect, ".tmp")
               mountFolder(connect, "lib")
               mountFolder(connect, yeomanConfig.app)
