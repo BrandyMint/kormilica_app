@@ -26,7 +26,7 @@ DataPreloader
 ) ->
 
   App = new Marionette.Application
-  App.version = '0.1.10' # Переустанавливается через grunt version
+  App.version = '0.1.11' # Переустанавливается через grunt version
 
   App.addInitializer (bundle) ->
     DataPreloader App, bundle
