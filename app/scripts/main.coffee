@@ -24,7 +24,7 @@ require.config
       deps: ['underscore', 'backbone']
     app:
       deps: [
-        'marionette',
+        'marionette', 'notification',
       'backbone.stickit', 'backbone.localStorage',
       'backbone.virtualcollection',
       'jquery.ui.effect', 'jquery.ui.effect-bounce'
@@ -42,6 +42,7 @@ require.config
     'backbone.virtualcollection':  '../bower_components/backbone.virtualcollection/backbone.virtual-collection'
     'jquery.ui.effect':        "../bower_components/jquery.ui/ui/jquery.ui.effect"
     'jquery.ui.effect-bounce': "../bower_components/jquery.ui/ui/jquery.ui.effect-bounce"
+    'notification':            './libs/notification'
 
 unless @Marionette
   require [
@@ -53,7 +54,13 @@ unless @Marionette
     'jquery.ui.effect',
     'jquery.ui.effect-bounce'
     ], (Backbone, Stickit, VirtualCollection, LocalStorage, Marionette)  =>
-    @Marionette = Marionette
+      @Marionette = Marionette
+
+unless window.navigator?.notification?
+  require ['notification'], (Notification) ->
+    window.navigator = {} unless window.navigator?
+    window.navigator.notification = Notification
+
 
 require ['app', 'data/bundle'], (KormApp, bundle) =>
   window.KormApp = KormApp

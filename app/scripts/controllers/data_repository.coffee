@@ -17,7 +17,7 @@ define [
       App.user = new User
       App.user.fetch()
 
-      if App.user.get('lastUpdateAt')?
+      if false && App.user.get('lastUpdateAt')?
         App.vendor.fetch()
         App.categories.fetch()
         App.products.fetch()
