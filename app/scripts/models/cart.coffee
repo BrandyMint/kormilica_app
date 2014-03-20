@@ -1,11 +1,11 @@
-define ['collections/cart_items'], (CartItems)->
+define ['collections/cart_items', 'helpers/application_helpers'], (CartItems, Helpers)->
   'use strict'
 
   class Cart extends Backbone.Model
 
-    initialize: (attrs, options) ->
+    initialize: ->
       #@localStorage = new Backbone.LocalStorage 'cart'
-      @items = new CartItems({}, options)
+      @items = new CartItems
 
       @listenTo @items, 'add change remove', @updateAggregators
 
@@ -35,8 +35,18 @@ define ['collections/cart_items'], (CartItems)->
       item.save()
 
     addProduct: (product) ->
-      @items.create product_id: product.id
+      @items.create product: product
 
     removeProduct: (product) ->
-     item = @items.itemOfProduct product
-     item.destroy() if item?
+      item = @items.itemOfProduct product
+      item.destroy() if item?
+
+    getTotalCost: ->
+      @items.getTotalCost()
+
+    # TODO Выделить в сервис
+    reattachProductsFromCollection: (products) ->
+      saved_total_cost = @getTotalCost()
+      @items.each (ci) -> ci.reattachProductFromCollection products
+
+      return saved_total_cost.cents != @getTotalCost().cents

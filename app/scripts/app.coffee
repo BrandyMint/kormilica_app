@@ -1,45 +1,38 @@
-define [ 'models/user', 'models/vendor',
-  'controllers/cart', 'collections/cart_items',
-  'controllers/check', 'collections/products',
+define [
+  'controllers/cart', 'controllers/check',
+
   'views/header/header',
   'views/products/products',
   'views/modal_windows/vendor_page',
-  'controllers/footer', 'controllers/order', 'models/cart',
+  'controllers/footer', 'controllers/order',
   'controllers/update_manager',
   'controllers/minimal_price_checker',
   'controllers/modal',
-  'views/main_layout'
+  'views/main_layout',
+  'controllers/data_repository'
 ],
-( User, Vendor,
-CartController, CartItems,
-CheckController, ProductsCollection,
+(
+CartController, 
+CheckController, 
 HeaderView, 
 ProductsView,
 VendorPageView,
-FooterController, OrderController, Cart,
+FooterController, OrderController,
 UpdateManager,
 MinimalPriceChecker,
 ModalController,
-MainLayout
+MainLayout,
+DataPreloader
 ) ->
 
   App = new Marionette.Application
   App.version = '0.1.9' # Переустанавливается через grunt version
 
-  App.addInitializer (options) ->
-    App.vendor     = new Vendor              options.vendor
-    App.categories = new Backbone.Collection options.categories
-    App.products   = new ProductsCollection  options.products
-
-    App.user = new User
-    App.user.fetch()
-
-    App.cart = new Cart({}, app: @)
-    # ДО заполнения корзины продукты уже должны быть
-    App.cart.fetch()
+  App.addInitializer (bundle) ->
+    DataPreloader App, bundle
 
     App.updateManager = new UpdateManager
-      vent:       App.vent
+      user:       App.user
       cart:       App.cart
       vendor:     App.vendor
       categories: App.categories

@@ -2,16 +2,15 @@ define ->
   'use strict'
 
   class User extends Backbone.Model
-
-    initialize: ->
-      @localStorage = new Backbone.LocalStorage 'users'
+    localStorage: new Backbone.LocalStorage 'users'
 
     # id нужен, чтобы можно было найти модель из localStorage
     defaults:
-      id:          1
-      address:     ''
-      phone:       ''
-      name:        ''
+      id:           1
+      address:      ''
+      phone:        ''
+      name:         ''
+      lastUpdateAt: null
 
     # TODO Валидация
     isAllFieldsFilled: ->

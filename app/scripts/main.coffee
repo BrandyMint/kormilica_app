@@ -25,7 +25,8 @@ require.config
     app:
       deps: [
         'marionette',
-      'backbone.stickit', 'backbone.localStorage', 'backbone.virtualcollection',
+      'backbone.stickit', 'backbone.localStorage',
+      'backbone.virtualcollection',
       'jquery.ui.effect', 'jquery.ui.effect-bounce'
       ]
 

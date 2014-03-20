@@ -1,7 +1,7 @@
 define ['settings', 'helpers/application_helpers'], (Settings, Helpers) ->
   class ProductsUpdaterController extends Marionette.Controller
 
-    initialize: ({ @vent, @cart, @vendor, @categories, @products }) ->
+    initialize: ({ @user, @cart, @vendor, @categories, @products }) ->
 
     perform: ->
       $.ajax
@@ -13,15 +13,19 @@ define ['settings', 'helpers/application_helpers'], (Settings, Helpers) ->
     _update: (data) =>
       console.log 'От сервера получены данные для обновления', data
       @products.reset   data.products
+      @products.save()
+
       @categories.reset data.categories
+
       @vendor.set       data.vendor
+      @vendor.save()
 
-      saved_total_cost = @cart.items.getTotalCost()
-      @cart.items.each (ci) -> ci.initialize()
-      new_total_cost = @cart.items.getTotalCost()
+      debugger
+      @user.set 'lastUpdateAt', Date.now()
+      @user.save()
 
-      if saved_total_cost.cents != new_total_cost.cents
-        alert "Продавец изменил цены товаров.\nНовая стоимость корзины: #{Helpers.money_txt new_total_cost}"
+      if @cart.reattachProductsFromCollection @products
+        alert "Продавец изменил цены товаров.\nНовая стоимость корзины: #{Helpers.money_txt @cart.getTotalCost()}"
 
     _headers: ->
       'X-Vendor-Key': @vendor.get 'key'

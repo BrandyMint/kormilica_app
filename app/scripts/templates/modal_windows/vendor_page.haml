@@ -10,4 +10,7 @@
 
     .kormapp-app-version
       Версия
-      != @app.version
+      != @version
+      %br
+      Последнее обновление
+      != (new Date @lastUpdateAt).toLocaleDateString()

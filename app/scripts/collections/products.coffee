@@ -1,5 +1,6 @@
-define ['models/product'], (Model) ->
+define ['models/product'], (Product) ->
 
   class Products extends Backbone.Collection
-    url: "products"
-    model: Model
+    model: Product
+    localStorage: new Backbone.LocalStorage 'products'
+    save: -> @forEach (p) -> p.save()

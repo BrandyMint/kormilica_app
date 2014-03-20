@@ -16,7 +16,8 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
         updateMethod: 'html'
 
     serializeData: ->
-      app: @app
+      version: @app.version
+      lastUpdateAt: @app.user.get('lastUpdateAt') || 'нет'
 
     ui:
       closeButton: '.kormapp-modal-button'

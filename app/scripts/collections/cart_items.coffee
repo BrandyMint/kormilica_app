@@ -1,12 +1,8 @@
 define ['models/cart_item'], (CartItem) ->
 
   class CartItems extends Backbone.Collection
-    url: 'cart' # TODO в настройки
     model: CartItem
-
-    initialize: (models, options) ->
-      @localStorage = new Backbone.LocalStorage 'cart_items'
-      @app = options.app
+    localStorage: new Backbone.LocalStorage 'cart_items'
 
     getTotalCost: () ->
       addup = (memo, item) -> (item.get('total_cost')?.cents || 0) + memo

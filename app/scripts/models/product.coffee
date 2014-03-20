@@ -1,5 +1,3 @@
-define ['app'], ->
-  'use strict'
-
+define  ->
   class Product extends Backbone.Model
-    urlRoot: 'products'
+    localStorage: new Backbone.LocalStorage 'products'

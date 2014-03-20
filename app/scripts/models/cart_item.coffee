@@ -6,22 +6,25 @@ define ->
     defaults:
       quantity: 1
 
-    initialize: ->
-      # Восстанавливаем модели при загрузке данных из localStorage
-      @product = @collection?.app.products.get @get('product_id')
+    initialize: ({product}) ->
+      if product?
+        attachProduct product?
 
-      if @product?
+    # Восстанавливаем модели при загрузке данных из localStorage
+    reattachProductFromCollection: (products) ->
+      product = products.get @get('product_id')
 
-        @set 
-          product_title: @product.get('title')
-          product_price: @product.get('price')
-
-        @on 'change:quantity', @updateTotalCost
-
-        @updateTotalCost()
-
+      if product?
+        @attachProduct product
       else
         @destroy()
+
+    attachProduct: (product) ->
+      @product = product
+      @set 'product_id', @product.id
+      @off 'change:quantity', @updateTotalCost
+      @on  'change:quantity', @updateTotalCost
+      @updateTotalCost()
 
     updateTotalCost: ->
       cents = @product.get('price').cents * @get('quantity')

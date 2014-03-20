@@ -1,5 +1,6 @@
 define ->
   class Vendor extends Backbone.Model
+    localStorage: new Backbone.LocalStorage 'vendors'
     defaults:
       key:                 '!PREDEFINED_KEY' 
 
