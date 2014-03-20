@@ -3,9 +3,10 @@ define ['collections/cart_items', 'helpers/application_helpers'], (CartItems, He
 
   class Cart extends Backbone.Model
 
-    initialize: ->
+    initialize: (data, products)->
       #@localStorage = new Backbone.LocalStorage 'cart'
-      @items = new CartItems
+      @items = new CartItems()
+      @items.products = products
 
       @listenTo @items, 'add change remove', @updateAggregators
 
@@ -47,6 +48,6 @@ define ['collections/cart_items', 'helpers/application_helpers'], (CartItems, He
     # TODO Выделить в сервис
     reattachProductsFromCollection: (products) ->
       saved_total_cost = @getTotalCost()
-      @items.each (ci) -> ci.reattachProductFromCollection products
+      @items.each (ci) -> ci.reattachProductFromCollection()
 
       return saved_total_cost.cents != @getTotalCost().cents

@@ -26,7 +26,7 @@ define [
         App.categories.set bundle.categories
         App.products.set   bundle.products
 
-      App.cart = new Cart()
+      App.cart = new Cart {}, App.products
       App.cart.fetch()
 
-      App.cart.reattachProductsFromCollection App.products
+      #App.cart.reattachProductsFromCollection App.products

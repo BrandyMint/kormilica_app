@@ -76,8 +76,10 @@ DataPreloader
 
     headerView.on 'logo:clicked', ->
       App.modal.show new VendorPageView
-        app: App
-        model: App.vendor
+        version:       App.version
+        model:         App.vendor
+        user:          App.user
+        updateManager: App.updateManager
 
     App.mainLayout.headerRegion.show headerView
 

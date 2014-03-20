@@ -5,7 +5,7 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
     template: template
     templateHelpers: -> Helpers
 
-    initialize: ({ @app }) ->
+    initialize: ({ @version, @user, @updateManager }) ->
 
     bindings:
       '.kormapp-vendor-title': 
@@ -16,15 +16,25 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
         updateMethod: 'html'
 
     serializeData: ->
-      version: @app.version
-      lastUpdateAt: @app.user.get('lastUpdateAt') || 'нет'
+      @lastUpdateAt =  @user.get('lastUpdateAt')
+
+      if @lastUpdateAt?
+        @lastUpdateAt = (new Date @lastUpdateAt).toLocaleDateString()
+      else
+        @lastUpdateAt = '???'
+
+      version: @version
+      lastUpdateAt: @lastUpdateAt
 
     ui:
       closeButton: '.kormapp-modal-button'
 
     events:
-      # 'click @ui.closeButton': 'close'
+      'click .kormapp-app-update': '_update'
       'click': 'close'
+
+    _update: =>
+      @updateManager.perform true
 
     _setScrollableAreaHeight: ->
       container =   $('.kormapp-modal-window')

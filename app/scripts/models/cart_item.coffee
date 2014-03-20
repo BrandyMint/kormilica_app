@@ -7,12 +7,11 @@ define ->
       quantity: 1
 
     initialize: ({product}) ->
-      if product?
-        attachProduct product?
+      @reattachProductFromCollection() if product?
 
     # Восстанавливаем модели при загрузке данных из localStorage
-    reattachProductFromCollection: (products) ->
-      product = products.get @get('product_id')
+    reattachProductFromCollection: ->
+      product = @collection.products.get @get('product_id')
 
       if product?
         @attachProduct product

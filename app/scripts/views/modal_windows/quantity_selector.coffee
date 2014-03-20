@@ -30,10 +30,12 @@ define ['templates/modal_windows/quantity_selector', 'helpers/application_helper
         e.preventDefault()
         unless @model.get('quantity') < 1
           @model.set 'quantity', @model.get('quantity')-1
+          @model.save()
 
       increaseQuantity: (e) ->
         e.preventDefault()
         @model.set 'quantity', @model.get('quantity')+1
+        @model.save()
 
       confirmChanges: (e) ->
         e.preventDefault()

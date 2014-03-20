@@ -8,9 +8,11 @@
       %a.kormapp-modal-button{:href => '#'} 
         %span.kormapp-modal-button-text OK
 
-    .kormapp-app-version
-      Версия
-      != @version
-      %br
-      Последнее обновление
-      != (new Date @lastUpdateAt).toLocaleDateString()
+    .kormapp-vendor-footer
+      %span.kormapp-app-version
+        Версия
+        != @version
+        \.
+      %span.kormapp-app-update
+        Последнее обновление от
+        != @lastUpdateAt
