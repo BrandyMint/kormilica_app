@@ -1,12 +1,12 @@
-%p.kormapp-cartitem-name!= @product_title
+%p.kormapp-cartitem-name
 %table
   %tbody
     %tr
       %td.kormapp-product-amount
-        != @moneyWithoutCurrency @product_price
+        %span.kormapp-cartitem-product-price
         x
-        = @quantity
+        %span.kormapp-cartitem-product-quantity
       %td.kormapp-separator
         .separator-placeholder
       // TODO Мультивалютность
-      %td.kormapp-product-price= "#{@moneyWithoutCurrency @total_cost} р."
+      %td.kormapp-product-price
