@@ -3,20 +3,21 @@ define ['models/order'], (Order) ->
   class OrderController extends Marionette.Controller
 
     initialize: (options) ->
-      { @app, @cart, @user } = options
+      { @app, @cart, @user, @vendor } = options
 
       @app.commands.setHandler 'order:create', =>
         @createOrder()
 
     createOrder: =>
       # total_price, comment, etc
-      orderOptions =  @cart.toJSON()
+      orderAttributes = @cart.toJSON()
 
       # phone, name, address
-      orderOptions.user  = @user.toJSON()
-      orderOptions.items = @_getFormattedCartItems()
+      orderAttributes.user  = @user.toJSON()
+      orderAttributes.items = @_getFormattedCartItems()
+      orderAttributes.delivery_price = @vendor.get 'delivery_price'
 
-      order = new Order orderOptions
+      order = new Order orderAttributes
       order.save null, {
         success: (model, response) =>
 

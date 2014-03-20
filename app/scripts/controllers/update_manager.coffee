@@ -24,4 +24,4 @@ define ['settings', 'helpers/application_helpers'], (Settings, Helpers) ->
         alert "Продавец изменил цены товаров.\nНовая стоимость корзины: #{Helpers.money_txt new_total_cost}"
 
     _headers: ->
-      'X-Vendor-Key': @vendor.get('key') 
+      'X-Vendor-Key': @vendor.get 'key'

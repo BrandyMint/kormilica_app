@@ -13,8 +13,11 @@
       .kormapp-unscrollable-check
 
         .kormapp-row.clearfix
+          %p.kormapp-delivery-price Стоимость доставки
+            %span.kormapp-delivery-sum-right
+
           %p.kormapp-all-product-sum Итог:
-            %span.kormapp-all-sum-right!= @money @total_cost
+            %span.kormapp-all-sum-right
 
         %form.order-data{:name => "message", method=> "post"}
           %section
