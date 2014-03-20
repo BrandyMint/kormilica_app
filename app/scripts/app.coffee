@@ -57,14 +57,16 @@ MainLayout
       modal: App.modal
 
     new CheckController
-      app:  App
-      user: App.user
-      cart: App.cart
+      app:    App
+      user:   App.user
+      cart:   App.cart
+      vendor: App.vendor
 
     new OrderController
-      app:  App
-      cart: App.cart
-      user: App.user
+      app:    App
+      cart:   App.cart
+      user:   App.user
+      vendor: App.vendor
 
     sorted_products = new Backbone.VirtualCollection App.products, comparator: 'position'
 

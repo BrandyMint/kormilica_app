@@ -13,8 +13,12 @@
       .kormapp-unscrollable-check
 
         .kormapp-row.clearfix
+          - if @total_cost_with_delivery.cents > @total_cost_cents
+            %p.kormapp-delivery-price Стоимость доставки
+              %span.kormapp-all-sum-right!= @money @vendor.get('delivery_price')
+
           %p.kormapp-all-product-sum Итог:
-            %span.kormapp-all-sum-right!= @money @total_cost
+            %span.kormapp-all-sum-right!= @money @total_cost_with_delivery
 
         %form.order-data{:name => "message", method=> "post"}
           %section
