@@ -6,6 +6,7 @@ define [ 'models/user', 'models/vendor',
   'views/modal_windows/vendor_page',
   'controllers/footer', 'controllers/order', 'models/cart',
   'controllers/update_manager',
+  'controllers/minimal_price_checker',
   'controllers/modal',
   'views/main_layout'
 ],
@@ -17,6 +18,7 @@ ProductsView,
 VendorPageView,
 FooterController, OrderController, Cart,
 UpdateManager,
+MinimalPriceChecker,
 ModalController,
 MainLayout
 ) ->
@@ -55,14 +57,16 @@ MainLayout
       modal: App.modal
 
     new CheckController
-      app:  App
-      user: App.user
-      cart: App.cart
+      app:    App
+      user:   App.user
+      cart:   App.cart
+      vendor: App.vendor
 
     new OrderController
-      app:  App
-      cart: App.cart
-      user: App.user
+      app:    App
+      cart:   App.cart
+      user:   App.user
+      vendor: App.vendor
 
     sorted_products = new Backbone.VirtualCollection App.products, comparator: 'position'
 
@@ -90,6 +94,12 @@ MainLayout
       user:   App.user
       vent:   App.vent
       vendor: App.vendor
+
+    new MinimalPriceChecker
+      app:    App
+      cart:   App.cart
+      vendor: App.vendor
+      vent:   App.vent
 
   App.on 'start', ->
     console.log "Start KormApp #{App.version}"
