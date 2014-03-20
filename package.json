@@ -32,7 +32,8 @@
     "request-json": "~0.4.6",
     "underscore": "~1.6.0",
     "http-get": "~0.5.10",
-    "grunt-version": "git://github.com/BrandyMint/grunt-version.git#01c7d69723154ea450044d00b455b9d5282634d8"
+    "grunt-version": "git://github.com/BrandyMint/grunt-version.git#01c7d69723154ea450044d00b455b9d5282634d8",
+    "grunt-cli": "~0.1.13"
   },
   "engines": {
     "node": ">=0.8.0"
