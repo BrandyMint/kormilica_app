@@ -1,9 +1,11 @@
 .DS_Store
-node_modules
+/node_modules/
 npm-debug.log
-dist
-test/temp
+/dist/
 .sass-cache
-app/bower_components
+platforms/*
+plugins/^.*
+/app/bower_components
 .tmp
-test/bower_components/
+/test/temp
+/test/bower_components/

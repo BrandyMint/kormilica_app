@@ -1,0 +1,13 @@
+#!/bin/sh
+if test -z "$BUILD_NUMBER"; then
+  BUILD_NUMBER="c"`git log | wc | awk '{print $1}'`
+fi
+VERSION=`semver format '%M.%m.%p'`'+'$BUILD_NUMBER
+echo "Версия: $VERSION"
+curl http://testflightapp.com/api/builds.json \
+  -F file=@`pwd`/RocketWash.ipa \
+  -F team_token='febaf978fb0ad1ccf9fcbd70adb5c797_MTQwMDYzMjAxMi0xMC0wNSAxMjo0NzoyOS42MzI2ODg' \
+  -F api_token='0907c379f498d16d856d0d2546832f36_MTUzODkyNTIwMTMtMTItMjggMDI6NDE6MTYuODgzOTU4' \
+  -F notes="${VERSION} manual" \
+  -F notify=True \
+  -F distribution_lists='RocketWash'
