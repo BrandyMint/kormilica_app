@@ -31,8 +31,8 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
       'add':    'itemAdded'
       'remove': 'itemRemoved'
 
-    clicked: =>
-      @app.vent.trigger 'check:clicked'
+    clicked: ->
+      @app.vent.trigger 'top_check:clicked'
 
     itemAdded: (val) ->
       if @model.getNumberOfItems() == 1

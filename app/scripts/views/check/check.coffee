@@ -7,8 +7,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
     itemView: CheckCartItemView
     itemViewContainer: '.kormapp-cart-items'
 
-    initialize: (options) ->
-      { @app, @cart, @user } = options
+    initialize: ({ @app, @cart, @user, @vendor }) ->
       @collection = @cart.items
       @model = @user
 
@@ -36,8 +35,11 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
 
     serializeData: ->
       _.extend @cart.toJSON(),
-        items: @cart.items.toJSON()
-        user:  @user
+        items:  @cart.items.toJSON()
+        user:   @user
+        vendor: @vendor
+        total_cost_with_delivery: 
+          cents: @cart.get('total_cost').cents + @vendor.get('delivery_price').cents
 
     addOrder: (e) ->
       @user.save()
@@ -80,3 +82,23 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
 
     onRender: ->
       @stickit()
+
+      @stickit @vendor,
+        '.kormapp-delivery-price':
+          observe: 'delivery_price'
+          visible: (val) ->
+            true if val.cents > 0
+        '.kormapp-delivery-sum-right':
+          observe: 'delivery_price'
+          updateMethod: 'html'
+          onGet: (val) -> Helpers.money val
+      
+      @stickit @cart,
+        '.kormapp-all-sum-right':
+          observe:      'total_cost'
+          updateMethod: 'html'
+          onGet: (val) ->
+            result =
+              currency: val.currency
+              cents:    val.cents + @vendor.get('delivery_price').cents
+            Helpers.money result

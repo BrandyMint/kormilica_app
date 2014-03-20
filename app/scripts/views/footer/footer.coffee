@@ -20,7 +20,7 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'helpers/applic
         updateMethod: 'html'
 
     events:
-      'click a.kormapp-checkout':         'showCheck'
+      'click a.kormapp-checkout':         'checkoutButtonClicked'
       'click .kormapp-delivery-discount': 'emptyButtonClicked'
 
     collectionEvents:
@@ -34,18 +34,9 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'helpers/applic
       if @cart.isEmpty()
         @$('#kormapp-workspace').html @workspaceDOM
 
-    showCheck: (e) ->
+    checkoutButtonClicked: (e) ->
       e.preventDefault()
-
-      if @_isGreaterThanMinimalPrice()
-        @trigger 'checkout:clicked'
-      else
-        alert "Минимальный заказ от #{@minimalPrice} рублей"
-
-    _isGreaterThanMinimalPrice: ->
-      @minimalPrice = Helpers.moneyWithoutCurrency @vendor.get 'minimal_price'
-      currentTotalCost = Helpers.moneyWithoutCurrency @cart.get 'total_cost'
-      currentTotalCost > @minimalPrice
+      @vent.trigger 'checkout:clicked'
 
     emptyButtonClicked: ->
       alert @vendor.get 'footer_empty_button'
