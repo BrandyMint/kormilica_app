@@ -1,6 +1,5 @@
 define [
   'controllers/cart', 'controllers/check',
-
   'views/header/header',
   'views/products/products',
   'views/modal_windows/vendor_page',
@@ -9,7 +8,8 @@ define [
   'controllers/minimal_price_checker',
   'controllers/modal',
   'views/main_layout',
-  'controllers/data_repository'
+  'controllers/data_repository',
+  'delegation'
 ],
 (
 CartController, 
@@ -22,7 +22,8 @@ UpdateManager,
 MinimalPriceChecker,
 ModalController,
 MainLayout,
-DataPreloader
+DataPreloader,
+Delegation
 ) ->
 
   App = new Marionette.Application

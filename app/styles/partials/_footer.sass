@@ -4,8 +4,6 @@
   width: 100%
   max-width: $body-max-width
   z-index: 100
-  height: 60px
-  background: $footer-background-color
   font-family: $base-font-family
   color: $grey-font-color
   text-align: center
@@ -18,6 +16,9 @@
   background-color: $blue-background-color
   border-top: 2px solid $grey-blue-border-color
 
+.kormapp-footer-content.kormapp-mousedown
+  background-color: $footer-checkout-button-dark
+
 a.kormapp-checkout
   padding: 20px
   display: inline-block
@@ -27,5 +28,9 @@ a.kormapp-checkout
   text-decoration: none
 
 .kormapp-delivery-discount
+  background: $footer-background-color
   padding-top: 10px
   padding-bottom: 15px
+
+.kormapp-delivery-discount.kormapp-mousedown
+  background-color: $footer-discount-button-dark
