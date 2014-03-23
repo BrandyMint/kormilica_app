@@ -17,7 +17,7 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
       '.kormapp-vendor-city':
         observe: 'city'
         onGet:   (val) ->
-          "Город #{val}"
+          "#{val}"
 
     serializeData: ->
       @lastUpdateAt =  @user.get('lastUpdateAt')

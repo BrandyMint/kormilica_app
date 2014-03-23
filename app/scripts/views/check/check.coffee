@@ -95,7 +95,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
         'label[for="address"]':
           observe: 'city'
           onGet:   (val) ->
-            "Ваш адрес (город #{val})"
+            "Ваш адрес (#{val})"
 
       @stickit @cart,
         '.kormapp-all-sum-right':
