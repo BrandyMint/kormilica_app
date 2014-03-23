@@ -92,7 +92,11 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
           observe: 'delivery_price'
           updateMethod: 'html'
           onGet: (val) -> Helpers.money val
-      
+        'label[for="address"]':
+          observe: 'city'
+          onGet:   (val) ->
+            "Ваш адрес (город #{val})"
+
       @stickit @cart,
         '.kormapp-all-sum-right':
           observe:      'total_cost'

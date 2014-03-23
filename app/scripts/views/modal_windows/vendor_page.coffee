@@ -14,6 +14,10 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
       '.kormapp-vendor-description': 
         observe: 'mobile_description'
         updateMethod: 'html'
+      '.kormapp-vendor-city':
+        observe: 'city'
+        onGet:   (val) ->
+          "Город #{val}"
 
     serializeData: ->
       @lastUpdateAt =  @user.get('lastUpdateAt')
@@ -27,10 +31,11 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
       lastUpdateAt: @lastUpdateAt
 
     ui:
-      closeButton: '.kormapp-modal-button'
+      closeButton:  '.kormapp-modal-button'
+      updateButton: '.kormapp-app-update'
 
     events:
-      'click .kormapp-app-update': '_update'
+      'click @ui.updateButton': '_update'
       'click': 'close'
 
     _update: =>
