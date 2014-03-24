@@ -2,9 +2,9 @@ define ->
 
   # Делегирование DOM событий
   $(document)
-    .on("mousedown", '.kormapp-interactive', (e) ->
+    .on("touchstart mousedown", '.kormapp-reflection', (e) ->
       $(@).addClass('kormapp-mousedown'))
-    .on("mouseup", '.kormapp-interactive', (e) ->
+    .on("touchend mouseup", '.kormapp-reflection', (e) ->
       $(@).removeClass('kormapp-mousedown'))
-    .on("mousemove", '.kormapp-interactive', (e) ->
+    .on("mousemove", '.kormapp-reflection', (e) ->
       $(@).removeClass('kormapp-mousedown'))

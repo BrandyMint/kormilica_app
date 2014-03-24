@@ -7,7 +7,7 @@ define [ 'templates/products/product',
   class ProductView extends Marionette.ItemView
     templateHelpers: -> Helpers
     template: productTemplate
-    className: 'kormapp-product-block kormapp-interactive'
+    className: 'kormapp-product-block kormapp-reflection'
 
     events:
       click: 'clicked'

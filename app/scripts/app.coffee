@@ -9,7 +9,7 @@ define [
   'controllers/modal',
   'views/main_layout',
   'controllers/data_repository',
-  'delegation'
+  'reflection'
 ],
 (
 CartController, 
@@ -23,7 +23,7 @@ MinimalPriceChecker,
 ModalController,
 MainLayout,
 DataPreloader,
-Delegation
+Reflection
 ) ->
 
   App = new Marionette.Application
