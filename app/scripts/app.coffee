@@ -27,7 +27,7 @@ Delegation
 ) ->
 
   App = new Marionette.Application
-  App.version = '0.1.12' # Переустанавливается через grunt version
+  App.version = '0.1.14' # Переустанавливается через grunt version
 
   App.addInitializer (bundle) ->
     DataPreloader App, bundle

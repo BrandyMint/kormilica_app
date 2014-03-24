@@ -1,0 +1,4 @@
+version=`npm version patch`
+grunt version
+git add .
+git commit -m "bump version: ${version}"
