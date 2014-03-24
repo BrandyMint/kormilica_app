@@ -85,12 +85,16 @@
 
 #kormapp-plus-sign, #kormapp-minus-sign
   color: $blue-background-color
+  background-color: $white-background-color
   font-size: $modal-quantity-buttons-text-size
   display: inline-block
   width: 27px
   height: 27px
   border: 1px solid $blue-background-color
   text-decoration: none
+
+#kormapp-plus-sign.kormapp-mousedown, #kormapp-minus-sign.kormapp-mousedown
+  background-color: $modal-plus-minus-buttons-dark
 
 .kormapp-vendor-title, .kormapp-vendor-description
   color: $white-font-color
@@ -117,6 +121,9 @@ a.kormapp-modal-button
   text-align: center
   color: $white-font-color
   background-color: $button-orange-color
+
+a.kormapp-modal-button.kormapp-mousedown
+  background-color: $modal-button-dark
 
 span.kormapp-modal-button-text
   line-height: 1.7
