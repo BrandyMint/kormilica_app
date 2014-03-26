@@ -9,7 +9,7 @@ define [
   'controllers/modal',
   'views/main_layout',
   'controllers/data_repository',
-  'reflection'
+  'controllers/reflection'
 ],
 (
 CartController, 
