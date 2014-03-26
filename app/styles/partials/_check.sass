@@ -17,7 +17,7 @@
   top: 0
 
 #kormapp-check-internal
-  background-color: $grey-background-color
+  background-color: $check-background-color
   padding: 12px 12px 75px
   position: relative
   width: 100%
@@ -29,7 +29,7 @@
   overflow: hidden
   margin: 0 auto
   font-family: $base-font-family
-  color: $grey-font-color
+  color: $check-font-color
   background: url('../kormapp/images/paper-texture.png')
   background-size: contain
   z-index: 100
@@ -48,9 +48,6 @@ span.kormapp-back-button
   width: 12px
   height: 20px
   display: inline-block
-
-a.kormapp-back-button-link.kormapp-mousedown
-  color: $check-backbutton-dark
 
 h2.kormapp-check-heading
   font-size: $base-heading-size
@@ -83,13 +80,13 @@ p.kormapp-cartitem-name
 
 .kormapp-all-product-sum
   text-align: left
-  font-size: $content-sum-font-size
+  font-size: $check-sum-font-size
   font-weight: bold
   padding: 12px 12px 28px
 
 .kormapp-delivery-price
   text-align: left
-  font-size: $delivery-price-font-size
+  font-size: $check-delivery-price-font-size
   font-weight: bold
   padding: 12px 12px 0
 
@@ -107,15 +104,15 @@ form.order-data
     border: none
     font-family: $base-font-family
     font-size: base-font-size
-    color: $grey-font-color
+    color: $check-form-font-color
     padding-left: 5px
 
 .kormapp-form-comment
   width: 294px
   margin: 0 auto
   padding: 10px 0 15px
-  color: $orange-font-color
-  font-size: $footer-comment-font-size
+  color: $check-form-comment-font-color
+  font-size: $check-form-comment-font-size
   text-align: center
 
 #kormapp-check-bottom-container
@@ -148,24 +145,22 @@ form.order-data
 .kormapp-check-button
   font-family: $base-font-family
   height: 60px
-  background-color: $blue-background-color
-  border-top: 2px solid $grey-blue-border-color
 
 a.kormapp-check-button-link
   width: 100%
   display: inline-block
   padding: 20px
-  color: $white-font-color
-  font-size: $footer-confirm-font-size
+  color: $footer-button-font-color
+  font-size: $footer-delivery-button-font-size
   text-decoration: none
 
 .kormapp-delivery
-  background-color: $orange-background-color
+  background-color: $footer-delivery-button-background-color
   border-top: 2px solid $orange-border-color
 
 .kormapp-delivery.kormapp-mousedown
   background-color: $footer-delivery-button-dark
 
 .kormapp-delivery-inactive
-  background-color: $darkgrey-background-color
+  background-color: $footer-delivery-button-inactive-background-color
   border-top: 2px solid $darkgrey-border-color

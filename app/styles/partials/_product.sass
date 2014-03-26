@@ -2,9 +2,9 @@
   overflow: hidden
   padding: 8px
   margin: -6px 12px 12px 12px
-  background: $product-block-bg-color
+  background: $product-block-background-color
   position: relative
-  border-bottom: 3px solid $product-item-shadow-color
+  border-bottom: 3px solid $product-block-shadow-color
   @media screen and (max-width: 360px)
     float: none
   @media screen and (min-width: 640px)
@@ -26,25 +26,25 @@ img.kormapp-product-image
 p.kormapp-product-title
   margin-left: 90px
   font-family: $base-font-family
-  font-size: $product-name-font-size
-  color: $grey-font-color
+  font-size: $product-block-title-font-size
+  color: $product-block-title-font-color
   line-height: 1.1
 
 .kormapp-product-in-list-price
   position: absolute
   margin-left: 90px
   bottom: 7px
-  color: $orange-font-color
+  color: $price-font-color
   font-family: $base-font-family
-  font-size: $product-rouble-font-size
+  font-size: $product-block-price-rouble-font-size
 
   .kormapp-price-font
     // Too bold for android
     // font-weight: bold
-    font-size: $product-price-font-size
+    font-size: $product-block-price-font-size
     @media screen and (max-width: $mobile-max-width)
-      font-size: $product-price-font-small-size
+      font-size: $product-block-price-small-font-size
     @media screen and (min-width: 640px) and (max-width: 720px)
-      font-size: $product-price-font-small-size
+      font-size: $product-block-price-small-font-size
     @media screen and (min-width: 960px) and (max-width: 1040px)
-      font-size: $product-price-font-small-size
+      font-size: $product-block-price-small-font-size
