@@ -1,8 +1,9 @@
 .kormapp-footer
-  position: fixed
-  bottom: 0
+  position: relative
+  // bottom: 0
   width: 100%
   max-width: $body-max-width
+  margin-top: -$footer-height
   z-index: 100
   font-family: $base-font-family
   color: $footer-font-color
@@ -12,7 +13,7 @@
   color: $footer-free-delivery-font-color
 
 .kormapp-footer-content
-  height: 60px
+  height: $footer-height
   background-color: $footer-checkout-button-background-color
   border-top: 2px solid $grey-blue-border-color
 

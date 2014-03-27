@@ -1,6 +1,6 @@
 {
   "name": "kormilica_app",
-  "version": "0.1.15",
+  "version": "0.1.17",
   "main": [
     "/kormilica_app.js"
   ],
