@@ -27,7 +27,7 @@ Reflection
 ) ->
 
   App = new Marionette.Application
-  App.version = '0.1.17' # Переустанавливается через grunt version
+  App.version = '0.1.18' # Переустанавливается через grunt version
 
   App.addInitializer (bundle) ->
     console.log "App initialize", Date.now()
