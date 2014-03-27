@@ -30,6 +30,7 @@ Reflection
   App.version = '0.1.15' # Переустанавливается через grunt version
 
   App.addInitializer (bundle) ->
+    console.log "App initialize", Date.now()
     DataPreloader App, bundle
 
     App.updateManager = new UpdateManager
@@ -102,6 +103,7 @@ Reflection
 
   App.on 'initialize:after', ->
     new Reflection()
+    console.log "App inintialize:after", Date.now()
     # App.updateManager.perform()
 
   App
