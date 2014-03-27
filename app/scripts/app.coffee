@@ -100,7 +100,8 @@ Reflection
   App.on 'start', ->
     console.log "Start KormApp #{App.version}"
 
-  #App.on 'initialize:after', ->
-    #App.updateManager.perform()
+  App.on 'initialize:after', ->
+    new Reflection()
+    # App.updateManager.perform()
 
   App

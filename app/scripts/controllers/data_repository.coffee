@@ -10,6 +10,13 @@ define [
   ProductsCollection, CategoriesCollection,
 ) ->
     (App, bundle) ->
+
+      if window.localStorage.kormapp_version != App.version
+        console.log "Clear localStorage"
+        # TODO Постараться сохранить корзину
+        window.localStorage.clear()
+        window.localStorage.kormapp_version = App.version
+
       App.vendor     = new Vendor()
       App.categories = new CategoriesCollection()
       App.products   = new ProductsCollection()
