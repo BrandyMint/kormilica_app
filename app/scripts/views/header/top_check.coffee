@@ -9,6 +9,9 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
     template: template
     templateHelpers: -> Helpers
 
+    id: 'kormapp-top-check-container'
+    className: 'kormapp-reflection'
+
     ui:
       checkImage: '.kormapp-check-image'
 

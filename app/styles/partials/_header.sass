@@ -1,16 +1,19 @@
+$header-height: 60px
+$border-height: 3px
+
 .kormapp-header
   position: fixed
   width: 100%
   max-width: $body-max-width
   z-index: 100
-  height: 63px
-  margin-top: -63px
+  height: $header-height + $border-height
+  margin-top: -($header-height + $border-height)
   background: $header-background-color
   color: #fff
-  border-bottom: 3px solid $orange-border-color
+  border-bottom: $border-height solid $orange-border-color
 
 .kormapp-logo-wrapper
-  height: 60px
+  height: $header-height
   width: 60px
   position: relative
   float: left
@@ -41,6 +44,9 @@ p.kormapp-logo-text
   float: left
   width: 43px
   height: 50px
+
+#kormapp-top-check-container
+  height: $header-height
 
 .kormapp-check-background-image
   position: absolute

@@ -1,19 +1,19 @@
 define ->
   class ReflectionController
     constructor: ->
-      $(document).on "touchstart mousedown", '.kormapp-reflection', (e) ->
-        el = $ @
+      $(document).on "touchstart mousedown", '.kormapp-reflection', (e) =>
+        el = $ e.currentTarget
         el.addClass('kormapp-reflection-on')
 
-        window.__reflection_timeStamp = e.timeStamp
+        _callback = @callback.bind @,el
 
-        window.__reflection_callback = =>
-          el.removeClass('kormapp-reflection-on')
-          window.clearTimeout window.__reflection_timeout_id
-          window.__reflection_callback = undefined
+        window.clearTimeout @_reflection_timeout_id if @_reflection_timeout_id?
 
-        window.clearTimeout window.__reflection_timeout_id if window.__reflection_timeout_id?
+        @_reflection_timeout_id = window.setTimeout _callback, 2000
 
-        window.__reflection_timeout_id = window.setTimeout window.__reflection_callback, 2000
+        el.on "touchend mouseup touchmove mousemove", _callback
 
-        el.on "touchend mouseup mousemove", -> window.__reflection_callback?.call()
+    callback: (el) ->
+      el.removeClass('kormapp-reflection-on')
+      window.clearTimeout @_reflection_timeout_id
+      @_reflection_callback = undefined
