@@ -1,3 +1,14 @@
+/*==========  Measurements  ========== */
+/*==========  Colors  ========== */
+/*-----  base colors  ------ */
+/*-----  border colors  ------ */
+/*-----  font colors  ------ */
+/*-----  UI colors  ------ */
+/*-----  Shades  ------ */
+/*==========  Fonts  ========== */
+/*-----  Weights  ------ */
+/*-----  Base fonts  ------ */
+/*-----  Sizes  ------ */
 /* line 1, ../../app/styles/partials/_grid.sass */
 .kormapp-container {
   margin: 0 auto;
@@ -240,6 +251,11 @@ span.kormapp-order-button-text {
 }
 
 /* line 17, ../../app/styles/partials/_product.sass */
+.kormapp-product-block.kormapp-mousedown {
+  background-color: #e6e6e6;
+}
+
+/* line 20, ../../app/styles/partials/_product.sass */
 img.kormapp-product-image {
   height: 92px;
   width: 83px;
@@ -247,7 +263,7 @@ img.kormapp-product-image {
   float: left;
 }
 
-/* line 23, ../../app/styles/partials/_product.sass */
+/* line 26, ../../app/styles/partials/_product.sass */
 p.kormapp-product-title {
   margin-left: 90px;
   font-family: "Open Sans", sans-serif;
@@ -256,7 +272,7 @@ p.kormapp-product-title {
   line-height: 1.1;
 }
 
-/* line 30, ../../app/styles/partials/_product.sass */
+/* line 33, ../../app/styles/partials/_product.sass */
 .kormapp-product-in-list-price {
   position: absolute;
   margin-left: 90px;
@@ -265,24 +281,24 @@ p.kormapp-product-title {
   font-family: "Open Sans", sans-serif;
   font-size: 22px;
 }
-/* line 38, ../../app/styles/partials/_product.sass */
+/* line 41, ../../app/styles/partials/_product.sass */
 .kormapp-product-in-list-price .kormapp-price-font {
   font-size: 32px;
 }
 @media screen and (max-width: 360px) {
-  /* line 38, ../../app/styles/partials/_product.sass */
+  /* line 41, ../../app/styles/partials/_product.sass */
   .kormapp-product-in-list-price .kormapp-price-font {
     font-size: 22px;
   }
 }
 @media screen and (min-width: 640px) and (max-width: 720px) {
-  /* line 38, ../../app/styles/partials/_product.sass */
+  /* line 41, ../../app/styles/partials/_product.sass */
   .kormapp-product-in-list-price .kormapp-price-font {
     font-size: 22px;
   }
 }
 @media screen and (min-width: 960px) and (max-width: 1040px) {
-  /* line 38, ../../app/styles/partials/_product.sass */
+  /* line 41, ../../app/styles/partials/_product.sass */
   .kormapp-product-in-list-price .kormapp-price-font {
     font-size: 22px;
   }
@@ -295,26 +311,29 @@ p.kormapp-product-title {
   width: 100%;
   max-width: 1200px;
   z-index: 100;
-  height: 60px;
-  background: #d8d8d8;
   font-family: "Open Sans", sans-serif;
   color: #666666;
   text-align: center;
 }
 
-/* line 13, ../../app/styles/partials/_footer.sass */
+/* line 11, ../../app/styles/partials/_footer.sass */
 .kormapp-free-delivery {
   color: #f2795a;
 }
 
-/* line 16, ../../app/styles/partials/_footer.sass */
+/* line 14, ../../app/styles/partials/_footer.sass */
 .kormapp-footer-content {
   height: 60px;
   background-color: #72bab6;
   border-top: 2px solid #68a9a5;
 }
 
-/* line 21, ../../app/styles/partials/_footer.sass */
+/* line 19, ../../app/styles/partials/_footer.sass */
+.kormapp-footer-content.kormapp-mousedown {
+  background-color: #52a7a2;
+}
+
+/* line 22, ../../app/styles/partials/_footer.sass */
 a.kormapp-checkout {
   padding: 20px;
   display: inline-block;
@@ -324,10 +343,16 @@ a.kormapp-checkout {
   text-decoration: none;
 }
 
-/* line 29, ../../app/styles/partials/_footer.sass */
+/* line 30, ../../app/styles/partials/_footer.sass */
 .kormapp-delivery-discount {
+  background: #d8d8d8;
   padding-top: 10px;
   padding-bottom: 15px;
+}
+
+/* line 35, ../../app/styles/partials/_footer.sass */
+.kormapp-delivery-discount.kormapp-mousedown {
+  background-color: #bfbfbf;
 }
 
 /* line 1, ../../app/styles/partials/_check.sass */
@@ -529,11 +554,9 @@ form.order-data input {
 .kormapp-check-button {
   font-family: "Open Sans", sans-serif;
   height: 60px;
-  background-color: #72bab6;
-  border-top: 2px solid #68a9a5;
 }
 
-/* line 151, ../../app/styles/partials/_check.sass */
+/* line 149, ../../app/styles/partials/_check.sass */
 a.kormapp-check-button-link {
   width: 100%;
   display: inline-block;
@@ -543,13 +566,18 @@ a.kormapp-check-button-link {
   text-decoration: none;
 }
 
-/* line 159, ../../app/styles/partials/_check.sass */
+/* line 157, ../../app/styles/partials/_check.sass */
 .kormapp-delivery {
   background-color: #f2795a;
   border-top: 2px solid #d06b52;
 }
 
-/* line 163, ../../app/styles/partials/_check.sass */
+/* line 161, ../../app/styles/partials/_check.sass */
+.kormapp-delivery.kormapp-mousedown {
+  background-color: #ee532b;
+}
+
+/* line 164, ../../app/styles/partials/_check.sass */
 .kormapp-delivery-inactive {
   background-color: #999999;
   border-top: 2px solid #7f7f7f;
@@ -671,6 +699,7 @@ a.kormapp-check-button-link {
 /* line 86, ../../app/styles/partials/_modal.sass */
 #kormapp-plus-sign, #kormapp-minus-sign {
   color: #72bab6;
+  background-color: white;
   font-size: 22px;
   display: inline-block;
   width: 27px;
@@ -679,19 +708,24 @@ a.kormapp-check-button-link {
   text-decoration: none;
 }
 
-/* line 95, ../../app/styles/partials/_modal.sass */
+/* line 96, ../../app/styles/partials/_modal.sass */
+#kormapp-plus-sign.kormapp-mousedown, #kormapp-minus-sign.kormapp-mousedown {
+  background-color: #e6e6e6;
+}
+
+/* line 99, ../../app/styles/partials/_modal.sass */
 .kormapp-vendor-title, .kormapp-vendor-description {
   color: white;
   margin-bottom: 20px;
 }
 
-/* line 99, ../../app/styles/partials/_modal.sass */
+/* line 103, ../../app/styles/partials/_modal.sass */
 .kormapp-vendor-title {
   font-weight: normal;
   font-size: 20px;
 }
 
-/* line 103, ../../app/styles/partials/_modal.sass */
+/* line 107, ../../app/styles/partials/_modal.sass */
 .kormapp-vendor-description {
   overflow: auto;
   font-size: 13px;
@@ -699,7 +733,7 @@ a.kormapp-check-button-link {
   line-height: 1.4;
 }
 
-/* line 109, ../../app/styles/partials/_modal.sass */
+/* line 113, ../../app/styles/partials/_modal.sass */
 a.kormapp-modal-button {
   display: inline-block;
   text-decoration: none;
@@ -713,7 +747,12 @@ a.kormapp-modal-button {
   background-color: #f2795a;
 }
 
-/* line 121, ../../app/styles/partials/_modal.sass */
+/* line 125, ../../app/styles/partials/_modal.sass */
+a.kormapp-modal-button.kormapp-mousedown {
+  background-color: #ee532b;
+}
+
+/* line 128, ../../app/styles/partials/_modal.sass */
 span.kormapp-modal-button-text {
   line-height: 1.7;
 }
