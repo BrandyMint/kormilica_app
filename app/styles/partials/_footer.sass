@@ -2,6 +2,7 @@
   position: relative
   // bottom: 0
   width: 100%
+  height: $footer-height
   max-width: $body-max-width
   margin-top: -$footer-height
   z-index: 100
@@ -13,7 +14,7 @@
   color: $footer-free-delivery-font-color
 
 .kormapp-footer-content
-  height: $footer-height
+  height: $footer-height 2px
   background-color: $footer-checkout-button-background-color
   border-top: 2px solid $grey-blue-border-color
 
@@ -26,6 +27,8 @@ a.kormapp-checkout
   text-decoration: none
 
 .kormapp-delivery-discount
+  height: $footer-height
+  border-top: 2px solid darken($footer-background-color,5)
   background: $footer-background-color
   padding-top: 10px
   padding-bottom: 15px
