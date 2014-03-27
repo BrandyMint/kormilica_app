@@ -48,3 +48,14 @@
 
 ![draw](https://docs.google.com/drawings/d/1byyyI0WgBEKYeN7blmk7f2t20GMzyzR1Gl8JfR-ApSk/pub?w=795&amp;h=372)
 
+
+Деплой
+======
+
+Android
+-------
+
+Пароль на alias `kormilica_demo` - kormilica
+
+    jarsigner -verbose  -sigalg SHA1withRSA -digestalg SHA1 ./Kormilica-release-unsigned.apk kormilica_demo
+    zipalign -v 4 Kormilica-release-unsigned.apk Kormilica.apk
