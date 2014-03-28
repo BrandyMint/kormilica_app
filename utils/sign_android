@@ -2,7 +2,8 @@
 
 apk=./platforms/android/ant-build/Kormilica-release-unsigned.apk
 
-jarsigner -verbose -keystore ./doc/keystore -storepass kormilica -keypass kormilica -sigalg SHA1withRSA -digestalg SHA1 $apk
+jarsigner -verbose -keystore ./doc/keystore -storepass kormilica -keypass kormilica -sigalg SHA1withRSA -digestalg SHA1 $apk kormilica_demo
 
 echo 'zip'
+rm Kormilica.apk
 zipalign -v 4 $apk Kormilica.apk
