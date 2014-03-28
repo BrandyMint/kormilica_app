@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+apk=./platforms/android/ant-build/Kormilica-release-unsigned.apk
+
+jarsigner -verbose -keystore ./doc/keystore -storepass kormilica -keypass kormilica -sigalg SHA1withRSA -digestalg SHA1 $apk
+
+echo 'zip'
+zipalign -v 4 $apk Kormilica.apk

@@ -12,8 +12,8 @@
 #screen-xhdpi-landscape.png
 #screen-xhdpi-portrait.png
 
-src="./www/res/screens/android/"
-dst="./platforms/android/res/"
+src="./www/res/screens/android"
+dst="./platforms/android/res"
 
 cp -vr $src/screen.png $dst/drawable/screen.png
 cp -vr $src/screen.png $dst/drawable-xhdpi/screen.png
