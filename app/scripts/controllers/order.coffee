@@ -27,8 +27,11 @@ define ['models/order'], (Order) ->
           else
             text = "Ваш заказ №#{response.id}"
 
-          alert text
+          window.navigator.notification.alert text, null, 'Заказ принят'
           @app.vent.trigger 'order:created', response
+
+        error: (model, response) =>
+          window.navigator.notification.alert "Заказ не отправлен. #{response.responseText}. Повторите снова", null, 'Ошибка соединения!'
       }
 
     _getFormattedCartItems: ->

@@ -29,7 +29,6 @@ require.config
     app:
       deps: [
         'marionette',
-        'notification',
         'backbone.stickit',
         'backbone.localStorage',
         'backbone.virtualcollection',
@@ -49,7 +48,6 @@ require.config
     'backbone.virtualcollection':  '../bower_components/backbone.virtualcollection/backbone.virtual-collection'
     'jquery.ui.effect':        "../bower_components/jquery.ui/ui/jquery.ui.effect"
     'jquery.ui.effect-bounce': "../bower_components/jquery.ui/ui/jquery.ui.effect-bounce"
-    'notification':            './libs/notification'
 
 unless @Marionette
   require [

@@ -47,7 +47,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
 
     showErrors: (e) ->
       e.preventDefault()
-      window.navigator.notification.alert 'Впишите телефон и адрес доставки'
+      window.navigator.notification.alert 'Впишите телефон и адрес доставки', null, 'Внимание'
 
     checkForEmptyFields: (e) ->
       $(@ui.form).find("input").filter( ->

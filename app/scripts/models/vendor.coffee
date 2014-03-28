@@ -1,4 +1,4 @@
-define ->
+define ['helpers/application_helpers'], (Helpers) ->
   class Vendor extends Backbone.Model
     localStorage: new Backbone.LocalStorage 'vendors'
     defaults:
@@ -18,3 +18,9 @@ define ->
 
       # Отображается при нажатии на "пустой кнопке"
       footer_empty_button: 'Выберите из списка блюдо на заказ.'
+
+    minimal_alert: ->
+      "Минимальный заказ от #{Helpers.money_txt(@get('minimal_price'))}"
+
+    isPriceValid: (cart) ->
+      cart.get('total_cost').cents >= @get('minimal_price').cents

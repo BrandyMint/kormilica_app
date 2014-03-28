@@ -5,7 +5,7 @@ define [
   'views/modal_windows/vendor_page',
   'controllers/footer', 'controllers/order',
   'controllers/update_manager',
-  'controllers/minimal_price_checker',
+  'controllers/checkout',
   'controllers/modal',
   'views/main_layout',
   'controllers/data_repository',
@@ -19,7 +19,7 @@ ProductsView,
 VendorPageView,
 FooterController, OrderController,
 UpdateManager,
-MinimalPriceChecker,
+CheckoutController,
 ModalController,
 MainLayout,
 DataPreloader,
@@ -93,7 +93,7 @@ Reflection
       vent:   App.vent
       vendor: App.vendor
 
-    new MinimalPriceChecker
+    new CheckoutController
       app:    App
       cart:   App.cart
       vendor: App.vendor
