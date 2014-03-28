@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Запускайется после grunt build
+
+cordova platforms add android
+cordova platforms add ios
+
+cp -vr ./dist/* ./www/
+
+cordova plugin add org.apache.cordova.splashscreen
+
+./utils/prepare_res

@@ -5,6 +5,7 @@ npm-debug.log
 .sass-cache
 platforms/*
 plugins/^.*
+plugins/org.apache.cordova.splashscreen/
 /app/bower_components
 .tmp
 /test/temp

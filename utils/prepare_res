@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+
+# Sources:
+#screen.png
+#screen-hdpi-landscape.png
+#screen-hdpi-portrait.png
+#screen-ldpi-landscape.png
+#screen-ldpi-portrait.png
+#screen-mdpi-landscape.png
+#screen-mdpi-portrait.png
+#screen-xhdpi-landscape.png
+#screen-xhdpi-portrait.png
+
+src="./www/res/screens/android/"
+dst="./platforms/android/res/"
+
+cp -vr $src/screen.png $dst/drawable/screen.png
+cp -vr $src/screen.png $dst/drawable-xhdpi/screen.png
+cp -vr $src/screen.png $dst/drawable-hdpi/screen.png
+cp -vr $src/screen.png $dst/drawable-ldpi/screen.png
+cp -vr $src/screen.png $dst/drawable-mdpi/screen.png
+
+#drawable-hdpi
+#drawable-ldpi
+#drawable-mdpi
+#drawable-xhdpi

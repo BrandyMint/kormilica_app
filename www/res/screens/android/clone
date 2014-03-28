@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# http://cordova.apache.org/docs/en/3.4.0/config_ref_images.md.html#Icons%20and%20Splash%20Screens
+
+cp ./screen.png ./screen-hdpi-landscape.png
+cp ./screen.png ./screen-hdpi-portrait.png
+cp ./screen.png ./screen-ldpi-landscape.png
+cp ./screen.png ./screen-ldpi-portrait.png
+cp ./screen.png ./screen-mdpi-landscape.png
+cp ./screen.png ./screen-mdpi-portrait.png
+cp ./screen.png ./screen-xhdpi-landscape.png
+cp ./screen.png ./screen-xhdpi-portrait.png
