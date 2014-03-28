@@ -61,6 +61,12 @@ Android
     zipalign -v 4 Kormilica-release-unsigned.apk Kormilica.apk
 
 
+Обновление versionCode
+----------------------
+
+    grunt versionCode
+
+
 Деплой
 ------
 
