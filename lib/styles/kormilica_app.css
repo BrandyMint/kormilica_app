@@ -311,50 +311,69 @@ input {
 /*-----  Base fonts  ------ */
 /*-----  Sizes  ------ */
 /* line 1, ../../app/styles/partials/_grid.sass */
-.kormapp-container {
+#kormapp-container {
   position: fixed;
   margin: 0 auto;
-  max-width: 1200px;
-  max-height: 601px;
   background-color: #eeeeee;
   padding-top: 63px;
   margin-bottom: 60px;
   height: 100%;
 }
 
-/* line 11, ../../app/styles/partials/_grid.sass */
+/* line 9, ../../app/styles/partials/_grid.sass */
 .kormapp-column {
   float: left;
   margin-left: 5%;
 }
-/* line 14, ../../app/styles/partials/_grid.sass */
+/* line 12, ../../app/styles/partials/_grid.sass */
 .kormapp-column:first-child {
   margin-left: 0;
 }
-/* line 16, ../../app/styles/partials/_grid.sass */
+/* line 14, ../../app/styles/partials/_grid.sass */
 .kormapp-column.full {
   width: 100%;
 }
-/* line 18, ../../app/styles/partials/_grid.sass */
+/* line 16, ../../app/styles/partials/_grid.sass */
 .kormapp-column.two-thirds {
   width: 65%;
 }
-/* line 20, ../../app/styles/partials/_grid.sass */
+/* line 18, ../../app/styles/partials/_grid.sass */
 .kormapp-column.half {
   width: 47.5%;
 }
-/* line 22, ../../app/styles/partials/_grid.sass */
+/* line 20, ../../app/styles/partials/_grid.sass */
 .kormapp-column.one-third {
   width: 30%;
 }
-/* line 24, ../../app/styles/partials/_grid.sass */
+/* line 22, ../../app/styles/partials/_grid.sass */
 .kormapp-column.one-fourth {
   width: 21.25%;
 }
 
-/* line 27, ../../app/styles/partials/_grid.sass */
+/* line 25, ../../app/styles/partials/_grid.sass */
 .kormapp-row {
   overflow: hidden;
+}
+
+/* line 28, ../../app/styles/partials/_grid.sass */
+.kormapp-web-desktop {
+  max-width: 1200px;
+  max-height: 601px;
+}
+
+/* line 32, ../../app/styles/partials/_grid.sass */
+.kormapp-web-mobile {
+  max-width: 1200px;
+}
+
+/* line 35, ../../app/styles/partials/_grid.sass */
+.kormapp-cordova-android {
+  max-width: 1200px;
+}
+
+/* line 38, ../../app/styles/partials/_grid.sass */
+.kormapp-cordova-ios {
+  max-width: 1200px;
 }
 
 /* line 1, ../../app/styles/partials/_base.sass */
@@ -378,7 +397,7 @@ input {
   text-align: center;
 }
 
-/* line 1, ../../app/styles/partials/_header.sass */
+/* line 4, ../../app/styles/partials/_header.sass */
 .kormapp-header {
   position: fixed;
   width: 100%;
@@ -391,14 +410,14 @@ input {
   border-bottom: 3px solid #d06b52;
 }
 
-/* line 12, ../../app/styles/partials/_header.sass */
+/* line 15, ../../app/styles/partials/_header.sass */
 .kormapp-logo-wrapper {
   height: 60px;
   width: 60px;
   position: relative;
   float: left;
 }
-/* line 18, ../../app/styles/partials/_header.sass */
+/* line 21, ../../app/styles/partials/_header.sass */
 .kormapp-logo-wrapper img.kormapp-logo-image {
   content: url("../kormapp/images/default_logo.png");
   max-width: 100%;
@@ -411,7 +430,7 @@ input {
   margin: auto;
 }
 
-/* line 29, ../../app/styles/partials/_header.sass */
+/* line 32, ../../app/styles/partials/_header.sass */
 p.kormapp-logo-text {
   padding-top: 16px;
   margin-left: 60px;
@@ -421,7 +440,7 @@ p.kormapp-logo-text {
   letter-spacing: -1px;
 }
 
-/* line 37, ../../app/styles/partials/_header.sass */
+/* line 40, ../../app/styles/partials/_header.sass */
 .kormapp-top-check {
   position: relative;
   margin-top: 9px;
@@ -431,7 +450,12 @@ p.kormapp-logo-text {
   height: 50px;
 }
 
-/* line 45, ../../app/styles/partials/_header.sass */
+/* line 48, ../../app/styles/partials/_header.sass */
+#kormapp-top-check-container {
+  height: 60px;
+}
+
+/* line 51, ../../app/styles/partials/_header.sass */
 .kormapp-check-background-image {
   position: absolute;
   background: url("../kormapp/images/top-check-background.png") no-repeat bottom;
@@ -441,7 +465,7 @@ p.kormapp-logo-text {
   height: 5px;
 }
 
-/* line 53, ../../app/styles/partials/_header.sass */
+/* line 59, ../../app/styles/partials/_header.sass */
 .kormapp-check-image {
   content: url("../kormapp/images/top-check.png");
   position: absolute;
@@ -449,7 +473,7 @@ p.kormapp-logo-text {
   height: 100%;
 }
 
-/* line 59, ../../app/styles/partials/_header.sass */
+/* line 65, ../../app/styles/partials/_header.sass */
 p.kormapp-top-check-text {
   padding-top: 16px;
   margin-left: 5px;
@@ -458,7 +482,7 @@ p.kormapp-top-check-text {
   line-height: 1.2;
 }
 
-/* line 66, ../../app/styles/partials/_header.sass */
+/* line 72, ../../app/styles/partials/_header.sass */
 #kormapp-amount {
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
@@ -606,6 +630,7 @@ p.kormapp-product-title {
 .kormapp-footer {
   position: relative;
   width: 100%;
+  height: 60px;
   max-width: 1200px;
   margin-top: -60px;
   z-index: 100;
@@ -614,19 +639,19 @@ p.kormapp-product-title {
   text-align: center;
 }
 
-/* line 12, ../../app/styles/partials/_footer.sass */
+/* line 13, ../../app/styles/partials/_footer.sass */
 .kormapp-free-delivery {
   color: #f2795a;
 }
 
-/* line 15, ../../app/styles/partials/_footer.sass */
+/* line 16, ../../app/styles/partials/_footer.sass */
 .kormapp-footer-content {
-  height: 60px;
+  height: 60px 2px;
   background-color: #72bab6;
   border-top: 2px solid #68a9a5;
 }
 
-/* line 20, ../../app/styles/partials/_footer.sass */
+/* line 21, ../../app/styles/partials/_footer.sass */
 a.kormapp-checkout {
   padding: 20px;
   display: inline-block;
@@ -636,8 +661,10 @@ a.kormapp-checkout {
   text-decoration: none;
 }
 
-/* line 28, ../../app/styles/partials/_footer.sass */
+/* line 29, ../../app/styles/partials/_footer.sass */
 .kormapp-delivery-discount {
+  height: 60px;
+  border-top: 2px solid #cbcbcb;
   background: #d8d8d8;
   padding-top: 10px;
   padding-bottom: 15px;
@@ -1085,6 +1112,11 @@ a.kormapp-modal-button.kormapp-reflection-on {
   background-color: #ee532b;
 }
 
+/* line 34, ../../app/styles/partials/_reflections.sass */
+#kormapp-top-check-container.kormapp-reflection-on {
+  background: #ee532b;
+}
+
 /* line 1, ../../app/styles/pace.scss */
 .pace {
   -webkit-pointer-events: none;
@@ -1139,8 +1171,8 @@ a.kormapp-modal-button.kormapp-reflection-on {
   width: 14px;
   height: 14px;
   border: solid 2px transparent;
-  border-top-color: #e67863;
-  border-left-color: #e67863;
+  border-top-color: #d06b52;
+  border-left-color: #d06b52;
   border-radius: 10px;
   -webkit-animation: pace-spinner 400ms linear infinite;
   -moz-animation: pace-spinner 400ms linear infinite;

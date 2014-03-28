@@ -236,7 +236,10 @@ module.exports = (grunt) ->
     #    beautify: true
     #    sourceMap: true  # // https://github.com/mishoo/UglifyJS2
     useminPrepare:
-      html: "<%= yeoman.app %>/index.html"
+      web_mobile:      "<%= yeoman.app %>/web_mobile.html"
+      web_desktop:     "<%= yeoman.app %>/web_desktop.html"
+      cordova_ios:     "<%= yeoman.app %>/cordova_ios.html"
+      cordova_android: "<%= yeoman.app %>/cordova_android.html"
       options:
         dest: "<%= yeoman.dist %>"
 
