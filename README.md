@@ -59,3 +59,10 @@ Android
 
     jarsigner -verbose  -sigalg SHA1withRSA -digestalg SHA1 ./Kormilica-release-unsigned.apk kormilica_demo
     zipalign -v 4 Kormilica-release-unsigned.apk Kormilica.apk
+
+
+Деплой
+------
+
+    http://icf.chebit.ru/android/
+    lftp ftp://www:hjv,brb@icfdev.ru

@@ -1,11 +1,1 @@
-#!/bin/sh
-#version=`semver tag`
-version='0.0.0'
-file=./platforms/android/ant-build/RocketWash-debug.apk
-curl http://testflightapp.com/api/builds.json \
-  -F file=@"${file}" \
-  -F team_token='febaf978fb0ad1ccf9fcbd70adb5c797_MTQwMDYzMjAxMi0xMC0wNSAxMjo0NzoyOS42MzI2ODg' \
-  -F api_token='0907c379f498d16d856d0d2546832f36_MTUzODkyNTIwMTMtMTItMjggMDI6NDE6MTYuODgzOTU4' \
-  -F notes="${version}" \
-  -F notify=True \
-  -F distribution_lists='Kormilica'
+lftp  -e 'cd android; mput Kormilica.apk; mput VERSION.txt; exit' ftp://www:hjv,brb@icfdev.ru
