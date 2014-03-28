@@ -1,6 +1,6 @@
 {
   "name": "kormilica_app",
-  "version": "0.1.19",
+  "version": "0.1.20",
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.4",
