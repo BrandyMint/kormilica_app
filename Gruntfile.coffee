@@ -40,7 +40,7 @@ module.exports = (grunt) ->
         src: ['platforms/android/AndroidManifest.xml']
         options:
           prefix: 'versionCode=\"'
-          pkg: 'versionCode.json'
+          pkg: './versionCode.json'
     watch:
       options:
         nospawn: true
