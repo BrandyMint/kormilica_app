@@ -2,12 +2,11 @@
 
 # Запускайется после grunt build
 
+cp -vr ./dist/ ./www/
+
 cordova platforms add android
 cordova platforms add ios
 
 cordova plugin add org.apache.cordova.splashscreen
-
-cp -vr ./dist/ ./www/
-
 
 ./utils/prepare_res
