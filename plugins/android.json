@@ -5,9 +5,15 @@
     },
     "config_munge": {
         "res/xml/config.xml": {
-            "/*": {}
+            "/*": {
+                "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /></feature>": 1
+            }
         }
     },
-    "installed_plugins": {},
+    "installed_plugins": {
+        "org.apache.cordova.splashscreen": {
+            "PACKAGE_NAME": "com.brandymint.kormilica"
+        }
+    },
     "dependent_plugins": {}
 }

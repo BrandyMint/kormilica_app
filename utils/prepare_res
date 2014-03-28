@@ -12,7 +12,7 @@
 #screen-xhdpi-landscape.png
 #screen-xhdpi-portrait.png
 
-src="./www/res/screens/android"
+src="./res/screens/android"
 dst="./platforms/android/res"
 
 cp -vr $src/screen.png $dst/drawable/screen.png
@@ -21,7 +21,7 @@ cp -vr $src/screen.png $dst/drawable-hdpi/screen.png
 cp -vr $src/screen.png $dst/drawable-ldpi/screen.png
 cp -vr $src/screen.png $dst/drawable-mdpi/screen.png
 
-src="./www/res/icons/android"
+src="./res/icons/android"
 cp -vr $src/36.png $dst/drawable-ldpi/icon.png
 cp -vr $src/48.png $dst/drawable-mdpi/icon.png
 cp -vr $src/72.png $dst/drawable-hdpi/icon.png
