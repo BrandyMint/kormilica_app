@@ -1,3 +1,2 @@
-./utils/build.sh
-cordova platforms add ios
+cp ./www/cordova_ios.html ./www/index.html
 cordova build ios --release --device

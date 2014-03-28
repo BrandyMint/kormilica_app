@@ -10,5 +10,3 @@ cp -vr ./dist/* ./www/
 cordova plugin add org.apache.cordova.splashscreen
 
 ./utils/prepare_res
-
-grunt version:android
