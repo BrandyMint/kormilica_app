@@ -36,6 +36,11 @@ module.exports = (grunt) ->
         build_number: process.env.BUILD_NUMBER
       defaults:
         src: ['bower.json', 'app/scripts/app.coffee', 'config.xml', 'VERSION.txt']
+      android:
+        src: ['platforms/android/AndroidManifest.xml']
+        options:
+          prefix: 'versionCode=\"'
+          pkg: 'versionCode.json'
     watch:
       options:
         nospawn: true
