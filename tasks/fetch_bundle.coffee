@@ -16,6 +16,7 @@ module.exports = (grunt) ->
     requestJson = require('request-json')
     http = require('http-get')
     done = @async()
+    setTimeout done, 5000 # не очень красиво, но работает
 
     grunt.log.writeln "Vendor key: #{vendorKey}"
     client = requestJson.newClient(baseUrl)
@@ -30,9 +31,7 @@ module.exports = (grunt) ->
         body.vendor.mobile_logo_url = "#{imageWebDir}/#{logoFileName}"
         grunt.log.writeln "coffee module written to: #{target}"
         fs.writeFileSync(target, "define -> #{JSON.stringify(body)}")
-        done()
       )
-
 
       n = 0
       _(body.products).each((product, ind) ->
@@ -41,7 +40,6 @@ module.exports = (grunt) ->
         grunt.verbose.writeln "path: #{product.image.mobile_url}"
         grunt.verbose.writeln "img: #{filename}"
         http.get(product.image.mobile_url, "#{imageFsDir}/#{filename}", (err, result) ->
-          n = n + 1
           if err
             grunt.log.errorlns(err)
           else
@@ -50,3 +48,4 @@ module.exports = (grunt) ->
         )
       )
     )
+    grunt.verbose.writeln "Wait for timeout.."
