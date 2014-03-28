@@ -298,6 +298,50 @@ input {
   -webkit-user-select: auto !important;
 }
 
+/* line 1, ../../app/styles/mobile.scss */
+body {
+  -webkit-touch-callout: none;
+  /* prevent callout to copy image, etc when tap to hold */
+  -webkit-text-size-adjust: none;
+  /* prevent webkit from resizing text to fit */
+  -webkit-user-select: none;
+  /* prevent copy paste, to allow, change 'none' to 'text' */
+}
+
+@keyframes fade {
+  /* line 9, ../../app/styles/mobile.scss */
+  from {
+    opacity: 1.0;
+  }
+
+  /* line 10, ../../app/styles/mobile.scss */
+  50% {
+    opacity: 0.4;
+  }
+
+  /* line 11, ../../app/styles/mobile.scss */
+  to {
+    opacity: 1.0;
+  }
+}
+
+@-webkit-keyframes fade {
+  /* line 15, ../../app/styles/mobile.scss */
+  from {
+    opacity: 1.0;
+  }
+
+  /* line 16, ../../app/styles/mobile.scss */
+  50% {
+    opacity: 0.4;
+  }
+
+  /* line 17, ../../app/styles/mobile.scss */
+  to {
+    opacity: 1.0;
+  }
+}
+
 /*==========  Measurements  ========== */
 /*==========  Colors  ========== */
 /*-----  base colors  ------ */
