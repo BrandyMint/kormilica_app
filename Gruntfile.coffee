@@ -35,7 +35,7 @@ module.exports = (grunt) ->
       options:
         build_number: process.env.BUILD_NUMBER
       defaults:
-        src: ['bower.json', 'app/scripts/app.coffee', 'config.xml']
+        src: ['bower.json', 'app/scripts/app.coffee', 'config.xml', 'VERSION.txt']
     watch:
       options:
         nospawn: true
