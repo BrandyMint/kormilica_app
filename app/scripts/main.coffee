@@ -64,11 +64,7 @@ unless @Marionette
     ], (Underscore, Backbone, Stickit, VirtualCollection, LocalStorage, Marionette)  =>
       @Marionette = Marionette
 
-unless window.navigator?.notification?
-  require ['notification'], (Notification) ->
-    window.navigator = {} unless window.navigator?
-    window.navigator.notification = Notification
-
 require ['app', 'data/bundle'], (KormApp, bundle) =>
   window.KormApp = KormApp
-  KormApp.start bundle
+  type = $('#kormapp-main').data 'type'
+  KormApp.start bundle: bundle, type: type

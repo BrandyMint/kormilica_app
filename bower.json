@@ -14,6 +14,7 @@
     "requirejs": "~2.x",
     "jquery.ui": "~1.10.4",
     "underscore": "~1.6",
+    "cordova-shim": "git@github.com:SuperSkunk/cordova-shim.git",
     "pace": "~0.5.1"
   },
   "devDependencies": {

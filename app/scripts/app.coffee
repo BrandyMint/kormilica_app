@@ -29,8 +29,9 @@ Reflection
   App = new Marionette.Application
   App.version = '0.1.18' # Переустанавливается через grunt version
 
-  App.addInitializer (bundle) ->
-    console.log "App initialize", Date.now()
+  App.addInitializer ({bundle, type}) ->
+    App.type = type
+    console.log "App initialize", type, Date.now()
     DataPreloader App, bundle
 
     App.updateManager = new UpdateManager
@@ -103,7 +104,7 @@ Reflection
 
   App.on 'initialize:after', ->
     new Reflection()
+    App.updateManager.perform() if App.type == 'cordova-ios' || App.type == 'cordova-android'
     console.log "App inintialize:after", Date.now()
-    # App.updateManager.perform()
 
   App

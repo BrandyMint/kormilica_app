@@ -1,3 +1,9 @@
+# Usage
+#unless window.navigator?.notification?
+  #require ['notification'], (Notification) ->
+    #window.navigator = {} unless window.navigator?
+    #window.navigator.notification = Notification
+
 define ->
   # Интерфейс: https://github.com/apache/cordova-plugin-dialogs/blob/master/www/notification.js
   Notification = 
