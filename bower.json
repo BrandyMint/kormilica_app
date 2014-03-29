@@ -1,6 +1,6 @@
 {
   "name": "kormilica_app",
-  "version": "0.1.23",
+  "version": "0.1.24",
   "main": [
     "/kormilica_app.js"
   ],
@@ -20,10 +20,10 @@
   "devDependencies": {
     "jquery": "~1.9.0",
     "underscore": "~1.6",
-    "backbone": "latest",
+    "backbone": "1.1.2",
     "backbone.virtualcollection": "~0.4.10",
-    "backbone.stickit": "latest",
-    "backbone.marionette": "latest",
+    "backbone.stickit": "0.7.0",
+    "backbone.marionette": "1.7.3",
     "backbone.localStorage": "latest",
     "requirejs": "~2.1.5",
     "requirejs-text": "~2.0.5"
