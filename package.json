@@ -32,7 +32,7 @@
     "request-json": "~0.4.6",
     "underscore": "~1.6.0",
     "http-get": "~0.5.10",
-    "grunt-version": "git://github.com/BrandyMint/grunt-version.git#01c7d69723154ea450044d00b455b9d5282634d8",
+    "grunt-version": "0.3.0",
     "grunt-cli": "~0.1.13",
     "cordova": "~3.4.0-0.1.3"
   },
