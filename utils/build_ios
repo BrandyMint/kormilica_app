@@ -1,2 +1,2 @@
-cp ./www/cordova_ios.html ./www/index.html
+cp ./dist/cordova_ios.html ./www/index.html
 cordova build ios --release --device

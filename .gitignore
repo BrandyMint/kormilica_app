@@ -9,7 +9,7 @@ platforms/*
 plugins/^.*
 plugins/org.apache.cordova.splashscreen/
 /app/bower_components
-/www/*
+www
 .tmp
 /test/temp
 /test/bower_components/

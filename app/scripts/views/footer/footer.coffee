@@ -39,7 +39,7 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'helpers/applic
       @vent.trigger 'checkout:clicked'
 
     emptyButtonClicked: ->
-      window.navigator.notification.alert @vendor.get 'footer_empty_button'
+      window.navigator.notification.alert @vendor.get('footer_empty_button'), null, 'Внимание'
 
     onRender: ->
       @stickit()

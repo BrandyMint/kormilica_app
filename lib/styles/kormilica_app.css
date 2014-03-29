@@ -1,61 +1,1247 @@
 /*
-Syntax error: File to import not found or unreadable: mobile.
-              Load paths:
-                /Users/danil/code/kormilica_app/app/styles
-                /Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/blueprint/stylesheets
-                /Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets
-                /Users/danil/code/kormilica_app/app/bower_components
-                Compass::SpriteImporter
-        on line 4 of /Users/danil/code/kormilica_app/app/styles/main.sass
-
-1: /Users/danil/code/kormilica_app/app/styles/main.sass
-
-Backtrace:
-/Users/danil/code/kormilica_app/app/styles/main.sass:4
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/import_node.rb:67:in `rescue in import'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/import_node.rb:45:in `import'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/import_node.rb:28:in `imported_file'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/import_node.rb:37:in `css_import?'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/visitors/perform.rb:217:in `visit_import'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/visitors/perform.rb:100:in `visit'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/visitors/perform.rb:100:in `visit'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/visitors/perform.rb:7:in `visit'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/tree/root_node.rb:20:in `render'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/engine.rb:315:in `_render'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/sass-3.2.18/lib/sass/engine.rb:262:in `render'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/compiler.rb:139:in `block (2 levels) in compile'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/compiler.rb:126:in `timed'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/compiler.rb:138:in `block in compile'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/logger.rb:45:in `red'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/compiler.rb:137:in `compile'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/compiler.rb:118:in `compile_if_required'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/compiler.rb:103:in `block (2 levels) in run'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/compiler.rb:101:in `each'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/compiler.rb:101:in `block in run'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/compiler.rb:126:in `timed'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/compiler.rb:100:in `run'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/commands/update_project.rb:45:in `perform'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/commands/base.rb:18:in `execute'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/commands/project_base.rb:19:in `execute'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/bin/compass:30:in `block in <top (required)>'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/bin/compass:44:in `call'
-/Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/bin/compass:44:in `<top (required)>'
-/Users/danil/.rbenv/versions/2.1.1/bin/compass:23:in `load'
-/Users/danil/.rbenv/versions/2.1.1/bin/compass:23:in `<main>'
+    Combination of http://meyerweb.com/eric/tools/css/reset/, http://github.com/necolas/normalize.css, http://ru.html5boilerplate.com and personal experience
+    by Robert Haritonov http://rhr.me/rreset
 */
-body:before {
+/* line 10, ../../app/styles/partials/_reset.scss */
+html, body, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+pre, abbr, acronym, address, big, cite, code, del, dfn, img, ins, kbd, q,
+samp, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label,
+legend, table, caption, tbody, tfoot, thead, tr, th, td, canvas, embed,
+figcaption, hgroup, output, ruby, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 20, ../../app/styles/partials/_reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/*
+ * Prevents iOS text size adjust after orientation change, without disabling user zoom
+ *    www.456bereastreet.com/archive/201012/controlling_text_size_in_safari_for_ios_without_disabling_user_zoom/
+ */
+/* line 28, ../../app/styles/partials/_reset.scss */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* line 33, ../../app/styles/partials/_reset.scss */
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+/* line 38, ../../app/styles/partials/_reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 42, ../../app/styles/partials/_reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/*
+ * Improves readability when focused and also mouse hovered in all browsers
+ * people.opera.com/patrickl/experiments/keyboard/test
+ */
+/* line 50, ../../app/styles/partials/_reset.scss */
+a:hover, a:active {
+  outline: none;
+}
+
+/* line 52, ../../app/styles/partials/_reset.scss */
+blockquote, q {
+  quotes: none;
+  margin: 1em 40px;
+}
+
+/* line 57, ../../app/styles/partials/_reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/*
+ * Addresses styling not present in 8/9, S5, Chrome
+ */
+/* line 65, ../../app/styles/partials/_reset.scss */
+abbr[title] {
+  border-bottom: 1px dotted;
+}
+
+/*
+ * Addresses style set to 'bolder' in FF3/4, S4/5, Chrome
+*/
+/* line 72, ../../app/styles/partials/_reset.scss */
+b, strong {
+  font-weight: 700;
+}
+
+/*
+ * Addresses styling not present in S5, Chrome
+ */
+/* line 79, ../../app/styles/partials/_reset.scss */
+dfn {
+  font-style: italic;
+}
+
+/* line 83, ../../app/styles/partials/_reset.scss */
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+/*
+ * Corrects font family set oddly in S5, Chrome
+ * en.wikipedia.org/wiki/User:Davidgothberg/Test59
+ */
+/* line 92, ../../app/styles/partials/_reset.scss */
+pre, code, kbd, samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+/* line 97, ../../app/styles/partials/_reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/*
+ * Corrects inline-block display not defined in 8/9 & FF3
+ */
+/* line 105, ../../app/styles/partials/_reset.scss */
+audio[controls], canvas, video {
+  display: inline-block;
+}
+
+/*
+ * Improves readability of pre-formatted text in all browsers
+ */
+/* line 112, ../../app/styles/partials/_reset.scss */
+pre {
   white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: File to import not found or unreadable: mobile.\A               Load paths:\A                 /Users/danil/code/kormilica_app/app/styles\A                 /Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/blueprint/stylesheets\A                 /Users/danil/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets\A                 /Users/danil/code/kormilica_app/app/bower_components\A                 Compass::SpriteImporter\A         on line 4 of /Users/danil/code/kormilica_app/app/styles/main.sass\A \A 1: /Users/danil/code/kormilica_app/app/styles/main.sass"; }
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/*
+ * Prevents sub and sup affecting line-height in all browsers
+ * gist.github.com/413930
+ */
+/* line 122, ../../app/styles/partials/_reset.scss */
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+/*
+ * Corrects overflow displayed oddly in IE9
+ */
+/* line 132, ../../app/styles/partials/_reset.scss */
+svg:not(:root) {
+  overflow: hidden;
+}
+
+/*
+ * Addresses margin not present in 8/9, S5, O11
+ */
+/* line 139, ../../app/styles/partials/_reset.scss */
+figure {
+  margin: 0;
+}
+
+/*
+ * Define consistent margin and padding
+ */
+/* line 146, ../../app/styles/partials/_reset.scss */
+fieldset {
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+
+/*
+ * 1. Corrects color not being inherited in IE8/9
+ */
+/* line 154, ../../app/styles/partials/_reset.scss */
+legend {
+  border: 0;
+  /* 1 */
+}
+
+/*
+ * 1. Corrects font size not being inherited in all browsers
+ * 2. Addresses margins set differently in F3/4, S5, Chrome
+ * 3. Improves appearance and consistency in all browsers
+ */
+/* line 163, ../../app/styles/partials/_reset.scss */
+button, input, select, textarea {
+  font-size: 100%;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  vertical-align: baseline;
+  /* 3 */
+}
+
+/*
+ * 1. Addresses FF3/4 setting line-height using !important in the UA stylesheet
+ */
+/* line 172, ../../app/styles/partials/_reset.scss */
+button, input {
+  line-height: normal;
+  /* 1 */
+}
+
+/*
+ * 1. Improves usability and consistency of cursor style between image-type 'input' and others
+ * 2. Corrects inability to style clickable 'input' types in iOS
+ */
+/* line 180, ../../app/styles/partials/_reset.scss */
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+  cursor: pointer;
+  /* 1 */
+  -webkit-appearance: button;
+  /* 2 */
+}
+
+/*
+ * 1. Addresses appearance set to searchfield in S5, Chrome
+ * 2. Addresses box sizing set to border-box in S5, Chrome (include -moz to future-proof)
+ */
+/* line 189, ../../app/styles/partials/_reset.scss */
+input[type="search"] {
+  -webkit-appearance: textfield;
+  /* 1 */
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  /* 2 */
+  box-sizing: content-box;
+}
+
+/*
+ * Corrects inner padding displayed oddly in S5, Chrome on OSX
+ */
+/* line 199, ../../app/styles/partials/_reset.scss */
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/*
+ * Corrects inner padding and border displayed oddly in FF3/4
+ * www.sitepen.com/blog/2008/05/14/the-devils-in-the-details-fixing-dojos-toolbar-buttons/
+ */
+/* line 208, ../../app/styles/partials/_reset.scss */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+/*
+ * 1. Removes default vertical scrollbar in 8/9
+ * 2. Improves readability and aligment in all browsers
+ */
+/* line 217, ../../app/styles/partials/_reset.scss */
+textarea {
+  overflow: auto;
+  /* 1 */
+  vertical-align: top;
+  /* 2 */
+}
+
+/* line 1, ../../app/styles/partials/_body.sass */
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+/* line 5, ../../app/styles/partials/_body.sass */
+*:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 10, ../../app/styles/partials/_body.sass */
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 13, ../../app/styles/partials/_body.sass */
+* {
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* line 26, ../../app/styles/partials/_body.sass */
+input {
+  -webkit-user-select: auto !important;
+}
+
+/*==========  Measurements  ========== */
+/*==========  Colors  ========== */
+/*-----  base colors  ------ */
+/*-----  border colors  ------ */
+/*-----  font colors  ------ */
+/*-----  UI colors  ------ */
+/*-----  Shades  ------ */
+/*----- Sizes -------- */
+/*==========  Fonts  ========== */
+/*-----  Weights  ------ */
+/*-----  Base fonts  ------ */
+/*-----  Sizes  ------ */
+/* line 1, ../../app/styles/partials/_grid.sass */
+#kormapp-container {
+  position: fixed;
+  margin: 0 auto;
+  background-color: #eeeeee;
+  padding-top: 63px;
+  margin-bottom: 60px;
+  width: 100%;
+  height: 100%;
+}
+/* line 9, ../../app/styles/partials/_grid.sass */
+#kormapp-container.kormapp-cordova-ios7 {
+  margin-top: 20px;
+}
+
+/* line 12, ../../app/styles/partials/_grid.sass */
+.kormapp-column {
+  float: left;
+  margin-left: 5%;
+}
+/* line 15, ../../app/styles/partials/_grid.sass */
+.kormapp-column:first-child {
+  margin-left: 0;
+}
+/* line 17, ../../app/styles/partials/_grid.sass */
+.kormapp-column.full {
+  width: 100%;
+}
+/* line 19, ../../app/styles/partials/_grid.sass */
+.kormapp-column.two-thirds {
+  width: 65%;
+}
+/* line 21, ../../app/styles/partials/_grid.sass */
+.kormapp-column.half {
+  width: 47.5%;
+}
+/* line 23, ../../app/styles/partials/_grid.sass */
+.kormapp-column.one-third {
+  width: 30%;
+}
+/* line 25, ../../app/styles/partials/_grid.sass */
+.kormapp-column.one-fourth {
+  width: 21.25%;
+}
+
+/* line 28, ../../app/styles/partials/_grid.sass */
+.kormapp-row {
+  overflow: hidden;
+}
+
+/* line 31, ../../app/styles/partials/_grid.sass */
+.kormapp-web-desktop {
+  max-width: 1200px;
+  max-height: 601px;
+}
+
+/* line 35, ../../app/styles/partials/_grid.sass */
+.kormapp-web-mobile {
+  max-width: 1200px;
+}
+
+/* line 1, ../../app/styles/partials/_base.sass */
+.clearfix {
+  *zoom: 1;
+}
+/* line 2, ../../app/styles/partials/_base.sass */
+.clearfix:before {
+  content: " ";
+  display: table;
+}
+/* line 5, ../../app/styles/partials/_base.sass */
+.clearfix:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+/* line 11, ../../app/styles/partials/_base.sass */
+.center {
+  text-align: center;
+}
+
+/* line 4, ../../app/styles/partials/_header.sass */
+.kormapp-header {
+  position: fixed;
+  width: 100%;
+  max-width: 1200px;
+  z-index: 100;
+  height: 63px;
+  margin-top: -63px;
+  background: #f2795a;
+  color: white;
+  border-bottom: 3px solid #d06b52;
+}
+
+/* line 15, ../../app/styles/partials/_header.sass */
+.kormapp-logo-wrapper {
+  height: 60px;
+  width: 60px;
+  position: relative;
+  float: left;
+}
+/* line 21, ../../app/styles/partials/_header.sass */
+.kormapp-logo-wrapper img.kormapp-logo-image {
+  content: url("../kormapp/images/default_logo.png");
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+/* line 32, ../../app/styles/partials/_header.sass */
+p.kormapp-logo-text {
+  padding-top: 16px;
+  margin-left: 60px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  line-height: 0.95;
+  letter-spacing: -1px;
+}
+
+/* line 40, ../../app/styles/partials/_header.sass */
+.kormapp-top-check {
+  position: relative;
+  margin-top: 9px;
+  margin-left: 22px;
+  float: left;
+  width: 43px;
+  height: 50px;
+}
+
+/* line 48, ../../app/styles/partials/_header.sass */
+#kormapp-top-check-container {
+  height: 60px;
+}
+
+/* line 51, ../../app/styles/partials/_header.sass */
+.kormapp-check-background-image {
+  position: absolute;
+  background: url("../kormapp/images/top-check-background.png") no-repeat bottom;
+  background-size: contain;
+  width: 100%;
+  bottom: 0;
+  height: 5px;
+}
+
+/* line 59, ../../app/styles/partials/_header.sass */
+.kormapp-check-image {
+  content: url("../kormapp/images/top-check.png");
+  position: absolute;
+  z-index: 5;
+  height: 100%;
+}
+
+/* line 65, ../../app/styles/partials/_header.sass */
+p.kormapp-top-check-text {
+  padding-top: 16px;
+  margin-left: 5px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+/* line 72, ../../app/styles/partials/_header.sass */
+#kormapp-amount {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* line 1, ../../app/styles/partials/_content.sass */
+.kormapp-content {
+  width: 100%;
+  max-width: 1200px;
+  min-width: 280px;
+  background-color: #eeeeee;
+  padding-top: 14px;
+  padding-bottom: 56px;
+  height: 100%;
+  overflow: scroll;
+}
+
+/* line 11, ../../app/styles/partials/_content.sass */
+a.kormapp-in-order {
+  background: #f2795a !important;
+}
+
+/* line 14, ../../app/styles/partials/_content.sass */
+a.kormapp-order-button {
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 10px;
+  padding: 5px;
+  min-width: 110px;
+  text-align: center;
+  color: white;
+  background: #72bab6;
+  position: absolute;
+  top: 74px;
+  right: 7px;
+}
+
+/* line 27, ../../app/styles/partials/_content.sass */
+span.kormapp-to-bucket {
+  width: 15px;
+  height: 15px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 2px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* line 36, ../../app/styles/partials/_content.sass */
+.kormapp-to-bucket-orange {
+  background-image: url("../kormapp/images/to-bucket-orange.png");
+}
+
+/* line 39, ../../app/styles/partials/_content.sass */
+.kormapp-to-bucket-regular {
+  background-image: url("../kormapp/images/to-bucket.png");
+}
+
+/* line 42, ../../app/styles/partials/_content.sass */
+span.kormapp-order-button-text {
+  line-height: 1.7;
+}
+
+/* line 1, ../../app/styles/partials/_product.sass */
+.kormapp-product-block {
+  overflow: hidden;
+  padding: 8px;
+  margin: -6px 12px 12px 12px;
+  background: white;
+  position: relative;
+  border-bottom: 3px solid #dfdfdf;
+}
+@media screen and (max-width: 360px) {
+  /* line 1, ../../app/styles/partials/_product.sass */
+  .kormapp-product-block {
+    float: none;
+  }
+}
+@media screen and (min-width: 640px) {
+  /* line 1, ../../app/styles/partials/_product.sass */
+  .kormapp-product-block {
+    width: 46%;
+    float: left;
+  }
+}
+@media screen and (min-width: 960px) {
+  /* line 1, ../../app/styles/partials/_product.sass */
+  .kormapp-product-block {
+    width: 30%;
+    float: left;
+  }
+}
+
+/* line 17, ../../app/styles/partials/_product.sass */
+img.kormapp-product-image {
+  height: 92px;
+  width: 83px;
+  display: inline-block;
+  float: left;
+}
+
+/* line 23, ../../app/styles/partials/_product.sass */
+p.kormapp-product-title {
+  margin-left: 90px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 17px;
+  color: #666666;
+  line-height: 1.1;
+}
+
+/* line 30, ../../app/styles/partials/_product.sass */
+.kormapp-product-in-list-price {
+  position: absolute;
+  margin-left: 90px;
+  bottom: 7px;
+  color: #f2795a;
+  font-family: "Open Sans", sans-serif;
+  font-size: 22px;
+}
+/* line 38, ../../app/styles/partials/_product.sass */
+.kormapp-product-in-list-price .kormapp-price-font {
+  font-size: 32px;
+}
+@media screen and (max-width: 360px) {
+  /* line 38, ../../app/styles/partials/_product.sass */
+  .kormapp-product-in-list-price .kormapp-price-font {
+    font-size: 22px;
+  }
+}
+@media screen and (min-width: 640px) and (max-width: 720px) {
+  /* line 38, ../../app/styles/partials/_product.sass */
+  .kormapp-product-in-list-price .kormapp-price-font {
+    font-size: 22px;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1040px) {
+  /* line 38, ../../app/styles/partials/_product.sass */
+  .kormapp-product-in-list-price .kormapp-price-font {
+    font-size: 22px;
+  }
+}
+
+/* line 1, ../../app/styles/partials/_footer.sass */
+.kormapp-footer {
+  position: relative;
+  width: 100%;
+  height: 60px;
+  max-width: 1200px;
+  margin-top: -60px;
+  z-index: 100;
+  font-family: "Open Sans", sans-serif;
+  color: #666666;
+  text-align: center;
+}
+
+/* line 13, ../../app/styles/partials/_footer.sass */
+.kormapp-free-delivery {
+  color: #f2795a;
+}
+
+/* line 16, ../../app/styles/partials/_footer.sass */
+.kormapp-footer-content {
+  height: 60px 2px;
+  background-color: #72bab6;
+  border-top: 2px solid #68a9a5;
+}
+
+/* line 21, ../../app/styles/partials/_footer.sass */
+a.kormapp-checkout {
+  padding: 20px;
+  display: inline-block;
+  width: 100%;
+  color: white;
+  font-size: 19px;
+  text-decoration: none;
+}
+
+/* line 29, ../../app/styles/partials/_footer.sass */
+.kormapp-delivery-discount {
+  height: 60px;
+  border-top: 2px solid #cbcbcb;
+  background: #d8d8d8;
+  padding-top: 10px;
+  padding-bottom: 15px;
+}
+
+/* line 1, ../../app/styles/partials/_check.sass */
+.kormapp-separator {
+  width: 100%;
+  vertical-align: 30%;
+}
+
+/* line 5, ../../app/styles/partials/_check.sass */
+.separator-placeholder {
+  line-height: 1ex;
+  display: inline-block;
+  width: 100%;
+  border-bottom: 2px dotted #666666;
+}
+
+/* line 11, ../../app/styles/partials/_check.sass */
+#kormapp-check-external {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  max-width: 1200px;
+  top: 0;
+}
+
+/* line 19, ../../app/styles/partials/_check.sass */
+#kormapp-check-internal {
+  background-color: #eeeeee;
+  padding: 12px 12px 75px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 26, ../../app/styles/partials/_check.sass */
+.kormapp-check-content {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+  font-family: "Open Sans", sans-serif;
+  color: #666666;
+  background: url("../kormapp/images/paper-texture.png");
+  background-size: contain;
+  z-index: 100;
+}
+
+/* line 37, ../../app/styles/partials/_check.sass */
+.kormapp-check-header {
+  position: relative;
+}
+
+/* line 40, ../../app/styles/partials/_check.sass */
+a.kormapp-back-button-link {
+  position: absolute;
+  left: 0;
+  padding: 15px 80px 20px 15px;
+}
+
+/* line 45, ../../app/styles/partials/_check.sass */
+span.kormapp-back-button {
+  background: url("../kormapp/images/back-button.png");
+  background-size: contain;
+  width: 12px;
+  height: 20px;
+  display: inline-block;
+}
+
+/* line 52, ../../app/styles/partials/_check.sass */
+h2.kormapp-check-heading {
+  font-size: 22px;
+  padding: 15px 0 27px;
+}
+
+/* line 56, ../../app/styles/partials/_check.sass */
+p.kormapp-cartitem-name {
+  text-align: left;
+  padding: 3px 0;
+}
+
+/* line 60, ../../app/styles/partials/_check.sass */
+.kormapp-unscrollable-check {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+/* line 65, ../../app/styles/partials/_check.sass */
+.kormapp-scrollable-check {
+  overflow: auto;
+}
+
+/* line 68, ../../app/styles/partials/_check.sass */
+.kormapp-cart-items {
+  padding-left: 35px;
+  list-style: decimal;
+}
+
+/* line 72, ../../app/styles/partials/_check.sass */
+.kormapp-product-amount {
+  padding-right: 5px;
+  white-space: nowrap;
+}
+
+/* line 76, ../../app/styles/partials/_check.sass */
+.kormapp-product-price {
+  padding-left: 5px;
+  padding-right: 14px;
+  white-space: nowrap;
+}
+
+/* line 81, ../../app/styles/partials/_check.sass */
+.kormapp-all-product-sum {
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 12px 12px 28px;
+}
+
+/* line 87, ../../app/styles/partials/_check.sass */
+.kormapp-delivery-price {
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 12px 0;
+}
+
+/* line 93, ../../app/styles/partials/_check.sass */
+.kormapp-all-sum-right, .kormapp-delivery-sum-right {
+  float: right;
+}
+
+/* line 96, ../../app/styles/partials/_check.sass */
+form.order-data {
+  padding: 0 15px;
+  text-align: left;
+}
+/* line 100, ../../app/styles/partials/_check.sass */
+form.order-data input {
+  margin: 5px 0;
+  width: 100%;
+  background-color: #e5e5e5;
+  border: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: base-font-size;
+  color: #666666;
+  padding-left: 5px;
+}
+
+/* line 110, ../../app/styles/partials/_check.sass */
+.kormapp-form-comment {
+  width: 294px;
+  margin: 0 auto;
+  padding: 10px 0 15px;
+  color: #f2795a;
+  font-size: 12px;
+  text-align: center;
+}
+
+/* line 118, ../../app/styles/partials/_check.sass */
+#kormapp-check-bottom-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+/* line 123, ../../app/styles/partials/_check.sass */
+#kormapp-check-bottom {
+  padding: 18px 8px 14px;
+  background-color: #d8d8d8;
+  height: 35px;
+}
+
+/* line 128, ../../app/styles/partials/_check.sass */
+.kormapp-check-short-left {
+  height: 8px;
+  width: 4px;
+  float: left;
+  background: url("../kormapp/images/footer-check-short-left.png") no-repeat;
+}
+
+/* line 134, ../../app/styles/partials/_check.sass */
+.kormapp-check-short-right {
+  height: 8px;
+  width: 4px;
+  float: right;
+  background: url("../kormapp/images/footer-check-short-right.png") no-repeat;
+}
+
+/* line 140, ../../app/styles/partials/_check.sass */
+.kormapp-check-short-center {
+  height: 8px;
+  margin: 0 auto;
+  background: url("../kormapp/images/footer-check-short-center.png") repeat-x;
+}
+
+/* line 145, ../../app/styles/partials/_check.sass */
+.kormapp-check-button {
+  font-family: "Open Sans", sans-serif;
+  height: 60px;
+}
+
+/* line 149, ../../app/styles/partials/_check.sass */
+a.kormapp-check-button-link {
+  width: 100%;
+  display: inline-block;
+  padding: 20px;
+  color: white;
+  font-size: 19px;
+  text-decoration: none;
+}
+
+/* line 157, ../../app/styles/partials/_check.sass */
+.kormapp-delivery {
+  background-color: #f2795a;
+  border-top: 2px solid #d06b52;
+}
+
+/* line 161, ../../app/styles/partials/_check.sass */
+.kormapp-delivery-inactive {
+  background-color: #999999;
+  border-top: 2px solid #7f7f7f;
+}
+
+/* line 1, ../../app/styles/partials/_modal.sass */
+.kormapp-vendor-footer {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  right: 0;
+  color: white;
+  font-size: 12px;
+  margin: auto;
+  opacity: 0.5;
+}
+
+/* line 11, ../../app/styles/partials/_modal.sass */
+.kormapp-vendor-city {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* line 15, ../../app/styles/partials/_modal.sass */
+.kormapp-modal-wrapper {
+  top: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 140;
+  max-width: 1200px;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* line 24, ../../app/styles/partials/_modal.sass */
+.kormapp-dark-background {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 140;
+  opacity: 0.8;
+}
+
+/* line 31, ../../app/styles/partials/_modal.sass */
+.kormapp-modal-window {
+  display: table;
+  width: 100%;
+  margin: auto;
+  padding: 0 12px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+}
+
+/* line 41, ../../app/styles/partials/_modal.sass */
+.kormapp-modal-without-alignment {
+  display: block;
+  top: 70px;
+  bottom: 70px;
+}
+/* line 46, ../../app/styles/partials/_modal.sass */
+.kormapp-modal-without-alignment a.kormapp-modal-button {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  display: block;
+  margin: 20px auto auto;
+  text-align: center;
+}
+
+/* line 55, ../../app/styles/partials/_modal.sass */
+.kormapp-modal-window-white {
+  background-color: white;
+}
+
+/* line 58, ../../app/styles/partials/_modal.sass */
+.kormapp-quantity-title {
+  padding: 15px 0 8px;
+  color: #f2795a;
+}
+
+/* line 62, ../../app/styles/partials/_modal.sass */
+.kormapp-quantity-table {
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* line 66, ../../app/styles/partials/_modal.sass */
+.kormapp-price {
+  color: #f2795a;
+  font-family: "Open Sans", sans-serif;
+  font-size: 22px;
+}
+/* line 71, ../../app/styles/partials/_modal.sass */
+.kormapp-price .kormapp-price-font {
+  font-size: 32px;
+}
+
+/* line 74, ../../app/styles/partials/_modal.sass */
+.kormapp-multiplier {
+  color: #72bab6;
+  font-size: 28px;
+  margin: 0 8px;
+}
+
+/* line 79, ../../app/styles/partials/_modal.sass */
+.kormapp-multiplier-font {
+  font-size: 32px;
+}
+
+/* line 82, ../../app/styles/partials/_modal.sass */
+.kormapp-quantity-selector {
+  margin: 10px auto 10px;
+  color: #72bab6;
+}
+
+/* line 86, ../../app/styles/partials/_modal.sass */
+#kormapp-plus-sign, #kormapp-minus-sign {
+  color: #72bab6;
+  background-color: white;
+  font-size: 22px;
+  display: inline-block;
+  width: 27px;
+  height: 27px;
+  border: 1px solid #72bab6;
+  text-decoration: none;
+}
+
+/* line 96, ../../app/styles/partials/_modal.sass */
+.kormapp-vendor-title, .kormapp-vendor-description {
+  color: white;
+  margin-bottom: 20px;
+}
+
+/* line 100, ../../app/styles/partials/_modal.sass */
+.kormapp-vendor-title {
+  font-weight: normal;
+  font-size: 20px;
+}
+
+/* line 104, ../../app/styles/partials/_modal.sass */
+.kormapp-vendor-description {
+  overflow: auto;
+  font-size: 13px;
+  text-align: left;
+  line-height: 1.4;
+}
+
+/* line 110, ../../app/styles/partials/_modal.sass */
+a.kormapp-modal-button {
+  display: inline-block;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 10px;
+  padding: 5px;
+  margin-bottom: 15px;
+  width: 110px;
+  text-align: center;
+  color: white;
+  background-color: #f2795a;
+}
+
+/* line 122, ../../app/styles/partials/_modal.sass */
+span.kormapp-modal-button-text {
+  line-height: 1.7;
+}
+
+/* line 1, ../../app/styles/partials/_reflections.sass */
+.kormapp-footer-content.kormapp-reflection-on {
+  background-color: #52a7a2;
+}
+
+/* line 4, ../../app/styles/partials/_reflections.sass */
+#kormapp-plus-sign.kormapp-reflection-on {
+  background-color: #e6e6e6;
+}
+
+/* line 7, ../../app/styles/partials/_reflections.sass */
+#kormapp-minus-sign.kormapp-reflection-on {
+  background-color: #e6e6e6;
+}
+
+/* line 10, ../../app/styles/partials/_reflections.sass */
+a.kormapp-modal-button.kormapp-reflection-on {
+  background-color: #ee532b;
+}
+
+/* line 13, ../../app/styles/partials/_reflections.sass */
+.kormapp-delivery-discount.kormapp-reflection-on {
+  background-color: #bfbfbf;
+}
+
+/* line 16, ../../app/styles/partials/_reflections.sass */
+.kormapp-product-block.kormapp-reflection-on {
+  background-color: #e6e6e6;
+}
+
+/* line 19, ../../app/styles/partials/_reflections.sass */
+.kormapp-delivery.kormapp-reflection-on {
+  background-color: #ee532b;
+}
+
+/* line 22, ../../app/styles/partials/_reflections.sass */
+.kormapp-delivery.kormapp-reflection-on {
+  background-color: #ee532b;
+}
+
+/* line 25, ../../app/styles/partials/_reflections.sass */
+.kormapp-delivery-inactive.kormapp-reflection-on {
+  background-color: gray;
+}
+
+/* line 28, ../../app/styles/partials/_reflections.sass */
+.kormapp-back-button-link.kormapp-reflection-on {
+  background-color: #eeeeee;
+}
+
+/* line 31, ../../app/styles/partials/_reflections.sass */
+#kormapp-logo.kormapp-reflection-on {
+  background-color: #ee532b;
+}
+
+/* line 34, ../../app/styles/partials/_reflections.sass */
+#kormapp-top-check-container.kormapp-reflection-on {
+  background: #ee532b;
+}
+
+/* line 1, ../../app/styles/pace.scss */
+.pace {
+  -webkit-pointer-events: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+/* line 9, ../../app/styles/pace.scss */
+.pace-inactive {
+  display: none;
+}
+
+/* line 13, ../../app/styles/pace.scss */
+.pace .pace-progress {
+  background: #e67863;
+  position: fixed;
+  z-index: 2000;
+  top: 0;
+  left: 0;
+  height: 2px;
+  -webkit-transition: width 1s;
+  -moz-transition: width 1s;
+  -o-transition: width 1s;
+  transition: width 1s;
+}
+
+/* line 27, ../../app/styles/pace.scss */
+.pace .pace-progress-inner {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px #e67863, 0 0 5px #e67863;
+  opacity: 1.0;
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+  -moz-transform: rotate(3deg) translate(0px, -4px);
+  -ms-transform: rotate(3deg) translate(0px, -4px);
+  -o-transform: rotate(3deg) translate(0px, -4px);
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* line 42, ../../app/styles/pace.scss */
+.pace .pace-activity {
+  display: block;
+  position: fixed;
+  z-index: 2000;
+  top: 15px;
+  right: 15px;
+  width: 14px;
+  height: 14px;
+  border: solid 2px transparent;
+  border-top-color: #d06b52;
+  border-left-color: #d06b52;
+  border-radius: 10px;
+  -webkit-animation: pace-spinner 400ms linear infinite;
+  -moz-animation: pace-spinner 400ms linear infinite;
+  -ms-animation: pace-spinner 400ms linear infinite;
+  -o-animation: pace-spinner 400ms linear infinite;
+  animation: pace-spinner 400ms linear infinite;
+}
+
+@-webkit-keyframes pace-spinner {
+  /* line 62, ../../app/styles/pace.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 63, ../../app/styles/pace.scss */
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes pace-spinner {
+  /* line 66, ../../app/styles/pace.scss */
+  0% {
+    -moz-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 67, ../../app/styles/pace.scss */
+  100% {
+    -moz-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes pace-spinner {
+  /* line 70, ../../app/styles/pace.scss */
+  0% {
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 71, ../../app/styles/pace.scss */
+  100% {
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-ms-keyframes pace-spinner {
+  /* line 74, ../../app/styles/pace.scss */
+  0% {
+    -ms-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 75, ../../app/styles/pace.scss */
+  100% {
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pace-spinner {
+  /* line 78, ../../app/styles/pace.scss */
+  0% {
+    transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 79, ../../app/styles/pace.scss */
+  100% {
+    transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}

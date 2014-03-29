@@ -2,7 +2,7 @@
 
 # Запускайется после grunt build
 
-cp -vr ./dist/ ./www/
+ln -s dist www
 
 cordova platforms add android
 cordova platforms add ios

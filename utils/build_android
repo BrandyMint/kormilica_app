@@ -1,7 +1,7 @@
 
 grunt version:android
 
-cp ./www/cordova_android.html ./www/index.html
+cp ./dist/cordova_android.html ./www/index.html
 
 cordova build android --release
 
