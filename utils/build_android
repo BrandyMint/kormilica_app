@@ -1,4 +1,5 @@
-grunt version:android
+
+# grunt version:android
 
 cp ./www/cordova_android.html ./www/index.html
 
