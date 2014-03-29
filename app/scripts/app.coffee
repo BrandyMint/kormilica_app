@@ -105,6 +105,7 @@ Reflection
   App.on 'initialize:after', ->
     new Reflection()
     App.updateManager.perform() if App.type == 'cordova-ios' || App.type == 'cordova-android'
+    window.navigator?.splashscreen?.hide()
     console.log "App inintialize:after", Date.now()
 
   App

@@ -10,7 +10,15 @@
 /*-----  Weights  ------ */
 /*-----  Base fonts  ------ */
 /*-----  Sizes  ------ */
-/* line 1, ../../app/styles/partials/_grid.sass */
+/* line 3, ../../app/styles/partials/_grid.sass */
+.kormapp-body-ios7 {
+  background-color: #f2795a;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+}
+
+/* line 9, ../../app/styles/partials/_grid.sass */
 #kormapp-container {
   position: fixed;
   margin: 0 auto;
@@ -20,53 +28,49 @@
   width: 100%;
   height: 100%;
 }
-/* line 9, ../../app/styles/partials/_grid.sass */
-#kormapp-container.kormapp-cordova-ios7 {
-  margin-top: 20px;
-}
 
-/* line 12, ../../app/styles/partials/_grid.sass */
+/* line 18, ../../app/styles/partials/_grid.sass */
 .kormapp-column {
   float: left;
   margin-left: 5%;
 }
-/* line 15, ../../app/styles/partials/_grid.sass */
+/* line 21, ../../app/styles/partials/_grid.sass */
 .kormapp-column:first-child {
   margin-left: 0;
 }
-/* line 17, ../../app/styles/partials/_grid.sass */
+/* line 23, ../../app/styles/partials/_grid.sass */
 .kormapp-column.full {
   width: 100%;
 }
-/* line 19, ../../app/styles/partials/_grid.sass */
+/* line 25, ../../app/styles/partials/_grid.sass */
 .kormapp-column.two-thirds {
   width: 65%;
 }
-/* line 21, ../../app/styles/partials/_grid.sass */
+/* line 27, ../../app/styles/partials/_grid.sass */
 .kormapp-column.half {
   width: 47.5%;
 }
-/* line 23, ../../app/styles/partials/_grid.sass */
+/* line 29, ../../app/styles/partials/_grid.sass */
 .kormapp-column.one-third {
   width: 30%;
 }
-/* line 25, ../../app/styles/partials/_grid.sass */
+/* line 31, ../../app/styles/partials/_grid.sass */
 .kormapp-column.one-fourth {
   width: 21.25%;
 }
 
-/* line 28, ../../app/styles/partials/_grid.sass */
+/* line 34, ../../app/styles/partials/_grid.sass */
 .kormapp-row {
   overflow: hidden;
 }
 
-/* line 31, ../../app/styles/partials/_grid.sass */
+/* line 37, ../../app/styles/partials/_grid.sass */
 .kormapp-web-desktop {
   max-width: 1200px;
   max-height: 601px;
 }
 
-/* line 35, ../../app/styles/partials/_grid.sass */
+/* line 41, ../../app/styles/partials/_grid.sass */
 .kormapp-web-mobile {
   max-width: 1200px;
 }
