@@ -27,3 +27,22 @@ cp -vr $src/48.png $dst/drawable-mdpi/icon.png
 cp -vr $src/72.png $dst/drawable-hdpi/icon.png
 cp -vr $src/96.png $dst/drawable-xhdpi/icon.png
 cp -vr $src/96.png $dst/drawable/icon.png
+
+# IOS
+
+cp -vr ./res/icons/ios/* ./platforms/ios/Kormilica/Resources/icons/
+# mv AppIcon29x29.png icon-small.png
+# mv AppIcon29x29@2x.png icon-small@2x.png
+# mv AppIcon40x40.png icon-40.png
+# mv AppIcon40x40@2x.png icon-40@2x.png
+# mv AppIcon50x50.png icon-50.png
+# mv AppIcon50x50@2x.png icon-50@2x.png
+# mv AppIcon60x60.png icon-60.png
+# mv AppIcon60x60@2x.png icon-60@2x.png
+# mv AppIcon57x57.png icon.png   
+# mv AppIcon57x57@2x.png icon@2px.png
+# mv AppIcon72x72.png icon-72.png
+# mv AppIcon72x72@2x.png icon-72@2x.png
+# mv AppIcon76x76.png icon-76.png
+# mv AppIcon76x76@2x.png icon-76@2x.png
+
