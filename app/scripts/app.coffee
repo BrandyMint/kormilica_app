@@ -102,10 +102,17 @@ Reflection
   App.on 'start', ->
     console.log "Start KormApp #{App.version}"
 
+  onDeviceReady = ->
+    console.log 'onDeviceReady fired'
+    window.navigator.splashscreen.hide()
+
   App.on 'initialize:after', ->
     new Reflection()
-    App.updateManager.perform() if App.type == 'cordova-ios' || App.type == 'cordova-android'
-    window.navigator?.splashscreen?.hide()
+    if App.type == 'cordova-ios' || App.type == 'cordova-android'
+      console.log 'cordova detected'
+      App.updateManager.perform() 
+      document.addEventListener "deviceready", onDeviceReady, false
+
     console.log "App inintialize:after", Date.now()
 
   App
