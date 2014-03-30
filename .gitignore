@@ -5,9 +5,8 @@ npm-debug.log
 *.apk
 /dist/
 .sass-cache
-platforms/*
-plugins/^.*
-plugins/org.apache.cordova.*/
+platforms/
+plugins/
 /app/bower_components
 www
 .tmp
