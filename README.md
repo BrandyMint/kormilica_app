@@ -1,6 +1,8 @@
 Кормилица App
 =============
 
+[![Build Status](http://jenkins.icfdev.ru/buildStatus/icon?job=kormilica_app)](http://jenkins.icfdev.ru/job/kormilica_app/)
+
 CI
 --
 
