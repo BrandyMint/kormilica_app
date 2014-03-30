@@ -1,10 +1,16 @@
 Кормилица App
 =============
 
-Мобильное приложение (Yeoman-CoffeeScript-Sass-Haml-Backbone-RequireJS)
+CI
+--
 
-    git clone https://github.com/BrandyMint/webapp_template destination_dir
-    cd destination_dir
+* [jenkins](http://jenkins.icfdev.ru/job/kormilica_app/) - тесты и деплой на http://brandymint.github.io/kormilica_app/
+* [teamticy](http://teamcity.brandymint.ru/viewType.html?buildTypeId=Kormilica_BuildAndUpload) - билд под мобильные платформы
+
+
+Development
+-----------
+
     npm install
     bower install
     grunt server
