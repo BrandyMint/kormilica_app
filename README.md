@@ -28,7 +28,7 @@ Development
 Android:
 
 * [последний билд с teamcity](http://icf.chebit.ru/android/Kormilica.apk)
-* [Google Play](https://play.google.com/store/apps/details?id=com.brandymint.kormilica)
+* [Google Play](https://play.google.com/store/apps/details?id=com.brandymint.kormilica), [загрузка](https://play.google.com/apps/publish/?dev_acc=15071385602273245111#ApkPlace:p=com.brandymint.kormilica)
 * [группа тестировщиков](https://plus.google.com/communities/111507310547613506785)
 
 
