@@ -13,7 +13,21 @@
 
     App.vent.trigger('cart:clean')
     
-    
+
+Актуальные билды
+----------------
+
+Android:
+
+* [последний билд с teamcity](http://icf.chebit.ru/android/Kormilica.apk)
+* [Google Play](https://play.google.com/store/apps/details?id=com.brandymint.kormilica)
+* [группа тестировщиков](https://plus.google.com/communities/111507310547613506785)
+
+
+iOS:
+
+* [testflight](https://www.testflightapp.com/dashboard/applications/1062985/)
+
 Обновление данных вендора
 --------------------------
 
