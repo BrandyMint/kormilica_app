@@ -34,7 +34,7 @@ Android:
 
 iOS:
 
-* [testflight](https://www.testflightapp.com/dashboard/applications/1062985/)
+* [testflight](https://www.testflightapp.com/dashboard/applications/1062985/builds/)
 
 Обновление данных вендора
 --------------------------
