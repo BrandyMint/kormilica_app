@@ -2,6 +2,7 @@
 
 # Запускайется после grunt build
 
+rm -f www 
 ln -s dist www
 
 cordova platforms add android
