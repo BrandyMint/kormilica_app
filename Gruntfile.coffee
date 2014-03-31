@@ -309,6 +309,8 @@ module.exports = (grunt) ->
             "*.{ico,txt}"
             ".htaccess"
             "data/images/*.*"
+            "bower_components/cordova-shim/"
+            "bower_components/pace/"
             "kormapp/images/{,*/}*.{webp,gif,png,jpg}"
             "styles/fonts/{,*/}*.*"
             "{,*/}*.js"
