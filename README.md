@@ -20,7 +20,10 @@ Development
 Для очистки корзины в консоли вводим
 
     App.vent.trigger('cart:clean')
-    
+
+Перенеправление запросов на локальный api-сервер:
+
+    window.kormapp_api_url = 'http://api.3001.vkontraste.ru'
 
 Актуальные билды
 ----------------

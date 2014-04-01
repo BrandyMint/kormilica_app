@@ -5,7 +5,7 @@ define ['settings', 'helpers/application_helpers'], (Settings, Helpers) ->
 
     perform: (interactive) ->
       $.ajax
-        url: Settings.api_urls.bundles
+        url: Settings.routes.bundles_url()
         headers: @_headers()
         success: (data) =>
           if interactive

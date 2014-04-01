@@ -1,4 +1,4 @@
-define ['models/order'], (Order) ->
+define ['models/order', 'settings'], (Order, Settings) ->
 
   class OrderController extends Marionette.Controller
 
@@ -18,16 +18,24 @@ define ['models/order'], (Order) ->
       orderAttributes.delivery_price = @vendor.get 'delivery_price'
 
       order = new Order orderAttributes
+      debugger
+      #order.urlRoot = Settings.routes.orders_url()
       order.save null, {
+        url: Settings.routes.orders_url()
+        headers:
+          'X-Vendor-Key': @vendor.get 'key'
+
         success: (model, response) =>
 
           # TODO show cordova alert with subject
-          if response.message?.text?
+          if response.message?
             text = response.message.text
+            subject = response.message.subject
           else
             text = "Ваш заказ №#{response.id}"
+            subject = 'Заказ принят'
 
-          window.navigator.notification.alert text, null, 'Заказ принят'
+          window.navigator.notification.alert text, null, subject
           @app.vent.trigger 'order:created', response
 
         error: (model, response) =>
