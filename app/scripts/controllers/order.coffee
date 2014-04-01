@@ -5,8 +5,7 @@ define ['models/order', 'settings'], (Order, Settings) ->
     initialize: (options) ->
       { @app, @cart, @user, @vendor } = options
 
-      @app.commands.setHandler 'order:create', =>
-        @createOrder()
+      @app.commands.setHandler 'order:create', @createOrder
 
     createOrder: =>
       # total_price, comment, etc

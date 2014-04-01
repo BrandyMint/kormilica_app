@@ -8,8 +8,7 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'helpers/applic
       @model = @vendor
       @collection = @cart.items
 
-      @vent.on 'order:created', =>
-        @hideButton()
+      @vent.on 'order:created', @hideButton
 
     bindings:
       '.kormapp-footer-offer':
@@ -30,7 +29,7 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'helpers/applic
     showCheckoutButton: ->
       @$('#kormapp-workspace').html checkoutButtonTemplate
 
-    hideButton: ->
+    hideButton: =>
       if @cart.isEmpty()
         @$('#kormapp-workspace').html @workspaceDOM
 

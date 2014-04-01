@@ -43,19 +43,21 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
 
     addOrder: (e) ->
       @user.save()
+      $(@ui.deliveryButton).html 'ОТПРАВЛЯЕТСЯ ЗАКАЗ..'
+      @deactivateDeliveryButton()
       @app.execute 'order:create'
 
     showErrors: (e) ->
       e.preventDefault()
       window.navigator.notification.alert 'Впишите телефон и адрес доставки', null, 'Внимание'
 
-    checkForEmptyFields: (e) ->
+    validate: (e) ->
       $(@ui.form).find("input").filter( ->
         return $.trim( $(@).val().length ) < 1
       ).length == 0
 
     manageButtons: (model) ->
-      if @checkForEmptyFields()
+      if @validate()
         @activateDeliveryButton()
       else
         @deactivateDeliveryButton()
@@ -67,6 +69,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
     activateDeliveryButton: ->
       button = @$('#kormapp-check-bottom-container').find('.kormapp-delivery-inactive')
       button.removeClass('kormapp-delivery-inactive').addClass('kormapp-delivery')
+      $(@ui.deliveryButton).html 'ДОСТАВИТЬ ЗАКАЗ'
 
     _setScrollableAreaHeight: ->
       container =  $('.kormapp-check-content')
@@ -86,16 +89,14 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
       @stickit @vendor,
         '.kormapp-delivery-price':
           observe: 'delivery_price'
-          visible: (val) ->
-            true if val.cents > 0
+          visible: (val) -> val.cents > 0
         '.kormapp-delivery-sum-right':
           observe: 'delivery_price'
           updateMethod: 'html'
           onGet: (val) -> Helpers.money val
         'label[for="address"]':
           observe: 'city'
-          onGet:   (val) ->
-            "Ваш адрес (#{val})"
+          onGet:   (val) -> "Ваш адрес (#{val})"
 
       @stickit @cart,
         '.kormapp-all-sum-right':
