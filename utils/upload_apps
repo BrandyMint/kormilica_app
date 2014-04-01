@@ -1,0 +1,31 @@
+ipa_file=`pwd`/Kormilica.ipa
+apk_file=`pwd`/Kormilica.apk
+
+api_access_token='supertoken'
+#'98b118b9fa89e7aa8c18b0b43f7c178e'
+vendor_key=$1
+
+if [ -z "$vendor_key" ]; then
+  echo "Укажите vendor_key в качестве параметра"
+  exit 2
+fi
+
+echo "Загружаю приложения в админку"
+
+api_url='http://api.aydamarket.ru'
+# api_url='http://api.3001.vkontraste.ru'
+
+echo "api_url: $api_url"
+echo "vendor_key: $vendor_key"
+
+echo "Загружаю $ipa_file"
+curl "$api_url/v1/vendors/ipa" \
+   -F file=@$ipa_file \
+   -F vendor_key=$vendor_key \
+   -F api_token=$api_access_token
+
+echo "Загружаю $apk_file"
+curl "$api_url/v1/vendors/apk" \
+   -F file=@$apk_file \
+   -F vendor_key=$vendor_key \
+   -F api_token=$api_access_token
