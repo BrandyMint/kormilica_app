@@ -1,0 +1,3 @@
+npm install && bower install && grunt version && \
+grunt build && ./utils/cordova_prepare && \
+./utils/build_android && ./utils/build_ios && ./utils/make_ipa
