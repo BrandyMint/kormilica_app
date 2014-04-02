@@ -10,6 +10,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
     initialize: ({ @app, @cart, @user, @vendor }) ->
       @collection = @cart.items
       @model = @user
+      @app.vent.on 'order:failed', @activateDeliveryButton
 
     bindings:
       '#kormapp-address':
@@ -62,11 +63,11 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
       else
         @deactivateDeliveryButton()
 
-    deactivateDeliveryButton: ->
+    deactivateDeliveryButton: =>
       button = @$('#kormapp-check-bottom-container').find('.kormapp-delivery')
       button.removeClass('kormapp-delivery').addClass('kormapp-delivery-inactive')
 
-    activateDeliveryButton: ->
+    activateDeliveryButton: =>
       button = @$('#kormapp-check-bottom-container').find('.kormapp-delivery-inactive')
       button.removeClass('kormapp-delivery-inactive').addClass('kormapp-delivery')
       $(@ui.deliveryButton).html 'ДОСТАВИТЬ ЗАКАЗ'

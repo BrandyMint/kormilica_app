@@ -24,18 +24,18 @@ define ['models/order', 'settings'], (Order, Settings) ->
 
         success: (model, response) =>
 
-          # TODO show cordova alert with subject
           if response.message?
             text = response.message.text
             subject = response.message.subject
           else
             text = "Ваш заказ №#{response.id}"
-            subject = 'Заказ принят'
+            subject = 'Заказ отправлен'
 
           window.navigator.notification.alert text, null, subject
           @app.vent.trigger 'order:created', response
 
         error: (model, response) =>
+          @app.vent.trigger 'order:failed', response
           window.navigator.notification.alert "Заказ не отправлен. #{response.responseText}. Повторите снова", null, 'Ошибка соединения!'
       }
 

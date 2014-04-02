@@ -4,23 +4,20 @@ define ['views/check/check'], (CheckView) ->
 
     initialize: ({ @app, @user, @cart, @vendor }) ->
 
-      @app.commands.setHandler 'check:show', =>
-        @showCheck()
+      @app.commands.setHandler 'check:show', @showCheck
 
-      @app.vent.on 'order:created', =>
-        @hideCheck()
+      @app.vent.on 'order:created', @hideCheck
 
-    showCheck: ->
+    showCheck: =>
       @checkView = new CheckView
         app:    @app
         user:   @user
         cart:   @cart
         vendor: @vendor
 
-      @checkView.on 'cancel:button:clicked', =>
-        @hideCheck()
+      @checkView.on 'cancel:button:clicked', @hideCheck
 
       @app.mainLayout.checkRegion.show @checkView
 
-    hideCheck: ->
+    hideCheck: =>
       @app.mainLayout.checkRegion.close()
