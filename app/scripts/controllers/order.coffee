@@ -17,8 +17,6 @@ define ['models/order', 'settings'], (Order, Settings) ->
       orderAttributes.delivery_price = @vendor.get 'delivery_price'
 
       order = new Order orderAttributes
-      debugger
-      #order.urlRoot = Settings.routes.orders_url()
       order.save null, {
         url: Settings.routes.orders_url()
         headers:
