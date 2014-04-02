@@ -40,6 +40,8 @@ Reflection
       categories: App.categories
       products:   App.products
 
+    App.on 'initialize:after', App.updateManager.perform if bundle.update == 'now'
+
     # Сюда можно передавать el основого контейнера
     App.mainLayout = new MainLayout()
     App.mainLayout.render()
@@ -101,14 +103,12 @@ Reflection
   App.on 'start', ->
     console.log "Start KormApp #{App.version}"
 
-  onDeviceReady = ->
-    console.log 'onDeviceReady fired'
-    navigator.splashscreen.hide()
-
   App.on 'initialize:after', ->
+    onDeviceReady = ->
+      console.log 'onDeviceReady fired'
+      navigator.splashscreen.hide()
     console.log "initialize:after:start", Date.now()
     new Reflection()
-    App.updateManager.perform()
     document.addEventListener "deviceready", onDeviceReady, false
 
     console.log "inintialize:after:finish", Date.now()
