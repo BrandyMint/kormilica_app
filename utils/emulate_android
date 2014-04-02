@@ -1,0 +1,1 @@
+grunt build; cp ./dist/cordova_android.html ./www/index.html ; cordova emulate android
