@@ -16,6 +16,9 @@ define [
         # TODO Постараться сохранить корзину
         window.localStorage.clear()
         window.localStorage.kormapp_version = App.version
+        if bundle.vendor.is_demo
+          _.defer ->
+            window.navigator.notification.alert "Это демонстрационное приложение! Заказы не исполняются.", null, 'Внимание!'
 
       App.vendor     = new Vendor()
       App.categories = new CategoriesCollection()

@@ -22,6 +22,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
       form:                   'form'
       backButton:             '.kormapp-check-header a'
       deliveryButton:         '.kormapp-delivery a'
+      deliveryButtonContent:  '.kormapp-delivery-button'
       inactiveDeliveryButton: '.kormapp-delivery-inactive a'
 
     events:
@@ -44,7 +45,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
 
     addOrder: (e) ->
       @user.save()
-      $(@ui.deliveryButton).html 'ОТПРАВЛЯЕТСЯ ЗАКАЗ..'
+      $(@ui.deliveryButtonContent).html 'ОТПРАВЛЯЕТСЯ ЗАКАЗ..'
       @deactivateDeliveryButton()
       @app.execute 'order:create'
 
@@ -70,7 +71,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
     activateDeliveryButton: =>
       button = @$('#kormapp-check-bottom-container').find('.kormapp-delivery-inactive')
       button.removeClass('kormapp-delivery-inactive').addClass('kormapp-delivery')
-      $(@ui.deliveryButton).html 'ДОСТАВИТЬ ЗАКАЗ'
+      $(@ui.deliveryButtonContent).html 'ДОСТАВИТЬ ЗАКАЗ'
 
     _setScrollableAreaHeight: ->
       container =  $('.kormapp-check-content')

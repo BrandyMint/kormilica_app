@@ -104,11 +104,6 @@ Reflection
     if App.bundle.update == 'now'
       App.updateManager.perform()
 
-    if App.vendor.get('is_demo')
-      _.defer ->
-        window.navigator.notification.alert "Это демонстрационное приложение! Заказы не исполняются.", null, 'Внимание'
-
-
     onDeviceReady = ->
       console.log 'onDeviceReady fired'
       navigator.splashscreen.hide()
