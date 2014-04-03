@@ -418,7 +418,8 @@ module.exports = (grunt) ->
     "compass:dist"
     "useminPrepare"
     "requirejs"
-    "imagemin"
+    # TODO imagemin падает на прозрачном default_logo
+    # "imagemin"
     "htmlmin"
     "concat"
     "copy:bower"

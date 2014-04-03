@@ -13,7 +13,7 @@ define ['views/header/top_check', 'templates/header/header', 'helpers/applicatio
           observe:      'mobile_title'
           updateMethod: 'html'
         # https://www.pivotaltracker.com/story/show/68420416
-        # Отключил обновление логотипа
+        # TODO Отключил обновление логотипа
         # потому что оно не показывается в cordova android
         #'.kormapp-logo-image':
           #attributes: [

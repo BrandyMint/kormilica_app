@@ -17,10 +17,12 @@ define ['helpers/application_helpers'], (Helpers) ->
       mobile_delivery:     'Доставка бесплатно от 500 руб.'
 
       # Отображается при нажатии на "пустой кнопке"
-      footer_empty_button: 'Выберите из списка блюдо на заказ.'
+      mobile_empty_cart_alert: 'Выберите из списка блюдо на заказ.'
+
+      mobile_minimal_alert:  'Минимальный заказ от 500 руб.'
 
     minimal_alert: ->
-      "Минимальный заказ от #{Helpers.money_txt(@get('minimal_price'))}"
+      @get 'mobile_minimal_alert'
 
     isPriceValid: (cart) ->
       cart.get('total_cost').cents >= @get('minimal_price').cents

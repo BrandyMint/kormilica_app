@@ -3,17 +3,20 @@ define ['settings', 'helpers/application_helpers'], (Settings, Helpers) ->
 
     initialize: ({ @user, @cart, @vendor, @categories, @products }) ->
 
-    perform: (interactive) ->
+    perform: (interactive) =>
+      console.log 'update data'
       $.ajax
         url: Settings.routes.bundles_url()
         headers: @_headers()
         success: (data) =>
+          console.log 'update success'
           if interactive
-            window.navigator.notification.alert "Обновлено продуктов: #{data?.products?.length}"
+            window.navigator.notification.alert "Обновлено продуктов: #{data?.products?.length}", null, 'Внимание'
           @_update data
         error: (e) => 
+          console.log 'update error', e
           if interactive
-            window.navigator.notification.alert "Ошибка обновления списка продуктов"
+            window.navigator.notification.alert "Ошибка обновления списка продуктов", null, 'Внимание'
           else
             console.log 'Ошибка получения списка продуктов с сервера', e
 

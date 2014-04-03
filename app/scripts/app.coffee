@@ -27,9 +27,10 @@ Reflection
 ) ->
 
   App = new Marionette.Application
-  App.version = '0.1.29' # Переустанавливается через grunt version
+  App.version = '0.1.30' # Переустанавливается через grunt version
 
   App.addInitializer ({bundle}) ->
+    App.bundle = bundle
     console.log "App initialize", Date.now()
     DataPreloader App, bundle
 
@@ -39,8 +40,6 @@ Reflection
       vendor:     App.vendor
       categories: App.categories
       products:   App.products
-
-    App.on 'initialize:after', App.updateManager.perform if bundle.update == 'now'
 
     # Сюда можно передавать el основого контейнера
     App.mainLayout = new MainLayout()
@@ -101,16 +100,23 @@ Reflection
       vent:   App.vent
 
   App.on 'start', ->
-    console.log "Start KormApp #{App.version}"
+    console.log "Start KormApp #{App.version}", Date.now()
+    if App.bundle.update == 'now'
+      App.updateManager.perform()
 
-  App.on 'initialize:after', ->
+    if App.vendor.get('is_demo')
+      _.defer ->
+        window.navigator.notification.alert "Это демонстрационное приложение! Заказы не исполняются.", null, 'Внимание'
+
+
     onDeviceReady = ->
       console.log 'onDeviceReady fired'
       navigator.splashscreen.hide()
-    console.log "initialize:after:start", Date.now()
+
     new Reflection()
+
     document.addEventListener "deviceready", onDeviceReady, false
 
-    console.log "inintialize:after:finish", Date.now()
+    console.log "start:finish", Date.now()
 
   App
