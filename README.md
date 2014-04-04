@@ -25,6 +25,10 @@ Development
 
     window.kormapp_api_url = 'http://api.3001.vkontraste.ru'
 
+Обновление данных из приложения:
+
+    window.KormApp.updateManager.perform()
+
 Актуальные билды
 ----------------
 
