@@ -11,7 +11,7 @@ mkdir ./plugins
 cordova platforms add android
 cordova platforms add ios
 
-cordova plugin add org.apache.cordova.splashscreen
+#cordova plugin add org.apache.cordova.splashscreen
 cordova plugin add org.apache.cordova.dialogs
 
 ./utils/prepare_res

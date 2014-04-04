@@ -581,12 +581,19 @@ a.kormapp-check-button-link {
 }
 
 /* line 157, ../../app/styles/partials/_check.sass */
+.kormapp-delivery-button {
+  padding-left: 40px;
+  background: url("../kormapp/images/delivery-icon.png") no-repeat;
+  background-position: left center;
+}
+
+/* line 162, ../../app/styles/partials/_check.sass */
 .kormapp-delivery {
   background-color: #f2795a;
   border-top: 2px solid #d06b52;
 }
 
-/* line 161, ../../app/styles/partials/_check.sass */
+/* line 166, ../../app/styles/partials/_check.sass */
 .kormapp-delivery-inactive {
   background-color: #999999;
   border-top: 2px solid #7f7f7f;

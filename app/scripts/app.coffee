@@ -106,7 +106,7 @@ Reflection
 
     onDeviceReady = ->
       console.log 'onDeviceReady fired'
-      navigator.splashscreen.hide()
+      navigator?.splashscreen?.hide()
 
     new Reflection()
 
