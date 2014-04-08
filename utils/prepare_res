@@ -31,6 +31,8 @@ cp -vr $src/96.png $dst/drawable/icon.png
 # IOS
 
 cp -vr ./res/icons/ios/* ./platforms/ios/Kormilica/Resources/icons/
+cp -vr ./res/screens/ios/* ./platforms/ios/Kormilica/Resources/splash/
+
 # mv AppIcon29x29.png icon-small.png
 # mv AppIcon29x29@2x.png icon-small@2x.png
 # mv AppIcon40x40.png icon-40.png
