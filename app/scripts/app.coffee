@@ -109,6 +109,8 @@ Reflection
     onDeviceReady = ->
       console.log 'onDeviceReady fired'
       navigator?.splashscreen?.hide()
+      ImgCache.options.debug = true
+      ImgCache.init()
 
       document.addEventListener 'backbutton', ((e) ->
         App.vent.trigger('device:backbutton')
@@ -119,6 +121,7 @@ Reflection
     new Reflection()
 
     document.addEventListener "deviceready", onDeviceReady, false
+    document.addEventListener 'ImgCacheReady', (-> App.trigger 'img-cache:ready'), false
 
     console.log "start:finish", Date.now()
 
