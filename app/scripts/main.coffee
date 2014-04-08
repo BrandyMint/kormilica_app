@@ -26,9 +26,12 @@ require.config
       deps: ['backbone']
     'backbone.localStorage':
       deps: ['backbone']
+    imgcache:
+      deps: ['jquery']
     app:
       deps: [
         'cordovaShim',
+        'imgcache',
         'marionette',
         'backbone.stickit',
         'backbone.localStorage',
@@ -50,6 +53,7 @@ require.config
     'backbone.virtualcollection':  '../bower_components/backbone.virtualcollection/backbone.virtual-collection'
     'jquery.ui.effect':        "../bower_components/jquery.ui/ui/jquery.ui.effect"
     'jquery.ui.effect-bounce': "../bower_components/jquery.ui/ui/jquery.ui.effect-bounce"
+    imgcache:                '../bower_components/imgcache.js/js/imgcache'
 
 unless @Marionette
   require [

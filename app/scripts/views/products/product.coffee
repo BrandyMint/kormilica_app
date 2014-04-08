@@ -9,6 +9,9 @@ define [ 'templates/products/product',
     template: productTemplate
     className: 'kormapp-product-block kormapp-reflection'
 
+    ui:
+      img: '.kormapp-product-image'
+
     events:
       click: 'clicked'
 
@@ -16,7 +19,6 @@ define [ 'templates/products/product',
       { @app, @cartItems } = options
 
       @listenTo @cartItems, 'add remove', @cartChanged
-
 
     clicked: (e) ->
       e.preventDefault()
@@ -33,6 +35,23 @@ define [ 'templates/products/product',
 
       @buttonRegion.show view
 
+    getCachedImg: ($img) =>
+      imgUrl = @model.get('image')?.mobile_url
+      return unless imgUrl
+      remote = -> $img.attr('src', imgUrl)
+      if ImgCache and window.cordova?
+        cached = ->
+          ImgCache.useCachedFileWithSource($img, imgUrl, null, (->
+            ImgCache.cacheFile(imgUrl)))
+        if ImgCache.ready
+          cached()
+        else
+          @stopListening @app, 'img-cache:ready'
+          @listenToOnce @app, 'img-cache:ready', cached
+      else
+        remote()
+
     onRender: ->
       @buttonRegion = new Marionette.Region el: @$el.find('.kormapp-product-quantity')
       @showButton()
+      @getCachedImg(@ui.img)

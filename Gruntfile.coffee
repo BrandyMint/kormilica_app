@@ -210,6 +210,7 @@ module.exports = (grunt) ->
             "backbone.localStorage": "../../app/bower_components/backbone.localStorage/backbone.localStorage"
             'jquery.ui.effect':        "../../app/bower_components/jquery.ui/ui/jquery.ui.effect"
             'jquery.ui.effect-bounce': "../../app/bower_components/jquery.ui/ui/jquery.ui.effect-bounce"
+            imgcache: '../../app/bower_components/imgcache.js/js/imgcache'
             "app":            '../../.tmp/scripts/app'
 
           # TODO: Figure out how to make sourcemaps work with grunt-usemin

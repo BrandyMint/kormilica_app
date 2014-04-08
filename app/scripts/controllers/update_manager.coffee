@@ -38,3 +38,4 @@ define ['settings', 'helpers/application_helpers'], (Settings, Helpers) ->
 
     _headers: ->
       'X-Vendor-Key': @vendor.get 'key'
+      
