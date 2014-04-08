@@ -54,10 +54,8 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
     manageButtons: (model) ->
       if @validate()
         @activateDeliveryButton()
-        console.log 'activate button'
       else
         @deactivateDeliveryButton()
-        console.log 'deactivate button'
 
     deactivateDeliveryButton: =>
       button = @$el.find('.kormapp-delivery')

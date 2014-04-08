@@ -8,6 +8,8 @@ define ['views/check/check'], (CheckView) ->
 
       @app.vent.on 'order:created device:backbutton', @hideCheck
 
+      @app.vent.on 'order:created order:failed', @hideModal
+
     showCheck: =>
       @checkView = new CheckView
         app:    @app
@@ -22,4 +24,6 @@ define ['views/check/check'], (CheckView) ->
 
     hideCheck: =>
       @app.mainLayout.checkRegion.close()
+
+    hideModal: =>
       @modal.hide()
