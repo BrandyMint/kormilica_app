@@ -1,7 +1,7 @@
 define ->
   class ModalController
-    constructor: (options) ->
-      { @modalRegion } = options
+    constructor: ({ @modalRegion, @vent }) ->
+      @vent.on 'device:backbutton', @hide
 
     show: (view) ->
       # А где он удаляется?
@@ -9,5 +9,5 @@ define ->
       view.on 'onClose', @hide
       @modalRegion.show view
 
-    hide: ->
+    hide: =>
       @modalRegion.close()

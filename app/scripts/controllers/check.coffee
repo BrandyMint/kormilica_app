@@ -6,7 +6,7 @@ define ['views/check/check'], (CheckView) ->
 
       @app.commands.setHandler 'check:show', @showCheck
 
-      @app.vent.on 'order:created', @hideCheck
+      @app.vent.on 'order:created device:backbutton', @hideCheck
 
     showCheck: =>
       @checkView = new CheckView

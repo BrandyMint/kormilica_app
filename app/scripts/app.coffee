@@ -45,7 +45,9 @@ Reflection
     App.mainLayout = new MainLayout()
     App.mainLayout.render()
 
-    App.modal = new ModalController modalRegion: App.mainLayout.modalRegion
+    App.modal = new ModalController
+      modalRegion: App.mainLayout.modalRegion
+      vent: App.vent
 
     new CartController
       vent:  App.vent
@@ -107,6 +109,12 @@ Reflection
     onDeviceReady = ->
       console.log 'onDeviceReady fired'
       navigator?.splashscreen?.hide()
+
+      document.addEventListener 'backbutton', ((e) ->
+        App.vent.trigger('device:backbutton')
+        e.preventDefault()
+        e.stopPropagation()
+      ), false
 
     new Reflection()
 
