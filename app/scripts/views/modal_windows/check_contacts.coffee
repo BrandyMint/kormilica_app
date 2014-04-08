@@ -38,7 +38,7 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
     addOrder: (e) ->
       e.stopPropagation()
       @user.save()
-      $(@ui.deliveryButtonContent).html 'ОТПРАВЛЯЕТСЯ ЗАКАЗ..'
+      $(@ui.deliveryButtonContent).html 'ОТПРАВЛЯЕМ...'
       @deactivateDeliveryButton()
       @app.execute 'order:create'
 
@@ -54,15 +54,17 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
     manageButtons: (model) ->
       if @validate()
         @activateDeliveryButton()
+        console.log 'activate button'
       else
         @deactivateDeliveryButton()
+        console.log 'deactivate button'
 
     deactivateDeliveryButton: =>
-      button = @$('#kormapp-check-bottom-container').find('.kormapp-delivery')
+      button = @$el.find('.kormapp-delivery')
       button.removeClass('kormapp-delivery').addClass('kormapp-delivery-inactive')
 
     activateDeliveryButton: =>
-      button = @$('#kormapp-check-bottom-container').find('.kormapp-delivery-inactive')
+      button = @$el.find('.kormapp-delivery-inactive')
       button.removeClass('kormapp-delivery-inactive').addClass('kormapp-delivery')
       $(@ui.deliveryButtonContent).html 'ДОСТАВИТЬ ЗАКАЗ'
 

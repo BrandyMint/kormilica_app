@@ -819,29 +819,27 @@ form.order-data input {
 
 /* line 110, ../../app/styles/partials/_check.sass */
 .kormapp-form-comment {
-  width: 294px;
-  margin: 0 auto;
   padding: 10px 0 15px;
   color: #f2795a;
   font-size: 12px;
   text-align: center;
 }
 
-/* line 118, ../../app/styles/partials/_check.sass */
+/* line 116, ../../app/styles/partials/_check.sass */
 #kormapp-check-bottom-container {
   position: absolute;
   bottom: 0;
   width: 100%;
 }
 
-/* line 123, ../../app/styles/partials/_check.sass */
+/* line 121, ../../app/styles/partials/_check.sass */
 #kormapp-check-bottom {
   padding: 18px 8px 14px;
   background-color: #d8d8d8;
   height: 35px;
 }
 
-/* line 128, ../../app/styles/partials/_check.sass */
+/* line 126, ../../app/styles/partials/_check.sass */
 .kormapp-check-short-left {
   height: 8px;
   width: 4px;
@@ -849,7 +847,7 @@ form.order-data input {
   background: url("../kormapp/images/footer-check-short-left.png") no-repeat;
 }
 
-/* line 134, ../../app/styles/partials/_check.sass */
+/* line 132, ../../app/styles/partials/_check.sass */
 .kormapp-check-short-right {
   height: 8px;
   width: 4px;
@@ -857,20 +855,20 @@ form.order-data input {
   background: url("../kormapp/images/footer-check-short-right.png") no-repeat;
 }
 
-/* line 140, ../../app/styles/partials/_check.sass */
+/* line 138, ../../app/styles/partials/_check.sass */
 .kormapp-check-short-center {
   height: 8px;
   margin: 0 auto;
   background: url("../kormapp/images/footer-check-short-center.png") repeat-x;
 }
 
-/* line 145, ../../app/styles/partials/_check.sass */
+/* line 143, ../../app/styles/partials/_check.sass */
 .kormapp-check-button {
   font-family: "Open Sans", sans-serif;
   height: 60px;
 }
 
-/* line 149, ../../app/styles/partials/_check.sass */
+/* line 147, ../../app/styles/partials/_check.sass */
 a.kormapp-check-button-link {
   width: 100%;
   display: inline-block;
@@ -880,20 +878,20 @@ a.kormapp-check-button-link {
   text-decoration: none;
 }
 
-/* line 157, ../../app/styles/partials/_check.sass */
+/* line 155, ../../app/styles/partials/_check.sass */
 .kormapp-delivery-button {
   padding-left: 40px;
   background: url("../kormapp/images/delivery-icon.png") no-repeat;
   background-position: left center;
 }
 
-/* line 162, ../../app/styles/partials/_check.sass */
+/* line 160, ../../app/styles/partials/_check.sass */
 .kormapp-delivery {
   background-color: #f2795a;
   border-top: 2px solid #d06b52;
 }
 
-/* line 166, ../../app/styles/partials/_check.sass */
+/* line 164, ../../app/styles/partials/_check.sass */
 .kormapp-delivery-inactive {
   background-color: #999999;
   border-top: 2px solid #7f7f7f;
@@ -920,42 +918,46 @@ a.kormapp-check-button-link {
 /* line 15, ../../app/styles/partials/_modal.sass */
 .kormapp-modal-wrapper {
   top: 0;
+  left: 0;
   position: fixed;
   height: 100%;
   width: 100%;
   z-index: 140;
   max-width: 1200px;
   font-family: "Open Sans", sans-serif;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
 }
-
-/* line 24, ../../app/styles/partials/_modal.sass */
-.kormapp-dark-background {
-  width: 100%;
+/* line 6, ../../app/styles/partials/_mixins.sass */
+.kormapp-modal-wrapper:before {
+  content: "";
   height: 100%;
-  background-color: black;
-  z-index: 140;
-  opacity: 0.8;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+/* line 16, ../../app/styles/partials/_mixins.sass */
+.kormapp-modal-wrapper > .kormapp-modal-window {
+  display: inline-block;
+  vertical-align: middle;
 }
 
-/* line 31, ../../app/styles/partials/_modal.sass */
+/* line 29, ../../app/styles/partials/_modal.sass */
 .kormapp-modal-window {
-  display: table;
-  width: 100%;
+  width: 90%;
   margin: auto;
-  padding: 0 12px;
-  position: absolute;
   top: 0;
   bottom: 0;
   text-align: center;
 }
 
-/* line 41, ../../app/styles/partials/_modal.sass */
+/* line 36, ../../app/styles/partials/_modal.sass */
 .kormapp-modal-without-alignment {
   display: block;
   top: 70px;
   bottom: 70px;
 }
-/* line 46, ../../app/styles/partials/_modal.sass */
+/* line 41, ../../app/styles/partials/_modal.sass */
 .kormapp-modal-without-alignment a.kormapp-modal-button {
   left: 0;
   right: 0;
@@ -966,53 +968,53 @@ a.kormapp-check-button-link {
   text-align: center;
 }
 
-/* line 55, ../../app/styles/partials/_modal.sass */
+/* line 50, ../../app/styles/partials/_modal.sass */
 .kormapp-modal-window-white {
   background-color: white;
 }
 
-/* line 58, ../../app/styles/partials/_modal.sass */
-.kormapp-quantity-title {
+/* line 53, ../../app/styles/partials/_modal.sass */
+.kormapp-modal-title, .kormapp-quantity-title {
   padding: 15px 0 8px;
   color: #f2795a;
 }
 
-/* line 62, ../../app/styles/partials/_modal.sass */
+/* line 60, ../../app/styles/partials/_modal.sass */
 .kormapp-quantity-table {
   text-align: center;
   margin: 0 auto;
 }
 
-/* line 66, ../../app/styles/partials/_modal.sass */
+/* line 64, ../../app/styles/partials/_modal.sass */
 .kormapp-price {
   color: #f2795a;
   font-family: "Open Sans", sans-serif;
   font-size: 22px;
 }
-/* line 71, ../../app/styles/partials/_modal.sass */
+/* line 69, ../../app/styles/partials/_modal.sass */
 .kormapp-price .kormapp-price-font {
   font-size: 32px;
 }
 
-/* line 74, ../../app/styles/partials/_modal.sass */
+/* line 72, ../../app/styles/partials/_modal.sass */
 .kormapp-multiplier {
   color: #72bab6;
   font-size: 28px;
   margin: 0 8px;
 }
 
-/* line 79, ../../app/styles/partials/_modal.sass */
+/* line 77, ../../app/styles/partials/_modal.sass */
 .kormapp-multiplier-font {
   font-size: 32px;
 }
 
-/* line 82, ../../app/styles/partials/_modal.sass */
+/* line 80, ../../app/styles/partials/_modal.sass */
 .kormapp-quantity-selector {
   margin: 10px auto 10px;
   color: #72bab6;
 }
 
-/* line 86, ../../app/styles/partials/_modal.sass */
+/* line 84, ../../app/styles/partials/_modal.sass */
 #kormapp-plus-sign, #kormapp-minus-sign {
   color: #72bab6;
   background-color: white;
@@ -1024,19 +1026,19 @@ a.kormapp-check-button-link {
   text-decoration: none;
 }
 
-/* line 96, ../../app/styles/partials/_modal.sass */
+/* line 94, ../../app/styles/partials/_modal.sass */
 .kormapp-vendor-title, .kormapp-vendor-description {
   color: white;
   margin-bottom: 20px;
 }
 
-/* line 100, ../../app/styles/partials/_modal.sass */
+/* line 98, ../../app/styles/partials/_modal.sass */
 .kormapp-vendor-title {
   font-weight: normal;
   font-size: 20px;
 }
 
-/* line 104, ../../app/styles/partials/_modal.sass */
+/* line 102, ../../app/styles/partials/_modal.sass */
 .kormapp-vendor-description {
   overflow: auto;
   font-size: 13px;
@@ -1044,7 +1046,7 @@ a.kormapp-check-button-link {
   line-height: 1.4;
 }
 
-/* line 110, ../../app/styles/partials/_modal.sass */
+/* line 108, ../../app/styles/partials/_modal.sass */
 a.kormapp-modal-button {
   display: inline-block;
   text-decoration: none;
@@ -1058,7 +1060,7 @@ a.kormapp-modal-button {
   background-color: #f2795a;
 }
 
-/* line 122, ../../app/styles/partials/_modal.sass */
+/* line 120, ../../app/styles/partials/_modal.sass */
 span.kormapp-modal-button-text {
   line-height: 1.7;
 }
