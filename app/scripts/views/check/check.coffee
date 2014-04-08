@@ -32,14 +32,6 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
         total_cost_with_delivery: 
           cents: @cart.get('total_cost').cents + @vendor.get('delivery_price').cents
 
-    stopEvent: (e) ->
-      e.stopPropagation()
-
-    adjustScreen: ->
-      setTimeout(( ->
-        $('body').scrollTop(0)
-      ), 100)
-
     continueOrder: (e) ->
       @modal.show new CheckContactsView app: @app, cart: @cart, user: @user, vendor: @vendor, modal: @modal
 

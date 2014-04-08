@@ -21,19 +21,31 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
       deliveryButton:         '.kormapp-delivery a'
       deliveryButtonContent:  '.kormapp-delivery-button'
       inactiveDeliveryButton: '.kormapp-delivery-inactive a'
-      outside:                '.kormapp-dark-background'
+      content:                '[role="modal-content"]'
 
     events:
       'click @ui.deliveryButton': 'addOrder'
       'click @ui.inactiveDeliveryButton': 'showErrors'
       'keyup @ui.form': 'manageButtons'
-      'click @ui.outside': 'close'
       # ios screen position fixes:
-      #'click': 'adjustScreen'
-      #'click @ui.form': 'stopEvent'
+      'click': 'clickAnywhere'
+      'click @ui.form, click @ui.content': 'stopEvent'
 
     serializeData: ->
       _.extend user: @user
+
+    stopEvent: (e) ->
+      e.stopPropagation()
+
+    clickAnywhere: ->
+      @adjustScreen()
+      @close()
+
+    adjustScreen: (callback) ->
+      setTimeout(( ->
+        $('body').scrollTop(0)
+        #callback?()
+      ), 100)
 
     addOrder: (e) ->
       e.stopPropagation()
