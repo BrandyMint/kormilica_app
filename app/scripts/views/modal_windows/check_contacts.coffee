@@ -41,7 +41,6 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
       $(@ui.deliveryButtonContent).html 'ОТПРАВЛЯЕТСЯ ЗАКАЗ..'
       @deactivateDeliveryButton()
       @app.execute 'order:create'
-      @modal.hide()
 
     showErrors: (e) ->
       e.preventDefault()

@@ -22,3 +22,4 @@ define ['views/check/check'], (CheckView) ->
 
     hideCheck: =>
       @app.mainLayout.checkRegion.close()
+      @modal.hide()
