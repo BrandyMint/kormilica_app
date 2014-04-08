@@ -2,7 +2,7 @@ define ['views/check/check'], (CheckView) ->
 
   class CheckController extends Marionette.Controller
 
-    initialize: ({ @app, @user, @cart, @vendor }) ->
+    initialize: ({ @app, @user, @cart, @vendor, @modal }) ->
 
       @app.commands.setHandler 'check:show', @showCheck
 
@@ -14,6 +14,7 @@ define ['views/check/check'], (CheckView) ->
         user:   @user
         cart:   @cart
         vendor: @vendor
+        modal: @modal
 
       @checkView.on 'cancel:button:clicked', @hideCheck
 

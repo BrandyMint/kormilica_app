@@ -1,5 +1,5 @@
-define ['templates/check/check', 'views/check/check_cart_item', 'helpers/application_helpers' ],
-(template, CheckCartItemView, Helpers) ->
+define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_windows/check_contacts', 'helpers/application_helpers' ],
+(template, CheckCartItemView, CheckContactsView, Helpers) ->
 
   class Check extends Marionette.CompositeView
     template: template
@@ -7,28 +7,17 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
     itemView: CheckCartItemView
     itemViewContainer: '.kormapp-cart-items'
 
-    initialize: ({ @app, @cart, @user, @vendor }) ->
+    initialize: ({ @app, @cart, @user, @vendor, @modal }) ->
       @collection = @cart.items
       @model = @user
       @app.vent.on 'order:failed', @activateDeliveryButton
 
-    bindings:
-      '#kormapp-address':
-        observe: 'address'
-      '#kormapp-phone':
-        observe: 'phone'
-
     ui:
-      form:                   'form'
-      backButton:             '.kormapp-check-header a'
-      deliveryButton:         '.kormapp-delivery a'
-      deliveryButtonContent:  '.kormapp-delivery-button'
-      inactiveDeliveryButton: '.kormapp-delivery-inactive a'
+      backButton: '.kormapp-check-header a'
+      continueButton: '.kormapp-delivery a'
 
     events:
-      'click @ui.deliveryButton': 'addOrder'
-      'click @ui.inactiveDeliveryButton': 'showErrors'
-      'keyup @ui.form': 'manageButtons'
+      'click @ui.continueButton': 'continueOrder'
 
     triggers:
       'click @ui.backButton':
@@ -43,35 +32,16 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
         total_cost_with_delivery: 
           cents: @cart.get('total_cost').cents + @vendor.get('delivery_price').cents
 
-    addOrder: (e) ->
-      @user.save()
-      $(@ui.deliveryButtonContent).html 'ОТПРАВЛЯЕТСЯ ЗАКАЗ..'
-      @deactivateDeliveryButton()
-      @app.execute 'order:create'
+    stopEvent: (e) ->
+      e.stopPropagation()
 
-    showErrors: (e) ->
-      e.preventDefault()
-      window.navigator.notification.alert 'Впишите телефон и адрес доставки', null, 'Внимание'
+    adjustScreen: ->
+      setTimeout(( ->
+        $('body').scrollTop(0)
+      ), 100)
 
-    validate: (e) ->
-      $(@ui.form).find("input").filter( ->
-        return $.trim( $(@).val().length ) < 1
-      ).length == 0
-
-    manageButtons: (model) ->
-      if @validate()
-        @activateDeliveryButton()
-      else
-        @deactivateDeliveryButton()
-
-    deactivateDeliveryButton: =>
-      button = @$('#kormapp-check-bottom-container').find('.kormapp-delivery')
-      button.removeClass('kormapp-delivery').addClass('kormapp-delivery-inactive')
-
-    activateDeliveryButton: =>
-      button = @$('#kormapp-check-bottom-container').find('.kormapp-delivery-inactive')
-      button.removeClass('kormapp-delivery-inactive').addClass('kormapp-delivery')
-      $(@ui.deliveryButtonContent).html 'ДОСТАВИТЬ ЗАКАЗ'
+    continueOrder: (e) ->
+      @modal.show new CheckContactsView app: @app, cart: @cart, user: @user, vendor: @vendor, modal: @modal
 
     _setScrollableAreaHeight: ->
       container =  $('.kormapp-check-content')
@@ -83,7 +53,6 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
 
     onShow: ->
       @_setScrollableAreaHeight()
-      @manageButtons()
 
     onRender: ->
       @stickit()
@@ -96,9 +65,6 @@ define ['templates/check/check', 'views/check/check_cart_item', 'helpers/applica
           observe: 'delivery_price'
           updateMethod: 'html'
           onGet: (val) -> Helpers.money val
-        'label[for="address"]':
-          observe: 'city'
-          onGet:   (val) -> "Ваш адрес (#{val})"
 
       @stickit @cart,
         '.kormapp-all-sum-right':
