@@ -28,6 +28,18 @@ Development
 Обновление данных из приложения:
 
     window.KormApp.updateManager.perform()
+    
+Локальный билд
+--------------
+
+Первым делом
+
+    utils/build_all
+
+Под конкретную платформу
+
+    utils/build_ios
+    utils/build_android
 
 Актуальные билды
 ----------------
