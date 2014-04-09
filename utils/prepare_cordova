@@ -5,7 +5,10 @@
 rm -f www 
 ln -s dist www
 
+rm -fr platforms
 mkdir ./platforms
+
+rm -fr plugins
 mkdir ./plugins
 
 cordova platforms add android

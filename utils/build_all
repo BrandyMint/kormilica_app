@@ -1,3 +1,2 @@
-bundle && npm install && bower install && grunt version && \
-grunt build && ./utils/prepare_cordova && \
+bundle && npm install && bower install && grunt version && grunt build && ./utils/prepare_cordova && \
 ./utils/build_android && ./utils/build_ios && ./utils/make_ipa
