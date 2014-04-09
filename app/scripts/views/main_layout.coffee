@@ -12,3 +12,7 @@ define ['templates/main_layout', 'helpers/application_helpers'],
         footerRegion: "#kormapp-footer-region"
         checkRegion:  "#kormapp-check-region"
         modalRegion:  "#kormapp-modal-region"
+
+      onRender: ->
+        @modalRegion.on 'close', (e) ->
+          Helpers.body_scroll_top()
