@@ -37,7 +37,7 @@
 .kormapp-check-header
   position: relative
 
-a.kormapp-back-button-link
+//a.kormapp-back-button-link
   position: absolute
   left: 0
   padding: 15px 80px 20px 15px
@@ -108,8 +108,6 @@ form.order-data
     padding-left: 5px
 
 .kormapp-form-comment
-  width: 294px
-  margin: 0 auto
   padding: 10px 0 15px
   color: $check-form-comment-font-color
   font-size: $check-form-comment-font-size
@@ -162,6 +160,12 @@ a.kormapp-check-button-link
 .kormapp-delivery
   background-color: $footer-delivery-button-background-color
   border-top: 2px solid $orange-border-color
+
+.kormapp-delivery-submit-button
+  @extend .kormapp-delivery
+  @extend .kormapp-delivery-button
+  @extend .kormapp-check-button
+  @extend a.kormapp-check-button-link
 
 .kormapp-delivery-inactive
   background-color: $footer-delivery-button-inactive-background-color

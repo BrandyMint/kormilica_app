@@ -1,0 +1,21 @@
+.kormapp-modal-wrapper
+  .kormapp-modal-window{ role: 'modal-content' }
+    .kormapp-modal-window-white.kormapp-column.full
+      %h1.kormapp-modal-title Кому доставка?
+      %form.order-data{:name => "message", method=> "post"}
+        %section
+          %label{:for => "phone"} Телефон:
+          %input#kormapp-phone{:type => "tel", :name => "phone", :placeholder => "+7(999)999-99-99"}
+          %label{:for => "address"} Ваш адрес:
+          %input#kormapp-address{:type => "text", :name => "address"}
+
+        %p.kormapp-form-comment
+          обязательно введите
+          %br
+          свой телефон для связи
+
+      .full.kormapp-check-button.kormapp-delivery.kormapp-reflection
+        %a.kormapp-check-button-link{:href => "#777"}
+          %span.kormapp-delivery-button ДОСТАВИТЬ ЗАКАЗ
+
+      //%input.hide{type: 'submit', role: 'delivery-submit'}

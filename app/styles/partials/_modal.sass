@@ -14,26 +14,21 @@
 
 .kormapp-modal-wrapper
   top: 0
+  left: 0
   position: fixed
   height: 100%
   width: 100%
   z-index: 140
   max-width: $body-max-width
   font-family: $base-font-family
-
-.kormapp-dark-background
-  width: 100%
-  height: 100%
-  background-color: $modal-wrapper-background-color
-  z-index: 140
-  opacity: 0.8
+  $modalWindowSelector: ".kormapp-modal-window"
+  +scut-vcenter-ib($modalWindowSelector)
+  background-color: rgba($modal-wrapper-background-color, 0.8)
+  text-align: center
 
 .kormapp-modal-window
-  display: table
-  width: 100%
+  width: 90%
   margin: auto
-  padding: 0 12px
-  position: absolute
   top: 0
   bottom: 0
   text-align: center
@@ -55,9 +50,12 @@
 .kormapp-modal-window-white
   background-color: $modal-background-color
 
-.kormapp-quantity-title
+.kormapp-modal-title
   padding: 15px 0 8px
   color: #f2795a
+
+.kormapp-quantity-title
+  @extend .kormapp-modal-title
 
 .kormapp-quantity-table
   text-align: center

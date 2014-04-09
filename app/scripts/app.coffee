@@ -59,6 +59,7 @@ Reflection
       user:   App.user
       cart:   App.cart
       vendor: App.vendor
+      modal: App.modal
 
     new OrderController
       app:    App
