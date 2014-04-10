@@ -121,8 +121,9 @@ Reflection
       #android = userAgent.match(/(Android)/g)
       ios = userAgent.match(/(iPhone|iPad)/g)
       ios7 = userAgent.match(/OS 7_1/) if ios
-      if ios7
-        $('[role="kormapp-body-ios"]').addClass 'kormapp-body-ios7'
+      cordova_ios = window.cordova.platformId.match(/ios/)
+      if cordova_ios && ios7
+        $('body').addClass 'kormapp-body-ios7'
 
 
     new Reflection()
