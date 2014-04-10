@@ -11,7 +11,7 @@ define ['templates/modal_windows/quantity_selector', 'helpers/application_helper
         confirmButton: '.kormapp-modal-button'
         quantity:      '.kormapp-quantity'
         result:        '.kormapp-result'
-        outside:       '.kormapp-dark-background'
+        content:       '[role="modal-content"]'
 
       bindings:
         '.kormapp-quantity': 'quantity'
@@ -24,7 +24,8 @@ define ['templates/modal_windows/quantity_selector', 'helpers/application_helper
         'click @ui.minusButton':   'decreaseQuantity'
         'click @ui.plusButton':    'increaseQuantity'
         'click @ui.confirmButton': 'confirmChanges'
-        'click @ui.outside': 'close'
+        'click': 'close'
+        'click @ui.content': 'stopEvent'
 
       decreaseQuantity: (e) ->
         e.preventDefault()
@@ -51,3 +52,7 @@ define ['templates/modal_windows/quantity_selector', 'helpers/application_helper
             observe: 'price'
             updateMethod: 'html'
             onGet: -> Helpers.money @model.product.get 'price'
+
+      stopEvent: (e) ->
+        e.stopPropagation()
+
