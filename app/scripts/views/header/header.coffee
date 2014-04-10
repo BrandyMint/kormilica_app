@@ -2,7 +2,7 @@ define ['views/header/top_check', 'templates/header/header', 'helpers/applicatio
 (TopCheckView, template, Helpers) ->
 
     class HeaderView extends Marionette.Layout
-      className: 'kormapp-header row'
+      className: 'kormapp-header'
       template: template
 
       regions:
