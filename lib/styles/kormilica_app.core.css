@@ -11,7 +11,7 @@
 /*-----  Base fonts  ------ */
 /*-----  Sizes  ------ */
 /* line 3, ../../app/styles/partials/_grid.sass */
-.kormapp-body-ios7 {
+.kormapp-body-ios {
   background-color: #f2795a;
   margin: 0 auto;
   width: 100%;
@@ -19,58 +19,63 @@
 }
 
 /* line 9, ../../app/styles/partials/_grid.sass */
+.kormapp-body-ios7 {
+  padding-top: 20px;
+}
+
+/* line 12, ../../app/styles/partials/_grid.sass */
 #kormapp-container {
   position: fixed;
   margin: 0 auto;
   background-color: #eeeeee;
-  padding-top: 63px;
+  padding-top: 55px;
   margin-bottom: 60px;
   width: 100%;
   height: 100%;
 }
 
-/* line 18, ../../app/styles/partials/_grid.sass */
+/* line 21, ../../app/styles/partials/_grid.sass */
 .kormapp-column {
   float: left;
   margin-left: 5%;
 }
-/* line 21, ../../app/styles/partials/_grid.sass */
+/* line 24, ../../app/styles/partials/_grid.sass */
 .kormapp-column:first-child {
   margin-left: 0;
 }
-/* line 23, ../../app/styles/partials/_grid.sass */
+/* line 26, ../../app/styles/partials/_grid.sass */
 .kormapp-column.full {
   width: 100%;
 }
-/* line 25, ../../app/styles/partials/_grid.sass */
+/* line 28, ../../app/styles/partials/_grid.sass */
 .kormapp-column.two-thirds {
   width: 65%;
 }
-/* line 27, ../../app/styles/partials/_grid.sass */
+/* line 30, ../../app/styles/partials/_grid.sass */
 .kormapp-column.half {
   width: 47.5%;
 }
-/* line 29, ../../app/styles/partials/_grid.sass */
+/* line 32, ../../app/styles/partials/_grid.sass */
 .kormapp-column.one-third {
   width: 30%;
 }
-/* line 31, ../../app/styles/partials/_grid.sass */
+/* line 34, ../../app/styles/partials/_grid.sass */
 .kormapp-column.one-fourth {
   width: 21.25%;
 }
 
-/* line 34, ../../app/styles/partials/_grid.sass */
+/* line 37, ../../app/styles/partials/_grid.sass */
 .kormapp-row {
   overflow: hidden;
 }
 
-/* line 37, ../../app/styles/partials/_grid.sass */
+/* line 40, ../../app/styles/partials/_grid.sass */
 .kormapp-web-desktop {
   max-width: 1200px;
   max-height: 601px;
 }
 
-/* line 41, ../../app/styles/partials/_grid.sass */
+/* line 44, ../../app/styles/partials/_grid.sass */
 .kormapp-web-mobile {
   max-width: 1200px;
 }
@@ -94,6 +99,11 @@
 /* line 11, ../../app/styles/partials/_base.sass */
 .center {
   text-align: center;
+}
+
+/* line 14, ../../app/styles/partials/_base.sass */
+.hide {
+  display: none;
 }
 
 /* line 4, ../../app/styles/partials/_header.sass */
@@ -420,13 +430,6 @@ a.kormapp-checkout {
   position: relative;
 }
 
-/* line 40, ../../app/styles/partials/_check.sass */
-a.kormapp-back-button-link {
-  position: absolute;
-  left: 0;
-  padding: 15px 80px 20px 15px;
-}
-
 /* line 45, ../../app/styles/partials/_check.sass */
 span.kormapp-back-button {
   background: url("../kormapp/images/back-button.png");
@@ -563,13 +566,13 @@ form.order-data input {
 }
 
 /* line 143, ../../app/styles/partials/_check.sass */
-.kormapp-check-button {
+.kormapp-check-button, .kormapp-delivery-submit-button {
   font-family: "Open Sans", sans-serif;
   height: 60px;
 }
 
 /* line 147, ../../app/styles/partials/_check.sass */
-a.kormapp-check-button-link {
+a.kormapp-check-button-link, .kormapp-delivery-submit-button {
   width: 100%;
   display: inline-block;
   padding: 20px;
@@ -579,19 +582,19 @@ a.kormapp-check-button-link {
 }
 
 /* line 155, ../../app/styles/partials/_check.sass */
-.kormapp-delivery-button {
+.kormapp-delivery-button, .kormapp-delivery-submit-button {
   padding-left: 40px;
   background: url("../kormapp/images/delivery-icon.png") no-repeat;
   background-position: left center;
 }
 
 /* line 160, ../../app/styles/partials/_check.sass */
-.kormapp-delivery {
+.kormapp-delivery, .kormapp-delivery-submit-button {
   background-color: #f2795a;
   border-top: 2px solid #d06b52;
 }
 
-/* line 164, ../../app/styles/partials/_check.sass */
+/* line 170, ../../app/styles/partials/_check.sass */
 .kormapp-delivery-inactive {
   background-color: #999999;
   border-top: 2px solid #7f7f7f;
@@ -796,12 +799,12 @@ a.kormapp-modal-button.kormapp-reflection-on {
 }
 
 /* line 19, ../../app/styles/partials/_reflections.sass */
-.kormapp-delivery.kormapp-reflection-on {
+.kormapp-delivery.kormapp-reflection-on, .kormapp-reflection-on.kormapp-delivery-submit-button {
   background-color: #ee532b;
 }
 
 /* line 22, ../../app/styles/partials/_reflections.sass */
-.kormapp-delivery.kormapp-reflection-on {
+.kormapp-delivery.kormapp-reflection-on, .kormapp-reflection-on.kormapp-delivery-submit-button {
   background-color: #ee532b;
 }
 

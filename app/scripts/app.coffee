@@ -117,6 +117,14 @@ Reflection
         e.stopPropagation()
       ), false
 
+      userAgent = navigator.userAgent
+      #android = userAgent.match(/(Android)/g)
+      #ios = userAgent.match(/(iPhone|iPad)/g)
+      ios7 = userAgent.match(/OS 7_1/)
+      if ios7
+        $('body').addClass 'kormapp-body-ios7'
+
+
     new Reflection()
 
     document.addEventListener "deviceready", onDeviceReady, false
