@@ -5,7 +5,9 @@
       %form.order-data{:name => "message", method=> "post"}
         %section
           %label{:for => "phone"} Телефон:
-          %input#kormapp-phone{:type => "tel", :name => "phone", :placeholder => "+7(999)999-99-99"}
+          .kormapp-phone-input-group
+            .kormapp-phone-input-prefix +7
+            %input#kormapp-phone.kormapp-phone-input{:type => "tel", :name => "phone", :placeholder => "XXX-XXX-XXXX", minlength: 12, maxlength: 15}
           %label{:for => "address"} Ваш адрес:
           %input#kormapp-address{:type => "text", :name => "address"}
 
