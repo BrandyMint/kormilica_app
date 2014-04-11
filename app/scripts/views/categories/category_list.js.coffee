@@ -7,4 +7,6 @@ define ['views/categories/category'],
       @on 'itemview:category:click', @updateProducts
 
     updateProducts: (view, data) =>
-      @options.products.updateFilter(category_id: data.model.id) if data.model
+      if data.model
+        @options.app.user.setCurrentCategory data.model.id
+        @options.products.updateFilter(category_id: data.model.id)

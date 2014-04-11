@@ -24,7 +24,7 @@ define [
       App.categories = new CategoriesCollection()
       App.products   = new ProductsCollection()
 
-      App.user = new User
+      App.user = new User()
       App.user.fetch()
 
       if false && App.user.get('lastUpdateAt')?

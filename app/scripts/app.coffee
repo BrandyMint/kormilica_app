@@ -82,9 +82,9 @@ Reflection
     sorted_products = new Backbone.VirtualCollection(
       App.products,
       comparator: 'position',
-      filter: { category_id: App.categories.first()?.id })
+      filter: { category_id: (App.user.getCurrentCategory() || App.categories.first().id) })
 
-    if App.isWide
+    if App.isWide and App.categories.length > 1
       App.mainLayout.categories.show new CategoryList
           app: App
           collection: App.categories
