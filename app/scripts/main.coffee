@@ -71,10 +71,5 @@ unless @Marionette
 
 require ['app', 'data/bundle'], (KormApp, bundle) =>
   type = $('#kormapp-main').data 'type'
-  layoutType = if type == 'web_desktop'
-    'wide'
-  else
-    'narrow'
-
   window.KormApp = KormApp
-  KormApp.start bundle: bundle, type: layoutType
+  KormApp.start bundle: bundle

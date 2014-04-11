@@ -33,9 +33,10 @@ Reflection
   App = new Marionette.Application
   App.version = '0.1.30' # Переустанавливается через grunt version
 
-  App.addInitializer ({bundle, type}) ->
+  App.addInitializer ({bundle}) ->
     App.bundle = bundle
     console.log "App initialize", Date.now()
+    App.isWide = document.body.clientWidth > 800
     DataPreloader App, bundle
 
     #TODO turned off temporarily
@@ -49,7 +50,7 @@ Reflection
       products:   App.products
     ###
 
-    App.mainLayout = if type == 'wide'
+    App.mainLayout = if App.isWide
       new WideLayout()
     else
       new NarrowLayout()
@@ -83,7 +84,7 @@ Reflection
       comparator: 'position',
       filter: { category_id: App.categories.first()?.id })
 
-    if type == 'wide'
+    if App.isWide
       App.mainLayout.categories.show new CategoryList
           app: App
           collection: App.categories
