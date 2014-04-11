@@ -13,7 +13,7 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
     className: 'kormapp-reflection'
 
     ui:
-      checkImage: '.kormapp-check-image'
+      checkImage: '[role="kormapp-check-image-block"]'
 
     initialize: (options) ->
       { @app, @cart } = options
@@ -51,16 +51,19 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
       @ui.checkImage.effect 'bounce', {times:1}, @BOUNCE_SPEED
 
     showUp: =>
-      @ui.checkImage.finish().
-        css( 'margin-top', @checkHeight + @checkMarginTop ).
-        animate( marginTop: @checkMarginTop, @SLIDE_SPEED ).
-        effect( 'bounce', {times:1}, @BOUNCE_SPEED )
+      #@ui.checkImage.finish().
+      #  css( 'margin-top', @checkHeight + @checkMarginTop ).
+      #animate( marginTop: @checkMarginTop, @SLIDE_SPEED ).
+      #effect( 'bounce', {times:1}, @BOUNCE_SPEED )
+      @ui.checkImage.finish().removeAttr('class').addClass('bounce animated')
+
 
     _hideIfEmpty: ->
       if @model.isEmpty()
-        @ui.checkImage.finish().
-          animate marginTop: @checkHeight + @checkMarginTop, @SLIDE_SPEED, 'swing', =>
-            @$el.fadeOut @SLIDE_SPEED
+        @ui.checkImage.finish().removeAtrr('class').addClass('bounceOutDown animated')
+        #@ui.checkImage.finish().
+        #  animate marginTop: @checkHeight + @checkMarginTop, @SLIDE_SPEED, 'swing', =>
+        #    @$el.fadeOut @SLIDE_SPEED
 
     onRender: ->
       @listenTo @model, 'change:total_cost_cents', @bounce
