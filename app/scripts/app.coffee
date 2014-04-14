@@ -13,6 +13,7 @@ define [
   'views/check/check',
   'controllers/data_repository',
   'controllers/reflection',
+  'controllers/current_category'
 ],
 (
 CartController,
@@ -29,7 +30,8 @@ NarrowLayout,
 CategoryList,
 CheckView,
 DataPreloader,
-Reflection
+Reflection,
+CurrentCategoryController
 ) ->
 
   App = new Marionette.Application
@@ -76,12 +78,12 @@ Reflection
       comparator: 'position',
       filter: { category_id: App.profile.get('current_category_id') })
 
+    categoryList = new CategoryList
+      collection: App.categories
+
     if App.isWide
       if App.categories.length > 1
-         App.mainLayout.categories.show new CategoryList
-            app: App
-            collection: App.categories
-            products: sorted_products
+         App.mainLayout.categories.show categoryList
       App.mainLayout.checkRegion.show new CheckView
         app:    App
         user:   App.user
@@ -95,6 +97,11 @@ Reflection
         cart:   App.cart
         vendor: App.vendor
         modal:  App.modal
+
+    new CurrentCategoryController
+      view: categoryList
+      profile: App.profile
+      sorted: sorted_products
 
     App.mainLayout.products.show new ProductsView
         app: App
