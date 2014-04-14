@@ -29,6 +29,3 @@ define ->
   moneyWithoutCurrency: (value) ->
     "#{value.cents / 100}"
 
-  body_scroll_top: (top = 0) ->
-    $('body').scrollTop(top)
-
