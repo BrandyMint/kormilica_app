@@ -12,12 +12,6 @@ define ->
       name:         ''
       lastUpdateAt: null
 
-    initialize: ->
-      @on 'change', => @save()
-
     # TODO Валидация
     isAllFieldsFilled: ->
       true if @get('address') and @get('phone')
-
-    getCurrentCategory: -> @get 'currentCategory'
-    setCurrentCategory: (id) -> @set('currentCategory', id)

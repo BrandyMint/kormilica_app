@@ -33,7 +33,7 @@ Reflection
 ) ->
 
   App = new Marionette.Application
-  App.version = '0.1.30' # Переустанавливается через grunt version
+  App.version = '0.1.31' # Переустанавливается через grunt version
 
   App.addInitializer ({bundle}) ->
     App.bundle = bundle
@@ -43,6 +43,7 @@ Reflection
 
     App.updateManager = new UpdateManager
       user:       App.user
+      profile:    App.profile
       cart:       App.cart
       vendor:     App.vendor
       categories: App.categories
@@ -73,7 +74,7 @@ Reflection
     sorted_products = new Backbone.VirtualCollection(
       App.products,
       comparator: 'position',
-      filter: { category_id: (App.user.getCurrentCategory() || App.categories.first().id) })
+      filter: { category_id: App.profile.get('current_category_id') })
 
     if App.isWide
       if App.categories.length > 1
