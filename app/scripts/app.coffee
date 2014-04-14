@@ -41,16 +41,12 @@ Reflection
     App.isWide = document.body.clientWidth > 800
     DataPreloader App, bundle
 
-    #TODO turned off temporarily
-    # resets local changes to categories on update
-    ###
     App.updateManager = new UpdateManager
       user:       App.user
       cart:       App.cart
       vendor:     App.vendor
       categories: App.categories
       products:   App.products
-    ###
 
     App.mainLayout = if App.isWide
       new WideLayout()
