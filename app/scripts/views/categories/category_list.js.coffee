@@ -8,5 +8,5 @@ define ['views/categories/category'],
 
     updateProducts: (view, data) =>
       if data.model
-        @options.app.user.setCurrentCategory data.model.id
+        @options.app.profile.set 'currentCategory', data.model.id
         @options.products.updateFilter(category_id: data.model.id)

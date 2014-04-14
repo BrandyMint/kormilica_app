@@ -1,7 +1,7 @@
 define ['settings', 'helpers/application_helpers'], (Settings, Helpers) ->
   class ProductsUpdaterController extends Marionette.Controller
 
-    initialize: ({ @user, @cart, @vendor, @categories, @products }) ->
+    initialize: ({ @profile, @user, @cart, @vendor, @categories, @products }) ->
 
     perform: (interactive) =>
       console.log 'update data'
@@ -26,6 +26,8 @@ define ['settings', 'helpers/application_helpers'], (Settings, Helpers) ->
       @products.save()
 
       @categories.reset data.categories
+      unless @categories.get(@profile.get('currentCategory'))
+        @profile.set('currentCategory', @categories.first().id)
 
       @vendor.set       data.vendor
       @vendor.save()

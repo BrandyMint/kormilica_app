@@ -1,10 +1,12 @@
 define [
   'models/user', 'models/vendor',
+  'models/profile',
   'models/cart',
   'collections/cart_items',
   'collections/products', 'collections/categories',
 ], (
   User, Vendor,
+  Profile,
   Cart,
   CartItems,
   ProductsCollection, CategoriesCollection,
@@ -38,5 +40,10 @@ define [
 
       App.cart = new Cart {}, App.products
       App.cart.fetch()
+
+      App.profile = new Profile()
+      App.profile.fetch()
+      unless App.profile.get('currentCategory')
+        App.profile.set('currentCategory', App.categories.first().id)
 
       #App.cart.reattachProductsFromCollection App.products
