@@ -74,7 +74,7 @@ Reflection
     sorted_products = new Backbone.VirtualCollection(
       App.products,
       comparator: 'position',
-      filter: { category_id: App.profile.get('currentCategory') })
+      filter: { category_id: App.profile.get('current_category_id') })
 
     if App.isWide
       if App.categories.length > 1
