@@ -78,7 +78,7 @@ Reflection
 
     if App.isWide
       if App.categories.length > 1
-        App.mainLayout.categories.show new CategoryList
+         App.mainLayout.categories.show new CategoryList
             app: App
             collection: App.categories
             products: sorted_products
@@ -87,14 +87,14 @@ Reflection
         user:   App.user
         cart:   App.cart
         vendor: App.vendor
-        modal: App.modal
+        modal:  App.modal
     else
       new CheckController
         app:    App
         user:   App.user
         cart:   App.cart
         vendor: App.vendor
-        modal: App.modal
+        modal:  App.modal
 
     App.mainLayout.products.show new ProductsView
         app: App

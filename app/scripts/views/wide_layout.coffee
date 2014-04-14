@@ -6,12 +6,13 @@ define ['templates/wide_layout', 'helpers/application_helpers'],
       template: template
 
       regions:
-        headerRegion: "@kormapp-header-region"
-        categories:   '@kormapp-categories-region'
-        products:     '@kormapp-products-region'
-        footerRegion: "@kormapp-footer-region"
-        checkRegion:  "@kormapp-check-region"
-        modalRegion:  "@kormapp-modal-region"
+        headerRegion:  "@kormapp-header-region"
+        sidebarRegion: '@kormapp-sidebar-region'
+        categories:    '@kormapp-sidebar-categories-region'
+        checkRegion:   "@kormapp-sidebar-check-region"
+        products:      '@kormapp-products-region'
+        footerRegion:  "@kormapp-footer-region"
+        modalRegion:   "@kormapp-modal-region"
 
       onRender: ->
         @modalRegion.on 'close', (e) ->
