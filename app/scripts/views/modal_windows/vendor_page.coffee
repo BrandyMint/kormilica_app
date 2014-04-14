@@ -42,13 +42,9 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
       @updateManager.perform(true) if @updateManager
 
     _setScrollableAreaHeight: ->
-      container =   $('.kormapp-modal-window')
-      vendorTitleHeight = $('.kormapp-vendor-title').outerHeight true
       vendorDescription = $('.kormapp-vendor-description')
-      bottomButtonHeight = $('.kormapp-modal-button').outerHeight true
-
-      scrollableHeight = container.height() - vendorTitleHeight - bottomButtonHeight
-      vendorDescription.css 'height', scrollableHeight
+      scrollableHeight = $(window).height()/2
+      vendorDescription.css 'max-height', scrollableHeight
 
     onShow: ->
       @_setScrollableAreaHeight()
