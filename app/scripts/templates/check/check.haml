@@ -1,32 +1,30 @@
-#kormapp-check-external.center
-  #kormapp-check-internal
+#kormapp-check-external.kormapp-check-external.center
+  #kormapp-check-internal.kormapp-check-internal
+    .kormapp-container.kormapp-check-background-container
+      .kormapp-check-content
+        .kormapp-scrollable-check
+          .kormapp-check-header
+            %a.kormapp-back-button-link.kormapp-reflection.pull-left{href: '#'}
+              %span.kormapp-back-button
+            %h2.kormapp-check-heading Ваш чек
+          .clearfix
 
-    .kormapp-check-content
-      .kormapp-scrollable-check
-        .kormapp-check-header
-          %a.kormapp-back-button-link.kormapp-reflection.pull-left{href: '#'}
-            %span.kormapp-back-button
-          %h2.kormapp-check-heading Ваш чек
-        .clearfix
+          %ol.kormapp-cart-items
+
+        .kormapp-unscrollable-check
+          .kormapp-row.clearfix
+            %p.kormapp-delivery-price Стоимость доставки
+              %span.kormapp-delivery-sum-right
+            %p.kormapp-all-product-sum Итог:
+              %span.kormapp-all-sum-right
 
 
-        %ol.kormapp-cart-items
-
-      .kormapp-unscrollable-check
-
-        .kormapp-row.clearfix
-          %p.kormapp-delivery-price Стоимость доставки
-            %span.kormapp-delivery-sum-right
-
-          %p.kormapp-all-product-sum Итог:
-            %span.kormapp-all-sum-right
-
- 
   #kormapp-check-bottom-container
     #kormapp-check-bottom
-      .kormapp-check-short-left
-      .kormapp-check-short-right
-      .kormapp-check-short-center
+      .kormapp-container
+        .kormapp-check-short-left
+        .kormapp-check-short-right
+        .kormapp-check-short-center
 
     .full.kormapp-check-button.kormapp-delivery.kormapp-reflection
       %a.kormapp-check-button-link{:href => "#777"}

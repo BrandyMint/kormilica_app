@@ -18,6 +18,18 @@
   .kormapp-body-ios7 &
     padding-top: $header-padding-top + 20px
 
+.kormapp-container
+  +container-fixed()
+  @media (min-width: $screen-sm-min)
+    width: $container-sm
+  @media (min-width: $screen-md-min)
+    width: $container-md
+  @media (min-width: $screen-lg-min)
+    width: $container-lg
+  padding:
+    left: 0
+    right: 0
+
 .kormapp-column
   float: left
   margin-left: 5%
@@ -37,15 +49,10 @@
 .kormapp-row
   overflow: hidden
 
-.kormapp-web-desktop
-  max-width: $body-max-width
-  max-height: 601px
+//.kormapp-web-desktop
 
-.kormapp-web-mobile
-  max-width: $body-max-width
+//.kormapp-web-mobile
 
-.kormapp-cordova-android
-  // max-width: $body-max-width
+//.kormapp-cordova-android
 
-.kormapp-cordova-ios
-  // max-width: $body-max-width
+//.kormapp-cordova-ios
