@@ -15,13 +15,17 @@
   z-index: 100
   top: 0
   background-color: $check-background-color
+  .kormapp-sidebar-check &
+    position: relative
 
 .kormapp-check-internal
   position: relative
   height: 100%
   padding:
-    bottom: 73px
+    bottom: $check-internal-bottom-padding
   z-index: 1000
+  .kormapp-sidebar-check &
+    padding-bottom: 0
 
 .kormapp-check-content
   position: relative
@@ -32,6 +36,12 @@
   color: $check-font-color
   z-index: 100
 
+
+=kormapp-check-background-container-margin
+  margin:
+    left: $check-container-margin
+    right: $check-container-margin
+
 .kormapp-check-background-container
   background:
     color: $check-background-color
@@ -41,10 +51,10 @@
   height: 100%
   .kormapp-body-ios7 &
     margin-top: 10px
+  .kormapp-sidebar-check &
+    +kormapp-check-background-container-margin
   @media screen and (max-width: $screen-sm)
-    margin:
-      left: 12px
-      right: 12px
+    +kormapp-check-background-container-margin
 
 .kormapp-check-header
   position: relative
@@ -69,6 +79,9 @@
 a.kormapp-back-button-link
   padding: 5px 10px
   margin-right: -30px
+  .kormapp-sidebar-check &
+    display: none
+
 
 span.kormapp-back-button
   background: url('../kormapp/images/back-button.png')
@@ -89,9 +102,14 @@ p.kormapp-cartitem-name
   position: absolute
   width: 100%
   bottom: 0
+  .kormapp-sidebar-check &
+    position: relative
 
 .kormapp-scrollable-check
   overflow: auto
+  .kormapp-sidebar-check &
+    overflow: visible
+
 
 .kormapp-cart-items
   padding-left: 35px
@@ -141,12 +159,14 @@ form.order-data
   font-size: $check-form-comment-font-size
   text-align: center
 
-#kormapp-check-bottom-container
+.kormapp-check-bottom-container
   position: absolute
   bottom: 0
   width: 100%
+  .kormapp-sidebar-check &
+    margin-bottom: - $check-internal-bottom-padding
 
-#kormapp-check-bottom
+.kormapp-check-bottom
   padding: 18px 8px 14px
   background-color: $check-bottom-background-color
   height: 35px
@@ -211,3 +231,9 @@ a.kormapp-check-button-link
   padding-top: 8px
 
 
+.kormapp-sidebar-check
+  margin:
+    left: - $check-container-margin
+    right: - $check-container-margin
+  .kormapp-container
+    width: auto
