@@ -15,4 +15,4 @@ define ['templates/wide_layout', 'helpers/application_helpers'],
 
       onRender: ->
         @modalRegion.on 'close', (e) ->
-          Helpers.body_scroll_top()
+          $('body').scrollTop(0)
