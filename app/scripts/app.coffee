@@ -38,7 +38,7 @@ Reflection
   App.addInitializer ({bundle}) ->
     App.bundle = bundle
     console.log "App initialize", Date.now()
-    App.isWide = document.body.clientWidth > 800
+    App.isWide = document.body.clientWidth > 992
     DataPreloader App, bundle
 
     App.updateManager = new UpdateManager

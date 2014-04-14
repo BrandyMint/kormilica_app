@@ -5,12 +5,12 @@
   background: $product-block-background-color
   position: relative
   border-bottom: 3px solid $product-block-shadow-color
-  @media screen and (max-width: 360px)
+  @media screen and (max-width: $screen-sm)
     float: none
-  @media screen and (min-width: 640px)
+  @media screen and (min-width: $screen-md)
     width: 46%
     float: left
-  @media screen and (min-width: 960px)
+  @media screen and (min-width: $screen-md)
     width: 30%
     float: left
 
@@ -41,7 +41,7 @@ p.kormapp-product-title
     font-size: $product-block-price-font-size
     @media screen and (max-width: $screen-xs)
       font-size: $product-block-price-small-font-size
-    @media screen and (min-width: 640px) and (max-width: 720px)
+    @media screen and (min-width: $screen-xs) and (max-width: $screen-sm)
       font-size: $product-block-price-small-font-size
-    @media screen and (min-width: 960px) and (max-width: 1040px)
+    @media screen and (min-width: $screen-md) and (max-width: $screen-lg)
       font-size: $product-block-price-small-font-size
