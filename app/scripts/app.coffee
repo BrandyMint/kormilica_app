@@ -3,7 +3,7 @@ define [
   'views/header/header',
   'views/products/products',
   'views/modal_windows/vendor_page',
-  'controllers/footer', 'controllers/order',
+  'controllers/footer', 'controllers/make_order',
   'controllers/update_manager',
   'controllers/checkout',
   'controllers/modal',
@@ -20,7 +20,7 @@ CheckController,
 HeaderView,
 ProductsView,
 VendorPageView,
-FooterController, OrderController,
+FooterController, MakeOrderController,
 UpdateManager,
 CheckoutController,
 ModalController,
@@ -65,7 +65,7 @@ Reflection
       cart:  App.cart
       modal: App.modal
 
-    new OrderController
+    new MakeOrderController
       app:    App
       cart:   App.cart
       user:   App.user

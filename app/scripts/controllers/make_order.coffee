@@ -1,13 +1,13 @@
 define ['models/order', 'settings'], (Order, Settings) ->
 
-  class OrderController extends Marionette.Controller
+  class MakeOrderController extends Marionette.Controller
 
     initialize: (options) ->
       { @app, @cart, @user, @vendor } = options
 
-      @app.commands.setHandler 'order:create', @createOrder
+      @app.commands.setHandler 'order:create', @perform
 
-    createOrder: =>
+    perform: =>
       # total_price, comment, etc
       orderAttributes = @cart.toJSON()
 
