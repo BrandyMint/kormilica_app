@@ -10,6 +10,7 @@ define [
   'views/wide_layout',
   'views/narrow_layout',
   'views/categories/category_list',
+  'views/check/check',
   'controllers/data_repository',
   'controllers/reflection',
 ],
@@ -26,6 +27,7 @@ ModalController,
 WideLayout,
 NarrowLayout,
 CategoryList,
+CheckView,
 DataPreloader,
 Reflection
 ) ->
@@ -66,13 +68,6 @@ Reflection
       cart:  App.cart
       modal: App.modal
 
-    new CheckController
-      app:    App
-      user:   App.user
-      cart:   App.cart
-      vendor: App.vendor
-      modal: App.modal
-
     new OrderController
       app:    App
       cart:   App.cart
@@ -84,11 +79,25 @@ Reflection
       comparator: 'position',
       filter: { category_id: (App.user.getCurrentCategory() || App.categories.first().id) })
 
-    if App.isWide and App.categories.length > 1
-      App.mainLayout.categories.show new CategoryList
-          app: App
-          collection: App.categories
-          products: sorted_products
+    if App.isWide
+      if App.categories.length > 1
+        App.mainLayout.categories.show new CategoryList
+            app: App
+            collection: App.categories
+            products: sorted_products
+      App.mainLayout.checkRegion.show new CheckView
+        app:    App
+        user:   App.user
+        cart:   App.cart
+        vendor: App.vendor
+        modal: App.modal
+    else
+      new CheckController
+        app:    App
+        user:   App.user
+        cart:   App.cart
+        vendor: App.vendor
+        modal: App.modal
 
     App.mainLayout.products.show new ProductsView
         app: App

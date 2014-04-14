@@ -9,7 +9,6 @@ define ['templates/wide_layout', 'helpers/application_helpers'],
         headerRegion: "@kormapp-header-region"
         categories:   '@kormapp-categories-region'
         products:     '@kormapp-products-region'
-        checkout:     '@kormapp-checkout-region'
         footerRegion: "@kormapp-footer-region"
         checkRegion:  "@kormapp-check-region"
         modalRegion:  "@kormapp-modal-region"
