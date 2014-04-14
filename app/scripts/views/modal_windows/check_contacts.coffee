@@ -4,6 +4,7 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
   class CheckContactsView extends Marionette.ItemView
     template: template
     templateHelpers: -> Helpers
+    phoneLength: 11
 
     initialize: ({ @app, @user, @modal, @vendor }) ->
       @model = @user
@@ -14,6 +15,9 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
         observe: 'address'
       '#kormapp-phone':
         observe: 'phone'
+        onSet: (val) ->
+          @phone = ('7' + val).replace(/\D/g, '')
+          @phone
 
     ui:
       form:                   'form'
@@ -64,7 +68,7 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
       ).length == 0
 
     manageButtons: (model) ->
-      if @validate()
+      if @validate() && @phone?.toString().length == @phoneLength
         @activateDeliveryButton()
       else
         @deactivateDeliveryButton()
