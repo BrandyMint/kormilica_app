@@ -231,14 +231,17 @@ a.kormapp-order-button {
   padding: 5px;
   min-width: 110px;
   text-align: center;
-  color: white;
   background: #72bab6;
   position: absolute;
   top: 74px;
   right: 7px;
 }
+/* line 21, ../../app/styles/partials/_content.sass */
+a.kormapp-order-button, a.kormapp-order-button {
+  color: white;
+}
 
-/* line 27, ../../app/styles/partials/_content.sass */
+/* line 28, ../../app/styles/partials/_content.sass */
 span.kormapp-to-bucket {
   width: 15px;
   height: 15px;
@@ -249,17 +252,17 @@ span.kormapp-to-bucket {
   background-repeat: no-repeat;
 }
 
-/* line 36, ../../app/styles/partials/_content.sass */
+/* line 37, ../../app/styles/partials/_content.sass */
 .kormapp-to-bucket-orange {
   background-image: url("../kormapp/images/to-bucket-orange.png");
 }
 
-/* line 39, ../../app/styles/partials/_content.sass */
+/* line 40, ../../app/styles/partials/_content.sass */
 .kormapp-to-bucket-regular {
   background-image: url("../kormapp/images/to-bucket.png");
 }
 
-/* line 42, ../../app/styles/partials/_content.sass */
+/* line 43, ../../app/styles/partials/_content.sass */
 span.kormapp-order-button-text {
   line-height: 1.7;
 }
@@ -373,12 +376,15 @@ a.kormapp-checkout {
   padding: 20px;
   display: inline-block;
   width: 100%;
-  color: white;
   font-size: 19px;
   text-decoration: none;
 }
+/* line 25, ../../app/styles/partials/_footer.sass */
+a.kormapp-checkout, a.kormapp-checkout:hover {
+  color: white;
+}
 
-/* line 29, ../../app/styles/partials/_footer.sass */
+/* line 30, ../../app/styles/partials/_footer.sass */
 .kormapp-delivery-discount {
   height: 60px;
   border-top: 2px solid #cbcbcb;
@@ -594,25 +600,28 @@ a.kormapp-check-button-link, .kormapp-delivery-submit-button {
   width: 100%;
   display: inline-block;
   padding: 20px;
-  color: white;
   font-size: 19px;
   text-decoration: none;
 }
+/* line 153, ../../app/styles/partials/_check.sass */
+a.kormapp-check-button-link, .kormapp-delivery-submit-button, a.kormapp-check-button-link:hover, .kormapp-delivery-submit-button:hover {
+  color: white;
+}
 
-/* line 157, ../../app/styles/partials/_check.sass */
+/* line 158, ../../app/styles/partials/_check.sass */
 .kormapp-delivery-button, .kormapp-delivery-submit-button {
   padding-left: 40px;
   background: url("../kormapp/images/delivery-icon.png") no-repeat;
   background-position: left center;
 }
 
-/* line 162, ../../app/styles/partials/_check.sass */
+/* line 163, ../../app/styles/partials/_check.sass */
 .kormapp-delivery, .kormapp-delivery-submit-button {
   background-color: #f2795a;
   border-top: 2px solid #d06b52;
 }
 
-/* line 172, ../../app/styles/partials/_check.sass */
+/* line 173, ../../app/styles/partials/_check.sass */
 .kormapp-delivery-inactive {
   background-color: #999999;
   border-top: 2px solid #7f7f7f;
@@ -671,14 +680,20 @@ a.kormapp-check-button-link, .kormapp-delivery-submit-button {
   bottom: 0;
   text-align: center;
 }
+@media screen and (min-width: 768px) {
+  /* line 29, ../../app/styles/partials/_modal.sass */
+  .kormapp-modal-window {
+    width: 500px;
+  }
+}
 
-/* line 36, ../../app/styles/partials/_modal.sass */
+/* line 38, ../../app/styles/partials/_modal.sass */
 .kormapp-modal-without-alignment {
   display: block;
   top: 70px;
   bottom: 70px;
 }
-/* line 41, ../../app/styles/partials/_modal.sass */
+/* line 43, ../../app/styles/partials/_modal.sass */
 .kormapp-modal-without-alignment a.kormapp-modal-button {
   left: 0;
   right: 0;
@@ -689,53 +704,53 @@ a.kormapp-check-button-link, .kormapp-delivery-submit-button {
   text-align: center;
 }
 
-/* line 50, ../../app/styles/partials/_modal.sass */
+/* line 52, ../../app/styles/partials/_modal.sass */
 .kormapp-modal-window-white {
   background-color: white;
 }
 
-/* line 53, ../../app/styles/partials/_modal.sass */
+/* line 55, ../../app/styles/partials/_modal.sass */
 .kormapp-modal-title, .kormapp-quantity-title {
   padding: 15px 0 8px;
   color: #f2795a;
 }
 
-/* line 60, ../../app/styles/partials/_modal.sass */
+/* line 62, ../../app/styles/partials/_modal.sass */
 .kormapp-quantity-table {
   text-align: center;
   margin: 0 auto;
 }
 
-/* line 64, ../../app/styles/partials/_modal.sass */
+/* line 66, ../../app/styles/partials/_modal.sass */
 .kormapp-price {
   color: #f2795a;
   font-family: "Open Sans", sans-serif;
   font-size: 22px;
 }
-/* line 69, ../../app/styles/partials/_modal.sass */
+/* line 71, ../../app/styles/partials/_modal.sass */
 .kormapp-price .kormapp-price-font {
   font-size: 32px;
 }
 
-/* line 72, ../../app/styles/partials/_modal.sass */
+/* line 74, ../../app/styles/partials/_modal.sass */
 .kormapp-multiplier {
   color: #72bab6;
   font-size: 28px;
   margin: 0 8px;
 }
 
-/* line 77, ../../app/styles/partials/_modal.sass */
+/* line 79, ../../app/styles/partials/_modal.sass */
 .kormapp-multiplier-font {
   font-size: 32px;
 }
 
-/* line 80, ../../app/styles/partials/_modal.sass */
+/* line 82, ../../app/styles/partials/_modal.sass */
 .kormapp-quantity-selector {
   margin: 10px auto 10px;
   color: #72bab6;
 }
 
-/* line 84, ../../app/styles/partials/_modal.sass */
+/* line 86, ../../app/styles/partials/_modal.sass */
 #kormapp-plus-sign, #kormapp-minus-sign {
   color: #72bab6;
   background-color: white;
@@ -747,19 +762,19 @@ a.kormapp-check-button-link, .kormapp-delivery-submit-button {
   text-decoration: none;
 }
 
-/* line 94, ../../app/styles/partials/_modal.sass */
+/* line 96, ../../app/styles/partials/_modal.sass */
 .kormapp-vendor-title, .kormapp-vendor-description {
   color: white;
   margin-bottom: 20px;
 }
 
-/* line 98, ../../app/styles/partials/_modal.sass */
+/* line 100, ../../app/styles/partials/_modal.sass */
 .kormapp-vendor-title {
   font-weight: normal;
   font-size: 20px;
 }
 
-/* line 102, ../../app/styles/partials/_modal.sass */
+/* line 104, ../../app/styles/partials/_modal.sass */
 .kormapp-vendor-description {
   overflow: auto;
   font-size: 13px;
@@ -767,7 +782,7 @@ a.kormapp-check-button-link, .kormapp-delivery-submit-button {
   line-height: 1.4;
 }
 
-/* line 108, ../../app/styles/partials/_modal.sass */
+/* line 110, ../../app/styles/partials/_modal.sass */
 a.kormapp-modal-button {
   display: inline-block;
   text-decoration: none;
@@ -777,11 +792,14 @@ a.kormapp-modal-button {
   margin-bottom: 15px;
   width: 110px;
   text-align: center;
-  color: white;
   background-color: #f2795a;
 }
+/* line 119, ../../app/styles/partials/_modal.sass */
+a.kormapp-modal-button, a.kormapp-modal-button:hover {
+  color: white;
+}
 
-/* line 120, ../../app/styles/partials/_modal.sass */
+/* line 123, ../../app/styles/partials/_modal.sass */
 span.kormapp-modal-button-text {
   line-height: 1.7;
 }
@@ -846,7 +864,7 @@ a.kormapp-modal-button.kormapp-reflection-on {
   background: #ee532b;
 }
 
-/* line 1, ../../app/styles/pace.scss */
+/* line 1, ../../app/styles/partials/pace.scss */
 .pace {
   -webkit-pointer-events: none;
   pointer-events: none;
@@ -855,12 +873,12 @@ a.kormapp-modal-button.kormapp-reflection-on {
   user-select: none;
 }
 
-/* line 9, ../../app/styles/pace.scss */
+/* line 9, ../../app/styles/partials/pace.scss */
 .pace-inactive {
   display: none;
 }
 
-/* line 13, ../../app/styles/pace.scss */
+/* line 13, ../../app/styles/partials/pace.scss */
 .pace .pace-progress {
   background: #e67863;
   position: fixed;
@@ -874,7 +892,7 @@ a.kormapp-modal-button.kormapp-reflection-on {
   transition: width 1s;
 }
 
-/* line 27, ../../app/styles/pace.scss */
+/* line 27, ../../app/styles/partials/pace.scss */
 .pace .pace-progress-inner {
   display: block;
   position: absolute;
@@ -890,7 +908,7 @@ a.kormapp-modal-button.kormapp-reflection-on {
   transform: rotate(3deg) translate(0px, -4px);
 }
 
-/* line 42, ../../app/styles/pace.scss */
+/* line 42, ../../app/styles/partials/pace.scss */
 .pace .pace-activity {
   display: block;
   position: fixed;
@@ -911,13 +929,13 @@ a.kormapp-modal-button.kormapp-reflection-on {
 }
 
 @-webkit-keyframes pace-spinner {
-  /* line 62, ../../app/styles/pace.scss */
+  /* line 62, ../../app/styles/partials/pace.scss */
   0% {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
-  /* line 63, ../../app/styles/pace.scss */
+  /* line 63, ../../app/styles/partials/pace.scss */
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
@@ -925,13 +943,13 @@ a.kormapp-modal-button.kormapp-reflection-on {
 }
 
 @-moz-keyframes pace-spinner {
-  /* line 66, ../../app/styles/pace.scss */
+  /* line 66, ../../app/styles/partials/pace.scss */
   0% {
     -moz-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
-  /* line 67, ../../app/styles/pace.scss */
+  /* line 67, ../../app/styles/partials/pace.scss */
   100% {
     -moz-transform: rotate(360deg);
     transform: rotate(360deg);
@@ -939,13 +957,13 @@ a.kormapp-modal-button.kormapp-reflection-on {
 }
 
 @-o-keyframes pace-spinner {
-  /* line 70, ../../app/styles/pace.scss */
+  /* line 70, ../../app/styles/partials/pace.scss */
   0% {
     -o-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
-  /* line 71, ../../app/styles/pace.scss */
+  /* line 71, ../../app/styles/partials/pace.scss */
   100% {
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
@@ -953,13 +971,13 @@ a.kormapp-modal-button.kormapp-reflection-on {
 }
 
 @-ms-keyframes pace-spinner {
-  /* line 74, ../../app/styles/pace.scss */
+  /* line 74, ../../app/styles/partials/pace.scss */
   0% {
     -ms-transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
-  /* line 75, ../../app/styles/pace.scss */
+  /* line 75, ../../app/styles/partials/pace.scss */
   100% {
     -ms-transform: rotate(360deg);
     transform: rotate(360deg);
@@ -967,13 +985,13 @@ a.kormapp-modal-button.kormapp-reflection-on {
 }
 
 @keyframes pace-spinner {
-  /* line 78, ../../app/styles/pace.scss */
+  /* line 78, ../../app/styles/partials/pace.scss */
   0% {
     transform: rotate(0deg);
     transform: rotate(0deg);
   }
 
-  /* line 79, ../../app/styles/pace.scss */
+  /* line 79, ../../app/styles/partials/pace.scss */
   100% {
     transform: rotate(360deg);
     transform: rotate(360deg);

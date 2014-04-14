@@ -7,21 +7,25 @@ define [
   'controllers/update_manager',
   'controllers/checkout',
   'controllers/modal',
-  'views/main_layout',
+  'views/wide_layout',
+  'views/narrow_layout',
+  'views/categories/category_list',
   'controllers/data_repository',
-  'controllers/reflection'
+  'controllers/reflection',
 ],
 (
-CartController, 
-CheckController, 
-HeaderView, 
+CartController,
+CheckController,
+HeaderView,
 ProductsView,
 VendorPageView,
 FooterController, OrderController,
 UpdateManager,
 CheckoutController,
 ModalController,
-MainLayout,
+WideLayout,
+NarrowLayout,
+CategoryList,
 DataPreloader,
 Reflection
 ) ->
@@ -32,17 +36,25 @@ Reflection
   App.addInitializer ({bundle}) ->
     App.bundle = bundle
     console.log "App initialize", Date.now()
+    App.isWide = document.body.clientWidth > 800
     DataPreloader App, bundle
 
+    #TODO turned off temporarily
+    # resets local changes to categories on update
+    ###
     App.updateManager = new UpdateManager
       user:       App.user
       cart:       App.cart
       vendor:     App.vendor
       categories: App.categories
       products:   App.products
+    ###
 
-    # Сюда можно передавать el основого контейнера
-    App.mainLayout = new MainLayout()
+    App.mainLayout = if App.isWide
+      new WideLayout()
+    else
+      new NarrowLayout()
+
     App.mainLayout.render()
 
     App.modal = new ModalController
@@ -67,13 +79,20 @@ Reflection
       user:   App.user
       vendor: App.vendor
 
-    sorted_products = new Backbone.VirtualCollection App.products, comparator: 'position'
+    sorted_products = new Backbone.VirtualCollection(
+      App.products,
+      comparator: 'position',
+      filter: { category_id: (App.user.getCurrentCategory() || App.categories.first().id) })
 
-    productsListView = new ProductsView
-      app:        App
-      collection: sorted_products
+    if App.isWide and App.categories.length > 1
+      App.mainLayout.categories.show new CategoryList
+          app: App
+          collection: App.categories
+          products: sorted_products
 
-    App.mainLayout.mainRegion.show productsListView
+    App.mainLayout.products.show new ProductsView
+        app: App
+        collection: sorted_products
 
     headerView = new HeaderView
       app:    App

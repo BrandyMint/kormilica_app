@@ -199,6 +199,7 @@ module.exports = (grunt) ->
           optimize: "none"
           paths:
             templates: "../../.tmp/scripts/templates"
+            rolejs: "../../app/bower_components/rolejs/lib/jquery.role"
             cordovaShim: 'empty:'
             jquery: "../../app/bower_components/jquery/jquery"
             underscore: "../../app/bower_components/underscore/underscore"

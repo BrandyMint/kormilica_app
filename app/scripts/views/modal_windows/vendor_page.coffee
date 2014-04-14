@@ -39,7 +39,7 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
       'click': 'close'
 
     _update: =>
-      @updateManager.perform true
+      @updateManager.perform(true) if @updateManager
 
     _setScrollableAreaHeight: ->
       container =   $('.kormapp-modal-window')

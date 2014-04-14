@@ -26,6 +26,8 @@ require.config
       deps: ['backbone']
     'backbone.localStorage':
       deps: ['backbone']
+    rolejs:
+      deps: ['jquery']
     app:
       deps: [
         'cordovaShim',
@@ -34,12 +36,14 @@ require.config
         'backbone.localStorage',
         'backbone.virtualcollection',
         'jquery.ui.effect',
-        'jquery.ui.effect-bounce'
+        'jquery.ui.effect-bounce',
+        'rolejs'
       ]
 
   paths:
     cordovaShim:             '../bower_components/cordova-shim/dist/cordova'
     jquery:                  '../bower_components/jquery/jquery'
+    rolejs:                  '../bower_components/rolejs/lib/jquery.role'
     underscore:              '../bower_components/underscore/underscore'
     backbone:                '../bower_components/backbone/backbone'
     marionette:              '../bower_components/backbone.marionette/lib/core/backbone.marionette'
@@ -60,11 +64,12 @@ unless @Marionette
     'backbone.localStorage',
     'marionette'
     'jquery.ui.effect',
-    'jquery.ui.effect-bounce'
+    'jquery.ui.effect-bounce',
+    'rolejs'
     ], (Underscore, Backbone, Stickit, VirtualCollection, LocalStorage, Marionette)  =>
       @Marionette = Marionette
 
 require ['app', 'data/bundle'], (KormApp, bundle) =>
-  window.KormApp = KormApp
   type = $('#kormapp-main').data 'type'
-  KormApp.start bundle: bundle, type: type
+  window.KormApp = KormApp
+  KormApp.start bundle: bundle
