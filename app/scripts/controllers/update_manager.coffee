@@ -26,8 +26,6 @@ define ['settings', 'helpers/application_helpers'], (Settings, Helpers) ->
       @products.save()
 
       @categories.reset data.categories
-      unless @categories.get(@profile.get('current_category_id'))
-        @profile.set('current_category_id', @categories.first().id)
 
       @vendor.set       data.vendor
       @vendor.save()

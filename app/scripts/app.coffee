@@ -13,6 +13,7 @@ define [
   'views/check/check',
   'controllers/data_repository',
   'controllers/reflection',
+  'controllers/current_category'
 ],
 (
 CartController,
@@ -29,7 +30,8 @@ NarrowLayout,
 CategoryList,
 CheckView,
 DataPreloader,
-Reflection
+Reflection,
+CurrentCategoryController
 ) ->
 
   App = new Marionette.Application
@@ -73,15 +75,19 @@ Reflection
 
     sorted_products = new Backbone.VirtualCollection(
       App.products,
-      comparator: 'position',
-      filter: { category_id: App.profile.get('current_category_id') })
+      comparator: 'position')
+
+    currentCategory = new CurrentCategoryController
+      profile: App.profile
+      collection: App.categories
+      sorted: sorted_products
 
     if App.isWide
       if App.categories.length > 1
          App.mainLayout.categories.show new CategoryList
             app: App
             collection: App.categories
-            products: sorted_products
+            currentCategory: currentCategory
       App.mainLayout.checkRegion.show new CheckView
         app:    App
         user:   App.user
