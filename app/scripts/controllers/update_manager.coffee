@@ -32,6 +32,8 @@ define ['settings', 'helpers/application_helpers'], (Settings, Helpers) ->
       @vendor.set       data.vendor
       @vendor.save()
 
+      @cart.set 'delivery_price', @vendor.get('delivery_price')
+
       @user.set 'lastUpdateAt', Date.now()
       @user.save()
 

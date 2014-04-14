@@ -9,6 +9,7 @@ define ->
       id:           1
       address:      ''
       phone:        ''
+      phone_prefix: '+7'
       name:         ''
       lastUpdateAt: null
 

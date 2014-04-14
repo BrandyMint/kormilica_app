@@ -4,7 +4,8 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
   class CheckContactsView extends Marionette.ItemView
     template: template
     templateHelpers: -> Helpers
-    phoneLength: 11
+    phoneLength: 10
+    addressLength: 10
 
     initialize: ({ @app, @user, @modal, @vendor }) ->
       @model = @user
@@ -16,7 +17,7 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
       '#kormapp-phone':
         observe: 'phone'
         onSet: (val) ->
-          @phone = ('7' + val).replace(/\D/g, '')
+          @phone = val.replace(/\D/g, '')
           @phone
 
     ui:
@@ -36,7 +37,7 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
       'click @ui.form, click @ui.content': 'stopEvent'
 
     serializeData: ->
-      _.extend user: @user
+      _.extend @user.toJSON()
 
     stopEvent: (e) ->
       e.stopPropagation()
@@ -48,7 +49,6 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
     adjustScreen: (callback) ->
       setTimeout(( ->
         $('body').scrollTop(0)
-        #callback?()
       ), 100)
 
     addOrder: (e) ->
@@ -56,19 +56,21 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
       @user.save()
       $(@ui.deliveryButtonContent).html 'ОТПРАВЛЯЕМ...'
       @deactivateDeliveryButton()
-      @app.execute 'order:create'
+      @app.vent.trigger 'order:checkout'
 
     showErrors: (e) ->
       e.preventDefault()
       window.navigator.notification.alert 'Впишите телефон и адрес доставки', null, 'Внимание'
 
     validate: (e) ->
-      $(@ui.form).find("input").filter( ->
-        return $.trim( $(@).val().length ) < 1
-      ).length == 0
+      #$(@ui.form).find("input").filter( ->
+        #return $.trim( $(@).val().length ) < 1
+      #).length == 0
+       @model.get('phone')?.toString().length >= @phoneLength &&
+         @model.get('address')?.toString().length >= @addressLength
 
     manageButtons: (model) ->
-      if @validate() && @phone?.toString().length == @phoneLength
+      if @validate()
         @activateDeliveryButton()
       else
         @deactivateDeliveryButton()
@@ -92,5 +94,3 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
         'label[for="address"]':
           observe: 'city'
           onGet:   (val) -> "Ваш адрес (#{val})"
-
-

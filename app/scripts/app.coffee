@@ -1,9 +1,11 @@
 define [
-  'controllers/cart', 'controllers/check',
+  'controllers/cart',
+  'controllers/check',
   'views/header/header',
   'views/products/products',
   'views/modal_windows/vendor_page',
-  'controllers/footer', 'controllers/make_order',
+  'controllers/footer',
+  'controllers/order',
   'controllers/update_manager',
   'controllers/checkout',
   'controllers/modal',
@@ -21,7 +23,8 @@ CheckController,
 HeaderView,
 ProductsView,
 VendorPageView,
-FooterController, MakeOrderController,
+FooterController,
+OrderController,
 UpdateManager,
 CheckoutController,
 ModalController,
@@ -67,7 +70,7 @@ CurrentCategoryController
       cart:  App.cart
       modal: App.modal
 
-    new MakeOrderController
+    new OrderController
       app:    App
       cart:   App.cart
       user:   App.user
