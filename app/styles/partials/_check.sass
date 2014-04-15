@@ -21,11 +21,14 @@
 .kormapp-check-internal
   position: relative
   height: 100%
-  padding:
-    bottom: $check-internal-bottom-padding
+  bottom: $check-internal-bottom-padding
   z-index: 1000
   .kormapp-sidebar-check &
-    padding-bottom: 0
+    bottom: 0
+  .kormapp-narrow-layout &
+    position: absolute
+    height: auto
+    top: 0
 
 .kormapp-check-content
   position: relative
@@ -205,6 +208,7 @@ a.kormapp-check-button-link
   padding-left: 40px
   background: url('../kormapp/images/delivery-icon.png') no-repeat
   background-position: left center
+  white-space: nowrap
 
 .kormapp-delivery
   background-color: $footer-delivery-button-background-color
