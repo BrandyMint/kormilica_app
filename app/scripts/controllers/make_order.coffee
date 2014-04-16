@@ -5,7 +5,7 @@ define ['models/order', 'settings'], (Order, Settings) ->
     initialize: (options) ->
       { @app, @user, @vendor } = options
 
-    perform: ({cart} )->
+    perform: (cart) ->
       order = new Order @orderAttributes cart
       order.save null, {
         url: Settings.routes.orders_url()
