@@ -24,8 +24,8 @@ define [
       'touch @kormapp-pull-tag': '_onTouch'
       'release': '_onRelease'
       'dragdown @kormapp-pull-tag': '_onDragDown'
-      'tap @kormapp-pull-tag': '_showList'
       'tap .kormapp-categories-modal': '_hide'
+      'click @kormapp-pull-tag': '_showList'
 
     onRender: ->
       @$el.hammer()
@@ -57,7 +57,8 @@ define [
       @setDistance(@viewHeight)
       setTimeout @modalShow, 500
 
-    _hide: =>
+    _hide: (e) =>
+      e.preventDefault() if e instanceof jQuery.Event
       @$el.removeClass('kormapp-slided-down')
       @$el.addClass('kormapp-slide-up') if @_down
       @_pullDownDistance = 0
@@ -66,8 +67,10 @@ define [
       @_anim = null
       @_dragged = false
       @_down = false
-      @modalHide()
-      setTimeout (=> @$el.removeClass('kormapp-slide-up')), 500
+      setTimeout (=>
+        @$el.removeClass('kormapp-slide-up')
+        @modalHide()
+      ), 500
 
     setDistance: (dist) =>
       @el.style.transform = "translate3d(0, #{dist}px, 0)"
@@ -78,7 +81,7 @@ define [
       @_anim = webkitRequestAnimationFrame(@updateDistance)
 
     modalShow: =>
-      @el.style.height = '100%'
+      @el.style.height = '200%'
       @ui.modal.show()
 
     modalHide: =>

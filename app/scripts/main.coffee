@@ -42,7 +42,8 @@ require.config
         'backbone.hammer',
         'jquery.ui.effect',
         'jquery.ui.effect-bounce',
-        'hammerjs'
+        'hammerjs',
+        'jquery-hammerjs',
         'rolejs'
       ]
 
@@ -68,15 +69,17 @@ unless @Marionette
   require [
     'underscore',
     'backbone',
+    'hammerjs',
+    'jquery-hammerjs',
     'backbone.stickit',
     'backbone.virtualcollection',
     'backbone.localStorage',
+    'backbone.hammer',
     'marionette'
     'jquery.ui.effect',
     'jquery.ui.effect-bounce',
-    'hammerjs',
     'rolejs'
-    ], (Underscore, Backbone, Stickit, VirtualCollection, LocalStorage, Marionette)  =>
+    ], (Underscore, Backbone, Hammer, JqueryHammer, Stickit, VirtualCollection, LocalStorage, BackboneHammer, Marionette)  =>
       @Marionette = Marionette
 
 require ['app', 'data/bundle'], (KormApp, bundle) =>

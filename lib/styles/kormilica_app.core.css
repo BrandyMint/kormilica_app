@@ -413,26 +413,54 @@ p.kormapp-product-title {
 }
 
 /* line 1, ../../app/styles/partials/_categories.sass */
-.categories-list-narrow {
+.kormapp-categories-list-narrow {
   position: fixed;
   top: -300px;
   left: 0;
   width: 100%;
-  z-index: 200;
+  z-index: 101;
+  pointer-events: none;
+  -webkit-transition: -webkit-transform 0ms;
 }
-/* line 8, ../../app/styles/partials/_categories.sass */
-.categories-list-narrow .list-container {
+/* line 10, ../../app/styles/partials/_categories.sass */
+.kormapp-categories-list-narrow.kormapp-slided-down, .kormapp-categories-list-narrow.kormapp-slide-up {
+  -webkit-transition: -webkit-transform 0.5s ease;
+}
+/* line 14, ../../app/styles/partials/_categories.sass */
+.kormapp-categories-list-narrow .kormapp-list-container {
+  position: relative;
   height: 300px;
   width: 300px;
   margin: 0 auto;
   background-color: #cccccc;
+  z-index: 2;
+  pointer-events: all;
 }
-/* line 13, ../../app/styles/partials/_categories.sass */
-.categories-list-narrow .pull-tag {
+/* line 23, ../../app/styles/partials/_categories.sass */
+.kormapp-categories-list-narrow .kormapp-pull-tag {
+  position: relative;
   height: 50px;
   width: 50px;
   background-color: #eeeeee;
   margin: 0 auto;
+  z-index: 2;
+  pointer-events: all;
+}
+/* line 32, ../../app/styles/partials/_categories.sass */
+.kormapp-categories-list-narrow.kormapp-slided-down .kormapp-pull-tag {
+  margin-top: -50px;
+}
+/* line 35, ../../app/styles/partials/_categories.sass */
+.kormapp-categories-list-narrow .kormapp-categories-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  background: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  pointer-events: all;
 }
 
 /* line 1, ../../app/styles/partials/_footer.sass */
@@ -500,7 +528,7 @@ a.kormapp-checkout, a.kormapp-checkout:hover {
   position: fixed;
   width: 100%;
   height: 100%;
-  z-index: 100;
+  z-index: 105;
   top: 0;
   background-color: #eeeeee;
 }
