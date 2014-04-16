@@ -21,6 +21,7 @@ module.exports = (grunt) ->
   require("load-grunt-tasks") grunt
   grunt.loadNpmTasks "grunt-haml"
   grunt.loadNpmTasks 'grunt-version'
+  grunt.loadNpmTasks 'grunt-autoprefixer'
   grunt.loadTasks('./tasks/')
 
   # configurable paths
@@ -187,6 +188,10 @@ module.exports = (grunt) ->
       server:
         options:
           debugInfo: true
+
+    autoprefixer:
+      dist:
+        src: '.tmp/styles/{,*/}*.css'
 
     requirejs:
       dist:
@@ -424,6 +429,7 @@ module.exports = (grunt) ->
     # TODO imagemin падает на прозрачном default_logo
     # "imagemin"
     "htmlmin"
+    "autoprefixer:dist"
     "concat"
     "copy:bower"
     "cssmin"
