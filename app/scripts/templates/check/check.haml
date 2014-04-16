@@ -1,31 +1,30 @@
-#kormapp-check-external.kormapp-check-external.center
-  #kormapp-check-internal.kormapp-check-internal
-    .kormapp-container.kormapp-check-background-container
-      .kormapp-check-content
-        .kormapp-scrollable-check
+.kormapp-check-external
+  .kormapp-check-internal
+    .kormapp-check-background-container
+      .kormapp-check-content{role: 'kormapp-check-content'}
+        .kormapp-scrollable-check{role: '@kormapp-check-items-list'}
           .kormapp-check-header
-            %a.kormapp-back-button-link.kormapp-reflection.pull-left{href: '#'}
+            %a.kormapp-check-back-button-link{href: '#', role: 'kormapp-check-back-button'}
               %span.kormapp-back-button
             %h2.kormapp-check-heading Ваш чек
           .clearfix
 
-          %ol.kormapp-cart-items
+          %ol.kormapp-cart-items{role: 'kormapp-cart-items'}
 
-        .kormapp-unscrollable-check
-          .kormapp-row.clearfix
-            %p.kormapp-delivery-price Стоимость доставки
-              %span.kormapp-delivery-sum-right
+        .kormapp-unscrollable-check{role: 'kormapp-check-bottom-info'}
+          .kormapp-row-clearfix
+            %p.kormapp-delivery-price{role: 'kormapp-delivery-price'} Стоимость доставки
+              %span.kormapp-delivery-sum-right{role: 'kormapp-delivery-sum-right'}
             %p.kormapp-all-product-sum Итог:
-              %span.kormapp-all-sum-right
+              %span.kormapp-all-sum-right{role: 'kormapp-all-sum-right'}
 
 
-  #kormapp-check-bottom-container.kormapp-check-bottom-container
-    #kormapp-check-bottom.kormapp-check-bottom
+  .kormapp-check-bottom-container
+    .kormapp-check-bottom
       .kormapp-container
         .kormapp-check-short-left
         .kormapp-check-short-right
         .kormapp-check-short-center
-
-    .kormapp-full.kormapp-check-button.kormapp-delivery.kormapp-reflection
-      %a.kormapp-check-button-link{:href => "#777"}
+    .kormapp-check-delivery-button
+      %a.kormapp-check-button-link{:href => "#777", role: 'kormapp-check-continue-button'}
         %span.kormapp-delivery-button ОФОРМИТЬ ЗАКАЗ
