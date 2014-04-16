@@ -4,9 +4,9 @@ define [
   ], (template, CategoryView) ->
   class CategoryListNarrow extends Marionette.CompositeView
     template: template
-    className: 'categories-list-narrow'
+    className: 'kormapp-categories-list-narrow'
     itemView: CategoryView
-    itemViewContainer: '@list-container'
+    itemViewContainer: '@kormapp-list-container'
 
     initialize: ->
       @on 'itemview:category:click', @_hide
@@ -14,14 +14,18 @@ define [
       @_anim = null
       @_pullDownDistance = 0
       @viewHeight = 300
+      @workDistance = 63
 
     ui:
-      pull: '@pull-tag'
+      pull: '@kormapp-pull-tag'
+      modal: '.kormapp-categories-modal'
 
     events:
-      'touch @pull-tag': '_onTouch'
+      'touch @kormapp-pull-tag': '_onTouch'
       'release': '_onRelease'
-      'dragdown @pull-tag': '_onDragDown'
+      'dragdown @kormapp-pull-tag': '_onDragDown'
+      'tap @kormapp-pull-tag': '_showList'
+      'tap .kormapp-categories-modal': '_hide'
 
     onRender: ->
       @$el.hammer()
@@ -33,9 +37,11 @@ define [
       return unless @_dragged
       webkitCancelRequestAnimationFrame(@_anim)
 
-      if e.gesture.deltaY > @viewHeight
+      if @_pullDownDistance >= @workDistance
         @_dragged = false
+        @_showList()
       else
+        @$el.addClass('kormapp-slide-up')
         @_hide()
 
     _onDragDown: (e) =>
@@ -45,17 +51,36 @@ define [
       e.gesture.preventDefault()
       @_pullDownDistance = _.min([e.gesture.deltaY, @viewHeight])
 
+    _showList: =>
+      @_down = true
+      @$el.addClass 'kormapp-slided-down'
+      @setDistance(@viewHeight)
+      setTimeout @modalShow, 500
+
     _hide: =>
-      @ui.pull.removeClass ''
+      @$el.removeClass('kormapp-slided-down')
+      @$el.addClass('kormapp-slide-up') if @_down
       @_pullDownDistance = 0
       @setDistance(0)
       webkitCancelRequestAnimationFrame(@_anim)
       @_anim = null
       @_dragged = false
+      @_down = false
+      @modalHide()
+      setTimeout (=> @$el.removeClass('kormapp-slide-up')), 500
 
     setDistance: (dist) =>
+      @el.style.transform = "translate3d(0, #{dist}px, 0)"
       @el.style.webkitTransform = "translate3d(0, #{dist}px, 0) scale3d(1,1,1)"
 
     updateDistance: =>
       @setDistance(@_pullDownDistance)
       @_anim = webkitRequestAnimationFrame(@updateDistance)
+
+    modalShow: =>
+      @el.style.height = '100%'
+      @ui.modal.show()
+
+    modalHide: =>
+      @el.style.height = ''
+      @ui.modal.hide()
