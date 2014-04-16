@@ -8,8 +8,8 @@ define ['templates/check/check_cart_item', 'helpers/application_helpers'],
     tagName: 'li'
 
     bindings:
-      '.kormapp-cartitem-product-quantity': 'quantity'
-      '.kormapp-product-price':
+      '@kormapp-cartitem-product-quantity': 'quantity'
+      '@kormapp-product-price':
         observe: 'total_cost'
         updateMethod: 'html'
         onGet:   (val) ->
@@ -19,8 +19,8 @@ define ['templates/check/check_cart_item', 'helpers/application_helpers'],
       @stickit()
 
       @stickit @model.product,
-        '.kormapp-cartitem-name': 'title'
-        '.kormapp-cartitem-product-price':
+        '@kormapp-cartitem-name': 'title'
+        '@kormapp-cartitem-product-price':
           observe: 'price'
           onGet:   (val) ->
             Helpers.moneyWithoutCurrency val
