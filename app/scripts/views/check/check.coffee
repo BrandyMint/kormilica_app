@@ -5,7 +5,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
     template: template
     templateHelpers: -> Helpers
     itemView: CheckCartItemView
-    itemViewContainer: '.kormapp-cart-items'
+    itemViewContainer: '@kormapp-cart-items'
 
     initialize: ({ @app, @cart, @user, @vendor, @modal }) ->
       @collection = @cart.items
@@ -13,8 +13,8 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
       @app.vent.on 'order:failed', @activateDeliveryButton
 
     ui:
-      backButton: '.kormapp-check-header a'
-      continueButton: '.kormapp-delivery a'
+      backButton: '@kormapp-check-back-button'
+      continueButton: '@kormapp-check-continue-button'
 
     events:
       'click @ui.continueButton': 'continueOrder'
@@ -36,9 +36,9 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
       @modal.show new CheckContactsView app: @app, cart: @cart, user: @user, vendor: @vendor, modal: @modal
 
     _setScrollableAreaHeight: ->
-      container =  $('.kormapp-check-content')
-      bottomInfo = $('.kormapp-unscrollable-check')
-      itemsList =  $('.kormapp-scrollable-check')
+      container =  $('@kormapp-check-content')
+      bottomInfo = $('@kormapp-check-bottom-info')
+      itemsList =  $('@kormapp-check-items-list')
 
       scrollableHeight = container.height() - bottomInfo.height()
       itemsList.css 'height', scrollableHeight
@@ -50,16 +50,16 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
       @stickit()
 
       @stickit @vendor,
-        '.kormapp-delivery-price':
+        '@kormapp-delivery-price':
           observe: 'delivery_price'
           visible: (val) -> val.cents > 0
-        '.kormapp-delivery-sum-right':
+        '@kormapp-delivery-sum-right':
           observe: 'delivery_price'
           updateMethod: 'html'
           onGet: (val) -> Helpers.money val
 
       @stickit @cart,
-        '.kormapp-all-sum-right':
+        '@kormapp-all-sum-right':
           observe:      'total_cost'
           updateMethod: 'html'
           onGet: (val) ->

@@ -1,51 +1,43 @@
-.kormapp-body-ios
-  background-color: $header-background-color
-  margin: 0 auto
-  width: 100%
-  height: 100%
-
-
-#kormapp-container
-  position: fixed
-  margin: 0 auto
-  //background-color: $content-bg
-  margin-bottom: $footer-height
-  width: 100%
-  height: 100%
-  padding-top: $header-padding-top
-  .kormapp-body-ios7 &
-    padding-top: $header-padding-top + 20px
-
 .kormapp-container
   +container-fixed()
-  @media (min-width: $screen-sm-min)
-    width: $container-sm
-  @media (min-width: $screen-md-min)
-    width: $container-md
-  @media (min-width: $screen-lg-min)
-    width: $container-lg
   padding:
     left: 0
     right: 0
+  .kormapp-narrow-layout &
+    @media (min-width: $screen-sm-min)
+      width: $container-sm
+    @media (min-width: $screen-md-min)
+      width: $container-md
+    @media (min-width: $screen-lg-min)
+      width: $container-lg
+  .kormapp-wide-layout &
+    max-width: $product-screen-lg
 
 .kormapp-column
   float: left
   margin-left: 5%
   &:first-child
     margin-left: 0
-  &.full
+  &.kormapp-full
     width: 100%
-  &.two-thirds
+  &.kormapp-two-thirds
     width: 65%
-  &.half
+  &.kormapp-half
     width: 47.5%
-  &.one-third
+  &.kormapp-one-third
     width: 30%
-  &.one-fourth
+  &.kormapp-one-fourth
     width: 21.25%
+  &.kormapp-three-fourth
+    width: 100% - 5% - 21.25%
 
 .kormapp-row
   overflow: hidden
+
+.kormapp-row-clearfix
+  @extend .kormapp-row
+  @extend .clearfix
+
 
 //.kormapp-web-desktop
 

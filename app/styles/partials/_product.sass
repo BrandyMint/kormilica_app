@@ -10,9 +10,13 @@
   @media screen and (min-width: $product-screen-sm)
     width: 46%
     float: left
-  @media screen and (min-width: $product-screen-md)
-    width: 30%
-    float: left
+  .kormapp-narrow-layout &
+    // for layout without sidebar
+    @media screen and (min-width: $product-screen-md)
+      width: 30%
+      float: left
+
+
 
 img.kormapp-product-image
   height: 92px
