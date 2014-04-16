@@ -9,6 +9,9 @@ define [ 'templates/products/product',
     template: productTemplate
     className: 'kormapp-product-block kormapp-reflection'
 
+    ui:
+      productQuantity: '@kormapp-product-quantity'
+
     events:
       click: 'clicked'
 
@@ -34,5 +37,5 @@ define [ 'templates/products/product',
       @buttonRegion.show view
 
     onRender: ->
-      @buttonRegion = new Marionette.Region el: @$el.find('.kormapp-product-quantity')
+      @buttonRegion = new Marionette.Region el: @ui.productQuantity
       @showButton()

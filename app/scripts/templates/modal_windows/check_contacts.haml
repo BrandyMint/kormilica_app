@@ -2,20 +2,24 @@
   .kormapp-modal-window{ role: 'kormapp-modal-content' }
     .kormapp-modal-window-white
       %h1.kormapp-modal-title Кому доставка?
-      %form.order-data{:name => "message", method=> "post"}
+      %form.order-data{role: 'kormapp-contact-form', :name => "message", method=> "post"}
         %section
           %label{:for => "phone"} Телефон:
           .kormapp-phone-input-group
             .kormapp-phone-input-prefix= @phone_prefix
-            %input#kormapp-phone.kormapp-phone-input{:type => "tel", :name => "phone", :placeholder => "XXX-XXX-XXXX", minlength: 10, maxlength: 15}
-          %label{:for => "address"} Ваш адрес:
-          %input#kormapp-address{:type => "text", :name => "address"}
+            %input.kormapp-phone-input{role: 'kormapp-phone', :type => "tel", :name => "phone", :placeholder => "XXX-XXX-XXXX", minlength: 10, maxlength: 15}
+          %label{role: 'kormapp-address-label', :for => "address"} Ваш адрес:
+          %input{:type => "text", :name => "address", role: 'kormapp-address'}
 
         %p.kormapp-form-comment
           обязательно введите
           %br
           свой телефон для связи
 
-      .kormapp-full.kormapp-check-button.kormapp-delivery.kormapp-reflection
-        %a.kormapp-check-button-link{:href => "#777"}
-          %span.kormapp-delivery-button ДОСТАВИТЬ ЗАКАЗ
+      .kormapp-full.kormapp-check-button.kormapp-delivery.kormapp-reflection{role: 'kormapp-delivery-block'}
+        %a.kormapp-check-button-link{:href => "#777", role: 'kormapp-delivery-button'}
+          %span.kormapp-delivery-button{role: 'kormapp-delivery-button-content'} ДОСТАВИТЬ ЗАКАЗ
+
+      .kormapp-full.kormapp-check-button.kormapp-delivery-inactive.kormapp-reflection{role: 'kormapp-delivery-block-inactive'}
+        %a.kormapp-check-button-link{:href => "#777", role: 'kormapp-delivery-button'}
+          %span.kormapp-delivery-button{role: 'kormapp-delivery-button-content'} ДОСТАВИТЬ ЗАКАЗ

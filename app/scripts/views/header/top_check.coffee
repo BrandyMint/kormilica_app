@@ -9,11 +9,10 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
     template: template
     templateHelpers: -> Helpers
 
-    id: 'kormapp-top-check-container'
-    className: 'kormapp-reflection'
+    className: 'kormapp-reflection kormapp-top-check-container'
 
     ui:
-      checkImage: '.kormapp-check-image'
+      checkImage: '@kormapp-check-image'
 
     initialize: (options) ->
       { @app, @cart } = options
@@ -21,7 +20,7 @@ define ['templates/header/top_check', 'helpers/application_helpers'],
       @collection = @cart.items
 
     bindings:
-      '#kormapp-amount':
+      '@kormapp-amount':
         observe: 'total_cost'
         updateMethod: 'html'
         onGet: (value) ->

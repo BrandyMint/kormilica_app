@@ -7,17 +7,27 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
 
     initialize: ({ @version, @user, @updateManager }) ->
 
+    ui:
+      closeButton:  '@kormapp-modal-button'
+      updateButton: '@kormapp-app-update'
+      vendorDescription: '@kormapp-vendor-description'
+
     bindings:
-      '.kormapp-vendor-title': 
+      '@kormapp-vendor-title': 
         observe: 'mobile_subject'
         updateMethod: 'html'
-      '.kormapp-vendor-description': 
+      @ui.vendorDescription.selector:
         observe: 'mobile_description'
         updateMethod: 'html'
-      '.kormapp-vendor-city':
+      '@kormapp-vendor-city':
         observe: 'city'
         onGet:   (val) ->
           "#{val}"
+
+    events:
+      'click @ui.updateButton': '_update'
+      'click': 'close'
+
 
     serializeData: ->
       @lastUpdateAt =  @user.get('lastUpdateAt')
@@ -30,21 +40,12 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
       version: @version
       lastUpdateAt: @lastUpdateAt
 
-    ui:
-      closeButton:  '.kormapp-modal-button'
-      updateButton: '.kormapp-app-update'
-
-    events:
-      'click @ui.updateButton': '_update'
-      'click': 'close'
-
     _update: =>
       @updateManager.perform(true) if @updateManager
 
     _setScrollableAreaHeight: ->
-      vendorDescription = $('.kormapp-vendor-description')
       scrollableHeight = $(window).height()/2
-      vendorDescription.css 'max-height', scrollableHeight
+      @ui.vendorDescription.css 'max-height', scrollableHeight
 
     onShow: ->
       @_setScrollableAreaHeight()

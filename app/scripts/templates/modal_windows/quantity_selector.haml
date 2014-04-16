@@ -1,24 +1,24 @@
 .kormapp-modal-wrapper
-  .kormapp-modal-window{role: 'modal-content'}
+  .kormapp-modal-window{role: 'kormapp-modal-content'}
     .kormapp-modal-window-white
       .kormapp-quantity-title Введите количество
       %table.kormapp-quantity-table
         %tr
           %td
             %p.kormapp-price
-              %span.kormapp-quantity-price
+              %span.kormapp-quantity-price{role: 'kormapp-quantity-price'}
           %td
             %p.kormapp-multiplier x
-              %span.kormapp-multiplier-font.kormapp-quantity
+              %span.kormapp-multiplier-font.kormapp-quantity{role: 'kormapp-quantity'}
               \=
           %td
-            %p.kormapp-price.kormapp-result
+            %p.kormapp-price.kormapp-result{role: 'kormapp-result'}
 
       .kormapp-quantity-selector
-        %a#kormapp-minus-sign.kormapp-reflection{:href => '#'} -
-        %span.kormapp-quantity #{@quantity}
+        %a.kormapp-quantity-selector-button.kormapp-reflection{:href => '#', role: 'kormapp-minus-sign'} -
+        %span.kormapp-quantity{role: 'kormapp-quantity'} #{@quantity}
         шт
-        %a#kormapp-plus-sign.kormapp-reflection{:href => '#'} +
+        %a.kormapp-quantity-selector-button.kormapp-reflection{:href => '#', role: 'kormapp-plus-sign'} +
 
-      %a.kormapp-modal-button.kormapp-reflection{:href => '#'} 
+      %a.kormapp-modal-button.kormapp-reflection{:href => '#', role: 'kormapp-modal-button'} 
         %span.kormapp-modal-button-text ГОТОВО

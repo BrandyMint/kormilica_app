@@ -11,27 +11,27 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'helpers/applic
       @vent.on 'order:created', @hideButton
 
     bindings:
-      '.kormapp-footer-offer':
+      '@kormapp-footer-offer':
         observe:      'mobile_footer'
         updateMethod: 'html'
-      '.kormapp-free-delivery':
+      '@kormapp-free-delivery':
         observe:      'mobile_delivery'
         updateMethod: 'html'
 
     events:
-      'click a.kormapp-checkout':         'checkoutButtonClicked'
-      'click .kormapp-delivery-discount': 'emptyButtonClicked'
+      'click @kormapp-checkout':         'checkoutButtonClicked'
+      'click @kormapp-delivery-discount': 'emptyButtonClicked'
 
     collectionEvents:
       'add':    'showCheckoutButton'
       'remove': 'hideButton'
 
     showCheckoutButton: ->
-      @$('#kormapp-workspace').html checkoutButtonTemplate
+      @$('@kormapp-workspace').html checkoutButtonTemplate
 
     hideButton: =>
       if @cart.isEmpty()
-        @$('#kormapp-workspace').html @workspaceDOM
+        @$('@kormapp-workspace').html @workspaceDOM
 
     checkoutButtonClicked: (e) ->
       e.preventDefault()
@@ -42,6 +42,6 @@ define ['templates/footer/footer', 'templates/footer/_checkout', 'helpers/applic
 
     onRender: ->
       @stickit()
-      @workspaceDOM = @$('#kormapp-workspace').children().clone()
+      @workspaceDOM = @$('@kormapp-workspace').children().clone()
       unless @cart.isEmpty()
         @showCheckoutButton()

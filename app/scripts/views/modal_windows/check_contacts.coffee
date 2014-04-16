@@ -12,25 +12,24 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
       @app.vent.on 'order:failed', @activateDeliveryButton
 
     bindings:
-      '#kormapp-address':
+      '@kormapp-address':
         observe: 'address'
-      '#kormapp-phone':
+      '@kormapp-phone':
         observe: 'phone'
         onSet: (val) ->
           @phone = val.replace(/\D/g, '')
           @phone
 
     ui:
-      form:                   'form'
-      backButton:             '.kormapp-check-header a'
-      deliveryButton:         '.kormapp-delivery a'
-      deliveryButtonContent:  '.kormapp-delivery-button'
-      inactiveDeliveryButton: '.kormapp-delivery-inactive a'
+      form:                   '@kormapp-contact-form'
+      deliveryBlock:          '@kormapp-delivery-block'
+      deliveryBlockInactive:  '@kormapp-delivery-block-inactive'
+      deliveryButtonContent:  '@kormapp-delivery-button-content'
       content:                '@kormapp-modal-content'
 
     events:
-      'click @ui.deliveryButton': 'addOrder'
-      'click @ui.inactiveDeliveryButton': 'showErrors'
+      'click @ui.deliveryBlock': 'addOrder'
+      'click @ui.deliveryBlockInactive': 'showErrors'
       'keyup @ui.form': 'manageButtons'
       # ios screen position fixes:
       'click': 'clickAnywhere'
@@ -63,11 +62,8 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
       window.navigator.notification.alert 'Впишите телефон и адрес доставки', null, 'Внимание'
 
     validate: (e) ->
-      #$(@ui.form).find("input").filter( ->
-        #return $.trim( $(@).val().length ) < 1
-      #).length == 0
-       @model.get('phone')?.toString().length >= @phoneLength &&
-         @model.get('address')?.toString().length >= @addressLength
+      @model.get('phone')?.toString().length >= @phoneLength &&
+        @model.get('address')?.toString().length >= @addressLength
 
     manageButtons: (model) ->
       if @validate()
@@ -76,21 +72,21 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
         @deactivateDeliveryButton()
 
     deactivateDeliveryButton: =>
-      button = @$el.find('.kormapp-delivery')
-      button.removeClass('kormapp-delivery').addClass('kormapp-delivery-inactive')
+      @ui.deliveryBlock.hide()
+      @ui.deliveryBlockInactive.show()
 
     activateDeliveryButton: =>
-      button = @$el.find('.kormapp-delivery-inactive')
-      button.removeClass('kormapp-delivery-inactive').addClass('kormapp-delivery')
-      $(@ui.deliveryButtonContent).html 'ДОСТАВИТЬ ЗАКАЗ'
+      @ui.deliveryBlock.show()
+      @ui.deliveryBlockInactive.hide()
 
     onShow: ->
       @manageButtons()
 
     onRender: ->
+      @ui.deliveryBlock.hide()
+      @ui.deliveryBlockInactive.show()
       @stickit()
-
       @stickit @vendor,
-        'label[for="address"]':
+        '@kormapp-address-label':
           observe: 'city'
           onGet:   (val) -> "Ваш адрес (#{val})"

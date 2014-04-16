@@ -6,16 +6,15 @@ define ['templates/modal_windows/quantity_selector', 'helpers/application_helper
       templateHelpers: -> Helpers
 
       ui:
-        plusButton:    '#kormapp-plus-sign'
-        minusButton:   '#kormapp-minus-sign'
-        confirmButton: '.kormapp-modal-button'
-        quantity:      '.kormapp-quantity'
-        result:        '.kormapp-result'
-        content:       '[role="modal-content"]'
+        plusButton:    '@kormapp-plus-sign'
+        minusButton:   '@kormapp-minus-sign'
+        confirmButton: '@kormapp-modal-button'
+        result:        '@kormapp-result'
+        content:       '@kormapp-modal-content'
 
       bindings:
-        '.kormapp-quantity': 'quantity'
-        '.kormapp-result': 
+        '@kormapp-quantity': 'quantity'
+        @ui.result.selector:
           observe: 'total_cost'
           updateMethod: 'html'
           onGet: -> Helpers.money @model.get 'total_cost'
@@ -48,7 +47,7 @@ define ['templates/modal_windows/quantity_selector', 'helpers/application_helper
       onRender: ->
         @stickit()
         @stickit @model.product,
-          '.kormapp-quantity-price':
+          '@kormapp-quantity-price':
             observe: 'price'
             updateMethod: 'html'
             onGet: -> Helpers.money @model.product.get 'price'

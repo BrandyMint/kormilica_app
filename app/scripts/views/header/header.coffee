@@ -6,10 +6,10 @@ define ['views/header/top_check', 'templates/header/header', 'helpers/applicatio
       template: template
 
       regions:
-        checkRegion: '#kormapp-top-check'
+        checkRegion: '@kormapp-top-check'
 
       bindings:
-        '.kormapp-logo-text':
+        '@kormapp-logo-text':
           observe:      'mobile_title'
           updateMethod: 'html'
         # https://www.pivotaltracker.com/story/show/68420416
@@ -22,7 +22,7 @@ define ['views/header/top_check', 'templates/header/header', 'helpers/applicatio
           #]
 
       ui:
-        logo: '#kormapp-logo'
+        logo: '@kormapp-logo'
 
       triggers:
         'click @ui.logo': 'logo:clicked'
