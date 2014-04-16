@@ -1,7 +1,7 @@
 define ['templates/narrow_layout', 'helpers/application_helpers'],
 (template, Helpers) ->
     class NarrowLayout extends Marionette.Layout
-      el: '#kormapp-container'
+      el: '@kormapp-container'
       className: 'kormapp-narrow-layout'
       template: template
 

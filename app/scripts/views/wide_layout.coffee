@@ -1,7 +1,7 @@
 define ['templates/wide_layout', 'helpers/application_helpers'],
 (template, Helpers) ->
     class WideLayout extends Marionette.Layout
-      el: '#kormapp-container'
+      el: '@kormapp-container'
       className: 'kormapp-wide-layout'
       template: template
 
