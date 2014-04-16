@@ -12,6 +12,7 @@ define [
   'views/wide_layout',
   'views/narrow_layout',
   'views/categories/category_list',
+  'views/categories/category_list_narrow',
   'views/check/check',
   'controllers/data_repository',
   'controllers/reflection',
@@ -31,6 +32,7 @@ ModalController,
 WideLayout,
 NarrowLayout,
 CategoryList,
+CategoryListNarrow,
 CheckView,
 DataPreloader,
 Reflection,
@@ -81,12 +83,15 @@ CurrentCategoryController
       comparator: 'position',
       filter: { category_id: App.profile.get('current_category_id') })
 
-    categoryList = new CategoryList
-      collection: App.categories
+    categoryList = if App.isWide
+      new CategoryList collection: App.categories
+    else
+      new CategoryListNarrow collection: App.categories
+
+    if App.categories.length > 1
+       App.mainLayout.categories.show categoryList
 
     if App.isWide
-      if App.categories.length > 1
-         App.mainLayout.categories.show categoryList
       App.mainLayout.checkRegion.show new CheckView
         app:    App
         user:   App.user

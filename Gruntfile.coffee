@@ -204,12 +204,15 @@ module.exports = (grunt) ->
             jquery: "../../app/bower_components/jquery/jquery"
             underscore: "../../app/bower_components/underscore/underscore"
             backbone: "../../app/bower_components/backbone/backbone"
+            hammerjs: "../../app/bower_components/hammerjs/hammer"
+            'jquery-hammerjs': "../../app/bower_components/jquery-hammerjs/jquery.hammer"
             marionette: "../../app/bower_components/backbone.marionette/lib/core/amd/backbone.marionette"
             "backbone.virtualcollection": '../../app/bower_components/backbone.virtualcollection/backbone.virtual-collection'
             "backbone.stickit": "../../app/bower_components/backbone.stickit/backbone.stickit"
             "backbone.wreqr": "../../app/bower_components/backbone.wreqr/lib/amd/backbone.wreqr"
             "backbone.babysitter": "../../app/bower_components/backbone.babysitter/lib/amd/backbone.babysitter"
             "backbone.localStorage": "../../app/bower_components/backbone.localStorage/backbone.localStorage"
+            "backbone.hammer": "../../app/bower_components/backbone.hammer/backbone.hammer"
             'jquery.ui.effect':        "../../app/bower_components/jquery.ui/ui/jquery.ui.effect"
             'jquery.ui.effect-bounce': "../../app/bower_components/jquery.ui/ui/jquery.ui.effect-bounce"
             "app":            '../../.tmp/scripts/app'

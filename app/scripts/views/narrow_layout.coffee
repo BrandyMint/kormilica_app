@@ -8,6 +8,7 @@ define ['templates/narrow_layout', 'helpers/application_helpers'],
       regions:
         headerRegion: "@kormapp-header-region"
         products:     "@kormapp-products-region"
+        categories:   "@kormapp-categories-region"
         footerRegion: "@kormapp-footer-region"
         checkRegion:  "@kormapp-check-region"
         modalRegion:  "@kormapp-modal-region"
