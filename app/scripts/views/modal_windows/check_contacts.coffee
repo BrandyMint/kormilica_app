@@ -26,7 +26,7 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
       deliveryButton:         '.kormapp-delivery a'
       deliveryButtonContent:  '.kormapp-delivery-button'
       inactiveDeliveryButton: '.kormapp-delivery-inactive a'
-      content:                '[role="modal-content"]'
+      content:                '@kormapp-modal-content'
 
     events:
       'click @ui.deliveryButton': 'addOrder'
