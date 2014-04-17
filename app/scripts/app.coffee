@@ -102,9 +102,13 @@ CurrentCategoryController
       filter: { category_id: App.profile.get('current_category_id') })
 
     categoryListView = if App.isWide
-      new CategoryList collection: App.categories
+      new CategoryList
+        collection: App.categories
+        profile: App.profile
     else
-      new CategoryListNarrow collection: App.categories
+      new CategoryListNarrow
+        collection: App.categories
+        profile: App.profile
 
     if App.categories.length > 1
       if App.isWide
