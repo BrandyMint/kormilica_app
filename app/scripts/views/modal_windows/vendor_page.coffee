@@ -16,7 +16,7 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
       '@kormapp-vendor-title': 
         observe: 'mobile_subject'
         updateMethod: 'html'
-      @ui.vendorDescription.selector:
+      '@kormapp-vendor-description':
         observe: 'mobile_description'
         updateMethod: 'html'
       '@kormapp-vendor-city':

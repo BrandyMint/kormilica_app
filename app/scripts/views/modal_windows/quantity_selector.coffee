@@ -14,7 +14,7 @@ define ['templates/modal_windows/quantity_selector', 'helpers/application_helper
 
       bindings:
         '@kormapp-quantity': 'quantity'
-        @ui.result.selector:
+        '@kormapp-result':
           observe: 'total_cost'
           updateMethod: 'html'
           onGet: -> Helpers.money @model.get 'total_cost'
