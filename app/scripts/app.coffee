@@ -136,6 +136,7 @@ CurrentCategoryController
       view: categoryListView
       profile: App.profile
       sorted: sorted_products
+      categories: App.categories
 
     App.mainLayout.products.show new ProductsView
         app: App

@@ -3,3 +3,5 @@ define ['views/categories/category'],
   class CategoryList extends Marionette.CollectionView
     itemView: CategoryView
     className: 'kormapp-categories-list'
+
+
