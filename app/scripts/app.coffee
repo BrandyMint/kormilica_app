@@ -124,12 +124,13 @@ CurrentCategoryController
 
     App.mainLayout.headerRegion.show headerView
 
-    new FooterController
-      app:    App
-      cart:   App.cart
-      user:   App.user
-      vent:   App.vent
-      vendor: App.vendor
+    unless App.isWide
+      new FooterController
+        app:    App
+        cart:   App.cart
+        user:   App.user
+        vent:   App.vent
+        vendor: App.vendor
 
     new CheckoutController
       app:    App
