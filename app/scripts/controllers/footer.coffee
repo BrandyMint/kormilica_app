@@ -12,8 +12,4 @@ define ['views/footer/footer'], (FooterView) ->
         vent:    @vent
         vendor:  @vendor
 
-      @showFooter()
-
-    showFooter: ->
-      unless @app.isWide
-        @app.mainLayout.footerRegion.show @footerView
+      @app.mainLayout.footerRegion.show @footerView
