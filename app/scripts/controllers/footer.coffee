@@ -15,4 +15,5 @@ define ['views/footer/footer'], (FooterView) ->
       @showFooter()
 
     showFooter: ->
-      @app.mainLayout.footerRegion.show @footerView
+      unless @app.isWide
+        @app.mainLayout.footerRegion.show @footerView
