@@ -14,7 +14,7 @@ require.config
       ]
       exports: 'Backbone'
     marionette:
-      deps: ['backbone', 'backbone.wreqr', 'backbone.babysitter']
+      deps: ['backbone', 'backbone.wreqr', 'backbone.babysitter', 'backbone.hammer']
       exports: 'Marionette'
     'jquery.ui.effect':
       deps: ['jquery']
@@ -28,6 +28,10 @@ require.config
       deps: ['backbone']
     rolejs:
       deps: ['jquery']
+    'jquery-hammerjs':
+      deps: ['hammerjs']
+    'backbone.hammer':
+      deps: ['backbone', 'jquery-hammerjs']
     app:
       deps: [
         'cordovaShim',
@@ -35,8 +39,11 @@ require.config
         'backbone.stickit',
         'backbone.localStorage',
         'backbone.virtualcollection',
+        'backbone.hammer',
         'jquery.ui.effect',
         'jquery.ui.effect-bounce',
+        'hammerjs',
+        'jquery-hammerjs',
         'rolejs'
       ]
 
@@ -46,12 +53,15 @@ require.config
     rolejs:                  '../bower_components/rolejs/lib/jquery.role'
     underscore:              '../bower_components/underscore/underscore'
     backbone:                '../bower_components/backbone/backbone'
+    hammerjs:                '../bower_components/hammerjs/hammer'
+    'jquery-hammerjs':       '../bower_components/jquery-hammerjs/jquery.hammer'
     marionette:              '../bower_components/backbone.marionette/lib/core/backbone.marionette'
     'backbone.stickit':      '../bower_components/backbone.stickit/backbone.stickit'
     'backbone.wreqr':        '../bower_components/backbone.wreqr/lib/amd/backbone.wreqr'
     'backbone.babysitter':   '../bower_components/backbone.babysitter/lib/amd/backbone.babysitter'
     'backbone.localStorage': '../bower_components/backbone.localStorage/backbone.localStorage'
     'backbone.virtualcollection':  '../bower_components/backbone.virtualcollection/backbone.virtual-collection'
+    'backbone.hammer':       '../bower_components/backbone.hammer/backbone.hammer'
     'jquery.ui.effect':        "../bower_components/jquery.ui/ui/jquery.ui.effect"
     'jquery.ui.effect-bounce': "../bower_components/jquery.ui/ui/jquery.ui.effect-bounce"
 
@@ -59,14 +69,17 @@ unless @Marionette
   require [
     'underscore',
     'backbone',
+    'hammerjs',
+    'jquery-hammerjs',
     'backbone.stickit',
     'backbone.virtualcollection',
     'backbone.localStorage',
+    'backbone.hammer',
     'marionette'
     'jquery.ui.effect',
     'jquery.ui.effect-bounce',
     'rolejs'
-    ], (Underscore, Backbone, Stickit, VirtualCollection, LocalStorage, Marionette)  =>
+    ], (Underscore, Backbone, Hammer, JqueryHammer, Stickit, VirtualCollection, LocalStorage, BackboneHammer, Marionette)  =>
       @Marionette = Marionette
 
 require ['app', 'data/bundle'], (KormApp, bundle) =>

@@ -12,6 +12,9 @@ define [
   'views/wide_layout',
   'views/narrow_layout',
   'views/categories/category_list',
+  'views/categories/category_list_narrow',
+  'pull_down/layout',
+  'pull_down/controller',
   'views/check/check',
   'controllers/data_repository',
   'controllers/reflection',
@@ -31,6 +34,9 @@ ModalController,
 WideLayout,
 NarrowLayout,
 CategoryList,
+CategoryListNarrow,
+PullDownLayout,
+PullDownController,
 CheckView,
 DataPreloader,
 Reflection,
@@ -76,17 +82,42 @@ CurrentCategoryController
       user:   App.user
       vendor: App.vendor
 
+    headerView = new HeaderView
+      app:    App
+      cart:   App.cart
+      vendor: App.vendor
+
+    headerView.on 'logo:clicked', ->
+      App.modal.show new VendorPageView
+        version:       App.version
+        model:         App.vendor
+        user:          App.user
+        updateManager: App.updateManager
+
+    App.mainLayout.headerRegion.show headerView
+
     sorted_products = new Backbone.VirtualCollection(
       App.products,
       comparator: 'position',
       filter: { category_id: App.profile.get('current_category_id') })
 
-    categoryList = new CategoryList
-      collection: App.categories
+    categoryListView = if App.isWide
+      new CategoryList collection: App.categories
+    else
+      new CategoryListNarrow collection: App.categories
+
+    if App.categories.length > 1
+      if App.isWide
+        App.mainLayout.categories.show categoryListView
+      else
+        pullDownLayout = new PullDownLayout
+          view: categoryListView
+        new PullDownController
+          view: pullDownLayout
+          workHeight: headerView.$el.height()
+        App.mainLayout.categories.show pullDownLayout
 
     if App.isWide
-      if App.categories.length > 1
-         App.mainLayout.categories.show categoryList
       App.mainLayout.checkRegion.show new CheckView
         app:    App
         user:   App.user
@@ -102,27 +133,13 @@ CurrentCategoryController
         modal:  App.modal
 
     new CurrentCategoryController
-      view: categoryList
+      view: categoryListView
       profile: App.profile
       sorted: sorted_products
 
     App.mainLayout.products.show new ProductsView
         app: App
         collection: sorted_products
-
-    headerView = new HeaderView
-      app:    App
-      cart:   App.cart
-      vendor: App.vendor
-
-    headerView.on 'logo:clicked', ->
-      App.modal.show new VendorPageView
-        version:       App.version
-        model:         App.vendor
-        user:          App.user
-        updateManager: App.updateManager
-
-    App.mainLayout.headerRegion.show headerView
 
     unless App.isWide
       new FooterController
