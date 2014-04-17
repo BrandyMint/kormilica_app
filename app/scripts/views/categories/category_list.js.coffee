@@ -3,6 +3,7 @@ define ['views/categories/category'],
   class CategoryList extends Marionette.CollectionView
     itemView: CategoryView
     className: 'kormapp-categories-list'
+
     initialize: ({@collection, @profile}) ->
       @on 'itemview:category:click', (view, {model}) =>
         @_selectCategory view, model

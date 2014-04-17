@@ -1,6 +1,2 @@
-define ['views/categories/category'], (CategoryView) ->
-  class CategoryListNarrow extends Marionette.CollectionView
-    itemView: CategoryView
-
-    initialize: ->
-      @on 'itemview:category:click', => @trigger 'pull-down:hide'
+define ['views/categories/category_list'], (CategoryList) ->
+  class CategoryListNarrow extends CategoryList

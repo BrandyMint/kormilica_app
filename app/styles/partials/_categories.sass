@@ -25,26 +25,32 @@
   &.kormapp-slide-up
     -webkit-transition: -webkit-transform .5s ease
 
-  & .kormapp-list-container
+  .kormapp-list-container
     position: relative
     height: 300px
     width: 300px
     margin: 0 auto
-    background-color: #ccc
+    background-color: #fff
+    padding: 15px 10px
     pointer-events: all
     z-index: 110
 
-  & .kormapp-pull-tag
+  .kormapp-pull-tag
     position: relative
     height: 50px
     width: 50px
-    background-color: #eee
     margin: 0 auto
     pointer-events: all
     z-index: 110
-
-  &.kormapp-slided-down .kormapp-pull-tag
-    margin-top: -50px
+    +arrow-bottom
+    +arrow-align-bottom
+    background: none
+  &.kormapp-slided-down
+    .kormapp-pull-tag
+      +arrow-top
+      +arrow-align-bottom
+      margin-top: -50px
+      background: none
 
 .kormapp-click-stopper
   position: fixed
