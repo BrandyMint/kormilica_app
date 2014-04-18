@@ -8,6 +8,9 @@
   width: 100%
   border-bottom: 2px dotted #666
 
+.kormapp-sidebar-check
+  padding-bottom: $check-internal-bottom-padding
+
 .kormapp-check-external
   @extend .kormapp-center
   position: fixed
@@ -246,3 +249,16 @@ a.kormapp-check-button-link
     right: - $check-container-margin
   .kormapp-container
     width: auto
+
+.kormapp-check-info-region
+  margin:
+    top: 1em
+  font-size: $base-font-size*0.7
+
+.kormapp-check-offer,
+.kormapp-check-info-free-delivery
+  margin-bottom: 5px
+  color: $check-font-color
+
+.kormapp-check-free-delivery
+  color: $orange-color

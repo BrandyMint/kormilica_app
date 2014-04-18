@@ -16,6 +16,7 @@ define [
   'pull_down/layout',
   'pull_down/controller',
   'views/check/check',
+  'views/check/check_info'
   'controllers/data_repository',
   'controllers/reflection',
   'controllers/current_category'
@@ -38,6 +39,7 @@ CategoryListNarrow,
 PullDownLayout,
 PullDownController,
 CheckView,
+CheckInfoView,
 DataPreloader,
 Reflection,
 CurrentCategoryController
@@ -128,6 +130,8 @@ CurrentCategoryController
         cart:   App.cart
         vendor: App.vendor
         modal:  App.modal
+      @checkInfoView = new CheckInfoView vendor:  @vendor
+      App.mainLayout.checkInfoRegion.show @checkInfoView
     else
       new CheckController
         app:    App
