@@ -10,6 +10,8 @@
 
 .kormapp-sidebar-check
   padding-bottom: $check-internal-bottom-padding
+  .kormapp-empty-check
+    margin-bottom: -60px
 
 .kormapp-check-external
   @extend .kormapp-center
@@ -170,6 +172,8 @@ form.order-data
   width: 100%
   .kormapp-sidebar-check &
     margin-bottom: - $check-internal-bottom-padding
+  .kormapp-sidebar-check .kormapp-empty-check &
+    margin-bottom: - $check-internal-bottom-padding + 60px
 
 .kormapp-check-bottom
   padding: 18px 8px 14px
@@ -250,7 +254,7 @@ a.kormapp-check-button-link
   .kormapp-container
     width: auto
 
-.kormapp-check-info-region
+.kormapp-check-info
   margin:
     top: 1em
   font-size: $base-font-size*0.7
