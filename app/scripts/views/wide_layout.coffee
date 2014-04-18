@@ -13,6 +13,7 @@ define ['templates/wide_layout', 'helpers/application_helpers'],
         products:      '@kormapp-products-region'
         footerRegion:  "@kormapp-footer-region"
         modalRegion:   "@kormapp-modal-region"
+        checkInfoRegion: "@kormapp-check-info-region"
 
       onRender: ->
         @$el.addClass @className

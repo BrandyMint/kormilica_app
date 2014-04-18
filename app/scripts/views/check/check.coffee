@@ -11,10 +11,13 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
       @collection = @cart.items
       @model = @user
       @app.vent.on 'order:failed', @activateDeliveryButton
+      @listenTo @collection, 'add remove', () =>
+        @_manageContinueButton()
 
     ui:
       backButton: '@kormapp-check-back-button'
       continueButton: '@kormapp-check-continue-button'
+      checkInfo: '@kormapp-check-info'
 
     events:
       'click @ui.continueButton': 'continueOrder'
@@ -48,7 +51,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
 
     onRender: ->
       @stickit()
-
+      
       @stickit @vendor,
         '@kormapp-delivery-price':
           observe: 'delivery_price'
@@ -57,6 +60,12 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
           observe: 'delivery_price'
           updateMethod: 'html'
           onGet: (val) -> Helpers.money val
+        '@kormapp-check-offer':
+          observe:      'mobile_footer'
+          updateMethod: 'html'
+        '@kormapp-check-free-delivery':
+          observe:      'mobile_delivery'
+          updateMethod: 'html'
 
       @stickit @cart,
         '@kormapp-all-sum-right':
@@ -67,3 +76,14 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
               currency: val.currency
               cents:    val.cents + @vendor.get('delivery_price').cents
             Helpers.money result
+
+      @_manageContinueButton()
+
+    _manageContinueButton: ->
+      if @collection.length == 0
+        @ui.continueButton.hide()
+        @ui.checkInfo.show()
+      else
+        @ui.continueButton.show()
+        @ui.checkInfo.hide()
+
