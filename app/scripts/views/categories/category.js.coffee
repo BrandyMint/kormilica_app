@@ -4,7 +4,11 @@ define ['templates/categories/category'],
     template: categoryTemplate
     tagName: 'a'
     className: 'kormapp-category-item'
+    attributes:
+      "href": ""
     activeClass: 'kormapp-category-item-active'
+
+
     triggers:
       'click': 'category:click'
 
