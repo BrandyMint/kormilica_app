@@ -22,4 +22,56 @@
     left: $check-container-margin
     right: $check-container-margin
 
+=arrow-bottom($arrowSize: 30px, $arrowColor: #fff, $arrowBorderColor: darken($orange-color, 20%), $arrowBorderWidth: 2px)
+  position: relative
+  background: $arrowColor
+  //border: 1px solid $arrowColor
+  &:after, &:before
+    top: 100% 
+    left: 50%
+    border: solid transparent
+    content: " "
+    height: 0
+    width: 0
+    position: absolute
+    pointer-events: none
+  &:after
+    border-color: rgba($arrowColor, 0)
+    border-top-color: $arrowColor
+    border-width: $arrowSize
+    margin-left: - $arrowSize
+  &:before
+    border-color: rgba($arrowBorderColor, 0)
+    border-top-color: darken($arrowBorderColor, 3%)
+    border-width: round($arrowSize + $arrowBorderWidth*1.4)
+    margin-left: - round($arrowSize + $arrowBorderWidth*1.4)
 
+=arrow-top($arrowSize: 30px, $arrowColor: #fff, $arrowBorderColor: darken($orange-color, 10%), $arrowBorderWidth: 2px)
+  position: relative
+  background: $arrowColor
+  //border: 1px solid $arrowColor
+  &:after, &:before
+    top: 0% 
+    left: 50%
+    border: solid transparent
+    content: " "
+    height: 0
+    width: 0
+    position: absolute
+    pointer-events: none
+  &:after
+    border-color: rgba($arrowColor, 0)
+    border-bottom-color: $arrowColor
+    border-width: $arrowSize
+    margin-left: - $arrowSize
+  &:before
+    border-color: rgba($arrowBorderColor, 0)
+    border-bottom-color: darken($arrowBorderColor, 3%)
+    border-width: round($arrowSize + $arrowBorderWidth*1.4)
+    margin-left: - round($arrowSize + $arrowBorderWidth*1.4)
+
+=arrow-align-bottom
+  &:before,
+  &:after
+    top: auto
+    bottom: 0%
