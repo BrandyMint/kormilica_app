@@ -1,9 +1,9 @@
 define ->
   class CurrentCategoryController extends Marionette.Controller
-    initialize: ({@profile, @sorted, @view, @categories}) ->
+    initialize: ({@profile, @sorted}) ->
       @listenTo @profile, 'change', () =>
-        @set @profile.get 'current_category_id'
+        @updateProductsList @profile.get 'current_category_id'
 
-    set: (id) ->
+    updateProductsList: (id) ->
       @sorted.updateFilter(category_id: id)
 

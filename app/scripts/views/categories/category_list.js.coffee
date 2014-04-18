@@ -16,12 +16,20 @@ define ['views/categories/category'],
       @_activateItem view
 
     _activateAtInit: ->
+      @currentView = @_getCurrentView()
+      @currentView?.activate()
+
+    _activateItem: (view) =>
+      unless @currentView == view
+        @currentView?.deactivate()
+        @currentView = view
+        @currentView?.activate()
+
+    _getCurrentView: ->
       active_id = @profile.get 'current_category_id'
       active_category = @collection.get active_id
       if active_category?
-        active_view = @children.findByModel(active_category)
-        @_activateItem active_view
+        @children.findByModel(active_category)
+      else
+        null
 
-    _activateItem: (view) =>
-      @children.call('deactivate')
-      view.activate()
