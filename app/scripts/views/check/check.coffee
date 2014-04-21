@@ -1,11 +1,12 @@
 define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_windows/check_contacts', 'helpers/application_helpers' ],
 (template, CheckCartItemView, CheckContactsView, Helpers) ->
 
-  class Check extends Marionette.CompositeView
+  class CheckView extends Marionette.CompositeView
     template: template
     templateHelpers: -> Helpers
     itemView: CheckCartItemView
     itemViewContainer: '@kormapp-cart-items'
+    emptyCheckClass: 'kormapp-empty-check'
 
     initialize: ({ @app, @cart, @user, @vendor, @modal }) ->
       @collection = @cart.items
@@ -20,7 +21,6 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
       checkInfo: '@kormapp-check-info'
       bottomInfo: '@kormapp-check-bottom-info'
       itemsList:  '@kormapp-check-items-list'
-
 
     events:
       'click @ui.continueButton': 'continueOrder'
@@ -37,15 +37,6 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
         vendor: @vendor
         total_cost_with_delivery: 
           cents: @cart.get('total_cost').cents + @vendor.get('delivery_price').cents
-
-    continueOrder: (e) ->
-      @modal.show new CheckContactsView app: @app, cart: @cart, user: @user, vendor: @vendor, modal: @modal
-
-    _setScrollableAreaHeight: ->
-      bottomInfo = @ui.bottomInfo
-      itemsList =  @ui.itemsList
-      scrollableHeight = @ui.bottomInfo.position().top - @ui.itemsList.position().top
-      @ui.itemsList.css 'height', scrollableHeight
 
     onShow: ->
       @_setScrollableAreaHeight()
@@ -72,11 +63,15 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
         '@kormapp-all-sum-right':
           observe:      'total_cost'
           updateMethod: 'html'
-          onGet: (val) ->
-            result =
-              currency: val.currency
-              cents:    val.cents + @vendor.get('delivery_price').cents
-            Helpers.money result
+          update: ($el, val) =>
+            if val.cents > 0
+              @_showSummary()
+              result =
+                currency: val.currency
+                cents:    val.cents + @vendor.get('delivery_price').cents
+              $el.html Helpers.money result
+            else
+              @_hideSummary()
 
       @_manageContinueButton()
 
@@ -87,4 +82,20 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
       else
         @ui.continueButton.show()
         @ui.checkInfo.hide()
+
+    _showSummary: ->
+      @ui.bottomInfo.show()
+
+    _hideSummary: =>
+      @ui.bottomInfo.hide()
+
+    continueOrder: (e) ->
+      @modal.show new CheckContactsView app: @app, cart: @cart, user: @user, vendor: @vendor, modal: @modal
+
+    _setScrollableAreaHeight: ->
+      bottomInfo = @ui.bottomInfo
+      itemsList =  @ui.itemsList
+      scrollableHeight = @ui.bottomInfo.position().top - @ui.itemsList.position().top
+      @ui.itemsList.css 'height', scrollableHeight
+
 
