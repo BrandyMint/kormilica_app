@@ -93,9 +93,10 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
       @modal.show new CheckContactsView app: @app, cart: @cart, user: @user, vendor: @vendor, modal: @modal
 
     _setScrollableAreaHeight: ->
-      bottomInfo = @ui.bottomInfo
-      itemsList =  @ui.itemsList
-      scrollableHeight = @ui.bottomInfo.position().top - @ui.itemsList.position().top
-      @ui.itemsList.css 'height', scrollableHeight
+      unless @app.isWide
+        bottomInfo = @ui.bottomInfo
+        itemsList =  @ui.itemsList
+        scrollableHeight = @ui.bottomInfo.position().top - @ui.itemsList.position().top
+        @ui.itemsList.css 'height', scrollableHeight
 
 

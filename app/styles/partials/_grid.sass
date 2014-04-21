@@ -15,21 +15,25 @@
 
 .kormapp-column
   float: left
-  margin-left: 5%
+  //margin-left: 5%
+  margin-left: $grid-gutter/2
   &:first-child
     margin-left: 0
   &.kormapp-full
     width: 100%
   &.kormapp-two-thirds
-    width: 65%
+    //width: 65%
+    width: 100%*2/3 - $grid-gutter/2
   &.kormapp-half
-    width: 47.5%
+    //width: 47.5%
+    width: 100%/2 - $grid-gutter/2
   &.kormapp-one-third
-    width: 30%
+    //width: 30%
+    width: 100%/3 - $grid-gutter/2
   &.kormapp-one-fourth
-    width: 21.25%
+    width: 100%/4 - $grid-gutter/2
   &.kormapp-three-fourth
-    width: 100% - 5% - 21.25%
+    width: 100%*0.75 - $grid-gutter/2
 
 .kormapp-row
   overflow: hidden

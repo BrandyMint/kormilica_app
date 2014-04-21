@@ -1,3 +1,5 @@
+$sidebar-check-height: ($app-container-height - $header-height)/ 2
+
 .kormapp-separator 
   width: 100%
   vertical-align: 30%
@@ -12,9 +14,7 @@
   position: absolute
   width: inherit
   bottom: 0
-  height: ($app-container-height - $header-height)/ 2
-  padding-bottom: 0
-  bottom: $check-internal-bottom-padding + 3px
+  height: $sidebar-check-height + $check-bottom-deck-height
   .kormapp-empty-check
     margin-bottom: -60px
 
@@ -119,6 +119,8 @@ p.kormapp-cartitem-name
 
 .kormapp-scrollable-check
   overflow: auto
+  height: $sidebar-check-height - 179px
+
 
 
 .kormapp-cart-items
@@ -181,7 +183,7 @@ form.order-data
 .kormapp-check-bottom
   padding: 18px 8px 14px
   background-color: $check-bottom-background-color
-  height: 35px
+  height: $check-bottom-deck-height
 
 .kormapp-check-short-left
   height: 8px
