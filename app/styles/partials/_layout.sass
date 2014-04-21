@@ -14,6 +14,8 @@
   padding-top: $header-padding-top
   .kormapp-body-ios7 &
     padding-top: $header-padding-top + 20px
+  &.kormapp-wide-layout
+    height: $app-container-height
 
 .kormapp-web-desktop,
 .kormapp-web-mobile,
@@ -26,6 +28,7 @@
   @extend .kormapp-column
   @extend .kormapp-one-fourth
   @extend .kormapp-sidebar-container
+  padding-left: $grid-gutter-fixed/2
 
 .kormapp-products-column
   @extend .kormapp-column
