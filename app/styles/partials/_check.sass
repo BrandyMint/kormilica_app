@@ -9,7 +9,12 @@
   border-bottom: 2px dotted #666
 
 .kormapp-sidebar-check
-  padding-bottom: $check-internal-bottom-padding
+  position: absolute
+  width: inherit
+  bottom: 0
+  height: ($app-container-height - $header-height)/ 2
+  padding-bottom: 0
+  bottom: $check-internal-bottom-padding + 3px
   .kormapp-empty-check
     margin-bottom: -60px
 
