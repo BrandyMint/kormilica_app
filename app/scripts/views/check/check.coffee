@@ -18,6 +18,9 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
       backButton: '@kormapp-check-back-button'
       continueButton: '@kormapp-check-continue-button'
       checkInfo: '@kormapp-check-info'
+      bottomInfo: '@kormapp-check-bottom-info'
+      itemsList:  '@kormapp-check-items-list'
+
 
     events:
       'click @ui.continueButton': 'continueOrder'
@@ -39,12 +42,10 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
       @modal.show new CheckContactsView app: @app, cart: @cart, user: @user, vendor: @vendor, modal: @modal
 
     _setScrollableAreaHeight: ->
-      container =  $('@kormapp-check-content')
-      bottomInfo = $('@kormapp-check-bottom-info')
-      itemsList =  $('@kormapp-check-items-list')
-
-      scrollableHeight = container.height() - bottomInfo.height()
-      itemsList.css 'height', scrollableHeight
+      bottomInfo = @ui.bottomInfo
+      itemsList =  @ui.itemsList
+      scrollableHeight = @ui.bottomInfo.position().top - @ui.itemsList.position().top
+      @ui.itemsList.css 'height', scrollableHeight
 
     onShow: ->
       @_setScrollableAreaHeight()

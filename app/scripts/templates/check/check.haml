@@ -2,13 +2,13 @@
   .kormapp-check-internal
     .kormapp-check-background-container
       .kormapp-check-content{role: 'kormapp-check-content'}
-        .kormapp-scrollable-check{role: '@kormapp-check-items-list'}
-          .kormapp-check-header
-            %a.kormapp-check-back-button-link{href: '#', role: 'kormapp-check-back-button'}
-              %span.kormapp-back-button
-            %h2.kormapp-check-heading Ваш чек
-          .clearfix
+        .kormapp-check-header
+          %a.kormapp-check-back-button-link{href: '#', role: 'kormapp-check-back-button'}
+            %span.kormapp-back-button
+          %h2.kormapp-check-heading Ваш чек
+        .clearfix
 
+        .kormapp-scrollable-check{role: 'kormapp-check-items-list'}
           %ol.kormapp-cart-items{role: 'kormapp-cart-items'}
 
         .kormapp-unscrollable-check{role: 'kormapp-check-bottom-info'}
