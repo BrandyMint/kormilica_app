@@ -19,7 +19,7 @@
   left: 0
   width: 100%
   pointer-events: none
-  z-index: 200
+  z-index: $categories-list-narrow-z-index
   -webkit-transition: -webkit-transform 0ms
 
   &.kormapp-slided-down,
@@ -34,7 +34,7 @@
     background-color: #fff
     padding: 15px 10px
     pointer-events: all
-    z-index: 110
+    z-index: $categories-list-container-z-index
 
   .kormapp-pull-tag
     position: relative
@@ -42,7 +42,7 @@
     width: 50px
     margin: 0 auto
     pointer-events: all
-    z-index: 110
+    z-index: $pull-tag-z-index
     +arrow-bottom
     +arrow-align-bottom
     background: none

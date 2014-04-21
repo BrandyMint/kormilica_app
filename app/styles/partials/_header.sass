@@ -6,7 +6,7 @@ $border-height-desktop: 6px
 .kormapp-header
   position: fixed
   width: 100%
-  z-index: 100
+  z-index: $header-z-index
   height: $header-height + $border-height
   margin-top: -($header-height + $border-height)
   background: $header-background-color
@@ -64,7 +64,7 @@ p.kormapp-logo-text
 .kormapp-check-image
   content: url("../kormapp/images/top-check.png")
   position: absolute
-  z-index: 5
+  z-index: $header-check-image-z-index
   height: 100%
 
 p.kormapp-top-check-text
