@@ -1,19 +1,23 @@
 $header-height: 60px
+$header-height-desktop: 263px
 $border-height: 3px
+$border-height-desktop: 6px
 
 .kormapp-header
   position: fixed
   width: 100%
-  z-index: 100
+  z-index: $header-z-index
   height: $header-height + $border-height
   margin-top: -($header-height + $border-height)
   background: $header-background-color
   color: #fff
   border-bottom: $border-height solid $orange-border-color
+  @media screen and (min-width: $screen-md)
+    border-bottom-width: $border-height-desktop
 
 .kormapp-logo-wrapper
   height: $header-height
-  width: 60px
+  width: $header-height
   position: relative
   float: left
 
@@ -38,11 +42,13 @@ p.kormapp-logo-text
 
 .kormapp-top-check
   position: relative
-  margin-top: 9px
+  margin-top: 10px
   margin-left: 22px
   float: left
   width: 43px
-  height: 50px
+  height: $header-height - 10px
+  @media screen and (min-width: $screen-md)
+    height: $header-height - 13px
 
 .kormapp-top-check-container
   height: $header-height
@@ -58,7 +64,7 @@ p.kormapp-logo-text
 .kormapp-check-image
   content: url("../kormapp/images/top-check.png")
   position: absolute
-  z-index: 5
+  z-index: $header-check-image-z-index
   height: 100%
 
 p.kormapp-top-check-text
@@ -67,6 +73,18 @@ p.kormapp-top-check-text
   font-family: $base-font-family
   font-size: $header-check-font-size
   line-height: 1.2
+  width: 150px
+  &,
+  .kormapp-amount
+    vertical-align: middle
+  @media screen and (min-width: $screen-md)
+    width: auto
+    font-size: $header-check-font-size*1.5
+    padding-top: 20px
+    .kormapp-amount
+      font-size: $base-font-size*1.2
+      display: inline-block
+      margin-top: -2px
 
 .kormapp-amount
   font-family: $base-font-family
