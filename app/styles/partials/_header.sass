@@ -1,87 +1,91 @@
-.kormapp-header
-  position: fixed
-  width: 100%
-  z-index: $header-z-index
-  height: $header-height + $border-height
-  margin-top: -($header-height + $border-height)
-  background: $header-background-color
-  color: #fff
-  border-bottom: $border-height solid $orange-border-color
-  @media screen and (min-width: $screen-md)
-    border-bottom-width: $border-height-desktop
+=kormapp-header
+  .kormapp-header
+    position: fixed
+    width: 100%
+    z-index: $header-z-index
+    height: $header-height + $border-height
+    margin-top: -($header-height + $border-height)
+    background: $header-background-color
+    color: #fff
+    border-bottom: $border-height solid $orange-border-color
+    @media screen and (min-width: $screen-md)
+      border-bottom-width: $border-height-desktop
+  .kormapp-web-desktop
+    .kormapp-header
+      position: absolute
 
-.kormapp-logo-wrapper
-  height: $header-height
-  width: $header-height
-  position: relative
-  float: left
+  .kormapp-logo-wrapper
+    height: $header-height
+    width: $header-height
+    position: relative
+    float: left
 
-  img.kormapp-logo-image
-    content: url("../kormapp/images/default_logo.png")
-    max-width: 100%
-    max-height: 100%
+    img.kormapp-logo-image
+      content: url("../kormapp/images/default_logo.png")
+      max-width: 100%
+      max-height: 100%
+      position: absolute
+      top: 0
+      right: 0
+      bottom: 0
+      left: 0
+      margin: auto
+
+  p.kormapp-logo-text
+    padding-top: 16px
+    margin-left: 60px
+    font-family: $base-font-family
+    font-size: $base-font-size
+    line-height: 0.95
+    letter-spacing: -1px
+
+  .kormapp-top-check
+    position: relative
+    margin-top: 10px
+    margin-left: 22px
+    float: left
+    width: 43px
+    height: $header-height - 10px
+    @media screen and (min-width: $screen-md)
+      height: $header-height - 13px
+
+  .kormapp-top-check-container
+    height: $header-height
+
+  .kormapp-check-background-image
     position: absolute
-    top: 0
-    right: 0
+    background: url("../kormapp/images/top-check-background.png") no-repeat bottom
+    background-size: contain
+    width: 100%
     bottom: 0
-    left: 0
-    margin: auto
+    height: 5px
 
-p.kormapp-logo-text
-  padding-top: 16px
-  margin-left: 60px
-  font-family: $base-font-family
-  font-size: $base-font-size
-  line-height: 0.95
-  letter-spacing: -1px
+  .kormapp-check-image
+    content: url("../kormapp/images/top-check.png")
+    position: absolute
+    z-index: $header-check-image-z-index
+    height: 100%
 
-.kormapp-top-check
-  position: relative
-  margin-top: 10px
-  margin-left: 22px
-  float: left
-  width: 43px
-  height: $header-height - 10px
-  @media screen and (min-width: $screen-md)
-    height: $header-height - 13px
-
-.kormapp-top-check-container
-  height: $header-height
-
-.kormapp-check-background-image
-  position: absolute
-  background: url("../kormapp/images/top-check-background.png") no-repeat bottom
-  background-size: contain
-  width: 100%
-  bottom: 0
-  height: 5px
-
-.kormapp-check-image
-  content: url("../kormapp/images/top-check.png")
-  position: absolute
-  z-index: $header-check-image-z-index
-  height: 100%
-
-p.kormapp-top-check-text
-  padding-top: 16px
-  margin-left: 5px
-  font-family: $base-font-family
-  font-size: $header-check-font-size
-  line-height: 1.2
-  width: 150px
-  &,
-  .kormapp-amount
-    vertical-align: middle
-  @media screen and (min-width: $screen-md)
-    width: auto
-    font-size: $header-check-font-size*1.5
-    padding-top: 20px
+  p.kormapp-top-check-text
+    padding-top: 16px
+    margin-left: 5px
+    font-family: $base-font-family
+    font-size: $header-check-font-size
+    line-height: 1.2
+    width: 150px
+    &,
     .kormapp-amount
-      font-size: $base-font-size*1.2
-      display: inline-block
-      margin-top: -2px
+      vertical-align: middle
+    @media screen and (min-width: $screen-md)
+      width: auto
+      font-size: $header-check-font-size*1.5
+      padding-top: 20px
+      .kormapp-amount
+        font-size: $base-font-size*1.2
+        display: inline-block
+        margin-top: -2px
 
-.kormapp-amount
-  font-family: $base-font-family
-  font-weight: bold
-  font-size: $base-font-size
+  .kormapp-amount
+    font-family: $base-font-family
+    font-weight: bold
+    font-size: $base-font-size

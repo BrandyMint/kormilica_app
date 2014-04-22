@@ -1,66 +1,67 @@
-.kormapp-categories-list
-  margin-bottom: 1em
-  .kormapp-wide-layout &
-    height: $app-container-height/2 - $header-height - $check-internal-bottom-padding
-    overflow: auto
+=kormapp-categories
+  .kormapp-categories-list
+    margin-bottom: 1em
+    .kormapp-wide-layout &
+      height: $app-container-height/2 - $header-height - $check-internal-bottom-padding
+      overflow: auto
 
-.kormapp-category-item
-  display: block
-  color: $check-font-color
-  text-decoration: none
-  padding: 0.3em 5px
-  margin-left: -5px
-  &:hover
-    color: $orange-color
-  &.kormapp-category-item-active
-    font-weight: bold
-    color: $orange-color
+  .kormapp-category-item
+    display: block
+    color: $check-font-color
+    text-decoration: none
+    padding: 0.3em 5px
+    margin-left: -5px
+    &:hover
+      color: $orange-color
+    &.kormapp-category-item-active
+      font-weight: bold
+      color: $orange-color
 
-.kormapp-categories-list-narrow
-  position: fixed
-  top: -300px
-  left: 0
-  width: 100%
-  pointer-events: none
-  z-index: $categories-list-narrow-z-index
-  -webkit-transition: -webkit-transform 0ms
+  .kormapp-categories-list-narrow
+    position: fixed
+    top: -300px
+    left: 0
+    width: 100%
+    pointer-events: none
+    z-index: $categories-list-narrow-z-index
+    -webkit-transition: -webkit-transform 0ms
 
-  &.kormapp-slided-down,
-  &.kormapp-slide-up
-    -webkit-transition: -webkit-transform .5s ease
+    &.kormapp-slided-down,
+    &.kormapp-slide-up
+      -webkit-transition: -webkit-transform .5s ease
 
-  .kormapp-list-container
-    position: relative
-    height: 300px
-    width: 300px
-    margin: 0 auto
-    background-color: #fff
-    padding: 15px 10px
-    pointer-events: all
-    z-index: $categories-list-container-z-index
+    .kormapp-list-container
+      position: relative
+      height: 300px
+      width: 300px
+      margin: 0 auto
+      background-color: #fff
+      padding: 15px 10px
+      pointer-events: all
+      z-index: $categories-list-container-z-index
 
-  .kormapp-pull-tag
-    position: relative
-    height: 50px
-    width: 50px
-    margin: 0 auto
-    pointer-events: all
-    z-index: $pull-tag-z-index
-    +arrow-bottom
-    +arrow-align-bottom
-    background: none
-  &.kormapp-slided-down
     .kormapp-pull-tag
-      +arrow-top
+      position: relative
+      height: 50px
+      width: 50px
+      margin: 0 auto
+      pointer-events: all
+      z-index: $pull-tag-z-index
+      +arrow-bottom
       +arrow-align-bottom
-      margin-top: -50px
       background: none
+    &.kormapp-slided-down
+      .kormapp-pull-tag
+        +arrow-top
+        +arrow-align-bottom
+        margin-top: -50px
+        background: none
 
-.kormapp-click-stopper
-  position: fixed
-  top: 0
-  left: 0
-  width: 100%
-  height: 100%
-  background: rgba(0, 0, 0, 0.1)
+  .kormapp-click-stopper
+    position: fixed
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: rgba(0, 0, 0, 0.1)
 

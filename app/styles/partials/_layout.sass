@@ -1,10 +1,4 @@
-.kormapp-body-ios
-  background-color: $header-background-color
-  margin: 0 auto
-  width: 100%
-  height: 100%
-
-%kormapp-application-container
+%kormapp-application-content
   position: fixed
   margin: 0 auto
   //background-color: $content-bg
@@ -12,26 +6,37 @@
   width: 100%
   height: 100%
   padding-top: $header-padding-top
-  .kormapp-body-ios7 &
-    padding-top: $header-padding-top + 20px
   &.kormapp-wide-layout
     height: $app-container-height
+  .kormapp-body-ios7 &
+    padding-top: $header-padding-top + 20px
 
-.kormapp-web-desktop,
-.kormapp-web-mobile,
-.kormapp-cordova-android,
-.kormapp-cordova-ios
-  @extend %kormapp-application-container
-  @extend %base-font
+=kormapp-layout
+  .kormapp-web-desktop,
+  .kormapp-web-mobile,
+  .kormapp-cordova-android,
+  .kormapp-cordova-ios
+    @extend %kormapp-application-content
+    @extend %base-font
 
-.kormapp-sidebar-column
-  @extend .kormapp-column
-  @extend .kormapp-one-fourth
-  @extend .kormapp-sidebar-container
-  padding-left: $grid-gutter-fixed/2
+  .kormapp-web-desktop
+    position: relative
+    margin-bottom: 0
 
-.kormapp-products-column
-  @extend .kormapp-column
-  @extend .kormapp-three-fourth
-  @extend .kormapp-products-container
+  .kormapp-body-ios
+    background-color: $header-background-color
+    margin: 0 auto
+    width: 100%
+    height: 100%
+
+  .kormapp-sidebar-column
+    @extend .kormapp-column
+    @extend .kormapp-one-fourth
+    @extend .kormapp-sidebar-container
+    padding-left: $grid-gutter-fixed/2
+
+  .kormapp-products-column
+    @extend .kormapp-column
+    @extend .kormapp-three-fourth
+    @extend .kormapp-products-container
 

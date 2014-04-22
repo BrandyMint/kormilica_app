@@ -1,52 +1,55 @@
-.kormapp-container
-  +container-fixed()
-  padding:
-    left: 0
-    right: 0
-  .kormapp-narrow-layout &
-    @media (min-width: $screen-sm-min)
-      width: $container-sm
-    @media (min-width: $screen-md-min)
-      width: $container-md
-    @media (min-width: $screen-lg-min)
-      width: $container-lg
-  .kormapp-wide-layout &
-    max-width: $product-screen-lg
+=kormapp-grid
+  .kormapp-container
+    +container-fixed()
+    padding:
+      left: 0
+      right: 0
+  .kormapp-narrow-layout
+    .kormapp-container
+      @media (min-width: $screen-sm-min)
+        width: $container-sm
+      @media (min-width: $screen-md-min)
+        width: $container-md
+      @media (min-width: $screen-lg-min)
+        width: $container-lg
+  .kormapp-wide-layout
+    .kormapp-container
+      max-width: $product-screen-lg
 
-.kormapp-column
-  float: left
-  //margin-left: 5%
-  margin-left: $grid-gutter/2
-  &:first-child
-    margin-left: 0
-  &.kormapp-full
-    width: 100%
-  &.kormapp-two-thirds
-    //width: 65%
-    width: 100%*2/3 - $grid-gutter/2
-  &.kormapp-half
-    //width: 47.5%
-    width: 100%/2 - $grid-gutter/2
-  &.kormapp-one-third
-    //width: 30%
-    width: 100%/3 - $grid-gutter/2
-  &.kormapp-one-fourth
-    width: 100%/4 - $grid-gutter/2
-  &.kormapp-three-fourth
-    width: 100%*0.75 - $grid-gutter/2
+  .kormapp-column
+    float: left
+    //margin-left: 5%
+    margin-left: $grid-gutter/2
+    &:first-child
+      margin-left: 0
+    &.kormapp-full
+      width: 100%
+    &.kormapp-two-thirds
+      //width: 65%
+      width: 100%*2/3 - $grid-gutter/2
+    &.kormapp-half
+      //width: 47.5%
+      width: 100%/2 - $grid-gutter/2
+    &.kormapp-one-third
+      //width: 30%
+      width: 100%/3 - $grid-gutter/2
+    &.kormapp-one-fourth
+      width: 100%/4 - $grid-gutter/2
+    &.kormapp-three-fourth
+      width: 100%*0.75 - $grid-gutter/2
 
-.kormapp-row
-  overflow: hidden
+  .kormapp-row
+    overflow: hidden
 
-.kormapp-row-clearfix
-  @extend .kormapp-row
-  @extend .clearfix
+  .kormapp-row-clearfix
+    @extend .kormapp-row
+    @extend .clearfix
 
 
-//.kormapp-web-desktop
+  //.kormapp-web-desktop
 
-//.kormapp-web-mobile
+  //.kormapp-web-mobile
 
-//.kormapp-cordova-android
+  //.kormapp-cordova-android
 
-//.kormapp-cordova-ios
+  //.kormapp-cordova-ios
