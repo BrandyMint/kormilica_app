@@ -4,9 +4,6 @@ define ['templates/wide_layout', 'helpers/application_helpers'],
       el: '@kormapp-container'
       template: template
       
-      ui:
-        layoutContainer: "@kormapp-layout-container"
-
       regions:
         headerRegion:  "@kormapp-header-region"
         sidebarRegion: '@kormapp-sidebar-region'
