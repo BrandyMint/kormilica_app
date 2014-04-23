@@ -25,7 +25,7 @@ define ['views/header/top_check', 'templates/header/header', 'helpers/applicatio
         logo: '@kormapp-logo'
 
       triggers:
-        'click @ui.logo': 'logo:clicked'
+        'tap @ui.logo': 'logo:clicked'
 
       initialize: ({ @app, @cart, @vendor }) ->
         @model = @vendor
@@ -37,4 +37,5 @@ define ['views/header/top_check', 'templates/header/header', 'helpers/applicatio
         @checkRegion.show @checkView
 
       onRender: ->
+        @$el.hammer()
         @stickit()
