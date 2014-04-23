@@ -15,7 +15,10 @@
   </head>
   <script>console.log("header start", Date.now());</script>
   <body>
-    <div class="kormapp-web-mobile" role="kormapp-container"></div>
+    <!-- TODO .kormapp-application-container should have role="kormapp-container" -->
+    <div class="kormapp-application-container">
+      <div class="kormapp-web-mobile" role="kormapp-container"></div>
+    </div>
 
     <script>console.log("require begin", Date.now());</script>
     <!-- build:js scripts/main.js -->

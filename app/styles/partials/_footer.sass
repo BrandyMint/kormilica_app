@@ -1,34 +1,35 @@
-.kormapp-footer
-  position: relative
-  // bottom: 0
-  width: 100%
-  height: $footer-height
-  margin-top: -$footer-height
-  z-index: $footer-z-index
-  font-family: $base-font-family
-  color: $footer-font-color
-  text-align: center
+=kormapp-footer
+  .kormapp-footer
+    position: absolute
+    bottom: 0
+    width: 100%
+    height: $footer-height
+    margin-top: -$footer-height
+    z-index: $footer-z-index
+    font-family: $base-font-family
+    color: $footer-font-color
+    text-align: center
 
-.kormapp-free-delivery
-  color: $footer-free-delivery-font-color
+  .kormapp-free-delivery
+    color: $footer-free-delivery-font-color
 
-.kormapp-footer-content
-  height: $footer-height 2px
-  background-color: $footer-checkout-button-background-color
-  border-top: 2px solid $grey-blue-border-color
+  .kormapp-footer-content
+    height: $footer-height 2px
+    background-color: $footer-checkout-button-background-color
+    border-top: 2px solid $grey-blue-border-color
 
-a.kormapp-checkout
-  padding: 20px
-  display: inline-block
-  width: 100%
-  &, &:hover
-    color: $footer-button-font-color
-  font-size: $footer-checkout-button-font-size
-  text-decoration: none
+  a.kormapp-checkout
+    padding: 20px
+    display: inline-block
+    width: 100%
+    &, &:hover
+      color: $footer-button-font-color
+    font-size: $footer-checkout-button-font-size
+    text-decoration: none
 
-.kormapp-delivery-discount
-  height: $footer-height
-  border-top: 2px solid darken($footer-background-color,5)
-  background: $footer-background-color
-  padding-top: 10px
-  padding-bottom: 15px
+  .kormapp-delivery-discount
+    height: $footer-height
+    border-top: 2px solid darken($footer-background-color,5)
+    background: $footer-background-color
+    padding-top: 10px
+    padding-bottom: 15px

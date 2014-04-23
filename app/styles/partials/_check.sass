@@ -1,275 +1,285 @@
 $sidebar-check-height: ($app-container-height - $header-height)/ 2
 
-.kormapp-separator 
-  width: 100%
-  vertical-align: 30%
+=kormapp-check
+  .kormapp-separator 
+    width: 100%
+    vertical-align: 30%
 
-.separator-placeholder
-  line-height: 1ex
-  display: inline-block
-  width: 100%
-  border-bottom: 2px dotted #666
+  .separator-placeholder
+    line-height: 1ex
+    display: inline-block
+    width: 100%
+    border-bottom: 2px dotted #666
 
-.kormapp-sidebar-check
-  position: absolute
-  width: inherit
-  bottom: 0
-  height: $sidebar-check-height + $check-bottom-deck-height
-  .kormapp-empty-check
-    margin-bottom: -60px
-  @media screen and (min-width: $screen-sm)
-    max-width: $product-screen-lg * ((100%/4 - $grid-gutter/2)/100%)
-
-.kormapp-check-external
-  @extend .kormapp-center
-  position: fixed
-  width: 100%
-  height: 100%
-  z-index: $check-external-z-index
-  top: 0
-  background-color: $check-background-color
-  .kormapp-sidebar-check &
-    position: relative
-
-.kormapp-check-internal
-  position: relative
-  height: 100%
-  bottom: $check-internal-bottom-padding
-  z-index: $check-internal-z-index
-  .kormapp-sidebar-check &
-    bottom: 0
-  .kormapp-narrow-layout &
+  .kormapp-sidebar-check
     position: absolute
-    height: auto
+    width: inherit
+    bottom: 0
+    height: $sidebar-check-height + $check-bottom-deck-height
+    .kormapp-empty-check
+      margin-bottom: -60px
+    @media screen and (min-width: $screen-sm)
+      max-width: $product-screen-lg * ((100%/4 - $grid-gutter/2)/100%)
+
+  .kormapp-check-external
+    @extend .kormapp-center
+    position: fixed
+    width: 100%
+    height: 100%
+    z-index: $check-external-z-index
     top: 0
+    background-color: $check-background-color
+  .kormapp-sidebar-check
+    .kormapp-check-external
+      position: relative
 
-.kormapp-check-content
-  position: relative
-  height: 100%
-  overflow: hidden
-  margin: 0 auto
-  font-family: $base-font-family
-  color: $check-font-color
-  z-index: $check-content-z-index
+  .kormapp-check-internal
+    position: relative
+    height: 100%
+    bottom: $check-internal-bottom-padding
+    z-index: $check-internal-z-index
+  .kormapp-sidebar-check
+    .kormapp-check-internal
+      bottom: 0
+  .kormapp-narrow-layout
+    .kormapp-check-internal
+      position: absolute
+      height: auto
+      top: 0
+
+  .kormapp-check-content
+    position: relative
+    height: 100%
+    overflow: hidden
+    margin: 0 auto
+    font-family: $base-font-family
+    color: $check-font-color
+    z-index: $check-content-z-index
 
 
-.kormapp-check-background-container
-  @extend .kormapp-container
-  background:
-    color: $check-background-color
-    image: url('../kormapp/images/paper-texture.jpg')
-    size: contain
-  position: relative
-  height: 100%
-  .kormapp-body-ios7 &
-    margin-top: 10px
-  .kormapp-sidebar-check &
-    +kormapp-check-background-container-margin
-  @media screen and (max-width: $screen-sm)
-    +kormapp-check-background-container-margin
-
-.kormapp-check-header
-  position: relative
-  &:before
-    content: " "
-    display: block
-    height: 26px
+  .kormapp-check-background-container
+    @extend .kormapp-container
     background:
       color: $check-background-color
-      image: url('../kormapp/images/check-battlement-center.png')
-      repeat: repeat-x
-      size: 13px auto
-      position:
-        x: -6px
-        y: 100%
-      //
-        size: 100/22*1% auto
-        position:
-          x: -100/22/2*1%
-          y: 100%
-
-a.kormapp-check-back-button-link
-  @extend .pull-left
-  @extend .kormapp-reflection
-  padding: 5px 10px
-  margin-right: -30px
-  .kormapp-sidebar-check &
-    display: none
-
-
-span.kormapp-back-button
-  background: url('../kormapp/images/back-button.png')
-  background-size: contain
-  width: 12px
-  height: 20px
-  display: inline-block
-
-h2.kormapp-check-heading
-  font-size: $base-heading-size
-  padding: 5px 0 27px
-
-p.kormapp-cartitem-name
-  text-align: left
-  padding: 3px 000
-
-.kormapp-unscrollable-check
-  position: absolute
-  width: 100%
-  bottom: 0
-  .kormapp-sidebar-check &
+      image: url('../kormapp/images/paper-texture.jpg')
+      size: contain
     position: relative
+    height: 100%
+    @media screen and (max-width: $screen-sm)
+      +kormapp-check-background-container-margin
+  .kormapp-body-ios7
+    .kormapp-check-background-container
+      margin-top: 10px
+  .kormapp-sidebar-check
+    .kormapp-check-background-container
+      +kormapp-check-background-container-margin
 
-.kormapp-scrollable-check
-  overflow: auto
-  height: $sidebar-check-height - 179px
+  .kormapp-check-header
+    position: relative
+    &:before
+      content: " "
+      display: block
+      height: 26px
+      background:
+        color: $check-background-color
+        image: url('../kormapp/images/check-battlement-center.png')
+        repeat: repeat-x
+        size: 13px auto
+        position:
+          x: -6px
+          y: 100%
+        //
+          size: 100/22*1% auto
+          position:
+            x: -100/22/2*1%
+            y: 100%
+
+  a.kormapp-check-back-button-link
+    @extend .pull-left
+    @extend .kormapp-reflection
+    padding: 5px 10px
+    margin-right: -30px
+  .kormapp-sidebar-check
+    a.kormapp-check-back-button-link
+      display: none
 
 
+  span.kormapp-back-button
+    background: url('../kormapp/images/back-button.png')
+    background-size: contain
+    width: 12px
+    height: 20px
+    display: inline-block
 
-.kormapp-cart-items
-  padding-left: 35px
-  list-style: decimal
+  h2.kormapp-check-heading
+    font-size: $base-heading-size
+    padding: 5px 0 27px
 
-.kormapp-product-amount
-  padding-right: 5px
-  white-space: nowrap
+  p.kormapp-cartitem-name
+    text-align: left
+    padding: 3px 000
 
-.kormapp-product-price
-  padding-left: 5px
-  padding-right: 14px
-  white-space: nowrap
-
-.kormapp-all-product-sum
-  text-align: left
-  font-size: $check-sum-font-size
-  font-weight: bold
-  padding: 12px 12px 28px
-
-.kormapp-delivery-price
-  text-align: left
-  font-size: $check-delivery-price-font-size
-  font-weight: bold
-  padding: 12px 12px 0
-
-.kormapp-all-sum-right, .kormapp-delivery-sum-right
-  float: right
-
-form.order-data
-  padding: 0 15px
-  text-align: left
-
-  input
-    margin: 5px 0
+  .kormapp-unscrollable-check
+    position: absolute
     width: 100%
-    background-color: $input-background-color
-    border: none
-    font-family: $base-font-family
-    font-size: base-font-size
-    color: $check-form-font-color
+    bottom: 0
+  .kormapp-sidebar-check
+    .kormapp-unscrollable-check
+      position: relative
+
+  .kormapp-scrollable-check
+    overflow: auto
+    height: $sidebar-check-height - 179px
+
+
+
+  .kormapp-cart-items
+    padding-left: 35px
+    list-style: decimal
+
+  .kormapp-product-amount
+    padding-right: 5px
+    white-space: nowrap
+
+  .kormapp-product-price
     padding-left: 5px
+    padding-right: 14px
+    white-space: nowrap
 
-.kormapp-form-comment
-  padding: 10px 0 15px
-  color: $check-form-comment-font-color
-  font-size: $check-form-comment-font-size
-  text-align: center
+  .kormapp-all-product-sum
+    text-align: left
+    font-size: $check-sum-font-size
+    font-weight: bold
+    padding: 12px 12px 28px
 
-.kormapp-check-bottom-container
-  position: absolute
-  bottom: 0
-  width: 100%
-  .kormapp-sidebar-check &
-    margin-bottom: - $check-internal-bottom-padding
-  .kormapp-sidebar-check .kormapp-empty-check &
-    margin-bottom: - $check-internal-bottom-padding + 60px
+  .kormapp-delivery-price
+    text-align: left
+    font-size: $check-delivery-price-font-size
+    font-weight: bold
+    padding: 12px 12px 0
 
-.kormapp-check-bottom
-  padding: 18px 8px 14px
-  background-color: $check-bottom-background-color
-  height: $check-bottom-deck-height
+  .kormapp-all-sum-right, .kormapp-delivery-sum-right
+    float: right
 
-.kormapp-check-short-left
-  height: 8px
-  width: 4px
-  float: left
-  background: url('../kormapp/images/footer-check-short-left.png') no-repeat
+  form.order-data
+    padding: 0 15px
+    text-align: left
 
-.kormapp-check-short-right
-  height: 8px
-  width: 4px
-  float: right
-  background: url('../kormapp/images/footer-check-short-right.png') no-repeat
+    input
+      margin: 5px 0
+      width: 100%
+      background-color: $input-background-color
+      border: none
+      font-family: $base-font-family
+      font-size: base-font-size
+      color: $check-form-font-color
+      padding-left: 5px
 
-.kormapp-check-short-center
-  height: 8px
-  margin: 0 auto
-  background: url('../kormapp/images/footer-check-short-center.png') repeat-x
+  .kormapp-form-comment
+    padding: 10px 0 15px
+    color: $check-form-comment-font-color
+    font-size: $check-form-comment-font-size
+    text-align: center
 
-.kormapp-check-button
-  font-family: $base-font-family
-  height: 60px
+  .kormapp-check-bottom-container
+    position: absolute
+    bottom: 0
+    width: 100%
+  .kormapp-sidebar-check
+    .kormapp-check-bottom-container
+      margin-bottom: - $check-internal-bottom-padding
+    .kormapp-empty-check
+      .kormapp-check-bottom-container
+        margin-bottom: - $check-internal-bottom-padding + 60px
 
-a.kormapp-check-button-link
-  width: 100%
-  display: inline-block
-  padding: 20px
-  &, &:hover
-    color: $footer-button-font-color
-  font-size: $footer-delivery-button-font-size
-  text-decoration: none
+  .kormapp-check-bottom
+    padding: 18px 8px 14px
+    background-color: $check-bottom-background-color
+    height: $check-bottom-deck-height
 
-.kormapp-delivery-button
-  padding-left: 40px
-  background: url('../kormapp/images/delivery-icon.png') no-repeat
-  background-position: left center
-  white-space: nowrap
+  .kormapp-check-short-left
+    height: 8px
+    width: 4px
+    float: left
+    background: url('../kormapp/images/footer-check-short-left.png') no-repeat
 
-.kormapp-check-delivery-button
-  @extend .kormapp-full
-  @extend .kormapp-check-button
-  @extend .kormapp-delivery
-  @extend .kormapp-reflection
+  .kormapp-check-short-right
+    height: 8px
+    width: 4px
+    float: right
+    background: url('../kormapp/images/footer-check-short-right.png') no-repeat
 
-.kormapp-delivery
-  background-color: $footer-delivery-button-background-color
-  border-top: 2px solid $orange-border-color
+  .kormapp-check-short-center
+    height: 8px
+    margin: 0 auto
+    background: url('../kormapp/images/footer-check-short-center.png') repeat-x
 
-.kormapp-delivery-submit-button
-  @extend .kormapp-delivery
-  @extend .kormapp-delivery-button
-  @extend .kormapp-check-button
-  @extend a.kormapp-check-button-link
+  .kormapp-check-button
+    font-family: $base-font-family
+    height: 60px
 
-.kormapp-delivery-inactive
-  background-color: $footer-delivery-button-inactive-background-color
-  border-top: 2px solid $darkgrey-border-color
+  a.kormapp-check-button-link
+    width: 100%
+    display: inline-block
+    padding: 20px
+    &, &:hover
+      color: $footer-button-font-color
+    font-size: $footer-delivery-button-font-size
+    text-decoration: none
 
-.kormapp-phone-input-group
-  position: relative
-  margin-left: 24px
-.kormapp-phone-input-prefix
-  color: $check-font-color
-  position: absolute
-  left: 0
-  margin-left: -26px
-  padding-top: 8px
+  .kormapp-delivery-button
+    padding-left: 40px
+    background: url('../kormapp/images/delivery-icon.png') no-repeat
+    background-position: left center
+    white-space: nowrap
+
+  .kormapp-check-delivery-button
+    @extend .kormapp-full
+    @extend .kormapp-check-button
+    @extend .kormapp-delivery
+    @extend .kormapp-reflection
+
+  .kormapp-delivery
+    background-color: $footer-delivery-button-background-color
+    border-top: 2px solid $orange-border-color
+
+  .kormapp-delivery-submit-button
+    @extend .kormapp-delivery
+    @extend .kormapp-delivery-button
+    @extend .kormapp-check-button
+    @extend a.kormapp-check-button-link
+
+  .kormapp-delivery-inactive
+    background-color: $footer-delivery-button-inactive-background-color
+    border-top: 2px solid $darkgrey-border-color
+
+  .kormapp-phone-input-group
+    position: relative
+    margin-left: 24px
+  .kormapp-phone-input-prefix
+    color: $check-font-color
+    position: absolute
+    left: 0
+    margin-left: -26px
+    padding-top: 8px
 
 
-.kormapp-sidebar-check
-  margin:
-    left: - $check-container-margin
-    right: - $check-container-margin
-  .kormapp-container
-    width: auto
+  .kormapp-sidebar-check
+    margin:
+      left: - $check-container-margin
+      right: - $check-container-margin
+    .kormapp-container
+      width: auto
 
-.kormapp-check-info
-  margin:
-    top: 1em
-  font-size: $base-font-size*0.7
+  .kormapp-check-info
+    margin:
+      top: 1em
+    font-size: $base-font-size*0.7
 
-.kormapp-check-offer,
-.kormapp-check-info-free-delivery
-  margin-bottom: 5px
-  color: $check-font-color
+  .kormapp-check-offer,
+  .kormapp-check-info-free-delivery
+    margin-bottom: 5px
+    color: $check-font-color
 
-.kormapp-check-free-delivery
-  color: $orange-color
+  .kormapp-check-free-delivery
+    color: $orange-color

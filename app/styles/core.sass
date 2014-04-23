@@ -4,6 +4,9 @@
 @import "partials/mixins"
 @import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/variables"
 @import "bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/mixins"
+//@import "compass/reset"
+@import "compass/reset/utilities"
+@import "partials/kormapp-reset"
 @import "partials/fonts"
 @import "partials/respond"
 
@@ -21,5 +24,34 @@
 @import "partials/check"
 @import "partials/modal"
 @import "partials/reflections"
-@import "partials/categories"
 @import 'partials/pace'
+
+%kormapp-application-widget
+  +kormapp-reset
+  +kormapp-grid
+  +kormapp-utils
+  +kormapp-layout
+  +kormapp-header
+  +kormapp-content
+  +kormapp-product
+  +kormapp-categories
+  +kormapp-footer
+  +kormapp-check
+  +kormapp-modal
+  +kormapp-pace
+
+.kormapp-application-container
+  @extend %kormapp-application-widget
+
+  .kormapp-web-desktop,
+  .kormapp-web-mobile,
+  .kormapp-cordova-android,
+  .kormapp-cordova-ios
+    @extend %kormapp-application-content
+    @extend %base-font
+
+  .kormapp-web-desktop
+    position: relative
+    margin-bottom: 0
+
+
