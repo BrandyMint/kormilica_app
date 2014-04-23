@@ -9,13 +9,26 @@
     display: block
     color: $check-font-color
     text-decoration: none
-    padding: 0.3em 5px
-    margin-left: -5px
-    &:hover
+    padding: 10px
+    //&:hover
       color: $orange-color
+    &:before
+      content: ""
+      display: inline-block
+      width: 25px
+      height: 25px
+      margin:
+        bottom: -5px
+        right: 10px
+      background:
+        image: url('../kormapp/images/check-empty.svg')
+        repeat: no-repeat
     &.kormapp-category-item-active
-      font-weight: bold
-      color: $orange-color
+      //font-weight: bold
+        color: $orange-color
+      &:before
+        background:
+          image: url('../kormapp/images/check.svg')
 
   .kormapp-categories-list-narrow
     position: fixed
@@ -43,19 +56,18 @@
     .kormapp-pull-tag
       position: relative
       height: 50px
-      width: 50px
+      width: 60px
       margin: 0 auto
       pointer-events: all
       z-index: $pull-tag-z-index
-      +arrow-bottom
-      +arrow-align-bottom
-      background: none
+      background:
+        image: url('../kormapp/images/pull-tag.svg')
+        repeat: no-repeat
+        position: center top
     &.kormapp-slided-down
       .kormapp-pull-tag
-        +arrow-top
-        +arrow-align-bottom
         margin-top: -50px
-        background: none
+        +rotate(180deg)
 
   .kormapp-click-stopper
     position: fixed
