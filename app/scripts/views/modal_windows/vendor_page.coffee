@@ -44,7 +44,7 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
       @updateManager.perform(true) if @updateManager
 
     _setScrollableAreaHeight: ->
-      scrollableHeight = $(window).height()/2
+      scrollableHeight = @ui.closeButton.position().top - @ui.vendorDescription.position().top
       @ui.vendorDescription.css 'max-height', scrollableHeight
 
     onShow: ->

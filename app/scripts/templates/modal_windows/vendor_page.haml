@@ -1,11 +1,13 @@
 .kormapp-modal-wrapper
   .kormapp-modal-window.kormapp-modal-without-alignment
     .kormapp-column.kormapp-full
-      %h2.kormapp-vendor-title{role: 'kormapp-vendor-title'}
-      .kormapp-vendor-description{role: 'kormapp-vendor-description'}
+      .kormapp-vendor-page-content
+        %h2.kormapp-vendor-title{role: 'kormapp-vendor-title'}
+        .kormapp-vendor-description{role: 'kormapp-vendor-description'}
 
-      %a.kormapp-modal-button.kormapp-reflection{:href => '#', role: 'kormapp-modal-button'} 
-        %span.kormapp-modal-button-text OK
+      .kormapp-vendor-page-button-block{role: 'kormapp-modal-button'}
+        %a.kormapp-modal-button.kormapp-reflection{:href => '#'}
+          %span.kormapp-modal-button-text OK
 
     .kormapp-vendor-footer
       %span.kormapp-vendor-city{role: 'kormapp-vendor-city'}

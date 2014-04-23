@@ -34,16 +34,17 @@
     text-align: center
     @media screen and (min-width: $screen-sm)
       width: 500px
-
-  .kormapp-modal-without-alignment
-    display: block
-    top: 70px
-    bottom: 70px
-
-    .kormapp-modal-button
+    &.kormapp-modal-without-alignment
       display: block
-      margin: 20px auto auto
-      text-align: center
+      position: absolute
+      top: 0
+      bottom: 0
+      left: 5%
+      right: 5%
+      .kormapp-modal-button
+        display: block
+        margin: 20px auto auto
+        text-align: center
 
   .kormapp-modal-window-white
     background-color: $modal-background-color
@@ -88,6 +89,15 @@
     height: 27px
     border: 1px solid $modal-quantity-selector-buttons-color
     text-decoration: none
+
+  .kormapp-vendor-page-content
+    margin-top: $header-height
+
+  .kormapp-vendor-page-button-block
+    position: absolute
+    bottom: $footer-height + 20px
+    width: 100%
+    text-align: center
 
   .kormapp-vendor-title, .kormapp-vendor-description
     color: $modal-vendorpage-font-color
