@@ -26,8 +26,11 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
 
     events:
       'click @ui.updateButton': '_update'
-      'click': 'close'
+      'tap': '_close'
 
+    _close: =>
+      #to prevent through clicks
+      setTimeout((=> @close()), 500)
 
     serializeData: ->
       @lastUpdateAt =  @user.get('lastUpdateAt')
@@ -51,4 +54,5 @@ define ['templates/modal_windows/vendor_page', 'helpers/application_helpers'],
       @_setScrollableAreaHeight()
 
     onRender: ->
+      @$el.hammer()
       @stickit()
