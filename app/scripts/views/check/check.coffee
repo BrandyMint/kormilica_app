@@ -66,12 +66,14 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
           update: ($el, val) =>
             if val.cents > 0
               @_showSummary()
+              @$el.removeClass @emptyCheckClass
               result =
                 currency: val.currency
                 cents:    val.cents + @vendor.get('delivery_price').cents
               $el.html Helpers.money result
             else
               @_hideSummary()
+              @$el.addClass @emptyCheckClass
 
       @_manageContinueButton()
 
@@ -86,8 +88,9 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
     _showSummary: ->
       @ui.bottomInfo.show()
 
-    _hideSummary: =>
+    _hideSummary: ->
       @ui.bottomInfo.hide()
+
 
     continueOrder: (e) ->
       @modal.show new CheckContactsView app: @app, cart: @cart, user: @user, vendor: @vendor, modal: @modal

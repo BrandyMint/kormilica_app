@@ -16,8 +16,6 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
     width: inherit
     bottom: 0
     height: $sidebar-check-height + $check-bottom-deck-height
-    .kormapp-empty-check
-      margin-bottom: -60px
     @media screen and (min-width: $screen-sm)
       max-width: $product-screen-lg * ((100%/4 - $grid-gutter/2)/100%)
 
@@ -190,7 +188,7 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
       margin-bottom: - $check-internal-bottom-padding
     .kormapp-empty-check
       .kormapp-check-bottom-container
-        margin-bottom: - $check-internal-bottom-padding + 60px
+        margin-bottom: - $check-internal-bottom-padding + 16px
 
   .kormapp-check-bottom
     padding: 18px 8px 14px
