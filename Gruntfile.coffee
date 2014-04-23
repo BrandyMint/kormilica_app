@@ -284,6 +284,10 @@ module.exports = (grunt) ->
           "<%= yeoman.dist %>/styles/core.css": [
             ".tmp/styles/core.css"
           ]
+          "<%= yeoman.dist %>/styles/sample-content.css": [
+            ".tmp/styles/sample-content.css"
+          ]
+
 
     htmlmin:
       dist:
@@ -320,6 +324,7 @@ module.exports = (grunt) ->
             "*.{ico,txt}"
             ".htaccess"
             "data/images/*.*"
+            "images/*.*"
             "bower_components/cordova-shim/{,*/}*.js"
             "bower_components/pace/{,*/}*.*"
             "kormapp/images/{,*/}*.{webp,gif,png,svg,jpg}"

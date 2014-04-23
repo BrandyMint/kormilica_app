@@ -9,26 +9,33 @@
     display: block
     color: $check-font-color
     text-decoration: none
-    padding: 10px
-    //&:hover
-      color: $orange-color
-    &:before
-      content: ""
-      display: inline-block
-      width: 25px
-      height: 25px
-      margin:
-        bottom: -5px
-        right: 10px
-      background:
-        image: url('../kormapp/images/check-empty.svg')
-        repeat: no-repeat
-    &.kormapp-category-item-active
-      //font-weight: bold
-        color: $orange-color
+  .kormapp-narrow-layout
+    .kormapp-category-item
+      padding: 10px
       &:before
+        content: ""
+        display: inline-block
+        width: 25px
+        height: 25px
+        margin:
+          bottom: -5px
+          right: 10px
         background:
-          image: url('../kormapp/images/check.svg')
+          image: url('../kormapp/images/check-empty.svg')
+          repeat: no-repeat
+      &.kormapp-category-item-active
+        &:before
+          background:
+            image: url('../kormapp/images/check.svg')
+  .kormapp-wide-layout
+    .kormapp-category-item
+      padding: 5px 10px
+      &:hover
+        color: $orange-color
+      &.kormapp-category-item-active
+        font-weight: bold
+        color: $orange-color
+
 
   .kormapp-categories-list-narrow
     position: fixed
