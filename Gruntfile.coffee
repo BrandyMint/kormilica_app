@@ -71,7 +71,7 @@ module.exports = (grunt) ->
           "<%= yeoman.app %>/*.html"
           "{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css"
           "{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js"
-          "<%= yeoman.app %>/kormapp/images/{,*/}*.{png,jpg,jpeg,gif,webp}"
+          "<%= yeoman.app %>/kormapp/images/{,*/}*.{png,svg,jpg,jpeg,gif,webp}"
           "<%= yeoman.app %>/scripts/templates/{,*/}*.{ejs,mustache,hbs,haml}"
           "test/spec/**/*.js"
         ]
@@ -270,7 +270,7 @@ module.exports = (grunt) ->
         files: [
           expand: true
           cwd: "<%= yeoman.app %>/kormapp/images"
-          src: "{,*/}*.{png,jpg,jpeg}"
+          src: "{,*/}*.{png,svg,jpg,jpeg}"
           dest: "<%= yeoman.dist %>/kormapp/images"
         ]
 
@@ -322,7 +322,7 @@ module.exports = (grunt) ->
             "data/images/*.*"
             "bower_components/cordova-shim/{,*/}*.js"
             "bower_components/pace/{,*/}*.*"
-            "kormapp/images/{,*/}*.{webp,gif,png,jpg}"
+            "kormapp/images/{,*/}*.{webp,gif,png,svg,jpg}"
             "styles/fonts/{,*/}*.*"
             "{,*/}*.js"
           ]
