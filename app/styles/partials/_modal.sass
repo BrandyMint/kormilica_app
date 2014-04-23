@@ -1,119 +1,120 @@
-.kormapp-vendor-footer
-  position: absolute
-  bottom: 1.5em
-  left: 0
-  right: 0
-  color: $modal-vendorpage-font-color
-  font-size: 12px
-  margin: auto
-  opacity: 0.5
+=kormapp-modal
+  .kormapp-vendor-footer
+    position: absolute
+    bottom: 1.5em
+    left: 0
+    right: 0
+    color: $modal-vendorpage-font-color
+    font-size: 12px
+    margin: auto
+    opacity: 0.5
 
-.kormapp-vendor-city
-  display: block
-  margin-bottom: 10px
-
-.kormapp-modal-wrapper
-  top: 0
-  left: 0
-  position: fixed
-  height: 100%
-  width: 100%
-  z-index: $modal-z-index
-  font-family: $base-font-family
-  $modalWindowSelector: ".kormapp-modal-window"
-  +scut-vcenter-ib($modalWindowSelector)
-  background-color: rgba($modal-wrapper-background-color, 0.8)
-  text-align: center
-
-.kormapp-modal-window
-  width: 90%
-  margin: auto
-  top: 0
-  bottom: 0
-  text-align: center
-  @media screen and (min-width: $screen-sm)
-    width: 500px
-
-.kormapp-modal-without-alignment
-  display: block
-  top: 70px
-  bottom: 70px
-
-  .kormapp-modal-button
+  .kormapp-vendor-city
     display: block
-    margin: 20px auto auto
+    margin-bottom: 10px
+
+  .kormapp-modal-wrapper
+    top: 0
+    left: 0
+    position: fixed
+    height: 100%
+    width: 100%
+    z-index: $modal-z-index
+    font-family: $base-font-family
+    $modalWindowSelector: ".kormapp-modal-window"
+    +scut-vcenter-ib($modalWindowSelector)
+    background-color: rgba($modal-wrapper-background-color, 0.8)
     text-align: center
 
-.kormapp-modal-window-white
-  background-color: $modal-background-color
+  .kormapp-modal-window
+    width: 90%
+    margin: auto
+    top: 0
+    bottom: 0
+    text-align: center
+    @media screen and (min-width: $screen-sm)
+      width: 500px
 
-.kormapp-modal-title
-  padding: 15px 0 8px
-  color: #f2795a
+  .kormapp-modal-without-alignment
+    display: block
+    top: 70px
+    bottom: 70px
 
-.kormapp-quantity-title
-  @extend .kormapp-modal-title
+    .kormapp-modal-button
+      display: block
+      margin: 20px auto auto
+      text-align: center
 
-.kormapp-quantity-table
-  text-align: center
-  margin: 0 auto
+  .kormapp-modal-window-white
+    background-color: $modal-background-color
 
-.kormapp-price
-  color: $price-font-color
-  font-family: $base-font-family
-  font-size: $modal-quantity-selector-price-rouble-font-size
+  .kormapp-modal-title
+    padding: 15px 0 8px
+    color: #f2795a
 
-  .kormapp-price-font
-    font-size: $modal-quantity-selector-price-font-size
+  .kormapp-quantity-title
+    @extend .kormapp-modal-title
 
-.kormapp-multiplier
-  color: $modal-quantity-selector-buttons-color
-  font-size: 28px
-  margin: 0 8px
+  .kormapp-quantity-table
+    text-align: center
+    margin: 0 auto
 
-.kormapp-multiplier-font
-  font-size: $modal-quantity-selector-multiplier-font-size
+  .kormapp-price
+    color: $price-font-color
+    font-family: $base-font-family
+    font-size: $modal-quantity-selector-price-rouble-font-size
 
-.kormapp-quantity-selector
-  margin: 10px auto 10px
-  color: $modal-quantity-selector-buttons-color
+    .kormapp-price-font
+      font-size: $modal-quantity-selector-price-font-size
 
-.kormapp-quantity-selector-button
-  color: $modal-quantity-selector-buttons-color
-  background-color: $modal-quantity-selector-buttons-background-color
-  font-size: $modal-quantity-selector-buttons-font-size
-  display: inline-block
-  width: 27px
-  height: 27px
-  border: 1px solid $modal-quantity-selector-buttons-color
-  text-decoration: none
+  .kormapp-multiplier
+    color: $modal-quantity-selector-buttons-color
+    font-size: 28px
+    margin: 0 8px
 
-.kormapp-vendor-title, .kormapp-vendor-description
-  color: $modal-vendorpage-font-color
-  margin-bottom: 20px
+  .kormapp-multiplier-font
+    font-size: $modal-quantity-selector-multiplier-font-size
 
-.kormapp-vendor-title
-  font-weight: normal
-  font-size: $modal-vendorpage-title-font-size
+  .kormapp-quantity-selector
+    margin: 10px auto 10px
+    color: $modal-quantity-selector-buttons-color
 
-.kormapp-vendor-description
-  overflow: auto
-  font-size: $modal-vendorpage-description-font-size
-  text-align: left
-  line-height: 1.4
+  .kormapp-quantity-selector-button
+    color: $modal-quantity-selector-buttons-color
+    background-color: $modal-quantity-selector-buttons-background-color
+    font-size: $modal-quantity-selector-buttons-font-size
+    display: inline-block
+    width: 27px
+    height: 27px
+    border: 1px solid $modal-quantity-selector-buttons-color
+    text-decoration: none
 
-a.kormapp-modal-button
-  display: inline-block
-  text-decoration: none
-  font-family: $base-font-family
-  font-size: $button-font-size
-  padding: 5px
-  margin-bottom: 15px
-  width: 110px
-  text-align: center
-  &, &:hover
-    color: $button-font-color
-  background-color: $button-orange-color
+  .kormapp-vendor-title, .kormapp-vendor-description
+    color: $modal-vendorpage-font-color
+    margin-bottom: 20px
 
-span.kormapp-modal-button-text
-  line-height: 1.7
+  .kormapp-vendor-title
+    font-weight: normal
+    font-size: $modal-vendorpage-title-font-size
+
+  .kormapp-vendor-description
+    overflow: auto
+    font-size: $modal-vendorpage-description-font-size
+    text-align: left
+    line-height: 1.4
+
+  a.kormapp-modal-button
+    display: inline-block
+    text-decoration: none
+    font-family: $base-font-family
+    font-size: $button-font-size
+    padding: 5px
+    margin-bottom: 15px
+    width: 110px
+    text-align: center
+    &, &:hover
+      color: $button-font-color
+    background-color: $button-orange-color
+
+  span.kormapp-modal-button-text
+    line-height: 1.7

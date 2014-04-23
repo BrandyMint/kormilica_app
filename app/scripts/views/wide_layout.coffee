@@ -2,9 +2,8 @@ define ['templates/wide_layout', 'helpers/application_helpers'],
 (template, Helpers) ->
     class WideLayout extends Marionette.Layout
       el: '@kormapp-container'
-      className: 'kormapp-wide-layout'
       template: template
-
+      
       regions:
         headerRegion:  "@kormapp-header-region"
         sidebarRegion: '@kormapp-sidebar-region'
@@ -16,6 +15,7 @@ define ['templates/wide_layout', 'helpers/application_helpers'],
         checkInfoRegion: "@kormapp-check-info-region"
 
       onRender: ->
-        @$el.addClass @className
         @modalRegion.on 'close', (e) ->
           $('body').scrollTop(0)
+
+
