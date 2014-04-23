@@ -1,5 +1,6 @@
 #!/bin/sh
 
+rm -fr dist
 mkdir dist
 git branch -D build
 git checkout -b build
