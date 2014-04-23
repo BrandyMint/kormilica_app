@@ -61,11 +61,9 @@ CurrentCategoryController
       products:   App.products
 
     App.mainLayout = if App.isWide
-      new WideLayout
-        layoutClass: "kormapp-application-container"
+      new WideLayout()
     else
-      new NarrowLayout
-        layoutClass: "kormapp-application-container"
+      new NarrowLayout()
 
     App.mainLayout.render()
 

@@ -43,3 +43,15 @@
 .kormapp-application-container
   @extend %kormapp-application-widget
 
+  .kormapp-web-desktop,
+  .kormapp-web-mobile,
+  .kormapp-cordova-android,
+  .kormapp-cordova-ios
+    @extend %kormapp-application-content
+    @extend %base-font
+
+  .kormapp-web-desktop
+    position: relative
+    margin-bottom: 0
+
+

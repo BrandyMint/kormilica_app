@@ -35,7 +35,10 @@
         <img src="../kormapp/images/sample-logo.png" class="sample-site-logo" />
       </div>
     </div>
-    <div class="kormapp-web-desktop" role="kormapp-container"></div>
+    <!-- TODO .kormapp-application-container should have role="kormapp-container" -->
+    <div class="kormapp-application-container">
+      <div class="kormapp-web-desktop" role="kormapp-container"></div>
+    </div>
 
     <script>console.log("require begin", Date.now());</script>
     <!-- build:js scripts/main.js -->
