@@ -79,7 +79,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/check/che
       @_manageContinueButton()
 
     _manageContinueButton: ->
-      if @collection.length == 0 or !@vendor.isPriceValid(@cart)
+      if @collection.length == 0
         @ui.continueButton.hide()
         @ui.checkInfo.show()
       else
@@ -92,8 +92,15 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/check/che
     _hideSummary: ->
       @ui.bottomInfo.hide()
 
-    continueOrder: (e) ->
-      @modal.show new CheckContactsView app: @app, cart: @cart, user: @user, vendor: @vendor, modal: @modal
+    continueOrder: (e) =>
+      if @vendor.isPriceValid(@cart)
+        @modal.show new CheckContactsView app: @app, cart: @cart, user: @user, vendor: @vendor, modal: @modal
+      else
+        @_showMinOrderAlert()
+
+    # TODO move this to controller
+    _showMinOrderAlert: ->
+      window.navigator.notification.alert @vendor.get('mobile_empty_cart_alert'), null, 'Внимание'
 
     _setScrollableAreaHeight: ->
       unless @app.isWide
