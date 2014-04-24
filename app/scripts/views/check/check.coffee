@@ -12,7 +12,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
       @collection = @cart.items
       @model = @user
       @app.vent.on 'order:failed', @activateDeliveryButton
-      @listenTo @collection, 'add remove', () =>
+      @listenTo @collection, 'add remove reset', () =>
         @_manageContinueButton()
 
     ui:
@@ -78,7 +78,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
       @_manageContinueButton()
 
     _manageContinueButton: ->
-      if @collection.length == 0
+      if @collection.length == 0 or !@vendor.isPriceValid(@cart)
         @ui.continueButton.hide()
         @ui.checkInfo.show()
       else
@@ -90,7 +90,6 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
 
     _hideSummary: ->
       @ui.bottomInfo.hide()
-
 
     continueOrder: (e) ->
       @modal.show new CheckContactsView app: @app, cart: @cart, user: @user, vendor: @vendor, modal: @modal
