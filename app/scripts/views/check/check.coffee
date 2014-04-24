@@ -6,6 +6,7 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
     templateHelpers: -> Helpers
     itemView: CheckCartItemView
     itemViewContainer: '@kormapp-cart-items'
+    className: 'kormapp-check-block'
     emptyCheckClass: 'kormapp-empty-check'
 
     initialize: ({ @app, @cart, @user, @vendor, @modal }) ->

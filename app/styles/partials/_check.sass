@@ -1,7 +1,7 @@
 $sidebar-check-height: ($app-container-height - $header-height)/ 2
 
 =kormapp-check
-  .kormapp-separator 
+  .kormapp-separator
     width: 100%
     vertical-align: 30%
 
@@ -11,13 +11,21 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
     width: 100%
     border-bottom: 2px dotted #666
 
-  .kormapp-sidebar-check
-    position: absolute
-    width: inherit
-    bottom: 0
-    height: $sidebar-check-height + $check-bottom-deck-height
-    @media screen and (min-width: $screen-sm)
-      max-width: $product-screen-lg * ((100%/4 - $grid-gutter/2)/100%)
+  .kormapp-wide-layout
+    .kormapp-check-block
+      position: absolute
+      width: inherit
+      bottom: 0
+      height: $sidebar-check-height + $check-bottom-deck-height
+      margin:
+        left: - $check-container-margin
+        right: - $check-container-margin
+      @media screen and (min-width: $screen-sm)
+        max-width: $product-screen-lg * ((100%/4 - $grid-gutter/2)/100%)
+      &.kormapp-empty-check
+        height: auto
+      .kormapp-container
+        width: auto
 
   .kormapp-check-external
     @extend .kormapp-center
@@ -27,7 +35,7 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
     z-index: $check-external-z-index
     top: 0
     background-color: $check-background-color
-  .kormapp-sidebar-check
+  .kormapp-wide-layout
     .kormapp-check-external
       position: relative
 
@@ -36,9 +44,10 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
     height: 100%
     bottom: $check-internal-bottom-padding
     z-index: $check-internal-z-index
-  .kormapp-sidebar-check
+  .kormapp-wide-layout
     .kormapp-check-internal
-      bottom: 0
+      bottom: $check-bottom-deck-height
+      margin-bottom: - $check-bottom-deck-padding
   .kormapp-narrow-layout
     .kormapp-check-internal
       position: absolute
@@ -68,9 +77,15 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
   .kormapp-body-ios7
     .kormapp-check-background-container
       margin-top: 10px
-  .kormapp-sidebar-check
+  .kormapp-wide-layout
     .kormapp-check-background-container
       +kormapp-check-background-container-margin
+      height: auto
+      bottom: - $check-bottom-deck-height
+    .kormapp-empty-check
+      .kormapp-check-background-container
+        bottom: 0
+
 
   .kormapp-check-header
     position: relative
@@ -97,7 +112,7 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
     @extend .kormapp-reflection
     padding: 5px 10px
     margin-right: -30px
-  .kormapp-sidebar-check
+  .kormapp-wide-layout
     a.kormapp-check-back-button-link
       display: none
 
@@ -112,6 +127,9 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
   h2.kormapp-check-heading
     font-size: $base-heading-size
     padding: 5px 0 27px
+  .kormapp-empty-check
+    .kormapp-check-heading
+      display: none
 
   p.kormapp-cartitem-name
     text-align: left
@@ -121,13 +139,16 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
     position: absolute
     width: 100%
     bottom: 0
-  .kormapp-sidebar-check
+  .kormapp-wide-layout
     .kormapp-unscrollable-check
       position: relative
 
   .kormapp-scrollable-check
     overflow: auto
     height: $sidebar-check-height - 179px
+  .kormapp-empty-check
+    .kormapp-scrollable-check
+      display: none
 
 
 
@@ -183,12 +204,9 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
     position: absolute
     bottom: 0
     width: 100%
-  .kormapp-sidebar-check
+  .kormapp-wide-layout
     .kormapp-check-bottom-container
-      margin-bottom: - $check-internal-bottom-padding
-    .kormapp-empty-check
-      .kormapp-check-bottom-container
-        margin-bottom: - $check-internal-bottom-padding + 16px
+      margin-bottom: 0
 
   .kormapp-check-bottom
     padding: 18px 8px 14px
@@ -262,16 +280,11 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
     padding-top: 8px
 
 
-  .kormapp-sidebar-check
-    margin:
-      left: - $check-container-margin
-      right: - $check-container-margin
-    .kormapp-container
-      width: auto
-
   .kormapp-check-info
     margin:
       top: 1em
+      bottom: 1.5em
+    padding: 10px
     font-size: $base-font-size*0.7
 
   .kormapp-check-offer,
