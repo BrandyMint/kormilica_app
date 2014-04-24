@@ -1,4 +1,4 @@
-define ['templates/modal_windows/check_contacts', 'helpers/application_helpers'],
+define ['templates/check/check_contacts', 'helpers/application_helpers'],
 (template, Helpers) ->
 
   class CheckContactsView extends Marionette.ItemView
