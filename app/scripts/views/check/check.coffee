@@ -1,4 +1,4 @@
-define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_windows/check_contacts', 'helpers/application_helpers' ],
+define ['templates/check/check', 'views/check/check_cart_item', 'views/check/check_contacts', 'helpers/application_helpers' ],
 (template, CheckCartItemView, CheckContactsView, Helpers) ->
 
   class CheckView extends Marionette.CompositeView
