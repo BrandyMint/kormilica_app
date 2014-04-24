@@ -1,7 +1,7 @@
-define ['views/header/top_check', 'templates/header/header', 'helpers/application_helpers'],
+define ['views/header/top_check', 'templates/header/header_narrow', 'helpers/application_helpers'],
 (TopCheckView, template, Helpers) ->
 
-    class HeaderView extends Marionette.Layout
+    class HeaderNarrowView extends Marionette.Layout
       className: 'kormapp-header'
       template: template
 
