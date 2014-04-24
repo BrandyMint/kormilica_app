@@ -1,7 +1,8 @@
 define [
   'controllers/cart',
   'controllers/check',
-  'views/header/header',
+  'views/header/header_wide',
+  'views/header/header_narrow',
   'views/products/products',
   'views/modal_windows/vendor_page',
   'controllers/footer',
@@ -23,7 +24,8 @@ define [
 (
 CartController,
 CheckController,
-HeaderView,
+HeaderWideView,
+HeaderNarrowView,
 ProductsView,
 VendorPageView,
 FooterController,
@@ -82,10 +84,17 @@ CurrentCategoryController
       user:   App.user
       vendor: App.vendor
 
-    headerView = new HeaderView
-      app:    App
-      cart:   App.cart
-      vendor: App.vendor
+    headerView = if App.isWide
+      new HeaderWideView
+        app:    App
+        cart:   App.cart
+        vendor: App.vendor
+    else
+      new HeaderNarrowView
+        app:    App
+        cart:   App.cart
+        vendor: App.vendor
+
 
     headerView.on 'logo:clicked', ->
       App.modal.show new VendorPageView
