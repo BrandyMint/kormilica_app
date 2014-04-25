@@ -54,7 +54,7 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
       height: auto
       top: 0
 
-  .kormapp-check-content
+  //.kormapp-check-content
     position: relative
     height: 100%
     overflow: hidden
@@ -62,6 +62,8 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
     font-family: $base-font-family
     color: $check-font-color
     z-index: $check-content-z-index
+  .kormapp-check-content
+    color: $check-font-color
 
 
   .kormapp-check-background-container
@@ -144,7 +146,10 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
       position: relative
 
   .kormapp-scrollable-check
-    overflow: auto
+    overflow:
+      x: hidden
+      y: auto
+    -webkit-overflow-scrolling: touch
     height: $sidebar-check-height - 179px
   .kormapp-empty-check
     .kormapp-scrollable-check
