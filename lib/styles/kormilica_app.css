@@ -311,6 +311,16 @@ input {
 /*-----  Weights  ------ */
 /*-----  Base fonts  ------ */
 /*-----  Sizes  ------ */
+/* line 37, ../../app/styles/partials/_fonts.sass */
+.kormapp-application-container .kormapp-web-desktop,
+.kormapp-application-container .kormapp-web-mobile,
+.kormapp-application-container .kormapp-cordova-android,
+.kormapp-application-container .kormapp-cordova-ios {
+  font-size: 18px;
+  font-family: "Open Sans", sans-serif;
+  font-weight: 400;
+}
+
 @font-face {
   font-family: "Open Sans";
   src: url("fonts/opensans/OpenSans-Bold-webfont.ttf") format("truetype");
@@ -353,135 +363,11 @@ input {
   font-style: normal;
 }
 
-/* line 1, ../../app/styles/partials/_grid.sass */
-.kormapp-container, .kormapp-check-background-container {
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-left: 0;
-  padding-right: 0;
-}
-/* line 21, ../../app/bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/_mixins.scss */
-.kormapp-container:before, .kormapp-check-background-container:before, .kormapp-container:after, .kormapp-check-background-container:after {
-  content: " ";
-  display: table;
-}
-/* line 25, ../../app/bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/_mixins.scss */
-.kormapp-container:after, .kormapp-check-background-container:after {
-  clear: both;
-}
-@media (min-width: 768px) {
-  /* line 6, ../../app/styles/partials/_grid.sass */
-  .kormapp-narrow-layout .kormapp-container, .kormapp-narrow-layout .kormapp-check-background-container {
-    width: 750px;
-  }
-}
-@media (min-width: 992px) {
-  /* line 6, ../../app/styles/partials/_grid.sass */
-  .kormapp-narrow-layout .kormapp-container, .kormapp-narrow-layout .kormapp-check-background-container {
-    width: 970px;
-  }
-}
-@media (min-width: 1200px) {
-  /* line 6, ../../app/styles/partials/_grid.sass */
-  .kormapp-narrow-layout .kormapp-container, .kormapp-narrow-layout .kormapp-check-background-container {
-    width: 1170px;
-  }
-}
-/* line 13, ../../app/styles/partials/_grid.sass */
-.kormapp-wide-layout .kormapp-container, .kormapp-wide-layout .kormapp-check-background-container {
-  max-width: 1040px;
-}
-
-/* line 16, ../../app/styles/partials/_grid.sass */
-.kormapp-column, .kormapp-sidebar-column, .kormapp-products-column {
-  float: left;
-  margin-left: 5%;
-}
-/* line 19, ../../app/styles/partials/_grid.sass */
-.kormapp-column:first-child, .kormapp-sidebar-column:first-child, .kormapp-products-column:first-child {
-  margin-left: 0;
-}
-/* line 21, ../../app/styles/partials/_grid.sass */
-.kormapp-column.kormapp-full, .kormapp-full.kormapp-sidebar-column, .kormapp-sidebar-column.kormapp-check-delivery-button, .kormapp-full.kormapp-products-column, .kormapp-products-column.kormapp-check-delivery-button, .kormapp-column.kormapp-check-delivery-button {
-  width: 100%;
-}
-/* line 23, ../../app/styles/partials/_grid.sass */
-.kormapp-column.kormapp-two-thirds, .kormapp-two-thirds.kormapp-sidebar-column, .kormapp-two-thirds.kormapp-products-column {
-  width: 65%;
-}
-/* line 25, ../../app/styles/partials/_grid.sass */
-.kormapp-column.kormapp-half, .kormapp-half.kormapp-sidebar-column, .kormapp-half.kormapp-products-column {
-  width: 47.5%;
-}
-/* line 27, ../../app/styles/partials/_grid.sass */
-.kormapp-column.kormapp-one-third, .kormapp-one-third.kormapp-sidebar-column, .kormapp-one-third.kormapp-products-column {
-  width: 30%;
-}
-/* line 29, ../../app/styles/partials/_grid.sass */
-.kormapp-column.kormapp-one-fourth, .kormapp-sidebar-column, .kormapp-one-fourth.kormapp-products-column {
-  width: 21.25%;
-}
-/* line 31, ../../app/styles/partials/_grid.sass */
-.kormapp-column.kormapp-three-fourth, .kormapp-three-fourth.kormapp-sidebar-column, .kormapp-products-column {
-  width: 73.75%;
-}
-
-/* line 34, ../../app/styles/partials/_grid.sass */
-.kormapp-row, .kormapp-row-clearfix {
-  overflow: hidden;
-}
-
-/* line 1, ../../app/styles/partials/_utils.sass */
-.clearfix, .kormapp-row-clearfix {
-  *zoom: 1;
-}
-/* line 2, ../../app/styles/partials/_utils.sass */
-.clearfix:before, .kormapp-row-clearfix:before {
-  content: " ";
-  display: table;
-}
-/* line 5, ../../app/styles/partials/_utils.sass */
-.clearfix:after, .kormapp-row-clearfix:after {
-  content: " ";
-  display: table;
-  clear: both;
-}
-
-/* line 11, ../../app/styles/partials/_utils.sass */
-.kormapp-center, .kormapp-check-external {
-  text-align: center;
-}
-
-/* line 14, ../../app/styles/partials/_utils.sass */
-.hide {
-  display: none !important;
-}
-
-/* line 17, ../../app/styles/partials/_utils.sass */
-.pull-right {
-  float: right !important;
-}
-
-/* line 20, ../../app/styles/partials/_utils.sass */
-.pull-left, a.kormapp-check-back-button-link {
-  float: left !important;
-}
-
 /* line 1, ../../app/styles/partials/_layout.sass */
-.kormapp-body-ios {
-  background-color: #f2795a;
-  margin: 0 auto;
-  width: 100%;
-  height: 100%;
-}
-
-/* line 7, ../../app/styles/partials/_layout.sass */
-.kormapp-web-desktop,
-.kormapp-web-mobile,
-.kormapp-cordova-android,
-.kormapp-cordova-ios {
+.kormapp-application-container .kormapp-web-desktop,
+.kormapp-application-container .kormapp-web-mobile,
+.kormapp-application-container .kormapp-cordova-android,
+.kormapp-application-container .kormapp-cordova-ios {
   position: fixed;
   margin: 0 auto;
   margin-bottom: 60px;
@@ -489,833 +375,22 @@ input {
   height: 100%;
   padding-top: 55px;
 }
-/* line 15, ../../app/styles/partials/_layout.sass */
-.kormapp-body-ios7 .kormapp-web-desktop,
-.kormapp-body-ios7 .kormapp-web-mobile,
-.kormapp-body-ios7 .kormapp-cordova-android,
-.kormapp-body-ios7 .kormapp-cordova-ios {
+/* line 9, ../../app/styles/partials/_layout.sass */
+.kormapp-application-container .kormapp-web-desktop .kormapp-wide-layout,
+.kormapp-application-container .kormapp-web-mobile .kormapp-wide-layout,
+.kormapp-application-container .kormapp-cordova-android .kormapp-wide-layout,
+.kormapp-application-container .kormapp-cordova-ios .kormapp-wide-layout {
+  height: 670px;
+}
+/* line 11, ../../app/styles/partials/_layout.sass */
+.kormapp-body-ios7 .kormapp-application-container .kormapp-web-desktop, .kormapp-application-container .kormapp-body-ios7 .kormapp-web-desktop,
+.kormapp-body-ios7 .kormapp-application-container .kormapp-web-mobile,
+.kormapp-application-container .kormapp-body-ios7 .kormapp-web-mobile,
+.kormapp-body-ios7 .kormapp-application-container .kormapp-cordova-android,
+.kormapp-application-container .kormapp-body-ios7 .kormapp-cordova-android,
+.kormapp-body-ios7 .kormapp-application-container .kormapp-cordova-ios,
+.kormapp-application-container .kormapp-body-ios7 .kormapp-cordova-ios {
   padding-top: 75px;
-}
-
-/* line 4, ../../app/styles/partials/_header.sass */
-.kormapp-header {
-  position: fixed;
-  width: 100%;
-  z-index: 100;
-  height: 63px;
-  margin-top: -63px;
-  background: #f2795a;
-  color: white;
-  border-bottom: 3px solid #d06b52;
-}
-
-/* line 14, ../../app/styles/partials/_header.sass */
-.kormapp-logo-wrapper {
-  height: 60px;
-  width: 60px;
-  position: relative;
-  float: left;
-}
-/* line 20, ../../app/styles/partials/_header.sass */
-.kormapp-logo-wrapper img.kormapp-logo-image {
-  content: url("../kormapp/images/default_logo.png");
-  max-width: 100%;
-  max-height: 100%;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-}
-
-/* line 31, ../../app/styles/partials/_header.sass */
-p.kormapp-logo-text {
-  padding-top: 16px;
-  margin-left: 60px;
-  font-family: "Open Sans", sans-serif;
-  font-size: 18px;
-  line-height: 0.95;
-  letter-spacing: -1px;
-}
-
-/* line 39, ../../app/styles/partials/_header.sass */
-.kormapp-top-check {
-  position: relative;
-  margin-top: 9px;
-  margin-left: 22px;
-  float: left;
-  width: 43px;
-  height: 50px;
-}
-
-/* line 47, ../../app/styles/partials/_header.sass */
-.kormapp-top-check-container {
-  height: 60px;
-}
-
-/* line 50, ../../app/styles/partials/_header.sass */
-.kormapp-check-background-image {
-  position: absolute;
-  background: url("../kormapp/images/top-check-background.png") no-repeat bottom;
-  -webkit-background-size: contain;
-  background-size: contain;
-  width: 100%;
-  bottom: 0;
-  height: 5px;
-}
-
-/* line 58, ../../app/styles/partials/_header.sass */
-.kormapp-check-image {
-  content: url("../kormapp/images/top-check.png");
-  position: absolute;
-  z-index: 5;
-  height: 100%;
-}
-
-/* line 64, ../../app/styles/partials/_header.sass */
-p.kormapp-top-check-text {
-  padding-top: 16px;
-  margin-left: 5px;
-  font-family: "Open Sans", sans-serif;
-  font-size: 12px;
-  line-height: 1.2;
-}
-
-/* line 71, ../../app/styles/partials/_header.sass */
-.kormapp-amount {
-  font-family: "Open Sans", sans-serif;
-  font-weight: bold;
-  font-size: 18px;
-}
-
-/* line 1, ../../app/styles/partials/_content.sass */
-.kormapp-content {
-  width: 100%;
-  background-color: #eeeeee;
-  padding-top: 14px;
-  padding-bottom: 56px;
-  height: 100%;
-  overflow: scroll;
-}
-
-/* line 9, ../../app/styles/partials/_content.sass */
-a.kormapp-in-order {
-  background: #f2795a !important;
-}
-
-/* line 12, ../../app/styles/partials/_content.sass */
-a.kormapp-order-button {
-  text-decoration: none;
-  font-family: "Open Sans", sans-serif;
-  font-size: 10px;
-  padding: 5px;
-  min-width: 110px;
-  text-align: center;
-  background: #72bab6;
-  position: absolute;
-  top: 74px;
-  right: 7px;
-}
-/* line 19, ../../app/styles/partials/_content.sass */
-a.kormapp-order-button, a.kormapp-order-button {
-  color: white;
-}
-
-/* line 26, ../../app/styles/partials/_content.sass */
-span.kormapp-to-bucket {
-  width: 15px;
-  height: 15px;
-  display: inline-block;
-  vertical-align: top;
-  margin-right: 2px;
-  -webkit-background-size: contain;
-  background-size: contain;
-  background-repeat: no-repeat;
-}
-
-/* line 35, ../../app/styles/partials/_content.sass */
-.kormapp-to-bucket-orange {
-  background-image: url("../kormapp/images/to-bucket-orange.png");
-}
-
-/* line 38, ../../app/styles/partials/_content.sass */
-.kormapp-to-bucket-regular {
-  background-image: url("../kormapp/images/to-bucket.png");
-}
-
-/* line 41, ../../app/styles/partials/_content.sass */
-span.kormapp-order-button-text {
-  line-height: 1.7;
-}
-
-/* line 1, ../../app/styles/partials/_product.sass */
-.kormapp-product-block {
-  overflow: hidden;
-  padding: 8px;
-  margin: -6px 12px 12px 12px;
-  background: white;
-  position: relative;
-  border-bottom: 3px solid #dfdfdf;
-}
-@media screen and (max-width: 360px) {
-  /* line 1, ../../app/styles/partials/_product.sass */
-  .kormapp-product-block {
-    float: none;
-  }
-}
-@media screen and (min-width: 640px) {
-  /* line 1, ../../app/styles/partials/_product.sass */
-  .kormapp-product-block {
-    width: 46%;
-    float: left;
-  }
-}
-@media screen and (min-width: 720px) {
-  /* line 13, ../../app/styles/partials/_product.sass */
-  .kormapp-narrow-layout .kormapp-product-block {
-    width: 30%;
-    float: left;
-  }
-}
-
-/* line 21, ../../app/styles/partials/_product.sass */
-img.kormapp-product-image {
-  height: 92px;
-  width: 83px;
-  display: inline-block;
-  float: left;
-}
-
-/* line 27, ../../app/styles/partials/_product.sass */
-p.kormapp-product-title {
-  margin-left: 90px;
-  font-family: "Open Sans", sans-serif;
-  font-size: 17px;
-  color: #666666;
-  line-height: 1.1;
-}
-
-/* line 34, ../../app/styles/partials/_product.sass */
-.kormapp-product-in-list-price {
-  position: absolute;
-  margin-left: 90px;
-  bottom: 7px;
-  color: #f2795a;
-  font-family: "Open Sans", sans-serif;
-  font-size: 22px;
-}
-/* line 42, ../../app/styles/partials/_product.sass */
-.kormapp-product-in-list-price .kormapp-price-font {
-  font-size: 32px;
-}
-@media screen and (max-width: 360px) {
-  /* line 42, ../../app/styles/partials/_product.sass */
-  .kormapp-product-in-list-price .kormapp-price-font {
-    font-size: 22px;
-  }
-}
-@media screen and (min-width: 360px) and (max-width: 640px) {
-  /* line 42, ../../app/styles/partials/_product.sass */
-  .kormapp-product-in-list-price .kormapp-price-font {
-    font-size: 22px;
-  }
-}
-@media screen and (min-width: 720px) and (max-width: 1040px) {
-  /* line 42, ../../app/styles/partials/_product.sass */
-  .kormapp-product-in-list-price .kormapp-price-font {
-    font-size: 22px;
-  }
-}
-
-/* line 1, ../../app/styles/partials/_categories.sass */
-.kormapp-categories-list-narrow {
-  position: fixed;
-  top: -300px;
-  left: 0;
-  width: 100%;
-  pointer-events: none;
-  z-index: 200;
-  -webkit-transition: -webkit-transform 0ms;
-}
-/* line 10, ../../app/styles/partials/_categories.sass */
-.kormapp-categories-list-narrow.kormapp-slided-down, .kormapp-categories-list-narrow.kormapp-slide-up {
-  -webkit-transition: -webkit-transform 0.5s ease;
-}
-/* line 14, ../../app/styles/partials/_categories.sass */
-.kormapp-categories-list-narrow .kormapp-list-container {
-  position: relative;
-  height: 300px;
-  width: 300px;
-  margin: 0 auto;
-  background-color: #cccccc;
-  pointer-events: all;
-  z-index: 110;
-}
-/* line 23, ../../app/styles/partials/_categories.sass */
-.kormapp-categories-list-narrow .kormapp-pull-tag {
-  position: relative;
-  height: 50px;
-  width: 50px;
-  background-color: #eeeeee;
-  margin: 0 auto;
-  pointer-events: all;
-  z-index: 110;
-}
-/* line 32, ../../app/styles/partials/_categories.sass */
-.kormapp-categories-list-narrow.kormapp-slided-down .kormapp-pull-tag {
-  margin-top: -50px;
-}
-
-/* line 35, ../../app/styles/partials/_categories.sass */
-.kormapp-click-stopper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.1);
-}
-
-/* line 1, ../../app/styles/partials/_footer.sass */
-.kormapp-footer {
-  position: relative;
-  width: 100%;
-  height: 60px;
-  margin-top: -60px;
-  z-index: 100;
-  font-family: "Open Sans", sans-serif;
-  color: #666666;
-  text-align: center;
-}
-
-/* line 12, ../../app/styles/partials/_footer.sass */
-.kormapp-free-delivery {
-  color: #f2795a;
-}
-
-/* line 15, ../../app/styles/partials/_footer.sass */
-.kormapp-footer-content {
-  height: 60px 2px;
-  background-color: #72bab6;
-  border-top: 2px solid #68a9a5;
-}
-
-/* line 20, ../../app/styles/partials/_footer.sass */
-a.kormapp-checkout {
-  padding: 20px;
-  display: inline-block;
-  width: 100%;
-  font-size: 19px;
-  text-decoration: none;
-}
-/* line 24, ../../app/styles/partials/_footer.sass */
-a.kormapp-checkout, a.kormapp-checkout:hover {
-  color: white;
-}
-
-/* line 29, ../../app/styles/partials/_footer.sass */
-.kormapp-delivery-discount {
-  height: 60px;
-  border-top: 2px solid #cbcbcb;
-  background: #d8d8d8;
-  padding-top: 10px;
-  padding-bottom: 15px;
-}
-
-/* line 1, ../../app/styles/partials/_check.sass */
-.kormapp-separator {
-  width: 100%;
-  vertical-align: 30%;
-}
-
-/* line 5, ../../app/styles/partials/_check.sass */
-.separator-placeholder {
-  line-height: 1ex;
-  display: inline-block;
-  width: 100%;
-  border-bottom: 2px dotted #666666;
-}
-
-/* line 11, ../../app/styles/partials/_check.sass */
-.kormapp-check-external {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 105;
-  top: 0;
-  background-color: #eeeeee;
-}
-/* line 19, ../../app/styles/partials/_check.sass */
-.kormapp-sidebar-check .kormapp-check-external {
-  position: relative;
-}
-
-/* line 22, ../../app/styles/partials/_check.sass */
-.kormapp-check-internal {
-  position: relative;
-  height: 100%;
-  bottom: 73px;
-  z-index: 1000;
-}
-/* line 27, ../../app/styles/partials/_check.sass */
-.kormapp-sidebar-check .kormapp-check-internal {
-  bottom: 0;
-}
-/* line 29, ../../app/styles/partials/_check.sass */
-.kormapp-narrow-layout .kormapp-check-internal {
-  position: absolute;
-  height: auto;
-  top: 0;
-}
-
-/* line 34, ../../app/styles/partials/_check.sass */
-.kormapp-check-content {
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-  margin: 0 auto;
-  font-family: "Open Sans", sans-serif;
-  color: #666666;
-  z-index: 100;
-}
-
-/* line 44, ../../app/styles/partials/_check.sass */
-.kormapp-check-background-container {
-  background-color: #eeeeee;
-  background-image: url("../kormapp/images/paper-texture.jpg");
-  -webkit-background-size: contain;
-  background-size: contain;
-  position: relative;
-  height: 100%;
-}
-/* line 52, ../../app/styles/partials/_check.sass */
-.kormapp-body-ios7 .kormapp-check-background-container {
-  margin-top: 10px;
-}
-/* line 54, ../../app/styles/partials/_check.sass */
-.kormapp-sidebar-check .kormapp-check-background-container {
-  margin-left: 12px;
-  margin-right: 12px;
-}
-@media screen and (max-width: 768px) {
-  /* line 44, ../../app/styles/partials/_check.sass */
-  .kormapp-check-background-container {
-    margin-left: 12px;
-    margin-right: 12px;
-  }
-}
-
-/* line 59, ../../app/styles/partials/_check.sass */
-.kormapp-check-header {
-  position: relative;
-}
-/* line 61, ../../app/styles/partials/_check.sass */
-.kormapp-check-header:before {
-  content: " ";
-  display: block;
-  height: 26px;
-  background-color: #eeeeee;
-  background-image: url("../kormapp/images/check-battlement-center.png");
-  background-repeat: repeat-x;
-  -webkit-background-size: 13px auto;
-  background-size: 13px auto;
-  background-position-x: -6px;
-  background-position-y: 100%;
-}
-
-/* line 79, ../../app/styles/partials/_check.sass */
-a.kormapp-check-back-button-link {
-  padding: 5px 10px;
-  margin-right: -30px;
-}
-/* line 84, ../../app/styles/partials/_check.sass */
-.kormapp-sidebar-check a.kormapp-check-back-button-link {
-  display: none;
-}
-
-/* line 88, ../../app/styles/partials/_check.sass */
-span.kormapp-back-button {
-  background: url("../kormapp/images/back-button.png");
-  -webkit-background-size: contain;
-  background-size: contain;
-  width: 12px;
-  height: 20px;
-  display: inline-block;
-}
-
-/* line 95, ../../app/styles/partials/_check.sass */
-h2.kormapp-check-heading {
-  font-size: 22px;
-  padding: 5px 0 27px;
-}
-
-/* line 99, ../../app/styles/partials/_check.sass */
-p.kormapp-cartitem-name {
-  text-align: left;
-  padding: 3px 0;
-}
-
-/* line 103, ../../app/styles/partials/_check.sass */
-.kormapp-unscrollable-check {
-  position: absolute;
-  width: 100%;
-  bottom: 0;
-}
-/* line 107, ../../app/styles/partials/_check.sass */
-.kormapp-sidebar-check .kormapp-unscrollable-check {
-  position: relative;
-}
-
-/* line 110, ../../app/styles/partials/_check.sass */
-.kormapp-scrollable-check {
-  overflow: auto;
-}
-/* line 112, ../../app/styles/partials/_check.sass */
-.kormapp-sidebar-check .kormapp-scrollable-check {
-  overflow: visible;
-}
-
-/* line 116, ../../app/styles/partials/_check.sass */
-.kormapp-cart-items {
-  padding-left: 35px;
-  list-style: decimal;
-}
-
-/* line 120, ../../app/styles/partials/_check.sass */
-.kormapp-product-amount {
-  padding-right: 5px;
-  white-space: nowrap;
-}
-
-/* line 124, ../../app/styles/partials/_check.sass */
-.kormapp-product-price {
-  padding-left: 5px;
-  padding-right: 14px;
-  white-space: nowrap;
-}
-
-/* line 129, ../../app/styles/partials/_check.sass */
-.kormapp-all-product-sum {
-  text-align: left;
-  font-size: 20px;
-  font-weight: bold;
-  padding: 12px 12px 28px;
-}
-
-/* line 135, ../../app/styles/partials/_check.sass */
-.kormapp-delivery-price {
-  text-align: left;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 12px 12px 0;
-}
-
-/* line 141, ../../app/styles/partials/_check.sass */
-.kormapp-all-sum-right, .kormapp-delivery-sum-right {
-  float: right;
-}
-
-/* line 144, ../../app/styles/partials/_check.sass */
-form.order-data {
-  padding: 0 15px;
-  text-align: left;
-}
-/* line 148, ../../app/styles/partials/_check.sass */
-form.order-data input {
-  margin: 5px 0;
-  width: 100%;
-  background-color: #e5e5e5;
-  border: none;
-  font-family: "Open Sans", sans-serif;
-  font-size: base-font-size;
-  color: #666666;
-  padding-left: 5px;
-}
-
-/* line 158, ../../app/styles/partials/_check.sass */
-.kormapp-form-comment {
-  padding: 10px 0 15px;
-  color: #f2795a;
-  font-size: 12px;
-  text-align: center;
-}
-
-/* line 164, ../../app/styles/partials/_check.sass */
-.kormapp-check-bottom-container {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-}
-/* line 168, ../../app/styles/partials/_check.sass */
-.kormapp-sidebar-check .kormapp-check-bottom-container {
-  margin-bottom: -73px;
-}
-
-/* line 171, ../../app/styles/partials/_check.sass */
-.kormapp-check-bottom {
-  padding: 18px 8px 14px;
-  background-color: #d8d8d8;
-  height: 35px;
-}
-
-/* line 176, ../../app/styles/partials/_check.sass */
-.kormapp-check-short-left {
-  height: 8px;
-  width: 4px;
-  float: left;
-  background: url("../kormapp/images/footer-check-short-left.png") no-repeat;
-}
-
-/* line 182, ../../app/styles/partials/_check.sass */
-.kormapp-check-short-right {
-  height: 8px;
-  width: 4px;
-  float: right;
-  background: url("../kormapp/images/footer-check-short-right.png") no-repeat;
-}
-
-/* line 188, ../../app/styles/partials/_check.sass */
-.kormapp-check-short-center {
-  height: 8px;
-  margin: 0 auto;
-  background: url("../kormapp/images/footer-check-short-center.png") repeat-x;
-}
-
-/* line 193, ../../app/styles/partials/_check.sass */
-.kormapp-check-button, .kormapp-check-delivery-button, .kormapp-delivery-submit-button {
-  font-family: "Open Sans", sans-serif;
-  height: 60px;
-}
-
-/* line 197, ../../app/styles/partials/_check.sass */
-a.kormapp-check-button-link, .kormapp-delivery-submit-button {
-  width: 100%;
-  display: inline-block;
-  padding: 20px;
-  font-size: 19px;
-  text-decoration: none;
-}
-/* line 201, ../../app/styles/partials/_check.sass */
-a.kormapp-check-button-link, .kormapp-delivery-submit-button, a.kormapp-check-button-link:hover, .kormapp-delivery-submit-button:hover {
-  color: white;
-}
-
-/* line 206, ../../app/styles/partials/_check.sass */
-.kormapp-delivery-button, .kormapp-delivery-submit-button {
-  padding-left: 40px;
-  background: url("../kormapp/images/delivery-icon.png") no-repeat;
-  background-position: left center;
-  white-space: nowrap;
-}
-
-/* line 218, ../../app/styles/partials/_check.sass */
-.kormapp-delivery, .kormapp-check-delivery-button, .kormapp-delivery-submit-button {
-  background-color: #f2795a;
-  border-top: 2px solid #d06b52;
-}
-
-/* line 228, ../../app/styles/partials/_check.sass */
-.kormapp-delivery-inactive {
-  background-color: #999999;
-  border-top: 2px solid #7f7f7f;
-}
-
-/* line 232, ../../app/styles/partials/_check.sass */
-.kormapp-phone-input-group {
-  position: relative;
-  margin-left: 24px;
-}
-
-/* line 235, ../../app/styles/partials/_check.sass */
-.kormapp-phone-input-prefix {
-  color: #666666;
-  position: absolute;
-  left: 0;
-  margin-left: -26px;
-  padding-top: 8px;
-}
-
-/* line 243, ../../app/styles/partials/_check.sass */
-.kormapp-sidebar-check {
-  margin-left: -12px;
-  margin-right: -12px;
-}
-/* line 247, ../../app/styles/partials/_check.sass */
-.kormapp-sidebar-check .kormapp-container, .kormapp-sidebar-check .kormapp-check-background-container {
-  width: auto;
-}
-
-/* line 1, ../../app/styles/partials/_modal.sass */
-.kormapp-vendor-footer {
-  position: absolute;
-  bottom: 1.5em;
-  left: 0;
-  right: 0;
-  color: white;
-  font-size: 12px;
-  margin: auto;
-  opacity: 0.5;
-}
-
-/* line 11, ../../app/styles/partials/_modal.sass */
-.kormapp-vendor-city {
-  display: block;
-  margin-bottom: 10px;
-}
-
-/* line 15, ../../app/styles/partials/_modal.sass */
-.kormapp-modal-wrapper {
-  top: 0;
-  left: 0;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  z-index: 140;
-  font-family: "Open Sans", sans-serif;
-  background-color: rgba(0, 0, 0, 0.8);
-  text-align: center;
-}
-/* line 6, ../../app/styles/partials/_mixins.sass */
-.kormapp-modal-wrapper:before {
-  content: "";
-  height: 100%;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: -0.25em;
-}
-/* line 16, ../../app/styles/partials/_mixins.sass */
-.kormapp-modal-wrapper > .kormapp-modal-window {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-/* line 28, ../../app/styles/partials/_modal.sass */
-.kormapp-modal-window {
-  width: 90%;
-  margin: auto;
-  top: 0;
-  bottom: 0;
-  text-align: center;
-}
-@media screen and (min-width: 768px) {
-  /* line 28, ../../app/styles/partials/_modal.sass */
-  .kormapp-modal-window {
-    width: 500px;
-  }
-}
-
-/* line 37, ../../app/styles/partials/_modal.sass */
-.kormapp-modal-without-alignment {
-  display: block;
-  top: 70px;
-  bottom: 70px;
-}
-/* line 42, ../../app/styles/partials/_modal.sass */
-.kormapp-modal-without-alignment .kormapp-modal-button {
-  display: block;
-  margin: 20px auto auto;
-  text-align: center;
-}
-
-/* line 47, ../../app/styles/partials/_modal.sass */
-.kormapp-modal-window-white {
-  background-color: white;
-}
-
-/* line 50, ../../app/styles/partials/_modal.sass */
-.kormapp-modal-title, .kormapp-quantity-title {
-  padding: 15px 0 8px;
-  color: #f2795a;
-}
-
-/* line 57, ../../app/styles/partials/_modal.sass */
-.kormapp-quantity-table {
-  text-align: center;
-  margin: 0 auto;
-}
-
-/* line 61, ../../app/styles/partials/_modal.sass */
-.kormapp-price {
-  color: #f2795a;
-  font-family: "Open Sans", sans-serif;
-  font-size: 22px;
-}
-/* line 66, ../../app/styles/partials/_modal.sass */
-.kormapp-price .kormapp-price-font {
-  font-size: 32px;
-}
-
-/* line 69, ../../app/styles/partials/_modal.sass */
-.kormapp-multiplier {
-  color: #72bab6;
-  font-size: 28px;
-  margin: 0 8px;
-}
-
-/* line 74, ../../app/styles/partials/_modal.sass */
-.kormapp-multiplier-font {
-  font-size: 32px;
-}
-
-/* line 77, ../../app/styles/partials/_modal.sass */
-.kormapp-quantity-selector {
-  margin: 10px auto 10px;
-  color: #72bab6;
-}
-
-/* line 81, ../../app/styles/partials/_modal.sass */
-.kormapp-quantity-selector-button {
-  color: #72bab6;
-  background-color: white;
-  font-size: 22px;
-  display: inline-block;
-  width: 27px;
-  height: 27px;
-  border: 1px solid #72bab6;
-  text-decoration: none;
-}
-
-/* line 91, ../../app/styles/partials/_modal.sass */
-.kormapp-vendor-title, .kormapp-vendor-description {
-  color: white;
-  margin-bottom: 20px;
-}
-
-/* line 95, ../../app/styles/partials/_modal.sass */
-.kormapp-vendor-title {
-  font-weight: normal;
-  font-size: 20px;
-}
-
-/* line 99, ../../app/styles/partials/_modal.sass */
-.kormapp-vendor-description {
-  overflow: auto;
-  font-size: 13px;
-  text-align: left;
-  line-height: 1.4;
-}
-
-/* line 105, ../../app/styles/partials/_modal.sass */
-a.kormapp-modal-button {
-  display: inline-block;
-  text-decoration: none;
-  font-family: "Open Sans", sans-serif;
-  font-size: 10px;
-  padding: 5px;
-  margin-bottom: 15px;
-  width: 110px;
-  text-align: center;
-  background-color: #f2795a;
-}
-/* line 114, ../../app/styles/partials/_modal.sass */
-a.kormapp-modal-button, a.kormapp-modal-button:hover {
-  color: white;
-}
-
-/* line 118, ../../app/styles/partials/_modal.sass */
-span.kormapp-modal-button-text {
-  line-height: 1.7;
 }
 
 /* line 1, ../../app/styles/partials/_reflections.sass */
@@ -1349,12 +424,12 @@ a.kormapp-modal-button.kormapp-reflection-on {
 }
 
 /* line 19, ../../app/styles/partials/_reflections.sass */
-.kormapp-delivery.kormapp-reflection-on, .kormapp-reflection-on.kormapp-check-delivery-button, .kormapp-reflection-on.kormapp-delivery-submit-button {
+.kormapp-delivery.kormapp-reflection-on, .kormapp-application-container .kormapp-reflection-on.kormapp-check-delivery-button, .kormapp-application-container .kormapp-reflection-on.kormapp-delivery-submit-button {
   background-color: #ee532b;
 }
 
 /* line 22, ../../app/styles/partials/_reflections.sass */
-.kormapp-delivery.kormapp-reflection-on, .kormapp-reflection-on.kormapp-check-delivery-button, .kormapp-reflection-on.kormapp-delivery-submit-button {
+.kormapp-delivery.kormapp-reflection-on, .kormapp-application-container .kormapp-reflection-on.kormapp-check-delivery-button, .kormapp-application-container .kormapp-reflection-on.kormapp-delivery-submit-button {
   background-color: #ee532b;
 }
 
@@ -1482,4 +557,1115 @@ a.kormapp-modal-button.kormapp-reflection-on {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+/* line 17, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+.kormapp-application-container html, .kormapp-application-container body, .kormapp-application-container div, .kormapp-application-container span, .kormapp-application-container applet, .kormapp-application-container object, .kormapp-application-container iframe,
+.kormapp-application-container h1, .kormapp-application-container h2, .kormapp-application-container h3, .kormapp-application-container h4, .kormapp-application-container h5, .kormapp-application-container h6, .kormapp-application-container p, .kormapp-application-container blockquote, .kormapp-application-container pre,
+.kormapp-application-container a, .kormapp-application-container abbr, .kormapp-application-container acronym, .kormapp-application-container address, .kormapp-application-container big, .kormapp-application-container cite, .kormapp-application-container code,
+.kormapp-application-container del, .kormapp-application-container dfn, .kormapp-application-container em, .kormapp-application-container img, .kormapp-application-container ins, .kormapp-application-container kbd, .kormapp-application-container q, .kormapp-application-container s, .kormapp-application-container samp,
+.kormapp-application-container small, .kormapp-application-container strike, .kormapp-application-container strong, .kormapp-application-container sub, .kormapp-application-container sup, .kormapp-application-container tt, .kormapp-application-container var,
+.kormapp-application-container b, .kormapp-application-container u, .kormapp-application-container i, .kormapp-application-container center,
+.kormapp-application-container dl, .kormapp-application-container dt, .kormapp-application-container dd, .kormapp-application-container ol, .kormapp-application-container ul, .kormapp-application-container li,
+.kormapp-application-container fieldset, .kormapp-application-container form, .kormapp-application-container label, .kormapp-application-container legend,
+.kormapp-application-container table, .kormapp-application-container caption, .kormapp-application-container tbody, .kormapp-application-container tfoot, .kormapp-application-container thead, .kormapp-application-container tr, .kormapp-application-container th, .kormapp-application-container td,
+.kormapp-application-container article, .kormapp-application-container aside, .kormapp-application-container canvas, .kormapp-application-container details, .kormapp-application-container embed,
+.kormapp-application-container figure, .kormapp-application-container figcaption, .kormapp-application-container footer, .kormapp-application-container header, .kormapp-application-container hgroup,
+.kormapp-application-container menu, .kormapp-application-container nav, .kormapp-application-container output, .kormapp-application-container ruby, .kormapp-application-container section, .kormapp-application-container summary,
+.kormapp-application-container time, .kormapp-application-container mark, .kormapp-application-container audio, .kormapp-application-container video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+/* line 22, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+.kormapp-application-container html {
+  line-height: 1;
+}
+/* line 24, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+.kormapp-application-container ol, .kormapp-application-container ul {
+  list-style: none;
+}
+/* line 26, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+.kormapp-application-container table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/* line 28, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+.kormapp-application-container caption, .kormapp-application-container th, .kormapp-application-container td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+/* line 30, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+.kormapp-application-container q, .kormapp-application-container blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+.kormapp-application-container q:before, .kormapp-application-container q:after, .kormapp-application-container blockquote:before, .kormapp-application-container blockquote:after {
+  content: "";
+  content: none;
+}
+/* line 32, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+.kormapp-application-container a img {
+  border: none;
+}
+/* line 116, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+.kormapp-application-container article, .kormapp-application-container aside, .kormapp-application-container details, .kormapp-application-container figcaption, .kormapp-application-container figure, .kormapp-application-container footer, .kormapp-application-container header, .kormapp-application-container hgroup, .kormapp-application-container menu, .kormapp-application-container nav, .kormapp-application-container section, .kormapp-application-container summary {
+  display: block;
+}
+/* line 2, ../../app/styles/partials/_grid.sass */
+.kormapp-application-container .kormapp-container, .kormapp-application-container .kormapp-check-background-container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-left: 0;
+  padding-right: 0;
+}
+/* line 21, ../../app/bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/_mixins.scss */
+.kormapp-application-container .kormapp-container:before, .kormapp-application-container .kormapp-check-background-container:before, .kormapp-application-container .kormapp-container:after, .kormapp-application-container .kormapp-check-background-container:after {
+  content: " ";
+  display: table;
+}
+/* line 25, ../../app/bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/_mixins.scss */
+.kormapp-application-container .kormapp-container:after, .kormapp-application-container .kormapp-check-background-container:after {
+  clear: both;
+}
+@media (min-width: 768px) {
+  /* line 8, ../../app/styles/partials/_grid.sass */
+  .kormapp-application-container .kormapp-narrow-layout .kormapp-container, .kormapp-application-container .kormapp-narrow-layout .kormapp-check-background-container {
+    width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  /* line 8, ../../app/styles/partials/_grid.sass */
+  .kormapp-application-container .kormapp-narrow-layout .kormapp-container, .kormapp-application-container .kormapp-narrow-layout .kormapp-check-background-container {
+    width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  /* line 8, ../../app/styles/partials/_grid.sass */
+  .kormapp-application-container .kormapp-narrow-layout .kormapp-container, .kormapp-application-container .kormapp-narrow-layout .kormapp-check-background-container {
+    width: 1170px;
+  }
+}
+/* line 16, ../../app/styles/partials/_grid.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-container, .kormapp-application-container .kormapp-wide-layout .kormapp-check-background-container {
+  max-width: 1040px;
+}
+/* line 19, ../../app/styles/partials/_grid.sass */
+.kormapp-application-container .kormapp-column, .kormapp-application-container .kormapp-sidebar-column, .kormapp-application-container .kormapp-wide-layout .kormapp-products-column {
+  float: left;
+  margin-left: 0.01491%;
+}
+/* line 23, ../../app/styles/partials/_grid.sass */
+.kormapp-application-container .kormapp-column:first-child, .kormapp-application-container .kormapp-sidebar-column:first-child, .kormapp-application-container .kormapp-wide-layout .kormapp-products-column:first-child {
+  margin-left: 0;
+}
+/* line 25, ../../app/styles/partials/_grid.sass */
+.kormapp-application-container .kormapp-column.kormapp-full, .kormapp-application-container .kormapp-full.kormapp-sidebar-column, .kormapp-application-container .kormapp-sidebar-column.kormapp-check-delivery-button, .kormapp-application-container .kormapp-wide-layout .kormapp-full.kormapp-products-column, .kormapp-application-container .kormapp-wide-layout .kormapp-products-column.kormapp-check-delivery-button, .kormapp-application-container .kormapp-column.kormapp-check-delivery-button {
+  width: 100%;
+}
+/* line 27, ../../app/styles/partials/_grid.sass */
+.kormapp-application-container .kormapp-column.kormapp-two-thirds, .kormapp-application-container .kormapp-two-thirds.kormapp-sidebar-column, .kormapp-application-container .kormapp-wide-layout .kormapp-two-thirds.kormapp-products-column {
+  width: 66.65175%;
+}
+/* line 30, ../../app/styles/partials/_grid.sass */
+.kormapp-application-container .kormapp-column.kormapp-half, .kormapp-application-container .kormapp-half.kormapp-sidebar-column, .kormapp-application-container .kormapp-wide-layout .kormapp-half.kormapp-products-column {
+  width: 49.98509%;
+}
+/* line 33, ../../app/styles/partials/_grid.sass */
+.kormapp-application-container .kormapp-column.kormapp-one-third, .kormapp-application-container .kormapp-one-third.kormapp-sidebar-column, .kormapp-application-container .kormapp-wide-layout .kormapp-one-third.kormapp-products-column {
+  width: 33.31842%;
+}
+/* line 36, ../../app/styles/partials/_grid.sass */
+.kormapp-application-container .kormapp-column.kormapp-one-fourth, .kormapp-application-container .kormapp-sidebar-column, .kormapp-application-container .kormapp-wide-layout .kormapp-one-fourth.kormapp-products-column, .kormapp-application-container .kormapp-wide-layout .kormapp-products-column.kormapp-sidebar-column {
+  width: 24.98509%;
+}
+/* line 38, ../../app/styles/partials/_grid.sass */
+.kormapp-application-container .kormapp-column.kormapp-three-fourth, .kormapp-application-container .kormapp-three-fourth.kormapp-sidebar-column, .kormapp-application-container .kormapp-wide-layout .kormapp-products-column {
+  width: 74.98509%;
+}
+/* line 41, ../../app/styles/partials/_grid.sass */
+.kormapp-application-container .kormapp-row, .kormapp-application-container .kormapp-row-clearfix {
+  overflow: hidden;
+}
+/* line 2, ../../app/styles/partials/_utils.sass */
+.kormapp-application-container .clearfix, .kormapp-application-container .kormapp-row-clearfix {
+  *zoom: 1;
+}
+/* line 3, ../../app/styles/partials/_utils.sass */
+.kormapp-application-container .clearfix:before, .kormapp-application-container .kormapp-row-clearfix:before {
+  content: " ";
+  display: table;
+}
+/* line 6, ../../app/styles/partials/_utils.sass */
+.kormapp-application-container .clearfix:after, .kormapp-application-container .kormapp-row-clearfix:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+/* line 12, ../../app/styles/partials/_utils.sass */
+.kormapp-application-container .kormapp-center, .kormapp-application-container .kormapp-check-external {
+  text-align: center;
+}
+/* line 15, ../../app/styles/partials/_utils.sass */
+.kormapp-application-container .hide {
+  display: none !important;
+}
+/* line 18, ../../app/styles/partials/_utils.sass */
+.kormapp-application-container .pull-right {
+  float: right !important;
+}
+/* line 21, ../../app/styles/partials/_utils.sass */
+.kormapp-application-container .pull-left, .kormapp-application-container a.kormapp-check-back-button-link {
+  float: left !important;
+}
+/* line 15, ../../app/styles/partials/_layout.sass */
+.kormapp-application-container .kormapp-body-ios {
+  background-color: #f2795a;
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+}
+/* line 21, ../../app/styles/partials/_layout.sass */
+.kormapp-application-container .kormapp-sidebar-column {
+  padding-left: 17px;
+}
+/* line 2, ../../app/styles/partials/_header.sass */
+.kormapp-application-container .kormapp-header {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  height: 63px;
+  margin-top: -63px;
+  background: #f2795a;
+  color: white;
+  border-bottom: 3px solid #d06b52;
+}
+@media screen and (min-width: 992px) {
+  /* line 2, ../../app/styles/partials/_header.sass */
+  .kormapp-application-container .kormapp-header {
+    border-bottom-width: 6px;
+  }
+}
+/* line 14, ../../app/styles/partials/_header.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-header {
+  position: absolute;
+}
+/* line 17, ../../app/styles/partials/_header.sass */
+.kormapp-application-container .kormapp-logo-wrapper {
+  height: 60px;
+  width: 60px;
+  position: relative;
+  float: left;
+}
+/* line 23, ../../app/styles/partials/_header.sass */
+.kormapp-application-container .kormapp-logo-wrapper img.kormapp-logo-image {
+  content: url("../kormapp/images/default_logo.png");
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+/* line 34, ../../app/styles/partials/_header.sass */
+.kormapp-application-container p.kormapp-logo-text {
+  padding-top: 16px;
+  margin-left: 10px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 18px;
+  line-height: 0.95;
+  letter-spacing: -1px;
+}
+/* line 42, ../../app/styles/partials/_header.sass */
+.kormapp-application-container .kormapp-top-check {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 22px;
+  float: left;
+  width: 43px;
+  height: 50px;
+}
+@media screen and (min-width: 992px) {
+  /* line 42, ../../app/styles/partials/_header.sass */
+  .kormapp-application-container .kormapp-top-check {
+    height: 47px;
+  }
+}
+/* line 52, ../../app/styles/partials/_header.sass */
+.kormapp-application-container .kormapp-top-check-container {
+  height: 60px;
+  width: 150px;
+}
+/* line 56, ../../app/styles/partials/_header.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-top-check-container {
+  width: 200px;
+}
+/* line 59, ../../app/styles/partials/_header.sass */
+.kormapp-application-container .kormapp-check-background-image {
+  position: absolute;
+  background: url("../kormapp/images/top-check-background.svg") no-repeat bottom;
+  -webkit-background-size: contain;
+  background-size: contain;
+  width: 100%;
+  bottom: 0;
+  height: 3px;
+  left: -6px;
+}
+/* line 68, ../../app/styles/partials/_header.sass */
+.kormapp-application-container .kormapp-check-image {
+  content: url("../kormapp/images/top-check.svg");
+  position: absolute;
+  z-index: 5;
+  height: 100%;
+}
+/* line 74, ../../app/styles/partials/_header.sass */
+.kormapp-application-container p.kormapp-top-check-text {
+  padding-top: 16px;
+  margin-left: 5px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 12px;
+  line-height: 1.2;
+  width: 150px;
+}
+/* line 81, ../../app/styles/partials/_header.sass */
+.kormapp-application-container p.kormapp-top-check-text,
+.kormapp-application-container p.kormapp-top-check-text .kormapp-amount {
+  vertical-align: middle;
+}
+@media screen and (min-width: 992px) {
+  /* line 74, ../../app/styles/partials/_header.sass */
+  .kormapp-application-container p.kormapp-top-check-text {
+    width: auto;
+    font-size: 18px;
+    padding-top: 10px;
+  }
+  /* line 88, ../../app/styles/partials/_header.sass */
+  .kormapp-application-container p.kormapp-top-check-text .kormapp-amount {
+    font-size: 21.6px;
+    display: inline-block;
+    margin-top: -2px;
+  }
+}
+/* line 93, ../../app/styles/partials/_header.sass */
+.kormapp-application-container .kormapp-amount {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+}
+/* line 98, ../../app/styles/partials/_header.sass */
+.kormapp-application-container .kormapp-header-menu {
+  color: white;
+  padding: 20px 25px;
+}
+/* line 102, ../../app/styles/partials/_header.sass */
+.kormapp-application-container .kormapp-header-menu-item {
+  color: white;
+}
+/* line 104, ../../app/styles/partials/_header.sass */
+.kormapp-application-container .kormapp-header-menu-item, .kormapp-application-container .kormapp-header-menu-item:hover {
+  text-decoration: none;
+}
+/* line 106, ../../app/styles/partials/_header.sass */
+.kormapp-application-container .kormapp-header-menu-item:hover {
+  color: #fbd9d0;
+}
+/* line 2, ../../app/styles/partials/_content.sass */
+.kormapp-application-container .kormapp-content {
+  width: 100%;
+  background-color: #eeeeee;
+  padding-top: 14px;
+  padding-bottom: 56px;
+  height: 100%;
+  overflow-y: auto;
+}
+/* line 10, ../../app/styles/partials/_content.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-content {
+  position: relative;
+  height: 610px;
+  overflow-y: hidden;
+}
+/* line 18, ../../app/styles/partials/_content.sass */
+.kormapp-application-container .kormapp-narrow-layout .kormapp-content {
+  position: absolute;
+  top: 53px;
+  bottom: 60px;
+  height: auto;
+  padding-bottom: 0;
+}
+/* line 25, ../../app/styles/partials/_content.sass */
+.kormapp-application-container a.kormapp-in-order {
+  background: #f2795a !important;
+}
+/* line 28, ../../app/styles/partials/_content.sass */
+.kormapp-application-container a.kormapp-order-button {
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 10px;
+  padding: 5px;
+  min-width: 110px;
+  text-align: center;
+  background: #72bab6;
+  position: absolute;
+  top: 74px;
+  right: 7px;
+}
+/* line 35, ../../app/styles/partials/_content.sass */
+.kormapp-application-container a.kormapp-order-button, .kormapp-application-container a.kormapp-order-button {
+  color: white;
+}
+/* line 42, ../../app/styles/partials/_content.sass */
+.kormapp-application-container span.kormapp-to-bucket {
+  width: 17px;
+  height: 17px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 2px;
+  -webkit-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+/* line 51, ../../app/styles/partials/_content.sass */
+.kormapp-application-container .kormapp-to-bucket-orange {
+  background-image: url("../kormapp/images/cart-icon-white.svg");
+}
+/* line 54, ../../app/styles/partials/_content.sass */
+.kormapp-application-container .kormapp-to-bucket-regular {
+  background-image: url("../kormapp/images/cart-icon-white.svg");
+}
+/* line 57, ../../app/styles/partials/_content.sass */
+.kormapp-application-container span.kormapp-order-button-text {
+  line-height: 1.7;
+}
+/* line 2, ../../app/styles/partials/_product.sass */
+.kormapp-application-container .kormapp-products-column {
+  height: 610px;
+  overflow-y: auto;
+}
+/* line 6, ../../app/styles/partials/_product.sass */
+.kormapp-application-container .kormapp-narrow-layout .kormapp-products-column {
+  height: auto;
+}
+/* line 9, ../../app/styles/partials/_product.sass */
+.kormapp-application-container .kormapp-product-block {
+  overflow: hidden;
+  padding: 8px;
+  margin: -6px 12px 12px 12px;
+  background: white;
+  position: relative;
+  border-bottom: 3px solid #dfdfdf;
+  cursor: pointer;
+}
+@media screen and (max-width: 360px) {
+  /* line 9, ../../app/styles/partials/_product.sass */
+  .kormapp-application-container .kormapp-product-block {
+    float: none;
+  }
+}
+@media screen and (min-width: 640px) {
+  /* line 9, ../../app/styles/partials/_product.sass */
+  .kormapp-application-container .kormapp-product-block {
+    width: 46%;
+    float: left;
+  }
+}
+@media screen and (min-width: 720px) {
+  /* line 22, ../../app/styles/partials/_product.sass */
+  .kormapp-narrow-layout .kormapp-application-container .kormapp-product-block {
+    width: 30%;
+    float: left;
+  }
+}
+/* line 30, ../../app/styles/partials/_product.sass */
+.kormapp-application-container img.kormapp-product-image {
+  height: 92px;
+  width: 83px;
+  display: inline-block;
+  float: left;
+}
+/* line 36, ../../app/styles/partials/_product.sass */
+.kormapp-application-container p.kormapp-product-title {
+  margin-left: 90px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 17px;
+  color: #666666;
+  line-height: 1.1;
+}
+/* line 43, ../../app/styles/partials/_product.sass */
+.kormapp-application-container .kormapp-product-in-list-price {
+  position: absolute;
+  margin-left: 90px;
+  bottom: 7px;
+  color: #f2795a;
+  font-family: "Open Sans", sans-serif;
+  font-size: 22px;
+}
+/* line 51, ../../app/styles/partials/_product.sass */
+.kormapp-application-container .kormapp-product-in-list-price .kormapp-price-font {
+  font-size: 32px;
+}
+@media screen and (max-width: 360px) {
+  /* line 51, ../../app/styles/partials/_product.sass */
+  .kormapp-application-container .kormapp-product-in-list-price .kormapp-price-font {
+    font-size: 22px;
+  }
+}
+@media screen and (min-width: 360px) and (max-width: 640px) {
+  /* line 51, ../../app/styles/partials/_product.sass */
+  .kormapp-application-container .kormapp-product-in-list-price .kormapp-price-font {
+    font-size: 22px;
+  }
+}
+@media screen and (min-width: 720px) and (max-width: 1040px) {
+  /* line 51, ../../app/styles/partials/_product.sass */
+  .kormapp-application-container .kormapp-product-in-list-price .kormapp-price-font {
+    font-size: 22px;
+  }
+}
+/* line 2, ../../app/styles/partials/_categories.sass */
+.kormapp-application-container .kormapp-categories-list {
+  margin-bottom: 1em;
+}
+/* line 4, ../../app/styles/partials/_categories.sass */
+.kormapp-wide-layout .kormapp-application-container .kormapp-categories-list {
+  height: 202px;
+  overflow: auto;
+}
+/* line 8, ../../app/styles/partials/_categories.sass */
+.kormapp-application-container .kormapp-category-item {
+  display: block;
+  color: #666666;
+  text-decoration: none;
+  font-size: 18px;
+}
+/* line 14, ../../app/styles/partials/_categories.sass */
+.kormapp-application-container .kormapp-narrow-layout .kormapp-category-item {
+  padding: 10px;
+}
+/* line 16, ../../app/styles/partials/_categories.sass */
+.kormapp-application-container .kormapp-narrow-layout .kormapp-category-item:before {
+  content: "";
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin-bottom: -5px;
+  margin-right: 10px;
+  background-image: url("../kormapp/images/check-empty.svg");
+  background-repeat: no-repeat;
+}
+/* line 28, ../../app/styles/partials/_categories.sass */
+.kormapp-application-container .kormapp-narrow-layout .kormapp-category-item.kormapp-category-item-active:before {
+  background-image: url("../kormapp/images/check.svg");
+}
+/* line 32, ../../app/styles/partials/_categories.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-category-item {
+  padding: 5px 10px;
+}
+/* line 34, ../../app/styles/partials/_categories.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-category-item:hover {
+  color: #f2795a;
+}
+/* line 36, ../../app/styles/partials/_categories.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-category-item.kormapp-category-item-active {
+  font-weight: bold;
+  color: #f2795a;
+}
+/* line 41, ../../app/styles/partials/_categories.sass */
+.kormapp-application-container .kormapp-categories-list-narrow {
+  position: fixed;
+  top: -300px;
+  left: 0;
+  width: 100%;
+  pointer-events: none;
+  z-index: 200;
+  -webkit-transition: -webkit-transform 0ms;
+}
+/* line 50, ../../app/styles/partials/_categories.sass */
+.kormapp-application-container .kormapp-categories-list-narrow.kormapp-slided-down, .kormapp-application-container .kormapp-categories-list-narrow.kormapp-slide-up {
+  -webkit-transition: -webkit-transform 0.5s ease;
+}
+/* line 54, ../../app/styles/partials/_categories.sass */
+.kormapp-application-container .kormapp-categories-list-narrow .kormapp-list-container {
+  position: relative;
+  height: 300px;
+  width: 300px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 15px 10px;
+  pointer-events: all;
+  z-index: 110;
+}
+/* line 64, ../../app/styles/partials/_categories.sass */
+.kormapp-application-container .kormapp-categories-list-narrow .kormapp-pull-tag {
+  position: relative;
+  height: 50px;
+  width: 60px;
+  margin: 0 auto;
+  pointer-events: all;
+  z-index: 110;
+  background-image: url("../kormapp/images/pull-tag.svg");
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+/* line 76, ../../app/styles/partials/_categories.sass */
+.kormapp-application-container .kormapp-categories-list-narrow.kormapp-slided-down .kormapp-pull-tag {
+  margin-top: -50px;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+/* line 80, ../../app/styles/partials/_categories.sass */
+.kormapp-application-container .kormapp-click-stopper {
+  position: fixed;
+  pointer-events: all;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+}
+/* line 2, ../../app/styles/partials/_footer.sass */
+.kormapp-application-container .kormapp-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  margin-top: -60px;
+  z-index: 100;
+  font-family: "Open Sans", sans-serif;
+  color: #666666;
+  text-align: center;
+}
+/* line 13, ../../app/styles/partials/_footer.sass */
+.kormapp-application-container .kormapp-free-delivery {
+  color: #f2795a;
+}
+/* line 16, ../../app/styles/partials/_footer.sass */
+.kormapp-application-container .kormapp-footer-content {
+  height: 60px 2px;
+  background-color: #72bab6;
+  border-top: 2px solid #68a9a5;
+}
+/* line 21, ../../app/styles/partials/_footer.sass */
+.kormapp-application-container a.kormapp-checkout {
+  padding: 20px;
+  display: inline-block;
+  width: 100%;
+  font-size: 19px;
+  text-decoration: none;
+}
+/* line 25, ../../app/styles/partials/_footer.sass */
+.kormapp-application-container a.kormapp-checkout, .kormapp-application-container a.kormapp-checkout:hover {
+  color: white;
+}
+/* line 30, ../../app/styles/partials/_footer.sass */
+.kormapp-application-container .kormapp-delivery-discount {
+  height: 60px;
+  border-top: 2px solid #cbcbcb;
+  background: #d8d8d8;
+  padding-top: 10px;
+  padding-bottom: 15px;
+}
+/* line 4, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-separator {
+  width: 100%;
+  vertical-align: 30%;
+}
+/* line 8, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .separator-placeholder {
+  line-height: 1ex;
+  display: inline-block;
+  width: 100%;
+  border-bottom: 2px dotted #666666;
+}
+/* line 15, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-check-block {
+  position: absolute;
+  width: inherit;
+  bottom: 0;
+  height: 440px;
+  margin-left: -12px;
+  margin-right: -12px;
+}
+@media screen and (min-width: 768px) {
+  /* line 15, ../../app/styles/partials/_check.sass */
+  .kormapp-application-container .kormapp-wide-layout .kormapp-check-block {
+    max-width: 259.84491px;
+  }
+}
+/* line 25, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-check-block.kormapp-empty-check {
+  height: auto;
+}
+/* line 27, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-check-block .kormapp-container, .kormapp-application-container .kormapp-wide-layout .kormapp-check-block .kormapp-check-background-container {
+  width: auto;
+}
+/* line 30, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-check-external {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 300;
+  top: 0;
+  background-color: #eeeeee;
+}
+/* line 39, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-check-external {
+  position: relative;
+}
+/* line 42, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-check-internal {
+  position: relative;
+  height: 100%;
+  bottom: 73px;
+  z-index: 1000;
+}
+/* line 48, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-check-internal {
+  bottom: 35px;
+  margin-bottom: -22px;
+}
+/* line 52, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-narrow-layout .kormapp-check-internal {
+  position: absolute;
+  height: auto;
+  top: 0;
+}
+/* line 65, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-check-content {
+  color: #666666;
+}
+/* line 68, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-check-content {
+  height: 367px;
+}
+/* line 72, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-check-background-container {
+  background-color: #eeeeee;
+  background-image: url("../kormapp/images/paper-texture.jpg");
+  -webkit-background-size: contain;
+  background-size: contain;
+  position: relative;
+  height: 100%;
+}
+@media screen and (max-width: 768px) {
+  /* line 72, ../../app/styles/partials/_check.sass */
+  .kormapp-application-container .kormapp-check-background-container {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+}
+/* line 83, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-body-ios7 .kormapp-check-background-container {
+  margin-top: 10px;
+}
+/* line 86, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-check-background-container {
+  margin-left: 12px;
+  margin-right: 12px;
+  height: auto;
+  bottom: -35px;
+}
+/* line 91, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-empty-check .kormapp-check-background-container {
+  bottom: 0;
+}
+/* line 95, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-check-header {
+  position: relative;
+}
+/* line 97, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-check-header:before {
+  content: " ";
+  display: block;
+  height: 26px;
+  background-color: #eeeeee;
+  background-image: url("../kormapp/images/check-battlement-center.png");
+  background-repeat: repeat-x;
+  -webkit-background-size: 13px auto;
+  background-size: 13px auto;
+  background-position-x: -6px;
+  background-position-y: 100%;
+}
+/* line 115, ../../app/styles/partials/_check.sass */
+.kormapp-application-container a.kormapp-check-back-button-link {
+  padding: 5px 10px;
+  margin-right: -30px;
+}
+/* line 121, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-wide-layout a.kormapp-check-back-button-link {
+  display: none;
+}
+/* line 125, ../../app/styles/partials/_check.sass */
+.kormapp-application-container span.kormapp-back-button {
+  background: url("../kormapp/images/back-button.png");
+  -webkit-background-size: contain;
+  background-size: contain;
+  width: 12px;
+  height: 20px;
+  display: inline-block;
+}
+/* line 132, ../../app/styles/partials/_check.sass */
+.kormapp-application-container h2.kormapp-check-heading {
+  font-size: 22px;
+  padding: 5px 0 27px;
+}
+/* line 136, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-empty-check .kormapp-check-heading {
+  display: none;
+}
+/* line 139, ../../app/styles/partials/_check.sass */
+.kormapp-application-container p.kormapp-cartitem-name {
+  text-align: left;
+  padding: 3px 0;
+}
+/* line 143, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-unscrollable-check {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+/* line 148, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-unscrollable-check {
+  position: relative;
+}
+/* line 151, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-scrollable-check {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  height: 226px;
+}
+/* line 158, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-empty-check .kormapp-scrollable-check {
+  display: none;
+}
+/* line 163, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-cart-items {
+  padding-left: 35px;
+  list-style: decimal;
+}
+/* line 166, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-wide-layout {
+  font-size: 0.75em;
+}
+/* line 169, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-product-amount {
+  padding-right: 5px;
+  white-space: nowrap;
+}
+/* line 173, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-product-price {
+  padding-left: 5px;
+  padding-right: 14px;
+  white-space: nowrap;
+}
+/* line 178, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-all-product-sum {
+  text-align: left;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 12px 12px 28px;
+}
+/* line 184, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-delivery-price {
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 12px 0;
+}
+/* line 190, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-all-sum-right, .kormapp-application-container .kormapp-delivery-sum-right {
+  float: right;
+}
+/* line 193, ../../app/styles/partials/_check.sass */
+.kormapp-application-container form.order-data {
+  padding: 0 15px;
+  text-align: left;
+}
+/* line 197, ../../app/styles/partials/_check.sass */
+.kormapp-application-container form.order-data input {
+  margin: 5px 0;
+  width: 100%;
+  background-color: #e5e5e5;
+  border: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: base-font-size;
+  color: #666666;
+  padding-left: 5px;
+}
+/* line 207, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-form-comment {
+  padding: 10px 0 15px;
+  color: #f2795a;
+  font-size: 12px;
+  text-align: center;
+}
+/* line 213, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-check-bottom-container {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+/* line 218, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-wide-layout .kormapp-check-bottom-container {
+  margin-bottom: 0;
+}
+/* line 221, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-check-bottom {
+  padding: 18px 8px 14px;
+  background-color: #d8d8d8;
+  height: 35px;
+}
+/* line 226, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-check-short-left {
+  height: 8px;
+  width: 4px;
+  float: left;
+  background: url("../kormapp/images/footer-check-short-left.png") no-repeat;
+}
+/* line 232, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-check-short-right {
+  height: 8px;
+  width: 4px;
+  float: right;
+  background: url("../kormapp/images/footer-check-short-right.png") no-repeat;
+}
+/* line 238, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-check-short-center {
+  height: 8px;
+  margin: 0 auto;
+  background: url("../kormapp/images/footer-check-short-center.png") repeat-x;
+}
+/* line 243, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-check-button, .kormapp-application-container .kormapp-check-delivery-button, .kormapp-application-container .kormapp-delivery-submit-button {
+  font-family: "Open Sans", sans-serif;
+  height: 60px;
+}
+/* line 247, ../../app/styles/partials/_check.sass */
+.kormapp-application-container a.kormapp-check-button-link, .kormapp-application-container .kormapp-delivery-submit-button {
+  width: 100%;
+  display: inline-block;
+  padding: 20px;
+  font-size: 19px;
+  text-decoration: none;
+}
+/* line 251, ../../app/styles/partials/_check.sass */
+.kormapp-application-container a.kormapp-check-button-link, .kormapp-application-container .kormapp-delivery-submit-button, .kormapp-application-container a.kormapp-check-button-link:hover, .kormapp-application-container .kormapp-delivery-submit-button:hover {
+  color: white;
+}
+/* line 256, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-delivery-button, .kormapp-application-container .kormapp-delivery-submit-button {
+  padding-left: 40px;
+  background: url("../kormapp/images/delivery-icon.png") no-repeat;
+  background-position: left center;
+  white-space: nowrap;
+}
+/* line 268, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-delivery, .kormapp-application-container .kormapp-check-delivery-button, .kormapp-application-container .kormapp-delivery-submit-button {
+  background-color: #f2795a;
+  border-top: 2px solid #d06b52;
+}
+/* line 278, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-delivery-inactive {
+  background-color: #999999;
+  border-top: 2px solid #7f7f7f;
+}
+/* line 282, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-phone-input-group {
+  position: relative;
+  margin-left: 24px;
+}
+/* line 285, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-phone-input-prefix {
+  color: #666666;
+  position: absolute;
+  left: 0;
+  margin-left: -26px;
+  padding-top: 8px;
+}
+/* line 293, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-check-info {
+  margin-top: 1em;
+  margin-bottom: 1.5em;
+  padding: 10px;
+  font-size: 12.6px;
+}
+/* line 300, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-check-offer,
+.kormapp-application-container .kormapp-check-info-free-delivery {
+  margin-bottom: 5px;
+  color: #666666;
+}
+/* line 305, ../../app/styles/partials/_check.sass */
+.kormapp-application-container .kormapp-check-free-delivery {
+  color: #f2795a;
+}
+/* line 2, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-vendor-footer {
+  position: absolute;
+  bottom: 1.5em;
+  left: 0;
+  right: 0;
+  color: white;
+  font-size: 12px;
+  margin: auto;
+  opacity: 0.5;
+}
+/* line 12, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-vendor-city {
+  display: block;
+  margin-bottom: 10px;
+}
+/* line 16, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-modal-wrapper {
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 1100;
+  font-family: "Open Sans", sans-serif;
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+/* line 6, ../../app/styles/partials/_mixins.sass */
+.kormapp-application-container .kormapp-modal-wrapper:before {
+  content: "";
+  height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: -0.25em;
+}
+/* line 16, ../../app/styles/partials/_mixins.sass */
+.kormapp-application-container .kormapp-modal-wrapper > .kormapp-modal-window {
+  display: inline-block;
+  vertical-align: middle;
+}
+/* line 29, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-modal-window {
+  width: 90%;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  text-align: center;
+}
+@media screen and (min-width: 768px) {
+  /* line 29, ../../app/styles/partials/_modal.sass */
+  .kormapp-application-container .kormapp-modal-window {
+    width: 500px;
+  }
+}
+/* line 38, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-modal-without-alignment {
+  display: block;
+  top: 70px;
+  bottom: 70px;
+}
+/* line 43, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-modal-without-alignment .kormapp-modal-button {
+  display: block;
+  margin: 20px auto auto;
+  text-align: center;
+}
+/* line 48, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-modal-window-white {
+  background-color: white;
+}
+/* line 51, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-modal-title, .kormapp-application-container .kormapp-quantity-title {
+  padding: 15px 0 8px;
+  color: #f2795a;
+}
+/* line 58, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-quantity-table {
+  text-align: center;
+  margin: 0 auto;
+}
+/* line 62, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-price {
+  color: #f2795a;
+  font-family: "Open Sans", sans-serif;
+  font-size: 22px;
+}
+/* line 67, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-price .kormapp-price-font {
+  font-size: 32px;
+}
+/* line 70, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-multiplier {
+  color: #72bab6;
+  font-size: 28px;
+  margin: 0 8px;
+}
+/* line 75, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-multiplier-font {
+  font-size: 32px;
+}
+/* line 78, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-quantity-selector {
+  margin: 10px auto 10px;
+  color: #72bab6;
+}
+/* line 82, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-quantity-selector-button {
+  color: #72bab6;
+  background-color: white;
+  font-size: 22px;
+  display: inline-block;
+  width: 27px;
+  height: 27px;
+  border: 1px solid #72bab6;
+  text-decoration: none;
+}
+/* line 92, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-vendor-title, .kormapp-application-container .kormapp-vendor-description {
+  color: white;
+  margin-bottom: 20px;
+}
+/* line 96, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-vendor-title {
+  font-weight: normal;
+  font-size: 20px;
+}
+/* line 100, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container .kormapp-vendor-description {
+  overflow: auto;
+  font-size: 13px;
+  text-align: left;
+  line-height: 1.4;
+}
+/* line 106, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container a.kormapp-modal-button {
+  display: inline-block;
+  text-decoration: none;
+  font-family: "Open Sans", sans-serif;
+  font-size: 10px;
+  padding: 5px;
+  margin-bottom: 15px;
+  width: 110px;
+  text-align: center;
+  background-color: #f2795a;
+}
+/* line 115, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container a.kormapp-modal-button, .kormapp-application-container a.kormapp-modal-button:hover {
+  color: white;
+}
+/* line 119, ../../app/styles/partials/_modal.sass */
+.kormapp-application-container span.kormapp-modal-button-text {
+  line-height: 1.7;
+}
+
+/* line 52, ../../app/styles/core.sass */
+.kormapp-application-container .kormapp-web-desktop {
+  position: relative;
+  margin-bottom: 0;
 }

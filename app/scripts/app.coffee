@@ -46,7 +46,7 @@ CurrentCategoryController
 ) ->
 
   App = new Marionette.Application
-  App.version = '0.1.31' # Переустанавливается через grunt version
+  App.version = '0.1.33' # Переустанавливается через grunt version
 
   App.addInitializer ({bundle}) ->
     App.bundle = bundle
