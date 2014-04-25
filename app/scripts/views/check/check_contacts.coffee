@@ -5,7 +5,7 @@ define ['templates/check/check_contacts', 'helpers/application_helpers'],
     template: template
     templateHelpers: -> Helpers
     phoneLength: 10
-    addressLength: 10
+    addressLength: 3
 
     initialize: ({ @app, @user, @modal, @vendor }) ->
       @model = @user
