@@ -5,7 +5,15 @@
     padding-top: 14px
     padding-bottom: $footer-height - 4px
     height: 100%
-    overflow: scroll
+    overflow-y: auto
+  .kormapp-wide-layout
+    .kormapp-content
+      position: relative
+      height: $app-container-height - $header-height
+      overflow-y: hidden
+
+
+
   .kormapp-narrow-layout
     .kormapp-content
       position: absolute
