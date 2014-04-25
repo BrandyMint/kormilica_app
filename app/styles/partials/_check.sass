@@ -1,4 +1,4 @@
-$sidebar-check-height: ($app-container-height - $header-height)/ 2
+$sidebar-check-height: ($app-container-height - $header-height)/ 2 + 100px
 
 =kormapp-check
   .kormapp-separator
@@ -64,6 +64,9 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
     z-index: $check-content-z-index
   .kormapp-check-content
     color: $check-font-color
+  .kormapp-wide-layout
+    .kormapp-check-content
+      height: $sidebar-check-height - $check-bottom-deck-height - 3px
 
 
   .kormapp-check-background-container
