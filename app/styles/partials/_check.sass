@@ -1,4 +1,4 @@
-$sidebar-check-height: ($app-container-height - $header-height)/ 2
+$sidebar-check-height: ($app-container-height - $header-height)/ 2 + 100px
 
 =kormapp-check
   .kormapp-separator
@@ -54,7 +54,7 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
       height: auto
       top: 0
 
-  .kormapp-check-content
+  //.kormapp-check-content
     position: relative
     height: 100%
     overflow: hidden
@@ -62,6 +62,11 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
     font-family: $base-font-family
     color: $check-font-color
     z-index: $check-content-z-index
+  .kormapp-check-content
+    color: $check-font-color
+  .kormapp-wide-layout
+    .kormapp-check-content
+      height: $sidebar-check-height - $check-bottom-deck-height - 3px
 
 
   .kormapp-check-background-container
@@ -144,7 +149,10 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
       position: relative
 
   .kormapp-scrollable-check
-    overflow: auto
+    overflow:
+      x: hidden
+      y: auto
+    -webkit-overflow-scrolling: touch
     height: $sidebar-check-height - 179px
   .kormapp-empty-check
     .kormapp-scrollable-check
@@ -155,6 +163,8 @@ $sidebar-check-height: ($app-container-height - $header-height)/ 2
   .kormapp-cart-items
     padding-left: 35px
     list-style: decimal
+  .kormapp-wide-layout
+    font-size: 0.75em
 
   .kormapp-product-amount
     padding-right: 5px

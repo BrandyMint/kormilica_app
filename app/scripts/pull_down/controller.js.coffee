@@ -66,13 +66,11 @@ define ->
       @_anim = webkitRequestAnimationFrame(@updateHeight)
 
     clickStopperShow: =>
-      setTimeout (=>
-        @clickStopper = $(@clickStopperTemplate)
-        @view.$el.append @clickStopper
-        @clickStopper.height $(window).height() + @maxHeight
-        @clickStopper.width $(window).width()
-        @clickStopper.one 'click', @_hide
-      ), 500
+      @clickStopper = $(@clickStopperTemplate)
+      @view.$el.append @clickStopper
+      @clickStopper.height $(window).height() + @maxHeight
+      @clickStopper.width $(window).width()
+      @clickStopper.one 'click', @_hide
 
     clickStopperHide: =>
       setTimeout (=>
