@@ -5,7 +5,15 @@
     padding-top: 14px
     padding-bottom: $footer-height - 4px
     height: 100%
-    overflow: scroll
+    overflow-y: auto
+  .kormapp-wide-layout
+    .kormapp-content
+      position: relative
+      height: $app-container-height - $header-height
+      overflow-y: hidden
+
+
+
   .kormapp-narrow-layout
     .kormapp-content
       position: absolute
@@ -32,8 +40,8 @@
     right: 7px
 
   span.kormapp-to-bucket
-    width: 15px
-    height: 15px
+    width: 17px
+    height: 17px
     display: inline-block
     vertical-align: top
     margin-right: 2px
@@ -41,10 +49,10 @@
     background-repeat: no-repeat
 
   .kormapp-to-bucket-orange
-    background-image: url("../kormapp/images/to-bucket-orange.png")
+    background-image: url("../kormapp/images/cart-icon-white.svg")
 
   .kormapp-to-bucket-regular
-    background-image: url("../kormapp/images/to-bucket.png")
+    background-image: url("../kormapp/images/cart-icon-white.svg")
 
   span.kormapp-order-button-text
     line-height: 1.7
