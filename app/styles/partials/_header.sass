@@ -4,7 +4,7 @@
     width: 100%
     z-index: $header-z-index
     height: $header-height + $border-height
-    margin-top: -($header-height + $border-height)
+    //margin-top: -($header-height + $border-height)
     background: $header-background-color
     color: #fff
     border-bottom: $border-height solid $orange-border-color
@@ -13,6 +13,9 @@
   .kormapp-wide-layout
     .kormapp-header
       position: absolute
+  .kormapp-narrow-layout
+    .kormapp-header
+      top: 0
 
   .kormapp-logo-wrapper
     height: $header-height
