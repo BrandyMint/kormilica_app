@@ -336,7 +336,7 @@ module.exports = (grunt) ->
       bower:
         files: [
            { expand: true, cwd: "<%= yeoman.app %>/styles/", src: '*', dest: "<%= yeoman.bower %>/lib/sass/"},
-           { expand: true, cwd: "<%= yeoman.dist %>", src: 'kormapp/images/*', dest: "<%= yeoman.bower %>/lib/"},
+           { expand: true, cwd: "<%= yeoman.app %>/kormapp/images/", src: '*', dest: "<%= yeoman.bower %>/lib/kormapp/images/"},
            { "<%= yeoman.bower %>/lib/kormilica_app.js": "<%= yeoman.dist %>/scripts/main.js" },
            { "<%= yeoman.bower %>/lib/styles/kormilica_app.css": "<%= yeoman.dist %>/styles/main.css" },
            { "<%= yeoman.bower %>/lib/styles/kormilica_app.core.css": "<%= yeoman.dist %>/styles/core.css" }
