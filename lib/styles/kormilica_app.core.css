@@ -325,12 +325,12 @@ a.kormapp-modal-button.kormapp-reflection-on {
   padding-left: 0;
   padding-right: 0;
 }
-/* line 21, ../../app/bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/_mixins.scss */
+/* line 15, ../../app/bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
 .kormapp-application-container .kormapp-container:before, .kormapp-application-container .kormapp-check-background-container:before, .kormapp-application-container .kormapp-container:after, .kormapp-application-container .kormapp-check-background-container:after {
   content: " ";
   display: table;
 }
-/* line 25, ../../app/bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/_mixins.scss */
+/* line 19, ../../app/bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap/mixins/_clearfix.scss */
 .kormapp-application-container .kormapp-container:after, .kormapp-application-container .kormapp-check-background-container:after {
   clear: both;
 }
