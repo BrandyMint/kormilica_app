@@ -208,6 +208,7 @@ module.exports = (grunt) ->
             cordovaShim: 'empty:'
             jquery: "../../app/bower_components/jquery/jquery"
             underscore: "../../app/bower_components/underscore/underscore"
+            requirejs: "../../app/bower_components/requirejs/require"
             backbone: "../../app/bower_components/backbone/backbone"
             hammerjs: "../../app/bower_components/hammerjs/hammer"
             'jquery-hammerjs': "../../app/bower_components/jquery-hammerjs/jquery.hammer"
@@ -231,6 +232,10 @@ module.exports = (grunt) ->
           useStrict: true
           wrap: true
           findNestedDependencies: true
+          almond: true
+          #name: 'main'
+          #out: 'dist/scripts/main.js'
+          #mainConfigFile: '.tmp/scripts/main.js'
 
       core:
         options:
