@@ -15,7 +15,6 @@
     "jquery.ui": "~1.10.4",
     "rolejs": "https://github.com/kossnocorp/role.git#~1.3.1",
     "underscore": "~1.6",
-    "backbone.babysitter": "0.1.0",
     "cordova-shim": "git@github.com:SuperSkunk/cordova-shim.git",
     "pace": "~0.5.1"
   },
