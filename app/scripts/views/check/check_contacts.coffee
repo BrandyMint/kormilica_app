@@ -1,11 +1,25 @@
-define ['templates/check/check_contacts', 'helpers/application_helpers'],
-(template, Helpers) ->
+define [
+  'templates/check/check_contacts'
+  'helpers/application_helpers'
+],
+(
+  template
+  Helpers
+) ->
 
   class CheckContactsView extends Marionette.ItemView
     template: template
-    templateHelpers: -> Helpers
+    templateHelpers: Helpers
+
     phoneLength: 10
     addressLength: 3
+
+    ui:
+      form:                   '@kormapp-contact-form'
+      deliveryBlock:          '@kormapp-delivery-block'
+      deliveryBlockInactive:  '@kormapp-delivery-block-inactive'
+      deliveryButtonContent:  '@kormapp-delivery-button-content'
+      content:                '@kormapp-modal-content'
 
     initialize: ({ @app, @user, @modal, @vendor }) ->
       @model = @user
@@ -19,13 +33,6 @@ define ['templates/check/check_contacts', 'helpers/application_helpers'],
         onSet: (val) ->
           @phone = val.replace(/\D/g, '')
           @phone
-
-    ui:
-      form:                   '@kormapp-contact-form'
-      deliveryBlock:          '@kormapp-delivery-block'
-      deliveryBlockInactive:  '@kormapp-delivery-block-inactive'
-      deliveryButtonContent:  '@kormapp-delivery-button-content'
-      content:                '@kormapp-modal-content'
 
     events:
       'click @ui.deliveryBlock': 'addOrder'
@@ -58,15 +65,15 @@ define ['templates/check/check_contacts', 'helpers/application_helpers'],
       @app.vent.trigger 'order:checkout'
 
     showErrors: (e) ->
-      e.preventDefault()
+      e.stopPropagation()
       window.navigator.notification.alert 'Впишите телефон и адрес доставки', null, 'Внимание'
 
-    validate: (e) ->
+    isValid: ->
       @model.get('phone')?.toString().length >= @phoneLength &&
         @model.get('address')?.toString().length >= @addressLength
 
     manageButtons: (model) ->
-      if @validate()
+      if @isValid()
         @activateDeliveryButton()
       else
         @deactivateDeliveryButton()
