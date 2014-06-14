@@ -1,5 +1,5 @@
 define [
-  'templates/check/check_contacts'
+  'templates/modal_windows/check_contacts'
   'helpers/application_helpers'
 ],
 (
@@ -21,9 +21,12 @@ define [
       deliveryButtonContent:  '@kormapp-delivery-button-content'
       content:                '@kormapp-modal-content'
 
-    initialize: ({ @app, @user, @modal, @vendor }) ->
-      @model = @user
-      @app.vent.on 'order:failed', @activateDeliveryButton
+    ui:
+      form:                  '@kormapp-contact-form'
+      deliveryBlock:         '@kormapp-delivery-block'
+      deliveryBlockInactive: '@kormapp-delivery-block-inactive'
+      deliveryButtonContent: '@kormapp-delivery-button-content'
+      content:               '@kormapp-modal-content'
 
     bindings:
       '@kormapp-address':
@@ -40,13 +43,15 @@ define [
       'keyup @ui.form': 'manageButtons'
       # ios screen position fixes:
       'click': 'clickAnywhere'
-      'click @ui.form, click @ui.content': 'stopEvent'
+      'click @ui.form, click @ui.content': (e) -> e.stopPropagation()
 
     serializeData: ->
       _.extend @user.toJSON()
 
-    stopEvent: (e) ->
-      e.stopPropagation()
+    initialize: ({ @app, @user, @modal, @vendor }) ->
+      @model = @user
+      @app.vent.on 'order:failed', @activateDeliveryButton
+      @app.vent.on 'order:created', => @close()
 
     clickAnywhere: ->
       @adjustScreen()
@@ -86,8 +91,7 @@ define [
       @ui.deliveryBlock.show()
       @ui.deliveryBlockInactive.hide()
 
-    onShow: ->
-      @manageButtons()
+    onShow: -> @manageButtons()
 
     onRender: ->
       @ui.deliveryBlock.hide()
