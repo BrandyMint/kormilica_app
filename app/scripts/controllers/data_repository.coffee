@@ -40,12 +40,10 @@ define [
 
       App.cart = new Cart {}, App.products
       App.cart.fetch()
-
+      App.cart.reattachProductsFromCollection App.products
       App.cart.set 'delivery_price', App.vendor.get('delivery_price')
 
       App.profile = new Profile()
       App.profile.fetch()
       unless App.profile.get('current_category_id')
         App.profile.set('current_category_id', App.categories.first().id)
-
-      #App.cart.reattachProductsFromCollection App.products
