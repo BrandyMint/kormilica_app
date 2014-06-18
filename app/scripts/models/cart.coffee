@@ -46,7 +46,7 @@ define ['collections/cart_items', 'helpers/application_helpers'], (CartItems, He
       @items.getTotalCost()
 
     # TODO Выделить в сервис
-    reattachProductsFromCollection: (products) ->
+    reattachProductsFromCollection: ->
       saved_total_cost = @getTotalCost()
       @items.each (ci) -> ci.reattachProductFromCollection()
 

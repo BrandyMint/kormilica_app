@@ -39,8 +39,6 @@ define [
         App.products.set   bundle.products
 
       App.cart = new Cart {}, App.products
-      App.cart.fetch()
-      App.cart.reattachProductsFromCollection App.products
       App.cart.set 'delivery_price', App.vendor.get('delivery_price')
 
       App.profile = new Profile()
