@@ -62,6 +62,11 @@ CurrentCategoryController
       categories: App.categories
       products:   App.products
 
+    if App.bundle.update == 'now'
+      App.updateManager.perform()
+    else
+      App.cart.fetch()
+
     App.mainLayout = if App.isWide
       new WideLayout()
     else
@@ -94,7 +99,6 @@ CurrentCategoryController
         app:    App
         cart:   App.cart
         vendor: App.vendor
-
 
     headerView.on 'logo:clicked', ->
       App.modal.show new VendorPageView
@@ -169,8 +173,6 @@ CurrentCategoryController
 
   App.on 'start', ->
     console.log "Start KormApp #{App.version}", Date.now()
-    if App.bundle.update == 'now'
-      App.updateManager.perform()
 
     onDeviceReady = ->
       console.log 'onDeviceReady fired'

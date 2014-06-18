@@ -22,22 +22,23 @@ define ['settings', 'helpers/application_helpers'], (Settings, Helpers) ->
 
     _update: (data) =>
       console.log 'От сервера получены данные для обновления', data
-      @products.reset   data.products
+      @products.reset data.products
       @products.save()
 
       @categories.reset data.categories
       unless @categories.get(@profile.get('current_category_id'))
         @profile.set('current_category_id', @categories.first().id)
 
-      @vendor.set       data.vendor
+      @vendor.set data.vendor
       @vendor.save()
 
+      @cart.fetch()
       @cart.set 'delivery_price', @vendor.get('delivery_price')
 
       @user.set 'lastUpdateAt', Date.now()
       @user.save()
 
-      if @cart.reattachProductsFromCollection @products
+      if @cart.reattachProductsFromCollection()
         window.navigator.notification.alert "Продавец изменил цены товаров.\nНовая стоимость корзины: #{Helpers.money_txt @cart.getTotalCost()}"
 
     _headers: ->
