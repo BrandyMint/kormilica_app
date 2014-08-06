@@ -14,3 +14,4 @@ www
 /test/temp
 /test/bower_components/
 .idea
+/app/data

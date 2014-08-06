@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+grunt version:android
+
+cp ./dist/cordova_android.html ./www/index.html
+
+cordova build android --release

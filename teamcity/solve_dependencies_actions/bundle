@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+#rm .ruby-version
+which bundle
+whereis bundle
+bundle

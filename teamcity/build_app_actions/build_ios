@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+cp ./dist/cordova_ios.html ./www/index.html
+cordova build ios --release --device
