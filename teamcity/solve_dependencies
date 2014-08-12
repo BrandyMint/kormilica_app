@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+./teamcity/solve_dependencies_actions/bundle
+./teamcity/solve_dependencies_actions/npm
+./teamcity/solve_dependencies_actions/bower

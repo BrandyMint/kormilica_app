@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+vendor_key=$1
+
+if [ -z "$vendor_key" ]; then
+  echo "Укажите vendor_key в качестве параметра"
+  exit 2
+fi
+
+grunt fetchBundle --vendor-key $vendor_key
