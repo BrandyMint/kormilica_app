@@ -6,5 +6,3 @@
 
 ./teamcity/build_app_actions/build_android
 ./teamcity/build_app_actions/sign_android
-
-#./teamcity/build_app_actions/build_ios
