@@ -225,7 +225,6 @@ input[type="search"] {
   -webkit-appearance: textfield;
   /* 1 */
   -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
   /* 2 */
   box-sizing: content-box;
 }
@@ -264,13 +263,11 @@ textarea {
 /* line 1, ../../app/styles/partials/_body.sass */
 * {
   -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 /* line 5, ../../app/styles/partials/_body.sass */
 *:before, *:after {
   -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -379,7 +376,7 @@ input {
 .kormapp-application-container .kormapp-web-mobile .kormapp-wide-layout,
 .kormapp-application-container .kormapp-cordova-android .kormapp-wide-layout,
 .kormapp-application-container .kormapp-cordova-ios .kormapp-wide-layout {
-  height: 607px;
+  height: 681px;
 }
 /* line 10, ../../app/styles/partials/_layout.sass */
 .kormapp-body-ios7 .kormapp-application-container .kormapp-web-desktop, .kormapp-application-container .kormapp-body-ios7 .kormapp-web-desktop,
@@ -487,7 +484,6 @@ a.kormapp-modal-button.kormapp-reflection-on {
   right: 0px;
   width: 100px;
   height: 100%;
-  -webkit-box-shadow: 0 0 10px #e67863, 0 0 5px #e67863;
   box-shadow: 0 0 10px #e67863, 0 0 5px #e67863;
   opacity: 1.0;
   -webkit-transform: rotate(3deg) translate(0px, -4px);
@@ -559,7 +555,7 @@ a.kormapp-modal-button.kormapp-reflection-on {
   }
 }
 
-/* line 17, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 17, ../../../../../.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 .kormapp-application-container html, .kormapp-application-container body, .kormapp-application-container div, .kormapp-application-container span, .kormapp-application-container applet, .kormapp-application-container object, .kormapp-application-container iframe,
 .kormapp-application-container h1, .kormapp-application-container h2, .kormapp-application-container h3, .kormapp-application-container h4, .kormapp-application-container h5, .kormapp-application-container h6, .kormapp-application-container p, .kormapp-application-container blockquote, .kormapp-application-container pre,
 .kormapp-application-container a, .kormapp-application-container abbr, .kormapp-application-container acronym, .kormapp-application-container address, .kormapp-application-container big, .kormapp-application-container cite, .kormapp-application-container code,
@@ -580,39 +576,39 @@ a.kormapp-modal-button.kormapp-reflection-on {
   font-size: 100%;
   vertical-align: baseline;
 }
-/* line 22, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 22, ../../../../../.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 .kormapp-application-container html {
   line-height: 1;
 }
-/* line 24, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 24, ../../../../../.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 .kormapp-application-container ol, .kormapp-application-container ul {
   list-style: none;
 }
-/* line 26, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 26, ../../../../../.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 .kormapp-application-container table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-/* line 28, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 28, ../../../../../.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 .kormapp-application-container caption, .kormapp-application-container th, .kormapp-application-container td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle;
 }
-/* line 30, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 30, ../../../../../.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 .kormapp-application-container q, .kormapp-application-container blockquote {
   quotes: none;
 }
-/* line 103, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 103, ../../../../../.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 .kormapp-application-container q:before, .kormapp-application-container q:after, .kormapp-application-container blockquote:before, .kormapp-application-container blockquote:after {
   content: "";
   content: none;
 }
-/* line 32, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 32, ../../../../../.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 .kormapp-application-container a img {
   border: none;
 }
-/* line 116, ../../../../../../../usr/local/var/rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.4/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 116, ../../../../../.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 .kormapp-application-container article, .kormapp-application-container aside, .kormapp-application-container details, .kormapp-application-container figcaption, .kormapp-application-container figure, .kormapp-application-container footer, .kormapp-application-container header, .kormapp-application-container hgroup, .kormapp-application-container menu, .kormapp-application-container nav, .kormapp-application-container section, .kormapp-application-container summary {
   display: block;
 }
@@ -815,7 +811,6 @@ a.kormapp-modal-button.kormapp-reflection-on {
 .kormapp-application-container .kormapp-check-background-image {
   position: absolute;
   background: url("../kormapp/images/top-check-background.svg") no-repeat bottom;
-  -webkit-background-size: contain;
   background-size: contain;
   width: 100%;
   bottom: 0;
@@ -880,7 +875,7 @@ a.kormapp-modal-button.kormapp-reflection-on {
 .kormapp-application-container .kormapp-header-menu-item:hover {
   color: #fbd9d0;
 }
-/* line 2, ../../app/styles/partials/_content.sass */
+/* line 3, ../../app/styles/partials/_content.sass */
 .kormapp-application-container .kormapp-content {
   width: 100%;
   background-color: #eeeeee;
@@ -889,14 +884,14 @@ a.kormapp-modal-button.kormapp-reflection-on {
   height: 100%;
   overflow-y: auto;
 }
-/* line 10, ../../app/styles/partials/_content.sass */
+/* line 11, ../../app/styles/partials/_content.sass */
 .kormapp-application-container .kormapp-wide-layout .kormapp-content {
   position: relative;
-  height: 607px;
+  height: 681px;
   overflow-y: hidden;
   padding-top: 74px;
 }
-/* line 19, ../../app/styles/partials/_content.sass */
+/* line 20, ../../app/styles/partials/_content.sass */
 .kormapp-application-container .kormapp-narrow-layout .kormapp-content {
   position: absolute;
   top: 53px;
@@ -904,11 +899,11 @@ a.kormapp-modal-button.kormapp-reflection-on {
   height: auto;
   padding-bottom: 0;
 }
-/* line 26, ../../app/styles/partials/_content.sass */
+/* line 27, ../../app/styles/partials/_content.sass */
 .kormapp-application-container a.kormapp-in-order {
   background: #f2795a !important;
 }
-/* line 29, ../../app/styles/partials/_content.sass */
+/* line 30, ../../app/styles/partials/_content.sass */
 .kormapp-application-container a.kormapp-order-button {
   text-decoration: none;
   font-family: "Open Sans", sans-serif;
@@ -921,30 +916,29 @@ a.kormapp-modal-button.kormapp-reflection-on {
   top: 74px;
   right: 7px;
 }
-/* line 36, ../../app/styles/partials/_content.sass */
+/* line 37, ../../app/styles/partials/_content.sass */
 .kormapp-application-container a.kormapp-order-button, .kormapp-application-container a.kormapp-order-button {
   color: white;
 }
-/* line 43, ../../app/styles/partials/_content.sass */
+/* line 44, ../../app/styles/partials/_content.sass */
 .kormapp-application-container span.kormapp-to-bucket {
   width: 17px;
   height: 17px;
   display: inline-block;
   vertical-align: top;
   margin-right: 2px;
-  -webkit-background-size: contain;
   background-size: contain;
   background-repeat: no-repeat;
 }
-/* line 52, ../../app/styles/partials/_content.sass */
+/* line 53, ../../app/styles/partials/_content.sass */
 .kormapp-application-container .kormapp-to-bucket-orange {
   background-image: url("../kormapp/images/cart-icon-white.svg");
 }
-/* line 55, ../../app/styles/partials/_content.sass */
+/* line 56, ../../app/styles/partials/_content.sass */
 .kormapp-application-container .kormapp-to-bucket-regular {
   background-image: url("../kormapp/images/cart-icon-white.svg");
 }
-/* line 58, ../../app/styles/partials/_content.sass */
+/* line 59, ../../app/styles/partials/_content.sass */
 .kormapp-application-container span.kormapp-order-button-text {
   line-height: 1.7;
 }
@@ -1129,7 +1123,11 @@ a.kormapp-modal-button.kormapp-reflection-on {
   -ms-transform: rotate(180deg);
   transform: rotate(180deg);
 }
-/* line 82, ../../app/styles/partials/_categories.sass */
+/* line 81, ../../app/styles/partials/_categories.sass */
+.kormapp-body-ios7 .kormapp-application-container .kormapp-categories-list-narrow.kormapp-slided-down .kormapp-pull-tag {
+  margin-top: -70px;
+}
+/* line 84, ../../app/styles/partials/_categories.sass */
 .kormapp-application-container .kormapp-click-stopper {
   position: fixed;
   pointer-events: all;
@@ -1263,7 +1261,6 @@ a.kormapp-modal-button.kormapp-reflection-on {
 .kormapp-application-container .kormapp-check-background-container {
   background-color: #eeeeee;
   background-image: url("../kormapp/images/paper-texture.jpg");
-  -webkit-background-size: contain;
   background-size: contain;
   position: relative;
   height: 100%;
@@ -1302,7 +1299,6 @@ a.kormapp-modal-button.kormapp-reflection-on {
   background-color: #eeeeee;
   background-image: url("../kormapp/images/check-battlement-center.png");
   background-repeat: repeat-x;
-  -webkit-background-size: 13px auto;
   background-size: 13px auto;
   background-position-x: -6px;
   background-position-y: 100%;
@@ -1319,7 +1315,6 @@ a.kormapp-modal-button.kormapp-reflection-on {
 /* line 125, ../../app/styles/partials/_check.sass */
 .kormapp-application-container span.kormapp-back-button {
   background: url("../kormapp/images/back-button.png");
-  -webkit-background-size: contain;
   background-size: contain;
   width: 12px;
   height: 20px;
