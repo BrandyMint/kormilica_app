@@ -6,13 +6,14 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
     templateHelpers: -> Helpers
     itemView: CheckCartItemView
     itemViewContainer: '@kormapp-cart-items'
+    className: 'kormapp-check-block'
     emptyCheckClass: 'kormapp-empty-check'
 
     initialize: ({ @app, @cart, @user, @vendor, @modal }) ->
       @collection = @cart.items
       @model = @user
       @app.vent.on 'order:failed', @activateDeliveryButton
-      @listenTo @collection, 'add remove', () =>
+      @listenTo @collection, 'add remove reset', () =>
         @_manageContinueButton()
 
     ui:
@@ -66,12 +67,14 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
           update: ($el, val) =>
             if val.cents > 0
               @_showSummary()
+              @$el.removeClass @emptyCheckClass
               result =
                 currency: val.currency
                 cents:    val.cents + @vendor.get('delivery_price').cents
               $el.html Helpers.money result
             else
               @_hideSummary()
+              @$el.addClass @emptyCheckClass
 
       @_manageContinueButton()
 
@@ -86,11 +89,18 @@ define ['templates/check/check', 'views/check/check_cart_item', 'views/modal_win
     _showSummary: ->
       @ui.bottomInfo.show()
 
-    _hideSummary: =>
+    _hideSummary: ->
       @ui.bottomInfo.hide()
 
-    continueOrder: (e) ->
-      @modal.show new CheckContactsView app: @app, cart: @cart, user: @user, vendor: @vendor, modal: @modal
+    continueOrder: (e) =>
+      if @vendor.isPriceValid(@cart)
+        @modal.show new CheckContactsView app: @app, cart: @cart, user: @user, vendor: @vendor, modal: @modal
+      else
+        @_showMinOrderAlert()
+
+    # TODO move this to controller
+    _showMinOrderAlert: ->
+      window.navigator.notification.alert @vendor.get('mobile_empty_cart_alert'), null, 'Внимание'
 
     _setScrollableAreaHeight: ->
       unless @app.isWide

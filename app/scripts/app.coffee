@@ -1,7 +1,8 @@
 define [
   'controllers/cart',
   'controllers/check',
-  'views/header/header',
+  'views/header/header_wide',
+  'views/header/header_narrow',
   'views/products/products',
   'views/modal_windows/vendor_page',
   'controllers/footer',
@@ -23,7 +24,8 @@ define [
 (
 CartController,
 CheckController,
-HeaderView,
+HeaderWideView,
+HeaderNarrowView,
 ProductsView,
 VendorPageView,
 FooterController,
@@ -44,7 +46,7 @@ CurrentCategoryController
 ) ->
 
   App = new Marionette.Application
-  App.version = '0.1.31' # Переустанавливается через grunt version
+  App.version = '0.1.34' # Переустанавливается через grunt version
 
   App.addInitializer ({bundle}) ->
     App.bundle = bundle
@@ -59,6 +61,11 @@ CurrentCategoryController
       vendor:     App.vendor
       categories: App.categories
       products:   App.products
+
+    if App.bundle.update == 'now'
+      App.updateManager.perform()
+    else
+      App.cart.fetch()
 
     App.mainLayout = if App.isWide
       new WideLayout()
@@ -82,10 +89,16 @@ CurrentCategoryController
       user:   App.user
       vendor: App.vendor
 
-    headerView = new HeaderView
-      app:    App
-      cart:   App.cart
-      vendor: App.vendor
+    headerView = if App.isWide
+      new HeaderWideView
+        app:    App
+        cart:   App.cart
+        vendor: App.vendor
+    else
+      new HeaderNarrowView
+        app:    App
+        cart:   App.cart
+        vendor: App.vendor
 
     headerView.on 'logo:clicked', ->
       App.modal.show new VendorPageView
@@ -160,8 +173,6 @@ CurrentCategoryController
 
   App.on 'start', ->
     console.log "Start KormApp #{App.version}", Date.now()
-    if App.bundle.update == 'now'
-      App.updateManager.perform()
 
     onDeviceReady = ->
       console.log 'onDeviceReady fired'
@@ -176,7 +187,7 @@ CurrentCategoryController
       userAgent = navigator.userAgent
       #android = userAgent.match(/(Android)/g)
       ios = userAgent.match(/(iPhone|iPad)/g)
-      ios7 = userAgent.match(/OS 7_1/) if ios
+      ios7 = userAgent.match(/OS 7/) if ios
       cordova_ios = window.cordova.platformId?.match(/ios/)
       if cordova_ios && ios7
         $('body').addClass 'kormapp-body-ios7'

@@ -1,5 +1,4 @@
 define ->
-  'use strict'
 
   class CartItem extends Backbone.Model
 
@@ -10,7 +9,7 @@ define ->
       @reattachProductFromCollection(product) if product?
 
     # Восстанавливаем модели при загрузке данных из localStorage
-    reattachProductFromCollection: (product)->
+    reattachProductFromCollection: (product) ->
       product = @collection.products.get product?.id || @get('product_id')
 
       if product?

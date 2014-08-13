@@ -11,11 +11,9 @@ define ['models/order', 'settings'], (Order, Settings) ->
         url: Settings.routes.orders_url()
         headers:
           'X-Vendor-Key': @vendor.get 'key'
-
         success: (model, response) =>
           @app.vent.trigger 'order:created', response
           @successAlert response
-
         error: (model, response) =>
           @app.vent.trigger 'order:failed', response
           @errorAlert response

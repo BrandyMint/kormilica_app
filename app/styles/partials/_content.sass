@@ -1,42 +1,60 @@
-.kormapp-content
-  width: 100%
-  background-color: $content-background-color
-  padding-top: 14px
-  padding-bottom: $footer-height - 4px
-  height: 100%
-  overflow: scroll
 
-a.kormapp-in-order
-  background: $button-orange-color!important
+=kormapp-content
+  .kormapp-content
+    width: 100%
+    background-color: $content-background-color
+    padding-top: 14px
+    padding-bottom: $footer-height - 4px
+    height: 100%
+    overflow-y: auto
+  .kormapp-wide-layout
+    .kormapp-content
+      position: relative
+      height: $app-container-height + $app-container-padding-top
+      overflow-y: hidden
+      padding-top: $app-container-padding-top
 
-a.kormapp-order-button
-  text-decoration: none
-  font-family: $base-font-family
-  font-size: $button-font-size
-  padding: 5px
-  min-width: 110px
-  text-align: center
-  &, &
-    color: $button-font-color
-  background: $button-blue-color
-  position: absolute
-  top: 74px
-  right: 7px
 
-span.kormapp-to-bucket
-  width: 15px
-  height: 15px
-  display: inline-block
-  vertical-align: top
-  margin-right: 2px
-  background-size: contain
-  background-repeat: no-repeat
 
-.kormapp-to-bucket-orange
-  background-image: url("../kormapp/images/to-bucket-orange.png")
+  .kormapp-narrow-layout
+    .kormapp-content
+      position: absolute
+      top: $header-height - 14px/2
+      bottom: $footer-height
+      height: auto
+      padding-bottom: 0
 
-.kormapp-to-bucket-regular
-  background-image: url("../kormapp/images/to-bucket.png")
+  a.kormapp-in-order
+    background: $button-orange-color!important
 
-span.kormapp-order-button-text
-  line-height: 1.7
+  a.kormapp-order-button
+    text-decoration: none
+    font-family: $base-font-family
+    font-size: $button-font-size
+    padding: 5px
+    min-width: 110px
+    text-align: center
+    &, &
+      color: $button-font-color
+    background: $button-blue-color
+    position: absolute
+    top: 74px
+    right: 7px
+
+  span.kormapp-to-bucket
+    width: 17px
+    height: 17px
+    display: inline-block
+    vertical-align: top
+    margin-right: 2px
+    background-size: contain
+    background-repeat: no-repeat
+
+  .kormapp-to-bucket-orange
+    background-image: url("../kormapp/images/cart-icon-white.svg")
+
+  .kormapp-to-bucket-regular
+    background-image: url("../kormapp/images/cart-icon-white.svg")
+
+  span.kormapp-order-button-text
+    line-height: 1.7

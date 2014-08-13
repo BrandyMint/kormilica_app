@@ -71,7 +71,7 @@ module.exports = (grunt) ->
           "<%= yeoman.app %>/*.html"
           "{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css"
           "{.tmp,<%= yeoman.app %>}/scripts/{,*/}*.js"
-          "<%= yeoman.app %>/kormapp/images/{,*/}*.{png,jpg,jpeg,gif,webp}"
+          "<%= yeoman.app %>/kormapp/images/{,*/}*.{png,svg,jpg,jpeg,gif,webp}"
           "<%= yeoman.app %>/scripts/templates/{,*/}*.{ejs,mustache,hbs,haml}"
           "test/spec/**/*.js"
         ]
@@ -208,6 +208,7 @@ module.exports = (grunt) ->
             cordovaShim: 'empty:'
             jquery: "../../app/bower_components/jquery/jquery"
             underscore: "../../app/bower_components/underscore/underscore"
+            requirejs: "../../app/bower_components/requirejs/require"
             backbone: "../../app/bower_components/backbone/backbone"
             hammerjs: "../../app/bower_components/hammerjs/hammer"
             'jquery-hammerjs': "../../app/bower_components/jquery-hammerjs/jquery.hammer"
@@ -231,6 +232,10 @@ module.exports = (grunt) ->
           useStrict: true
           wrap: true
           findNestedDependencies: true
+          almond: true
+          #name: 'main'
+          #out: 'dist/scripts/main.js'
+          #mainConfigFile: '.tmp/scripts/main.js'
 
       core:
         options:
@@ -270,7 +275,7 @@ module.exports = (grunt) ->
         files: [
           expand: true
           cwd: "<%= yeoman.app %>/kormapp/images"
-          src: "{,*/}*.{png,jpg,jpeg}"
+          src: "{,*/}*.{png,svg,jpg,jpeg}"
           dest: "<%= yeoman.dist %>/kormapp/images"
         ]
 
@@ -284,6 +289,10 @@ module.exports = (grunt) ->
           "<%= yeoman.dist %>/styles/core.css": [
             ".tmp/styles/core.css"
           ]
+          "<%= yeoman.dist %>/styles/sample-content.css": [
+            ".tmp/styles/sample-content.css"
+          ]
+
 
     htmlmin:
       dist:
@@ -320,9 +329,10 @@ module.exports = (grunt) ->
             "*.{ico,txt}"
             ".htaccess"
             "data/images/*.*"
+            "images/*.*"
             "bower_components/cordova-shim/{,*/}*.js"
             "bower_components/pace/{,*/}*.*"
-            "kormapp/images/{,*/}*.{webp,gif,png,jpg}"
+            "kormapp/images/{,*/}*.{webp,gif,png,svg,jpg}"
             "styles/fonts/{,*/}*.*"
             "{,*/}*.js"
           ]
@@ -331,7 +341,7 @@ module.exports = (grunt) ->
       bower:
         files: [
            { expand: true, cwd: "<%= yeoman.app %>/styles/", src: '*', dest: "<%= yeoman.bower %>/lib/sass/"},
-           { expand: true, cwd: "<%= yeoman.dist %>", src: 'kormapp/images/*', dest: "<%= yeoman.bower %>/lib/"},
+           { expand: true, cwd: "<%= yeoman.app %>/kormapp/images/", src: '*', dest: "<%= yeoman.bower %>/lib/kormapp/images/"},
            { "<%= yeoman.bower %>/lib/kormilica_app.js": "<%= yeoman.dist %>/scripts/main.js" },
            { "<%= yeoman.bower %>/lib/styles/kormilica_app.css": "<%= yeoman.dist %>/styles/main.css" },
            { "<%= yeoman.bower %>/lib/styles/kormilica_app.core.css": "<%= yeoman.dist %>/styles/core.css" }

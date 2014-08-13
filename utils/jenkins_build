@@ -1,9 +1,11 @@
 #!/bin/sh
 
+rm -fr dist
 mkdir dist
 git branch -D build
 git checkout -b build
-./utils/build
+rm -rf ./app/bower_components
+./utils/build || exit 123
 git add .
 git commit -am 'build lib'
 git push -f origin build:build

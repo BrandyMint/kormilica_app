@@ -20,7 +20,6 @@ define [ 'templates/products/product',
 
       @listenTo @cartItems, 'add remove', @cartChanged
 
-
     clicked: (e) ->
       e.preventDefault()
       @app.vent.trigger 'product:click', @model

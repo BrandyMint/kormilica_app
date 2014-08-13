@@ -1,52 +1,60 @@
-.kormapp-product-block
-  overflow: hidden
-  padding: 8px
-  margin: -6px 12px 12px 12px
-  background: $product-block-background-color
-  position: relative
-  border-bottom: 3px solid $product-block-shadow-color
-  cursor: pointer
-  @media screen and (max-width: $product-screen-xs)
-    float: none
-  @media screen and (min-width: $product-screen-sm)
-    width: 46%
-    float: left
-  .kormapp-narrow-layout &
-    // for layout without sidebar
-    @media screen and (min-width: $product-screen-md)
-      width: 30%
-      float: left
+=kormapp-product
+  .kormapp-products-column
+    height: $app-container-height
+    overflow-y: auto
+  .kormapp-narrow-layout
+    .kormapp-products-column
+      height: auto
 
-
-
-img.kormapp-product-image
-  height: 92px
-  width: 83px
-  display: inline-block
-  float: left
-
-p.kormapp-product-title
-  margin-left: 90px
-  font-family: $base-font-family
-  font-size: $product-block-title-font-size
-  color: $product-block-title-font-color
-  line-height: 1.1
-
-.kormapp-product-in-list-price
-  position: absolute
-  margin-left: 90px
-  bottom: 7px
-  color: $price-font-color
-  font-family: $base-font-family
-  font-size: $product-block-price-rouble-font-size
-
-  .kormapp-price-font
-    // Too bold for android
-    // font-weight: bold
-    font-size: $product-block-price-font-size
+  .kormapp-product-block
+    overflow: hidden
+    padding: 8px
+    margin: -6px 12px 12px 12px
+    background: $product-block-background-color
+    position: relative
+    border-bottom: 3px solid $product-block-shadow-color
+    cursor: pointer
     @media screen and (max-width: $product-screen-xs)
-      font-size: $product-block-price-small-font-size
-    @media screen and (min-width: $product-screen-xs) and (max-width: $product-screen-sm)
-      font-size: $product-block-price-small-font-size
-    @media screen and (min-width: $product-screen-md) and (max-width: $product-screen-lg)
-      font-size: $product-block-price-small-font-size
+      float: none
+    @media screen and (min-width: $product-screen-sm)
+      width: 46%
+      float: left
+    .kormapp-narrow-layout &
+      // for layout without sidebar
+      @media screen and (min-width: $product-screen-md)
+        width: 30%
+        float: left
+
+
+
+  img.kormapp-product-image
+    height: 92px
+    width: 83px
+    display: inline-block
+    float: left
+
+  p.kormapp-product-title
+    margin-left: 90px
+    font-family: $base-font-family
+    font-size: $product-block-title-font-size
+    color: $product-block-title-font-color
+    line-height: 1.1
+
+  .kormapp-product-in-list-price
+    position: absolute
+    margin-left: 90px
+    bottom: 7px
+    color: $price-font-color
+    font-family: $base-font-family
+    font-size: $product-block-price-rouble-font-size
+
+    .kormapp-price-font
+      // Too bold for android
+      // font-weight: bold
+      font-size: $product-block-price-font-size
+      @media screen and (max-width: $product-screen-xs)
+        font-size: $product-block-price-small-font-size
+      @media screen and (min-width: $product-screen-xs) and (max-width: $product-screen-sm)
+        font-size: $product-block-price-small-font-size
+      @media screen and (min-width: $product-screen-md) and (max-width: $product-screen-lg)
+        font-size: $product-block-price-small-font-size

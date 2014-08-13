@@ -13,7 +13,11 @@
   </head>
   <script>console.log("header start", Date.now());</script>
   <body class="kormapp-body kormapp-body-ios">
-    <div class="kormapp-cordova-ios" role="kormapp-container"></div>
+
+    <!-- TODO .kormapp-application-container should have role="kormapp-container" -->
+    <div class="kormapp-application-container">
+      <div class="kormapp-cordova-ios" role="kormapp-container"></div>
+    </div>
 
     <script>console.log("require begin", Date.now());</script>
     <script type="text/javascript" src="cordova.js"></script>

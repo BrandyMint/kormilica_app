@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+./teamcity/build_app_actions/prepare_grunt
+./teamcity/build_app_actions/prepare_kordova
+./teamcity/build_app_actions/prepare_os_resources
+
+./teamcity/build_app_actions/build_android
+./teamcity/build_app_actions/sign_android

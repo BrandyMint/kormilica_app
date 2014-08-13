@@ -1,15 +1,32 @@
-define ['templates/modal_windows/check_contacts', 'helpers/application_helpers'],
-(template, Helpers) ->
+define [
+  'templates/modal_windows/check_contacts'
+  'helpers/application_helpers'
+],
+(
+  template
+  Helpers
+) ->
 
   class CheckContactsView extends Marionette.ItemView
     template: template
-    templateHelpers: -> Helpers
-    phoneLength: 10
-    addressLength: 10
+    templateHelpers: Helpers
 
-    initialize: ({ @app, @user, @modal, @vendor }) ->
-      @model = @user
-      @app.vent.on 'order:failed', @activateDeliveryButton
+    phoneLength: 10
+    addressLength: 3
+
+    ui:
+      form:                   '@kormapp-contact-form'
+      deliveryBlock:          '@kormapp-delivery-block'
+      deliveryBlockInactive:  '@kormapp-delivery-block-inactive'
+      deliveryButtonContent:  '@kormapp-delivery-button-content'
+      content:                '@kormapp-modal-content'
+
+    ui:
+      form:                  '@kormapp-contact-form'
+      deliveryBlock:         '@kormapp-delivery-block'
+      deliveryBlockInactive: '@kormapp-delivery-block-inactive'
+      deliveryButtonContent: '@kormapp-delivery-button-content'
+      content:               '@kormapp-modal-content'
 
     bindings:
       '@kormapp-address':
@@ -20,26 +37,21 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
           @phone = val.replace(/\D/g, '')
           @phone
 
-    ui:
-      form:                   '@kormapp-contact-form'
-      deliveryBlock:          '@kormapp-delivery-block'
-      deliveryBlockInactive:  '@kormapp-delivery-block-inactive'
-      deliveryButtonContent:  '@kormapp-delivery-button-content'
-      content:                '@kormapp-modal-content'
-
     events:
       'click @ui.deliveryBlock': 'addOrder'
       'click @ui.deliveryBlockInactive': 'showErrors'
       'keyup @ui.form': 'manageButtons'
       # ios screen position fixes:
       'click': 'clickAnywhere'
-      'click @ui.form, click @ui.content': 'stopEvent'
+      'click @ui.form, click @ui.content': (e) -> e.stopPropagation()
 
     serializeData: ->
       _.extend @user.toJSON()
 
-    stopEvent: (e) ->
-      e.stopPropagation()
+    initialize: ({ @app, @user, @modal, @vendor }) ->
+      @model = @user
+      @app.vent.on 'order:failed', @activateDeliveryButton
+      @app.vent.on 'order:created', => @close()
 
     clickAnywhere: ->
       @adjustScreen()
@@ -58,15 +70,15 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
       @app.vent.trigger 'order:checkout'
 
     showErrors: (e) ->
-      e.preventDefault()
+      e.stopPropagation()
       window.navigator.notification.alert 'Впишите телефон и адрес доставки', null, 'Внимание'
 
-    validate: (e) ->
+    isValid: ->
       @model.get('phone')?.toString().length >= @phoneLength &&
         @model.get('address')?.toString().length >= @addressLength
 
     manageButtons: (model) ->
-      if @validate()
+      if @isValid()
         @activateDeliveryButton()
       else
         @deactivateDeliveryButton()
@@ -79,8 +91,7 @@ define ['templates/modal_windows/check_contacts', 'helpers/application_helpers']
       @ui.deliveryBlock.show()
       @ui.deliveryBlockInactive.hide()
 
-    onShow: ->
-      @manageButtons()
+    onShow: -> @manageButtons()
 
     onRender: ->
       @ui.deliveryBlock.hide()

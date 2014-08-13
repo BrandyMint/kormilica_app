@@ -21,4 +21,3 @@ define ['models/cart_item'], (CartItem) ->
 
     itemOfProduct: (product) ->
       @findWhere product_id: product.id
-

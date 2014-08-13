@@ -1,6 +1,6 @@
 {
   "name": "kormilica_app",
-  "version": "0.1.31",
+  "version": "0.1.34",
   "main": [
     "/kormilica_app.js"
   ],
@@ -13,6 +13,7 @@
   "dependencies": {
     "requirejs": "~2.x",
     "jquery.ui": "~1.10.4",
+    "rolejs": "https://github.com/kossnocorp/role.git#~1.3.1",
     "underscore": "~1.6",
     "cordova-shim": "git@github.com:SuperSkunk/cordova-shim.git",
     "pace": "~0.5.1"
@@ -24,6 +25,7 @@
     "backbone.virtualcollection": "~0.4.10",
     "backbone.stickit": "0.7.0",
     "backbone.marionette": "1.7.3",
+    "backbone.babysitter": "0.1.0",
     "backbone.localStorage": "latest",
     "requirejs": "~2.1.5",
     "requirejs-text": "~2.0.5",
@@ -31,5 +33,8 @@
     "bootstrap-sass-official": "~3.1.1",
     "backbone.hammer": "~0.2.0",
     "jquery-hammerjs": "~1.0.6"
+  },
+  "resolutions": {
+    "backbone": "1.1.2"
   }
 }
