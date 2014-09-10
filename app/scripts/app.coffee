@@ -63,7 +63,8 @@ CurrentCategoryController
       products:   App.products
 
     if App.bundle.update == 'now'
-      App.updateManager.perform()
+      # TODO turned off for demo without update
+      #App.updateManager.perform()
     else
       App.cart.fetch()
 
